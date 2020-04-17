@@ -11,6 +11,6 @@ evalq(
     )
   },
   envir = list(files = c("dat_gps", "dat_micro", "weights", "index_crea", "index_mw"),
-               root = "https://raw.githubusercontent.com/ppd-dpp/price-index-course/master/csv")
+               root = "https://raw.githubusercontent.com/ppd-dpp/price-index-course/master/csv/")
 )
 
