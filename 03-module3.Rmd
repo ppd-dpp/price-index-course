@@ -181,7 +181,7 @@ Conditional independence gives a constant-quality index for each stratum that co
 In the extreme case when goods are grouped into pairs across time, so that each stratum contains two goods, the stratified index is just a pure matched-model index. To see this, enumerate the population of pairs by $i = 1,\ldots, n_{p}$ so that
 
 \begin{align*}
-I^{Q} = \prod_{i = 1}^{n_{p}} \left(\frac{p_{i1}}{p_{i0}}\right)^{\omega_{i}}
+I^{Q} = \prod_{i = 1}^{n_{p}} \left(\frac{p_{i1}}{p_{i0}}\right)^{\omega_{i}},
 \end{align*}
 
 where $P(X = x) = \omega_{i}$, and $p_{it}$ is the price of the good in pair $i$ that sells in period $t = 0,1$. Conditional independence holds for a matched-model index if the goods in each pair are sufficiently similar across time so that the transaction price for the good that sells in period 0 gives a good baseline for what the good that sells in period 1 would have sold for in period 0. This also shows that the standard index-number formula are special cases of the stratified index, and implicitly make an assumption of conditional independence.
@@ -211,13 +211,13 @@ The constant-quality index is simply a weighted product of each sub-index, calcu
 
 ## Issues with stratification
 
-A clear benefit of the stratified approach for constructing a constant-quality index is that it relies on only two assumptions to deliver such an index---conditional independence and overlap. These assumptions also have the benefit of being relatively transparent. Both conditional independence and overlap are intuitively simple conditions, although conditional independence is not a testable assumption. The challenge with a stratified approach is finding the right balance between these two assumptions. If the stratification is too granular, then the overlap condition can fail---a good with a particular combination of characteristics may not sell in a given period, so that the sub-index for that stratum is not defined. When it comes time to aggregate each sub-index, it will not be possible to aggregate over the population of strata, and hence the overall constant-quality index is not identified from transaction prices.^[One way to mitigate this problem is to construct a price index for a sub-population of goods. For example, a Paasche-like index only requires transactions in period 0 and period 1 for strata in which a good sells in period 1, $P(t = 1 | X = x) < 1$. This also has the benefit of weakening the conditional independence assumption so that only potential prices in period 0 need to be conditionally independent of time, $p(0) \perp t | X$.] This is problematic, as a more granular partition of characteristics may give more credibility to the assumption of conditional independence. This is easiest to see when goods are grouped into pairs (the most granular partition), so that the transaction price index is a matched-model index. In this case, overlap fails when a good does not sell in either period 0 or period 1, and so the price relative for a pair of goods cannot be constructed.
+A clear benefit of the stratified approach for constructing a constant-quality index is that it relies on only two assumptions to deliver such an index---conditional independence and overlap. These assumptions also have the benefit of being relatively transparent. Both conditional independence and overlap are intuitively simple conditions, although conditional independence is not a testable assumption. The challenge with a stratified approach is finding the right balance between these two assumptions. If the stratification is too granular, then the overlap condition can fail---a good with a particular combination of characteristics may not sell in a given period, so that the sub-index for that stratum is not defined. When it comes time to aggregate each sub-index, it will not be possible to aggregate over the population of strata, and hence the overall constant-quality index is not identified from transaction prices.^[One way to mitigate this problem is to construct a price index for a sub-population of goods. For example, a Paasche-like index only requires transactions in period 0 and period 1 for strata in which a good sells in period 1, $P(t = 1 | X = x) < 1$. This also has the benefit of weakening the conditional independence assumption so that only potential prices in period 0 need to be conditionally independent of time, $p(0) \perp t | X$.] This is problematic, as a more granular partition of characteristics may give more credibility to the assumption of conditional independence. This is easiest to see when goods are grouped into pairs (the most granular partition), so that the transaction price index is a matched-model index. In this case, overlap fails when a good does not sell in either period 0 or period 1, and so the price relative for a pair of goods cannot be constructed.^[One interesting way to relax overlap in a matched-model index is to calculate the index over more than two periods. See @kirbymcgregor2019 for an example.]
 
 A related issue with stratification is that, if stratification occurs for many characteristics of a good, $X$ may be of large dimension. In this case, the cell sizes for each strata may be very small, and the stratum-specific indices may be very sensitive to the addition or removal of transactions for a good. Both overlap and dimensionality server to limit the ability to make homogeneous groups of goods for which it is easier to motivate conditional independence.
 
 ## Example with R
 
-Calculating a stratified index is straightforward in practice. On neat way to do it is with a simple linear regression.
+Calculating a stratified index is straightforward in practice. One neat way to do it is with a simple linear regression.
 
 Consider the following data with transactions over two periods for two groups of goods.
 
@@ -265,7 +265,13 @@ It is worth noting that the hedonic model is usually given a structural interpre
 
 ## Linear hedonic indices
 
-The canonical form for the hedonic model $h$ is a linear function of a good's characteristics, so that $h(X, 0) = \alpha_{0} + X\beta_{0}$ and $h(X, 1) = \alpha_{1} + X\beta_{1}$, and thus $E(\rho | X, t) = \alpha_{0} + t(\alpha_{1} - \alpha_{0}) + X\beta_{0} + t \cdot X (\beta_{1} - \beta_{0})$. With a linear form for the hedonic model, transaction prices are expressed as a linear regression on the characteristics of a good---the parameters in a hedonic model are just (population) regression coefficients. The parameter vector $\beta_{t}$ is usually interpreted as a vector of implicit prices for the (non-market) characteristics of a good. This interpretation stems from a structural view of a hedonic model---the goal here is simply to specific a parametric model for the conditional price function, $E(\rho | X, t)$, so $\beta_{t}$ need not be given any special interpretation.^[There are some theoretical issues with specifying a linear hedonic model---see @hausman2003 for an example when a CPI is supposed to measure changes in the cost of living, and @rosen1974, which is usually taken as giving the conceptual foundation for the hedonic approach.]
+The canonical form for the hedonic model $h$ is a linear function of a good's characteristics, so that $h(X, 0) = \alpha_{0} + X\beta_{0}$ and $h(X, 1) = \alpha_{1} + X\beta_{1}$, and thus
+
+\begin{align*}
+E(\rho | X, t) = \alpha_{0} + t(\alpha_{1} - \alpha_{0}) + X\beta_{0} + t \cdot X (\beta_{1} - \beta_{0}).
+\end{align*}
+
+With a linear form for the hedonic model, transaction prices are expressed as a linear regression on the characteristics of a good---the parameters in a hedonic model are just (population) regression coefficients. The parameter vector $\beta_{t}$ is usually interpreted as a vector of implicit prices for the (non-market) characteristics of a good. This interpretation stems from a structural view of a hedonic model---the goal here is simply to specific a parametric model for the conditional price function, $E(\rho | X, t)$, so $\beta_{t}$ need not be given any special interpretation.^[There are some theoretical issues with specifying a linear hedonic model---see @hausman2003 for an example when a CPI is supposed to measure changes in the cost of living, and @rosen1974, which is usually taken as giving the conceptual foundation for the hedonic approach.]
 
 With a linear hedonic model, and conditional independence between potential prices and time,
 
@@ -280,7 +286,8 @@ This type of hedonic index is sometimes called the hedonic imputation model, bec
 One advantage of specifying a linear model for $E(\rho | X, t)$ is that the resulting index has a very intuitive form:^[To show this directly, note that $E(\rho | t) = E(E(\rho | X, t)) = E(\alpha_{t} + X\beta_{t} | t) = \alpha_{t} + E(X | t) \beta_{t}$.]
 
 \begin{align*}
-\log(I^{Q}) = \underbrace{E(\rho | t = 1) - E(\rho | t = 0)}_{\text{transaction-price index}} + \underbrace{[E(X | t = 0) - E(X | t = 1)][\beta_{0} P(t = 1) + \beta_{1} P(t = 0)]}_{\text{correction term}}.
+\log(I^{Q}) =& \underbrace{E(\rho | t = 1) - E(\rho | t = 0)}_{\text{transaction-price index}}\\
+&+ \underbrace{[E(X | t = 0) - E(X | t = 1)][\beta_{0} P(t = 1) + \beta_{1} P(t = 0)]}_{\text{correction term}}.
 \end{align*}
 
 Provided that conditional independence holds, and that average transaction price is a linear function of the characteristics of the goods sold, the constant-quality index can be decomposed into a geometric transaction-price index and a correction term that captures the change in the composition of product characteristics over time. The correction term takes the average change in characteristics over time, and uses this to adjust the transaction-price index---the term $\beta_{0} P(t = 1) + \beta_{1} P(t = 0)$ governs whether increasing the presence of a characteristic on average increases prices or not. For example, if products in period 1 on average have more of characteristics that are positively associated with price, then the correction term will exert a negative influence on the transaction-price index to arrive at a constant-quality index. This is because the transaction-price index will show an increase in price over time in part because the goods selling in period 1 are of higher quality than those selling in period 0, and would have sold for more in period 0 than the goods that actually sold in period 0. Consequently the transaction-price index overstates the pure change in price, hence the negative correction term.
@@ -289,13 +296,13 @@ Calculating a linear hedonic price index is easy, as
 
 \begin{align*}
 E(\rho | X, t) &= \alpha_{0} + t (\alpha_{1} - \alpha_{0}) + X \beta_{0} + t \cdot X (\beta_{1} - \beta_{0}) \\
-&= \alpha_{0} + t (\alpha_{1} - \alpha_{0} + E(X)(\beta_{1} - \beta_{0})) + X \beta_{0} + t \cdot (X - E(X)) (\beta_{1} - \beta_{0}) \\
-&= \alpha_{0} + t \log(I^{Q}) + X \beta_{0} + t \cdot (X - E(X)) (\beta_{1} - \beta_{0}).
+&= \alpha_{0} + t (\alpha_{1} - \alpha_{0} + E(X)(\beta_{1} - \beta_{0})) + X \beta_{0} + t (X - E(X)) (\beta_{1} - \beta_{0}) \\
+&= \alpha_{0} + t \log(I^{Q}) + X \beta_{0} + t (X - E(X)) (\beta_{1} - \beta_{0}).
 \end{align*}
 
 The hedonic index is then just the coefficient on a time-dummy variable in a linear regression, and is therefore extremely easy to calculate.
 
-It is worth concluding this section by noting that in almost all cases it is an assumption that average transaction-price is a linear function of characteristics. There is, however, one interesting case where this assumption is always correct. If goods are partitioning by their characteristics, so that each combination of $x$ for $X$ belongs to its own group and gets its own parameter in the hedonic model at each point in time, then $E(\rho | X, t)$ is necessarily linear. In this case the hedonic price index is simply a stratified price index. In this way the linear hedonic price index is a more general type of price index than the stratified index, and finds its value when the stratified index cannot be calculated because of a failure of overlap.
+It is worth concluding this section by noting that in almost all cases it is an assumption that average transaction price is a linear function of characteristics. There is, however, one interesting case where this assumption is always correct. If goods are partitioning by their characteristics, so that each combination of $x$ for $X$ belongs to its own group and gets its own parameter in the hedonic model at each point in time, then $E(\rho | X, t)$ is necessarily linear. In this case the hedonic price index is simply a stratified price index. In this way the linear hedonic price index is a more general type of price index than the stratified index, and finds its value when the stratified index cannot be calculated because of a failure of overlap.
 
 ## The time-dummy approach
 
@@ -321,7 +328,7 @@ This index is of the same from as the stratified geometric index in the previous
 
 The point to take away here is that when goods are stratified according to their characteristics, the time-dummy approach for constructing a constant-quality index and the stratified approach are not fundamentally different approaches to operationalize a conditional independence assumption. Both approaches require the overlap condition, and aggregate within-stratum transaction-price indices to produce an overall price index. The usefulness of the time-dummy approach comes when overlap fails---so that goods cannot be stratified along a particular set of characteristics---as the time-dummy approach provides a parametric correction that gives the transaction-price index a constant-quality interpretation at the expense of an extra assumption.
 
-In practice the time-dummy hedonic model is more popular than the hedonic imputation approach, in part because it is simpler, easier to compute, and less data intensive. The disadvantage to the time-dummy approach is that it is more restrictive, and requires an extra assumption.
+In practice the time-dummy hedonic model is more popular than the hedonic imputation approach, in part because it is simpler, easier to compute, and less data intensive. The disadvantage to the time-dummy approach is that it is more restrictive, and requires an extra assumption. In most cases, however, the two approaches give similar results.
 
 ## Example with R
 
@@ -456,7 +463,7 @@ b) They understate the increase in price between period 0 and period 1.
 
 c) They overstate the increase in price between period 0 and period 1.
 
-d) The hedonic model understate the increase and the stratified model overstates the increase.
+d) The hedonic model understates the increase and the stratified model overstates the increase.
 
 e) None of the above.
 
@@ -572,7 +579,8 @@ d) None of the above.
 **Question 20** It can be shown that 
 
 \begin{align*}
-\underbrace{E(\rho | t = 1) - E(\rho | t = 0)}_{\text{transaction-price index}} = \underbrace{E(\rho(1) | t = 0) - E(\rho(0) | t = 0)}_{\text{Laspeyres-like constant-quality index}} + \underbrace{E(\rho(1) | t = 1) - E(\rho(1) | t = 0)}_{\text{selection bias}}.
+\underbrace{E(\rho | t = 1) - E(\rho | t = 0)}_{\text{transaction-price index}} =& \underbrace{E(\rho(1) | t = 0) - E(\rho(0) | t = 0)}_{\text{Laspeyres-like constant-quality index}} \\ 
+&+ \underbrace{E(\rho(1) | t = 1) - E(\rho(1) | t = 0)}_{\text{selection bias}}.
 \end{align*}
 
 True or false: Would potential prices in period 0 being correlated with time, such that goods that sell in period 1 would have sold for less in period 0 than the goods that sold period 0, affect using transaction prices to identify a Laspeyres-like constant-quality index?

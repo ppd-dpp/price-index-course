@@ -17,5 +17,9 @@ bookdown::gitbook:
   css: "align.css"
   number_sections: false
   split_by: section
+bookdown::pdf_book:
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: yes
 
 

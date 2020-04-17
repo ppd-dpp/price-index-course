@@ -116,7 +116,7 @@ The Carli index takes an agnostic view of the weights, and treats each price rel
 **Dutot index**. Setting $\omega_{i} = p_{i0} / \sum_{j = 1}^{n} p_{j0}$ results in the Dutot index
 
 \begin{align*}
-I^{A}_D = \frac{\sum_{i = 1}^{n} p_{i1}}{\sum_{i = 1}^{n} p_{i0}}
+I^{A}_D = \frac{\sum_{i = 1}^{n} p_{i1}}{\sum_{i = 1}^{n} p_{i0}}.
 \end{align*}
 
 The Dutot index gives more weight to price relatives that have a greater period-0 price, comparing the average price of goods in period 1 to the average price in period 0.
@@ -140,7 +140,7 @@ The Laspeyres index weights price relatives according to their period-0 expendit
 **Paasche index**. Setting $\omega_{i} = p_{i0} q_{i1} / \sum_{j = 1}^{n} p_{j0} q_{j1}$ results in the Paasche index
 
 \begin{align*}
-I^{A}_{P} = \frac{\sum_{i = 1}^{n} p_{i1} q_{i1}}{\sum_{i = 1}^{n} p_{i0} q_{i1}},
+I^{A}_{P} = \frac{\sum_{i = 1}^{n} p_{i1} q_{i1}}{\sum_{i = 1}^{n} p_{i0} q_{i1}}.
 \end{align*}
 
 Like the Laspeyres index, the Paasche index is a special case of the Lowe index, and uses hybrid expenditure/revenue shares to weight price relatives. 
@@ -279,7 +279,7 @@ One important price index that is neither a geometric index nor an arithmetic in
 I_{F} = \sqrt{\frac{\sum_{i = 1}^{n} p_{i1} q_{i0}}{\sum_{i = 1}^{n} p_{i0} q_{i0}} \times \frac{\sum_{i = 1}^{n} p_{i1} q_{i1}}{\sum_{i = 1}^{n} p_{i0} q_{i1}}}.
 \end{align*}
 
-The Fisher index is often seen as an ideal index because it treats information in period 0 and period 1 symmetrically. (The Törnqvist index is also seen as ideal for a similar reason, and these types of indices often get called superlative.) In practice, however, the Fisher index is not frequently used by national statistical agencies because it is not timely to calculate. This is because it depends on the Paasche index, which requires information on period 1 quantities in addition to period 1 prices.
+The Fisher index is often seen as an ideal index because it treats information in period 0 and period 1 symmetrically. (The Törnqvist index is also seen as ideal for a similar reason, and these types of indices often get called superlative.) In practice, however, the Fisher index is not frequently used by national statistical agencies because it is not timely to calculate. This is because it depends on the Paasche index, which requires information on period 1 quantities in addition to period 1 prices, something that has historically been impractical for national statistical agencies to collect.
 
 ## Example with R
 

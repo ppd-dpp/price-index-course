@@ -246,7 +246,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>They overstate the decrease in price between period 0 and period 1.</p></li>
 <li><p>They understate the increase in price between period 0 and period 1.</p></li>
 <li><p>They overstate the increase in price between period 0 and period 1.</p></li>
-<li><p>The hedonic model understate the increase and the stratified model overstates the increase.</p></li>
+<li><p>The hedonic model understates the increase and the stratified model overstates the increase.</p></li>
 <li><p>None of the above.</p></li>
 </ol>
 <p>The next four questions have to do with the following type of quality adjustment. A common strategy to build a constant-quality index when packaging for a product changes is to divide the price by the size of the package (e.g., price per liter of dish soap), so that the price relative for product <span class="math inline">\(i\)</span> becomes <span class="math inline">\(p_{i1} / p_{i0} \times s_{i0} / s_{i1}\)</span>, where <span class="math inline">\(s_{it}\)</span> is the size of the package in period <span class="math inline">\(t\)</span>. An index based on this approach can be calculated with a linear regression, as</p>
@@ -359,7 +359,8 @@ sold in period 2, but only product A changed price in period 2.</p></li>
 <p><strong>Question 19</strong> True or false: It is possible to mix stratification with hedonics to relax overlap.</p>
 <p><strong>Question 20</strong> It can be shown that</p>
 <p><span class="math display">\[\begin{align*}
-\underbrace{E(\rho | t = 1) - E(\rho | t = 0)}_{\text{transaction-price index}} = \underbrace{E(\rho(1) | t = 0) - E(\rho(0) | t = 0)}_{\text{Laspeyres-like constant-quality index}} + \underbrace{E(\rho(1) | t = 1) - E(\rho(1) | t = 0)}_{\text{selection bias}}.
+\underbrace{E(\rho | t = 1) - E(\rho | t = 0)}_{\text{transaction-price index}} =&amp; \underbrace{E(\rho(1) | t = 0) - E(\rho(0) | t = 0)}_{\text{Laspeyres-like constant-quality index}} \\ 
+&amp;+ \underbrace{E(\rho(1) | t = 1) - E(\rho(1) | t = 0)}_{\text{selection bias}}.
 \end{align*}\]</span></p>
 <p>True or false: Would potential prices in period 0 being correlated with time, such that goods that sell in period 1 would have sold for less in period 0 than the goods that sold period 0, affect using transaction prices to identify a Laspeyres-like constant-quality index?</p>
 
