@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Example with R | A Course on Price Indices</title>
+  <meta name="description" content="A modern and straightforward introduction to price indices" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Example with R | A Course on Price Indices" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A modern and straightforward introduction to price indices" />
+  <meta name="github-repo" content="ppd-dpp/price-index-course" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Example with R | A Course on Price Indices" />
+  
+  <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
+  
+
+<meta name="author" content="Steve Martin" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="the-time-dummy-approach.html"/>
+<link rel="next" href="assignment-2.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="align.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="part"><span><b>I Introduction to Price Indices</b></span></li>
+<li class="chapter" data-level="" data-path="syllabus.html"><a href="syllabus.html"><i class="fa fa-check"></i>Syllabus</a></li>
+<li class="chapter" data-level="" data-path="whats-a-price-index-and-why-do-we-need-one.html"><a href="whats-a-price-index-and-why-do-we-need-one.html"><i class="fa fa-check"></i>What’s a price index and why do we need one?</a><ul>
+<li class="chapter" data-level="" data-path="whats-a-price-index.html"><a href="whats-a-price-index.html"><i class="fa fa-check"></i>What’s a price index?</a></li>
+<li class="chapter" data-level="" data-path="uses-of-a-price-index.html"><a href="uses-of-a-price-index.html"><i class="fa fa-check"></i>Uses of a price index</a></li>
+<li class="chapter" data-level="" data-path="why-a-price-index.html"><a href="why-a-price-index.html"><i class="fa fa-check"></i>Why a price index?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index-number-formula.html"><a href="index-number-formula.html"><i class="fa fa-check"></i>Index-number formula</a><ul>
+<li class="chapter" data-level="" data-path="arithmetic-price-indices.html"><a href="arithmetic-price-indices.html"><i class="fa fa-check"></i>Arithmetic price indices</a></li>
+<li class="chapter" data-level="" data-path="common-arithmetic-indices.html"><a href="common-arithmetic-indices.html"><i class="fa fa-check"></i>Common arithmetic indices</a></li>
+<li class="chapter" data-level="" data-path="less-common-arithmetic-indices.html"><a href="less-common-arithmetic-indices.html"><i class="fa fa-check"></i>Less common arithmetic indices</a></li>
+<li class="chapter" data-level="" data-path="geometric-price-indices.html"><a href="geometric-price-indices.html"><i class="fa fa-check"></i>Geometric price indices</a></li>
+<li class="chapter" data-level="" data-path="the-fisher-index.html"><a href="the-fisher-index.html"><i class="fa fa-check"></i>The Fisher index</a></li>
+<li class="chapter" data-level="" data-path="example-with-r.html"><a href="example-with-r.html"><i class="fa fa-check"></i>Example with R</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="computing-a-price-index.html"><a href="computing-a-price-index.html"><i class="fa fa-check"></i>Computing a price index</a></li>
+<li class="chapter" data-level="" data-path="sub-indices-and-aggregation.html"><a href="sub-indices-and-aggregation.html"><i class="fa fa-check"></i>Sub-indices and aggregation</a><ul>
+<li class="chapter" data-level="" data-path="factoring-an-index.html"><a href="factoring-an-index.html"><i class="fa fa-check"></i>Factoring an index</a></li>
+<li class="chapter" data-level="" data-path="rebasing.html"><a href="rebasing.html"><i class="fa fa-check"></i>Rebasing</a></li>
+<li class="chapter" data-level="" data-path="chaining.html"><a href="chaining.html"><i class="fa fa-check"></i>Chaining</a></li>
+<li class="chapter" data-level="" data-path="example-with-r-1.html"><a href="example-with-r-1.html"><i class="fa fa-check"></i>Example with R</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="assignment.html"><a href="assignment.html"><i class="fa fa-check"></i>Assignment</a></li>
+<li class="part"><span><b>II Price Index Theory</b></span></li>
+<li class="chapter" data-level="" data-path="syllabus-1.html"><a href="syllabus-1.html"><i class="fa fa-check"></i>Syllabus</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="the-axiomatic-approach.html"><a href="the-axiomatic-approach.html"><i class="fa fa-check"></i>The axiomatic approach</a><ul>
+<li class="chapter" data-level="" data-path="an-abstract-price-index.html"><a href="an-abstract-price-index.html"><i class="fa fa-check"></i>An abstract price index</a></li>
+<li class="chapter" data-level="" data-path="the-axioms.html"><a href="the-axioms.html"><i class="fa fa-check"></i>The axioms</a></li>
+<li class="chapter" data-level="" data-path="counter-examples.html"><a href="counter-examples.html"><i class="fa fa-check"></i>Counter examples</a></li>
+<li class="chapter" data-level="" data-path="the-tests.html"><a href="the-tests.html"><i class="fa fa-check"></i>The tests</a></li>
+<li class="chapter" data-level="" data-path="an-impossibility-result.html"><a href="an-impossibility-result.html"><i class="fa fa-check"></i>An impossibility result</a></li>
+<li class="chapter" data-level="" data-path="motivating-the-jevons-and-laspeyres-indices.html"><a href="motivating-the-jevons-and-laspeyres-indices.html"><i class="fa fa-check"></i>Motivating the Jevons and Laspeyres indices</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="the-economic-approach.html"><a href="the-economic-approach.html"><i class="fa fa-check"></i>The economic approach</a><ul>
+<li class="chapter" data-level="" data-path="input-price-index.html"><a href="input-price-index.html"><i class="fa fa-check"></i>Input-price index</a></li>
+<li class="chapter" data-level="" data-path="output-price-index.html"><a href="output-price-index.html"><i class="fa fa-check"></i>Output-price index</a></li>
+<li class="chapter" data-level="" data-path="cost-of-living-index.html"><a href="cost-of-living-index.html"><i class="fa fa-check"></i>Cost-of-living index</a></li>
+<li class="chapter" data-level="" data-path="approximating-an-economic-index.html"><a href="approximating-an-economic-index.html"><i class="fa fa-check"></i>Approximating an economic index</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="the-stochastic-approach.html"><a href="the-stochastic-approach.html"><i class="fa fa-check"></i>The stochastic approach</a><ul>
+<li class="chapter" data-level="" data-path="the-optimal-prediction-problem.html"><a href="the-optimal-prediction-problem.html"><i class="fa fa-check"></i>The optimal prediction problem</a></li>
+<li class="chapter" data-level="" data-path="geometric-price-indices-1.html"><a href="geometric-price-indices-1.html"><i class="fa fa-check"></i>Geometric price indices</a></li>
+<li class="chapter" data-level="" data-path="more-general-price-indices.html"><a href="more-general-price-indices.html"><i class="fa fa-check"></i>More general price indices</a></li>
+<li class="chapter" data-level="" data-path="statistical-inference.html"><a href="statistical-inference.html"><i class="fa fa-check"></i>Statistical inference</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="assignment-1.html"><a href="assignment-1.html"><i class="fa fa-check"></i>Assignment</a></li>
+<li class="part"><span><b>III Constant-Quality Price Indices</b></span></li>
+<li class="chapter" data-level="" data-path="syllabus-2.html"><a href="syllabus-2.html"><i class="fa fa-check"></i>Syllabus</a></li>
+<li class="chapter" data-level="" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="potential-prices.html"><a href="potential-prices.html"><i class="fa fa-check"></i>Potential prices</a><ul>
+<li class="chapter" data-level="" data-path="constant-quality-price-indices.html"><a href="constant-quality-price-indices.html"><i class="fa fa-check"></i>Constant-quality price indices</a></li>
+<li class="chapter" data-level="" data-path="transaction-price-indices.html"><a href="transaction-price-indices.html"><i class="fa fa-check"></i>Transaction-price indices</a></li>
+<li class="chapter" data-level="" data-path="identification.html"><a href="identification.html"><i class="fa fa-check"></i>Identification</a></li>
+<li class="chapter" data-level="" data-path="example.html"><a href="example.html"><i class="fa fa-check"></i>Example</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="stratified-price-indices.html"><a href="stratified-price-indices.html"><i class="fa fa-check"></i>Stratified price indices</a><ul>
+<li class="chapter" data-level="" data-path="conditional-independence.html"><a href="conditional-independence.html"><i class="fa fa-check"></i>Conditional independence</a></li>
+<li class="chapter" data-level="" data-path="overlap.html"><a href="overlap.html"><i class="fa fa-check"></i>Overlap</a></li>
+<li class="chapter" data-level="" data-path="issues-with-stratification.html"><a href="issues-with-stratification.html"><i class="fa fa-check"></i>Issues with stratification</a></li>
+<li class="chapter" data-level="" data-path="example-with-r-2.html"><a href="example-with-r-2.html"><i class="fa fa-check"></i>Example with R</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="hedonic-price-indices.html"><a href="hedonic-price-indices.html"><i class="fa fa-check"></i>Hedonic price indices</a><ul>
+<li class="chapter" data-level="" data-path="linear-hedonic-indices.html"><a href="linear-hedonic-indices.html"><i class="fa fa-check"></i>Linear hedonic indices</a></li>
+<li class="chapter" data-level="" data-path="the-time-dummy-approach.html"><a href="the-time-dummy-approach.html"><i class="fa fa-check"></i>The time-dummy approach</a></li>
+<li class="chapter" data-level="" data-path="example-with-r-3.html"><a href="example-with-r-3.html"><i class="fa fa-check"></i>Example with R</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="assignment-2.html"><a href="assignment-2.html"><i class="fa fa-check"></i>Assignment</a></li>
+<li class="part"><span><b>IV Building a Price Index with R</b></span></li>
+<li class="chapter" data-level="" data-path="syllabus-3.html"><a href="syllabus-3.html"><i class="fa fa-check"></i>Syllabus</a></li>
+<li class="chapter" data-level="" data-path="assignment-3.html"><a href="assignment-3.html"><i class="fa fa-check"></i>Assignment</a><ul>
+<li class="chapter" data-level="" data-path="methodology.html"><a href="methodology.html"><i class="fa fa-check"></i>Methodology</a></li>
+<li class="chapter" data-level="" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i>Instructions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Course on Price Indices</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="example-with-r-3" class="section level2">
+<h2>Example with R</h2>
+<p>Calculating a linear hedonic price index is very easy in R.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="co"># Bring in some data</span></a>
+<a class="sourceLine" id="cb21-2" title="2">df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;csv/data.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb21-3" title="3">df</a></code></pre></div>
+<pre><code>##    period price chicken liver salmon
+## 1       0     2       1     0      0
+## 2       0     4       1     0      0
+## 3       0     3       1     0      0
+## 4       0     4       1     0      0
+## 5       0     5       1     0      0
+## 6       0     1       0     1      0
+## 7       0     3       0     1      0
+## 8       0     2       0     1      0
+## 9       0     1       0     1      0
+## 10      0     1       0     1      0
+## 11      0     5       0     0      1
+## 12      0     7       0     0      1
+## 13      0     8       0     0      1
+## 14      0     4       0     0      1
+## 15      1     5       1     0      0
+## 16      1     3       1     0      0
+## 17      1     2       0     1      0
+## 18      1     2       0     1      0
+## 19      1     1       0     1      0
+## 20      1     3       0     1      0
+## 21      1     1       0     1      0
+## 22      1     1       0     1      0
+## 23      1     9       0     0      1
+## 24      1     8       0     0      1
+## 25      1     5       0     0      1</code></pre>
+<p>This is a simple data set for cat food, with three characteristics—is it chicken cat food, liver cat food, or salmon cat food? To evaluate the impact of a hedonic price index, it is useful to calculate a simple transaction-price index by pooling transactions for all three types of cat food together.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="co"># Calculate pooled price index</span></a>
+<a class="sourceLine" id="cb23-2" title="2">pooled &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>period, df)</a>
+<a class="sourceLine" id="cb23-3" title="3"><span class="kw">exp</span>(<span class="kw">coef</span>(pooled)[<span class="dv">2</span>]) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a></code></pre></div>
+<pre><code>##   period 
+## 93.86748</code></pre>
+<p>The general linear hedonic index is easy to calculate with a simple linear regression. The only trick is remembering to remove the average of each characteristic in the interaction term.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="co"># Calculate hedonic imputation index</span></a>
+<a class="sourceLine" id="cb25-2" title="2">hedonic_imputation &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>period <span class="op">+</span><span class="st"> </span>liver <span class="op">+</span><span class="st"> </span>salmon <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb25-3" title="3"><span class="st">                           </span>period<span class="op">:</span>(<span class="kw">I</span>(liver <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(liver)) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(salmon <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(salmon))), </a>
+<a class="sourceLine" id="cb25-4" title="4">                         df)</a>
+<a class="sourceLine" id="cb25-5" title="5"><span class="kw">exp</span>(<span class="kw">coef</span>(hedonic_imputation)[<span class="dv">2</span>]) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a></code></pre></div>
+<pre><code>##   period 
+## 112.2817</code></pre>
+<p>This is the same as the two-step calculation that is normally done for a hedonic imputation index.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="co"># Period-0 regression</span></a>
+<a class="sourceLine" id="cb27-2" title="2">hi0 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>liver <span class="op">+</span><span class="st"> </span>salmon, df, <span class="dt">subset =</span> period <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb27-3" title="3"></a>
+<a class="sourceLine" id="cb27-4" title="4"><span class="co"># Period-1 regression</span></a>
+<a class="sourceLine" id="cb27-5" title="5">hi1 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>liver <span class="op">+</span><span class="st"> </span>salmon, df, <span class="dt">subset =</span> period <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb27-6" title="6"></a>
+<a class="sourceLine" id="cb27-7" title="7"><span class="co"># Calculate index using predicted prices</span></a>
+<a class="sourceLine" id="cb27-8" title="8"><span class="kw">exp</span>(<span class="kw">mean</span>(<span class="kw">predict</span>(hi1, df) <span class="op">-</span><span class="st"> </span><span class="kw">predict</span>(hi0, df))) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a></code></pre></div>
+<pre><code>## [1] 112.2817</code></pre>
+<p>It is also the same as manually calculating the stratified index.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="co"># Bring in ppd library</span></a>
+<a class="sourceLine" id="cb29-2" title="2"><span class="kw">library</span>(ppd)</a>
+<a class="sourceLine" id="cb29-3" title="3"></a>
+<a class="sourceLine" id="cb29-4" title="4"><span class="co"># Weight cat food by its frequency</span></a>
+<a class="sourceLine" id="cb29-5" title="5">weights &lt;-<span class="st"> </span><span class="kw">colSums</span>(df[<span class="op">-</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>)])</a>
+<a class="sourceLine" id="cb29-6" title="6"></a>
+<a class="sourceLine" id="cb29-7" title="7"><span class="co"># Calculate an index for each type of cat food</span></a>
+<a class="sourceLine" id="cb29-8" title="8">strata_indices &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">list</span>(<span class="kw">subset</span>(df, chicken <span class="op">==</span><span class="st"> </span><span class="dv">1</span>), </a>
+<a class="sourceLine" id="cb29-9" title="9">                              <span class="kw">subset</span>(df, liver <span class="op">==</span><span class="st"> </span><span class="dv">1</span>), </a>
+<a class="sourceLine" id="cb29-10" title="10">                              <span class="kw">subset</span>(df, salmon <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)),</a>
+<a class="sourceLine" id="cb29-11" title="11">                         <span class="cf">function</span>(x) <span class="kw">with</span>(x, <span class="kw">geomean</span>(price[period <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]) <span class="op">/</span><span class="st"> </span><span class="kw">geomean</span>(price[period <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]))</a>
+<a class="sourceLine" id="cb29-12" title="12">                         )</a>
+<a class="sourceLine" id="cb29-13" title="13"></a>
+<a class="sourceLine" id="cb29-14" title="14"><span class="co"># Aggregate</span></a>
+<a class="sourceLine" id="cb29-15" title="15"><span class="kw">geomean</span>(strata_indices, weights) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a></code></pre></div>
+<pre><code>## [1] 112.2817</code></pre>
+<p>The results are very similar if a time-dummy model is used instead.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="co"># Time-dummy index</span></a>
+<a class="sourceLine" id="cb31-2" title="2">time_dummy &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>period <span class="op">+</span><span class="st"> </span>liver <span class="op">+</span><span class="st"> </span>salmon, df)</a>
+<a class="sourceLine" id="cb31-3" title="3"><span class="kw">exp</span>(<span class="kw">coef</span>(time_dummy)[<span class="dv">2</span>]) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a></code></pre></div>
+<pre><code>##   period 
+## 112.2246</code></pre>
+<p>Adding weights for the transactions in each stratum can easily be done with a weighted regression.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="co"># Make some weights</span></a>
+<a class="sourceLine" id="cb33-2" title="2">df<span class="op">$</span>weights &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">25</span> <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>)</a>
+<a class="sourceLine" id="cb33-3" title="3"></a>
+<a class="sourceLine" id="cb33-4" title="4"><span class="co"># Calculate weighted hedonic imputation index</span></a>
+<a class="sourceLine" id="cb33-5" title="5">hedonic_imputation &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>period <span class="op">+</span><span class="st"> </span>liver <span class="op">+</span><span class="st"> </span>salmon <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb33-6" title="6"><span class="st">                           </span>period<span class="op">:</span>(<span class="kw">I</span>(liver <span class="op">-</span><span class="st"> </span><span class="kw">weighted.mean</span>(liver, weights)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb33-7" title="7"><span class="st">                                   </span><span class="kw">I</span>(salmon <span class="op">-</span><span class="st"> </span><span class="kw">weighted.mean</span>(salmon, weights))), </a>
+<a class="sourceLine" id="cb33-8" title="8">                         df, <span class="dt">weights =</span> weights)</a>
+<a class="sourceLine" id="cb33-9" title="9"><span class="kw">exp</span>(<span class="kw">coef</span>(hedonic_imputation)[<span class="dv">2</span>]) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a></code></pre></div>
+<pre><code>##   period 
+## 111.1855</code></pre>
+<p>This gives the same answer as the two-step calculation.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="co"># Period-0 regression</span></a>
+<a class="sourceLine" id="cb35-2" title="2">hi0 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>liver <span class="op">+</span><span class="st"> </span>salmon, df, <span class="dt">subset =</span> period <span class="op">==</span><span class="st"> </span><span class="dv">0</span>, <span class="dt">weights =</span> weights)</a>
+<a class="sourceLine" id="cb35-3" title="3"></a>
+<a class="sourceLine" id="cb35-4" title="4"><span class="co"># Period-1 regression</span></a>
+<a class="sourceLine" id="cb35-5" title="5">hi1 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>liver <span class="op">+</span><span class="st"> </span>salmon, df, <span class="dt">subset =</span> period <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">weights =</span> weights)</a>
+<a class="sourceLine" id="cb35-6" title="6"></a>
+<a class="sourceLine" id="cb35-7" title="7"><span class="co"># Calculate index using weighted predicted prices</span></a>
+<a class="sourceLine" id="cb35-8" title="8"><span class="kw">exp</span>(<span class="kw">weighted.mean</span>(<span class="kw">predict</span>(hi1, df) <span class="op">-</span><span class="st"> </span><span class="kw">predict</span>(hi0, df), df<span class="op">$</span>weights)) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a></code></pre></div>
+<pre><code>## [1] 111.1855</code></pre>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="the-time-dummy-approach.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="assignment-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+},
+"search": false,
+"info": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

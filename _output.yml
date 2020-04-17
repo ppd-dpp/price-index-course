@@ -1,0 +1,21 @@
+bookdown::gitbook:
+  config:
+    toc:
+      collapse: section
+    download: no
+    search: no
+    sharing:
+      facebook: no
+      github: yes
+      twitter: no
+      linkedin: no
+      weibo: no
+      instapaper: no
+      vk: no
+      all: no
+    info: no
+  css: "align.css"
+  number_sections: false
+  split_by: section
+
+

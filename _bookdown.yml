@@ -1,0 +1,3 @@
+book_filename: "price-index-course"
+delete_merged_file: true
+output_dir: "docs"

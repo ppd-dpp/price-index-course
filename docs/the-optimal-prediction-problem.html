@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>The optimal prediction problem | A Course on Price Indices</title>
+  <meta name="description" content="A modern and straightforward introduction to price indices" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="The optimal prediction problem | A Course on Price Indices" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A modern and straightforward introduction to price indices" />
+  <meta name="github-repo" content="ppd-dpp/price-index-course" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="The optimal prediction problem | A Course on Price Indices" />
+  
+  <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
+  
+
+<meta name="author" content="Steve Martin" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="the-stochastic-approach.html"/>
+<link rel="next" href="geometric-price-indices-1.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="align.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="part"><span><b>I Introduction to Price Indices</b></span></li>
+<li class="chapter" data-level="" data-path="syllabus.html"><a href="syllabus.html"><i class="fa fa-check"></i>Syllabus</a></li>
+<li class="chapter" data-level="" data-path="whats-a-price-index-and-why-do-we-need-one.html"><a href="whats-a-price-index-and-why-do-we-need-one.html"><i class="fa fa-check"></i>What’s a price index and why do we need one?</a><ul>
+<li class="chapter" data-level="" data-path="whats-a-price-index.html"><a href="whats-a-price-index.html"><i class="fa fa-check"></i>What’s a price index?</a></li>
+<li class="chapter" data-level="" data-path="uses-of-a-price-index.html"><a href="uses-of-a-price-index.html"><i class="fa fa-check"></i>Uses of a price index</a></li>
+<li class="chapter" data-level="" data-path="why-a-price-index.html"><a href="why-a-price-index.html"><i class="fa fa-check"></i>Why a price index?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index-number-formula.html"><a href="index-number-formula.html"><i class="fa fa-check"></i>Index-number formula</a><ul>
+<li class="chapter" data-level="" data-path="arithmetic-price-indices.html"><a href="arithmetic-price-indices.html"><i class="fa fa-check"></i>Arithmetic price indices</a></li>
+<li class="chapter" data-level="" data-path="common-arithmetic-indices.html"><a href="common-arithmetic-indices.html"><i class="fa fa-check"></i>Common arithmetic indices</a></li>
+<li class="chapter" data-level="" data-path="less-common-arithmetic-indices.html"><a href="less-common-arithmetic-indices.html"><i class="fa fa-check"></i>Less common arithmetic indices</a></li>
+<li class="chapter" data-level="" data-path="geometric-price-indices.html"><a href="geometric-price-indices.html"><i class="fa fa-check"></i>Geometric price indices</a></li>
+<li class="chapter" data-level="" data-path="the-fisher-index.html"><a href="the-fisher-index.html"><i class="fa fa-check"></i>The Fisher index</a></li>
+<li class="chapter" data-level="" data-path="example-with-r.html"><a href="example-with-r.html"><i class="fa fa-check"></i>Example with R</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="computing-a-price-index.html"><a href="computing-a-price-index.html"><i class="fa fa-check"></i>Computing a price index</a></li>
+<li class="chapter" data-level="" data-path="sub-indices-and-aggregation.html"><a href="sub-indices-and-aggregation.html"><i class="fa fa-check"></i>Sub-indices and aggregation</a><ul>
+<li class="chapter" data-level="" data-path="factoring-an-index.html"><a href="factoring-an-index.html"><i class="fa fa-check"></i>Factoring an index</a></li>
+<li class="chapter" data-level="" data-path="rebasing.html"><a href="rebasing.html"><i class="fa fa-check"></i>Rebasing</a></li>
+<li class="chapter" data-level="" data-path="chaining.html"><a href="chaining.html"><i class="fa fa-check"></i>Chaining</a></li>
+<li class="chapter" data-level="" data-path="example-with-r-1.html"><a href="example-with-r-1.html"><i class="fa fa-check"></i>Example with R</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="assignment.html"><a href="assignment.html"><i class="fa fa-check"></i>Assignment</a></li>
+<li class="part"><span><b>II Price Index Theory</b></span></li>
+<li class="chapter" data-level="" data-path="syllabus-1.html"><a href="syllabus-1.html"><i class="fa fa-check"></i>Syllabus</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="the-axiomatic-approach.html"><a href="the-axiomatic-approach.html"><i class="fa fa-check"></i>The axiomatic approach</a><ul>
+<li class="chapter" data-level="" data-path="an-abstract-price-index.html"><a href="an-abstract-price-index.html"><i class="fa fa-check"></i>An abstract price index</a></li>
+<li class="chapter" data-level="" data-path="the-axioms.html"><a href="the-axioms.html"><i class="fa fa-check"></i>The axioms</a></li>
+<li class="chapter" data-level="" data-path="counter-examples.html"><a href="counter-examples.html"><i class="fa fa-check"></i>Counter examples</a></li>
+<li class="chapter" data-level="" data-path="the-tests.html"><a href="the-tests.html"><i class="fa fa-check"></i>The tests</a></li>
+<li class="chapter" data-level="" data-path="an-impossibility-result.html"><a href="an-impossibility-result.html"><i class="fa fa-check"></i>An impossibility result</a></li>
+<li class="chapter" data-level="" data-path="motivating-the-jevons-and-laspeyres-indices.html"><a href="motivating-the-jevons-and-laspeyres-indices.html"><i class="fa fa-check"></i>Motivating the Jevons and Laspeyres indices</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="the-economic-approach.html"><a href="the-economic-approach.html"><i class="fa fa-check"></i>The economic approach</a><ul>
+<li class="chapter" data-level="" data-path="input-price-index.html"><a href="input-price-index.html"><i class="fa fa-check"></i>Input-price index</a></li>
+<li class="chapter" data-level="" data-path="output-price-index.html"><a href="output-price-index.html"><i class="fa fa-check"></i>Output-price index</a></li>
+<li class="chapter" data-level="" data-path="cost-of-living-index.html"><a href="cost-of-living-index.html"><i class="fa fa-check"></i>Cost-of-living index</a></li>
+<li class="chapter" data-level="" data-path="approximating-an-economic-index.html"><a href="approximating-an-economic-index.html"><i class="fa fa-check"></i>Approximating an economic index</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="the-stochastic-approach.html"><a href="the-stochastic-approach.html"><i class="fa fa-check"></i>The stochastic approach</a><ul>
+<li class="chapter" data-level="" data-path="the-optimal-prediction-problem.html"><a href="the-optimal-prediction-problem.html"><i class="fa fa-check"></i>The optimal prediction problem</a></li>
+<li class="chapter" data-level="" data-path="geometric-price-indices-1.html"><a href="geometric-price-indices-1.html"><i class="fa fa-check"></i>Geometric price indices</a></li>
+<li class="chapter" data-level="" data-path="more-general-price-indices.html"><a href="more-general-price-indices.html"><i class="fa fa-check"></i>More general price indices</a></li>
+<li class="chapter" data-level="" data-path="statistical-inference.html"><a href="statistical-inference.html"><i class="fa fa-check"></i>Statistical inference</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="assignment-1.html"><a href="assignment-1.html"><i class="fa fa-check"></i>Assignment</a></li>
+<li class="part"><span><b>III Constant-Quality Price Indices</b></span></li>
+<li class="chapter" data-level="" data-path="syllabus-2.html"><a href="syllabus-2.html"><i class="fa fa-check"></i>Syllabus</a></li>
+<li class="chapter" data-level="" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="potential-prices.html"><a href="potential-prices.html"><i class="fa fa-check"></i>Potential prices</a><ul>
+<li class="chapter" data-level="" data-path="constant-quality-price-indices.html"><a href="constant-quality-price-indices.html"><i class="fa fa-check"></i>Constant-quality price indices</a></li>
+<li class="chapter" data-level="" data-path="transaction-price-indices.html"><a href="transaction-price-indices.html"><i class="fa fa-check"></i>Transaction-price indices</a></li>
+<li class="chapter" data-level="" data-path="identification.html"><a href="identification.html"><i class="fa fa-check"></i>Identification</a></li>
+<li class="chapter" data-level="" data-path="example.html"><a href="example.html"><i class="fa fa-check"></i>Example</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="stratified-price-indices.html"><a href="stratified-price-indices.html"><i class="fa fa-check"></i>Stratified price indices</a><ul>
+<li class="chapter" data-level="" data-path="conditional-independence.html"><a href="conditional-independence.html"><i class="fa fa-check"></i>Conditional independence</a></li>
+<li class="chapter" data-level="" data-path="overlap.html"><a href="overlap.html"><i class="fa fa-check"></i>Overlap</a></li>
+<li class="chapter" data-level="" data-path="issues-with-stratification.html"><a href="issues-with-stratification.html"><i class="fa fa-check"></i>Issues with stratification</a></li>
+<li class="chapter" data-level="" data-path="example-with-r-2.html"><a href="example-with-r-2.html"><i class="fa fa-check"></i>Example with R</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="hedonic-price-indices.html"><a href="hedonic-price-indices.html"><i class="fa fa-check"></i>Hedonic price indices</a><ul>
+<li class="chapter" data-level="" data-path="linear-hedonic-indices.html"><a href="linear-hedonic-indices.html"><i class="fa fa-check"></i>Linear hedonic indices</a></li>
+<li class="chapter" data-level="" data-path="the-time-dummy-approach.html"><a href="the-time-dummy-approach.html"><i class="fa fa-check"></i>The time-dummy approach</a></li>
+<li class="chapter" data-level="" data-path="example-with-r-3.html"><a href="example-with-r-3.html"><i class="fa fa-check"></i>Example with R</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="assignment-2.html"><a href="assignment-2.html"><i class="fa fa-check"></i>Assignment</a></li>
+<li class="part"><span><b>IV Building a Price Index with R</b></span></li>
+<li class="chapter" data-level="" data-path="syllabus-3.html"><a href="syllabus-3.html"><i class="fa fa-check"></i>Syllabus</a></li>
+<li class="chapter" data-level="" data-path="assignment-3.html"><a href="assignment-3.html"><i class="fa fa-check"></i>Assignment</a><ul>
+<li class="chapter" data-level="" data-path="methodology.html"><a href="methodology.html"><i class="fa fa-check"></i>Methodology</a></li>
+<li class="chapter" data-level="" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i>Instructions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Course on Price Indices</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="the-optimal-prediction-problem" class="section level2">
+<h2>The optimal prediction problem</h2>
+<p>The starting point for the stochastic approach is a distribution of <span class="math inline">\(n\)</span> price relatives between period 0 and period <span class="math inline">\(t\)</span>, with the price relative for good <span class="math inline">\(i\)</span> given by <span class="math inline">\(p_{it} / p_{i0}\)</span>, for the population (universe) of all <span class="math inline">\(n\)</span> goods and services to be measured by the price index. Associated with each good <span class="math inline">\(i\)</span> is the probability <span class="math inline">\(P_{i}\)</span> of observing this good transacted over both periods in the population of goods measured by the index, and this is turn gives a measure of frequency for observing different values for changes in price over time. Put differently, a price relative <span class="math inline">\(p_{t} / p_{0}\)</span> is treated as a random variable in the stochastic approach, the distribution of which depends on the underlying distribution of goods and services that form the scope of the price index.</p>
+<p>Given a distribution of price relatives, the best predictor of a change in price between period 0 and period <span class="math inline">\(t\)</span> is the value <span class="math inline">\(I^{A}\)</span> that minimizes the expected prediction error. Formally, the best predictor solves the following problem<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a></p>
+<p><span class="math display">\[\begin{align*}
+\min_{I^{A}} E\left[\left(\frac{p_{t}}{p_{0}} - I^{A} \right)^{2}\right],
+\end{align*}\]</span></p>
+<p>where <span class="math inline">\(E\)</span> is the expected value operator, taken over the distribution of price relative. As is well known, the solution to this problem is to set <span class="math inline">\(I^{A} = E(p_{t} / p_{0})\)</span> <span class="citation">(Lehmann and Casella 1998, Example 7.17)</span>; that is, the best predictor of a change in price between two periods is the expected change in price. While it may seem unusual to express a price index in terms of an expected value, this simply emphasizes that a price index is rightfully a feature of the distribution of prices in the population. This is a key feature of the stochastic approach, and is what allows for a meaningful analysis of the statistical properties of a price index when calculated with a sample of price data from the population.</p>
+<p>As the expected value is just a weighted average, the index <span class="math inline">\(I^{A} = E(p_{t} / p_{0})\)</span> is simply an arithmetic index that averages price relatives. What’s interesting is that the weights now have a new interpretation—they are the probability of observing a good or service transacted in the population. That is,</p>
+<p><span class="math display">\[\begin{align*}
+I^{A} = \sum_{i = 1}^{n} \frac{p_{it}}{p_{i0}} P_{i}.
+\end{align*}\]</span></p>
+<p>Different arithmetic price index formula—e.g., Laspeyres, Paasche, Lowe—thus correspond to different statements about what determines the probability of observing a transaction. For example, with a Laspeyres index the probabilities are given by period-0 expenditure or revenue shares. This amounts to a statement that the probability of observing a transaction for a good is the likelihood of spending or receiving a dollar on that good in period 0.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="17">
+<li id="fn17"><p>This is a prediction problem using a quadratic loss function, to ensure that the prediction error is always positive, and formalize the idea that larger misprediction are more costly. Different loss functions usually give different optimal predictors; for example, the absolute loss function returns the median as the best predictor, which finds applications for housing price indices. If price relatives are symmetrically distributed, then all symmetric, convex loss functions give the same price index <span class="citation">(Lehmann and Casella 1998, Corollary 7.19)</span>.<a href="the-optimal-prediction-problem.html#fnref17" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="the-stochastic-approach.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="geometric-price-indices-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+},
+"search": false,
+"info": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
