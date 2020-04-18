@@ -2,7 +2,8 @@
 title: "A Course on Price Indices"
 author: "Steve Martin"
 date: "April 2020"
-documentclass: book
+documentclass: article
+geometry: margin=1in
 site: bookdown::bookdown_site
 description: "A modern and straightforward introduction to price indices"
 github-repo: "ppd-dpp/price-index-course"

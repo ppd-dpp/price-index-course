@@ -54,7 +54,7 @@ Your goal is to build a monthly price index for widgets, from January 2018 to De
 
 Widgets are going to be stratified by province and widget type to produce elemental indices at the province-by-widget-type level. These elemental indices should be calculated with a Jevons index. The provincial and Canada-level indices are going to be arithmetic indices that aggregate the elemental indices using value-share weights. Weights for the arithmetic indices are going to be updated in 2019, with January 2019 as the link month. The aggregation structure is summarized in the graph below.
 
-```{r structure, eval=FALSE, echo=FALSE}
+```{r, eval=FALSE, echo=FALSE}
 library(DiagrammeR)
 mermaid('
     graph TD

@@ -380,11 +380,12 @@ library(ppd)
 weights <- colSums(df[-(1:2)])
 
 # Calculate an index for each type of cat food
-strata_indices <- sapply(list(subset(df, chicken == 1), 
-                              subset(df, liver == 1), 
-                              subset(df, salmon == 1)),
-                         function(x) with(x, geomean(price[period == 1]) / geomean(price[period == 0]))
-                         )
+strata_indices <- 
+  sapply(list(subset(df, chicken == 1), 
+              subset(df, liver == 1), 
+              subset(df, salmon == 1)),
+         function(x) with(x, geomean(price[period == 1]) / geomean(price[period == 0]))
+         )
 
 # Aggregate
 geomean(strata_indices, weights) * 100

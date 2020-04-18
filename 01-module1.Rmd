@@ -38,7 +38,7 @@ A price index is an economic time series that gives the percent change in prices
 
 The chart below gives an example of a monthly price index showing the change in prices in each month of the year with respect to January (the base period), so that each point on the graph gives the percent change in prices since January. For example, in March the index had a value of 103, meaning prices increased by 3% between March and January, whereas the index had a value of 99 in June, meaning prices decreased by 1% between January and June.
 
-```{r example index, echo=FALSE}
+```{r, echo=FALSE}
 library(ggplot2)
 ggplot() +
   geom_line(aes(seq(as.Date("2020-01-01"), as.Date("2020-12-01"), "month"),
@@ -339,7 +339,7 @@ Most price indices have a hierarchical (or aggregated) structure, so that goods 
 
 ![](img/plot1.png)
 
-```{r aggregation structure, eval=FALSE, echo=FALSE}
+```{r, eval=FALSE, echo=FALSE}
 library(DiagrammeR)
 mermaid("
   graph TD
@@ -359,7 +359,7 @@ Having a hierarchical structure, however, suggests that the calculation can be s
 
 ![](img/plot2.png)
 
-```{r 2-step calculation, eval=FALSE, echo=FALSE}
+```{r, eval=FALSE, echo=FALSE}
 mermaid("
   graph TD
     A(All-items index) --- B(Group 1 index)
@@ -451,7 +451,7 @@ Hence, dividing through the index series by the period $k$ index value produces 
 
 The chart below gives an example of how rebasing changes the time series. The index with a base period of December is simply the index with a base period of January divided by the value of the index in December (105). This simply shifts the index with January as the base period down, and squashes it a little, but does not change the relative shape of the time series.
 
-```{r example rebased index, echo=FALSE}
+```{r, echo=FALSE}
 x <- seq(as.Date("2020-01-01"), as.Date("2020-12-01"), "month")
 y <- c(100, 102, 103, 101, 99.5, 99, 100.5, 101, 101.5, 100, 102, 105)
 g <- rep(c("Jan = 100", "Dec = 100"), each = 12)
@@ -493,7 +493,7 @@ I^{A}(0, t) = \sum_{i = 1}^{n} \omega_{i0} \frac{p_{ik}}{p_{i0}} \times \sum_{i 
 
 The chart below gives an example of what a chained index looks like.
 
-```{r example chained index, echo=FALSE}
+```{r, echo=FALSE}
 x <- seq(as.Date("2020-01-01"), as.Date("2021-12-01"), "month")
 y <- c(100, 102, 103, 101, 99.5, 99, 100.5, 101, 101.5, 100, 102, 105, 106, 107, 106, 109, 110, 110, 112, 113, 111, 111.5, 114, 115)
 g <- rep(c("Old weights", "New weights", "Chain-linked"), c(13, 12, 12)) 
@@ -513,7 +513,7 @@ The important part about a chained index is the overlap period $k$ when the weig
 
 It is useful to finish this section of the course with a couple examples in R. The first example shows that a geometric index is consistent in aggregation. Calculating the index in two steps gives the same answer as the direct calculation.
 
-```{r consistent in aggregation}
+```{r}
 # Bring in ppd library
 library(ppd)
 
@@ -540,7 +540,7 @@ geomean(dat$relatives, dat$weight) * 100
 
 The second example shows how to rebase a price index---simply divide the index series by the value of the index in the new base period.
 
-```{r rebase}
+```{r}
 # Make an index over 12 periods with period 0 = 100
 index <- data.frame(period = 0:11, value = c(100, sample(90:130, 11)))
 index

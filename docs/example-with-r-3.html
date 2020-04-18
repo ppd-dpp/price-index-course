@@ -284,14 +284,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb29-5" title="5">weights &lt;-<span class="st"> </span><span class="kw">colSums</span>(df[<span class="op">-</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>)])</a>
 <a class="sourceLine" id="cb29-6" title="6"></a>
 <a class="sourceLine" id="cb29-7" title="7"><span class="co"># Calculate an index for each type of cat food</span></a>
-<a class="sourceLine" id="cb29-8" title="8">strata_indices &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">list</span>(<span class="kw">subset</span>(df, chicken <span class="op">==</span><span class="st"> </span><span class="dv">1</span>), </a>
-<a class="sourceLine" id="cb29-9" title="9">                              <span class="kw">subset</span>(df, liver <span class="op">==</span><span class="st"> </span><span class="dv">1</span>), </a>
-<a class="sourceLine" id="cb29-10" title="10">                              <span class="kw">subset</span>(df, salmon <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)),</a>
-<a class="sourceLine" id="cb29-11" title="11">                         <span class="cf">function</span>(x) <span class="kw">with</span>(x, <span class="kw">geomean</span>(price[period <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]) <span class="op">/</span><span class="st"> </span><span class="kw">geomean</span>(price[period <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]))</a>
-<a class="sourceLine" id="cb29-12" title="12">                         )</a>
-<a class="sourceLine" id="cb29-13" title="13"></a>
-<a class="sourceLine" id="cb29-14" title="14"><span class="co"># Aggregate</span></a>
-<a class="sourceLine" id="cb29-15" title="15"><span class="kw">geomean</span>(strata_indices, weights) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a></code></pre></div>
+<a class="sourceLine" id="cb29-8" title="8">strata_indices &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb29-9" title="9"><span class="st">  </span><span class="kw">sapply</span>(<span class="kw">list</span>(<span class="kw">subset</span>(df, chicken <span class="op">==</span><span class="st"> </span><span class="dv">1</span>), </a>
+<a class="sourceLine" id="cb29-10" title="10">              <span class="kw">subset</span>(df, liver <span class="op">==</span><span class="st"> </span><span class="dv">1</span>), </a>
+<a class="sourceLine" id="cb29-11" title="11">              <span class="kw">subset</span>(df, salmon <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)),</a>
+<a class="sourceLine" id="cb29-12" title="12">         <span class="cf">function</span>(x) <span class="kw">with</span>(x, <span class="kw">geomean</span>(price[period <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]) <span class="op">/</span><span class="st"> </span><span class="kw">geomean</span>(price[period <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]))</a>
+<a class="sourceLine" id="cb29-13" title="13">         )</a>
+<a class="sourceLine" id="cb29-14" title="14"></a>
+<a class="sourceLine" id="cb29-15" title="15"><span class="co"># Aggregate</span></a>
+<a class="sourceLine" id="cb29-16" title="16"><span class="kw">geomean</span>(strata_indices, weights) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a></code></pre></div>
 <pre><code>## [1] 112.2817</code></pre>
 <p>The results are very similar if a time-dummy model is used instead.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="co"># Time-dummy index</span></a>
@@ -371,11 +372,10 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["price-index-course.pdf"],
 "toc": {
 "collapse": "section"
 },
-"search": false,
 "info": false
 });
 });
