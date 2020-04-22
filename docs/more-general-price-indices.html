@@ -224,7 +224,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>More general price indices</h2>
 <p>The arithmetic and geometric indices are special cases of a broader class of price indices that solve the following prediction problem:</p>
 <p><span class="math display">\[\begin{align*}
-\min_{I} E\left(\left(\frac{p_{t}}{p_{0}}\right)^{r} - I^{r} \right)^{2},
+\min_{I} E\left[\left(\left(\frac{p_{t}}{p_{0}}\right)^{r} - I^{r} \right)^{2}\right],
 \end{align*}\]</span></p>
 <p>for some <span class="math inline">\(r \neq 0\)</span>. The solution to this problem is <span class="math inline">\(I = E((p_{t} / p_{0})^{r})^{1 / r}\)</span>. Setting <span class="math inline">\(r = 1\)</span> gives an arithmetic index, whereas taking <span class="math inline">\(r \rightarrow 0\)</span> gives a geometric index <span class="citation">(Bullen 2003, III 1 Theorem 2)</span>.</p>
 <p>What’s useful about this approach is that many other types of price indices correspond to difference choices of <span class="math inline">\(r\)</span>, and these in turn can be motivated as solving a type of prediction problem. Setting <span class="math inline">\(r = -1\)</span>, for example, yields a harmonic price index</p>

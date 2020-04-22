@@ -226,13 +226,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[\begin{align*}
 \min_{I^{G}} E\left[\left(\log\left(\frac{p_{t}}{p_{0}}\right) - \log(I^{G}) \right)^{2}\right],
 \end{align*}\]</span></p>
-<p>the solution to which is <span class="math inline">\(I^{G} = \exp(E(\log(p_{t} / p_{0})))\)</span>. But this is just a geometric index, as</p>
+<p>the solution to which is <span class="math inline">\(I^{G} = \exp(E[\log(p_{t} / p_{0})])\)</span>. But this is just a geometric index, as</p>
 <p><span class="math display">\[\begin{align*}
-\exp\left(E\left(\log\left(\frac{p_{t}}{p_{0}}\right)\right)\right) &amp;= \exp\left(P_{i} \sum_{i = 1}^{n} \log\left(\frac{p_{it}}{p_{i0}}\right)\right) \\
+\exp\left(E\left[\log\left(\frac{p_{t}}{p_{0}}\right)\right]\right) &amp;= \exp\left(P_{i} \sum_{i = 1}^{n} \log\left(\frac{p_{it}}{p_{i0}}\right)\right) \\
 &amp;= \prod_{i = 1}^{n} \left(\frac{p_{it}}{p_{i0}}\right)^{P_{i}},
 \end{align*}\]</span></p>
-<p>with weights equal to the probability of observing a price relative. It is worth noting that, due to the logarithms in the prediction problem, a geometric index can equally be motivated as finding a value <span class="math inline">\(I^{G}\)</span> such that <span class="math inline">\(I^{G} \times p_{i0}\)</span> best predicts <span class="math inline">\(p_{it}\)</span> (or <span class="math inline">\(p_{it} / I^{G}\)</span> best predicts <span class="math inline">\(p_{i0}\)</span>), a property not shared with an arithmetic index. Consequently, a geometric index fits more neatly into the stochastic approach as it directly corresponds with how a price index is used to inflate and deflate prices over time.<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a></p>
-<p>The Törnqvist index usually comes out as the best index in the stochastic approach because it picks a sensible value to represent the probably of observing a price relative. The idea behind the Törnqvist probabilities is that the likelihood of observing a particular price relative for a good depends on the expenditure/revenue share of that good across both periods. Thus, the Törnqvist index sets the probabilities as average expenditure shares:</p>
+<p>with weights equal to the probability of observing a price relative. It is worth noting that, due to the logarithms in the prediction problem, a geometric index can equally be motivated as finding a value <span class="math inline">\(I^{G}\)</span> such that <span class="math inline">\(I^{G} \times p_{i0}\)</span> best predicts <span class="math inline">\(p_{it}\)</span> (or <span class="math inline">\(p_{it} / I^{G}\)</span> best predicts <span class="math inline">\(p_{i0}\)</span>), a property not shared with an arithmetic index. Whereas an arithmetic predicts price changes over time, a geometric index takes the price for a good in period 0, inflates/deflates it with the price index, and uses the result to predict the price for that good in period <span class="math inline">\(t\)</span>. Consequently, a geometric index fits more neatly into the stochastic approach as it directly corresponds with how a price index is used to inflate and deflate prices over time in practice.<a href="#fn20" class="footnote-ref" id="fnref20"><sup>20</sup></a></p>
+<p>The Törnqvist index usually comes out as the best index in the stochastic approach because it picks a sensible value to represent the probability of observing a price relative. The idea behind the Törnqvist probabilities is that the likelihood of observing a particular price relative for a good depends on the expenditure/revenue share of that good across both periods. Thus, the Törnqvist index sets the probabilities as average expenditure shares:</p>
 <p><span class="math display">\[\begin{align*}
 P_{i} = \frac{1}{2} \frac{p_{i0}q_{i0}}{\sum_{j = 1}^{n} p_{j0}q_{j0}} + \frac{1}{2} \frac{p_{it}q_{it}}{\sum_{j = 1}^{n} p_{jt}q_{jt}}.
 \end{align*}\]</span></p>
@@ -240,8 +240,8 @@ P_{i} = \frac{1}{2} \frac{p_{i0}q_{i0}}{\sum_{j = 1}^{n} p_{j0}q_{j0}} + \frac{1
 </div>
 <div class="footnotes">
 <hr />
-<ol start="18">
-<li id="fn18"><p>Motivating a price index as solving the problem <span class="math inline">\(\min_{I} E[(p_{t} - p_{0} I)^{2}]\)</span> results in <span class="math inline">\(I = E(p_{t} p_{0}) / E(p_{0}^{2})\)</span>, which is a rather unusual price index.<a href="geometric-price-indices-1.html#fnref18" class="footnote-back">↩</a></p></li>
+<ol start="20">
+<li id="fn20"><p>Motivating a price index as solving the problem <span class="math inline">\(\min_{I} E[(p_{t} - p_{0} I)^{2}]\)</span> results in <span class="math inline">\(I = E(p_{t} p_{0}) / E(p_{0}^{2})\)</span>, which is a rather unusual price index.<a href="geometric-price-indices-1.html#fnref20" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>

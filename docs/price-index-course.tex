@@ -143,7 +143,7 @@ The goal of this module is to provide an introduction to price indices, with an 
 \item
   Understand the reasons why price indices are compiled, and why they're important.
 \item
-  Be familiar with common index-number formula and how to manipulate them.
+  Be familiar with common index-number formulas and how to manipulate them.
 \item
   Have a basic understanding of the structure of a price index and its calculation.
 \end{enumerate}
@@ -188,7 +188,7 @@ The usefulness of a price index is that it gives a way to systematically condens
 In practice there are two broad categories that the price indices published by national statistical agencies fall into: consumer price indices (CPIs) and producer price indices (PPIs). As the names suggest, CPIs are focused on measuring price changes for goods and services that are purchased by consumers (final consumption), whereas PPIs focus on measuring prices charged by producers for goods and services produced, and prices paid for inputs into production. Despite the many subtleties about what constitutes a consumer and what constitutes a producer, both CPIs and PPIs seek to measure the change in prices over time for the goods and services that are transacted in an economy. Consequently, there is often
 considerable overlap in how CPIs and PPIs are calculated and used, and a distinction does not need to be made between whether an index is a CPI or a PPI---it often suffices to talk about a general price index.
 
-Probably the most important use of a price index, be it a CPI or a PPI, is to measure inflation---the systematic change in prices in an economy over time. Beyond being an important macroeconomic indicator, the measure of inflation directly affects many economic interactions in modern economies. For instance, many central banks operate in a regime of inflation targeting, whereby monetary policy is conducted in part to keep the inflation rate in a predetermined range (e.g., 1\% to 3\% a year). This policy regime requires a (frequent and timely) measure of inflation, however, and the instrument used to measure inflation can have a direct impact on monetary policy, and consequently interest rates. Inflation also affects wages and service contracts, pension payments, and social security benefits, as these contracts are often indexed to inflation---if prices increase by 2\% per year, then wages also increase by 2\% per year. Indexation preserves the value of payments over time without constantly needing to renegotiate contracts or redesign policies. The measure of inflation thus has important implications for household income and industry revenues.
+Probably the most important use of a price index, be it a CPI or a PPI, is to measure inflation---the systematic change in prices in an economy over time. Beyond being an important macroeconomic indicator, the measure of inflation directly affects many economic interactions in modern economies. For instance, many central banks operate in a regime of inflation targeting, whereby monetary policy is conducted in part to keep the inflation rate in a predetermined range (e.g., 1\% to 3\% a year). This policy regime requires a (frequent and timely) measure of inflation, and the instrument used to measure inflation can have a direct impact on monetary policy, and consequently interest rates. Inflation also affects wages and service contracts, pension payments, and social security benefits, as these contracts are often indexed to inflation---if prices increase by 2\% per year, then wages also increase by 2\% per year. Indexation preserves the value of payments over time without constantly needing to renegotiate contracts or redesign policies. The measure of inflation thus has important implications for household income and industry revenues.
 
 Beyond measuring inflation, one of the major uses of price indices for national statistical agencies is to deflate aggregate values in a national accounting framework to get a measure of the change in the production of real goods and services over time. This is equivalent to finding a quantity index to systematically condense information about many outputs for a range of goods and services into a single value that measures the change in the quantity of goods and services produced over time. Although there are many details, the rationale behind deflating aggregates values to get a measure of real output is fairly simple. If \(V_1/V_0\) is the ratio of the value of production in period 1 to the value of production in period 0, and if this can be decomposed into a quantity index \(Q\) and a price index \(I\) such that \(V_1/V_0 = IQ\), then the change in real production between period 0 and period 1 is simply \(Q = V_1 / (V_0 I)\). The change in the value of production over time---a known quantity---can be turned into a measure of the change in real output by simply deflating it with a price index.
 
@@ -200,7 +200,7 @@ The starting point for understanding the utility of a price index is recognizing
 To illustrate this comparison problem, suppose there are two goods, denoted by \(i\) and \(j\), that sell in periods 0 and 1. If the price of good \(i\) and the price of good \(j\) both increase between period 0 and period 1, then it is uncontroversial to say that prices have increased between period 0 and period 1 (although it is less obvious by how much prices have increased). Similarly, if both prices decrease, then it is natural to say that prices have decreased. However, an issue arises if the price of good \(i\) increases between period 0 and
 period 1 while the price of good \(j\) decreases. In this case it is unclear if prices have increased or decreased---there is no obvious way to give a single direction to the movement of prices over time.
 
-A solution to this comparison problem is to find a way to aggregate price relatives for many goods and services together to form a single ratio, which is then interpreted as the overall movement in prices over time. This is the job of a price index. Although a price index solves the comparison problem, it introduces a new challenge---how to best combine price relatives to produce a single measure that describes overall change in prices. Consequently, a variety of index-number formula have been proposed to construct a price index.
+A solution to this comparison problem is to find a way to aggregate price relatives for many goods and services together to form a single ratio, which is then interpreted as the overall movement in prices over time. This is the job of a price index. Although a price index solves the comparison problem, it introduces a new challenge---how to best combine price relatives to produce a single measure that describes overall change in prices. Consequently, a variety of index-number formulas have been proposed to construct a price index.
 
 \hypertarget{index-number-formula}{%
 \section{Index-number formula}\label{index-number-formula}}
@@ -232,7 +232,7 @@ Before examining specific arithmetic indices, it is worth noting that an arithme
 I^{A} = \frac{\sum_{i = 1}^{n} p_{i1} \tilde{q}_{i}}{\sum_{i = 1}^{n} p_{i0} \tilde{q}_{i}},
 \end{align*}
 
-where \(\tilde{q}_{i} = \alpha \omega_{i} / p_{i0}\) for some factor of proportionality \(\alpha\). Thus, an arithmetic index can always be interpreted as the ratio of the expenditure required to purchase a fixed basket of goods at two points in time (or the revenue from a fixed basket of goods at two points in time). The choice of basket is linked one-to-one with the choice of weights used to aggregate price relatives. Both representations of the arithmetic index get used, as some indices are easier to represent in one form than the other.
+where \(\tilde{q}_{i} = \alpha \omega_{i} / p_{i0}\) for some factor of proportionality \(\alpha\).\footnote{The value of \(\alpha\) has no impact on the index, but is needed to property interpret \(\tilde{q}_{i}\) as a quantity. For example, if \(\omega_{i}\) is the period-0 expenditure share on good \(i\), \(p_{i0} q_{i0} / \sum_{j = 1}^{n} p_{j0} q_{j0}\), then \(\alpha = \sum_{j = 1}^{n} p_{j0} q_{j0}\) so that \(\tilde{q}_{i} = q_{i0}\).} Thus, an arithmetic index can always be interpreted as the ratio of the expenditure required to purchase a fixed basket of goods at two points in time (or the revenue from a fixed basket of goods at two points in time). The choice of basket is linked one-to-one with the choice of weights used to aggregate price relatives. Both representations of the arithmetic index get used, as some indices are easier to represent in one form than the other.
 
 \hypertarget{common-arithmetic-indices}{%
 \subsection{Common arithmetic indices}\label{common-arithmetic-indices}}
@@ -302,7 +302,7 @@ Despite the goal of calculating a Laspeyres index, in most applications an arith
 \hypertarget{less-common-arithmetic-indices}{%
 \subsection{Less common arithmetic indices}\label{less-common-arithmetic-indices}}
 
-There are a variety of arithmetic indices that are rarely used in practice, but can be useful to know about. As these index number formula are seldom used, this material can be safely be skipped.
+There are a variety of arithmetic indices that are rarely used in practice, but can be useful to know about. As these index-number formulas are seldom used, this material can be safely be skipped.
 
 \textbf{Palgrave index}. Setting \(\omega_{i} = p_{i1} q_{i1} / \sum_{j = 1}^{n} p_{j1} q_{j1}\) results in the Palgrave index
 
@@ -405,7 +405,7 @@ The Törnqvist index expands on the geometric Laspeyres index by using expenditu
 
 The Jevons index is usually synonymous with a geometric index, and it finds application in situations where there is no quantity information to form weights (as opposed to using a Carli or Dutot index). Sometimes a weighted Jevons index is used as a shorthand for the general geometric index.
 
-One point to note about the geometric indices is that they are always smaller than their arithmetic counterparts. For any given weights, it can be shown that \(I^{G} \leq I^{A}\), with equality only when all price relatives are equal or all price relatives except one have zero weight. Consequently, a geometric index always shows a smaller increase in prices over time (or a larger decrease) than the corresponding arithmetic index.\footnote{The difference between an arithmetic index and geometric index tends to be larger when price relatives are more dispersed, although this is not always the case. It is possible that the difference becomes larger when the variance between prices relatives becomes smaller---see Lord (2002).} This is an important downside to having a menu of index numbers to choose from, as the choice of which index number formula to use has an impact on the resulting measure of inflation.\footnote{The same reasoning can be used to show that a harmonic price index is always smaller than the corresponding geometric index---see Bullen (2003 II 2.1 Corollary 2).}
+One point to note about the geometric indices is that they are always smaller than their arithmetic counterparts. For any given weights, it can be shown that \(I^{G} \leq I^{A}\), with equality only when all price relatives are equal or all price relatives except one have zero weight. Consequently, a geometric index always shows a smaller increase in prices over time (or a larger decrease) than the corresponding arithmetic index.\footnote{The difference between an arithmetic index and geometric index tends to be larger when price relatives are more dispersed, although this is not always the case. It is possible that the difference becomes larger when the variance between prices relatives becomes smaller---see Lord (2002).} This is an important downside to having a menu of index numbers to choose from, as the choice of which index-number formula to use has an impact on the resulting measure of inflation.\footnote{The same reasoning can be used to show that a harmonic price index is always smaller than the corresponding geometric index---see Bullen (2003 II 2.1 Corollary 2).}
 
 \hypertarget{the-fisher-index}{%
 \subsection{The Fisher index}\label{the-fisher-index}}
@@ -421,7 +421,7 @@ The Fisher index is often seen as an ideal index because it treats information i
 \hypertarget{example-with-r}{%
 \subsection{Example with R}\label{example-with-r}}
 
-All of the index-number formula presented in this section are simply weighted averages, and are fairly easy to calculate in R given information on prices and some weights.
+All of the index-number formulas presented in this section are simply weighted averages, and are fairly easy to calculate in R given information on prices and some weights.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -481,7 +481,7 @@ The type of arithmetic and geometric indices that this calculates depends entire
 \hypertarget{computing-a-price-index}{%
 \section{Computing a price index}\label{computing-a-price-index}}
 
-Any of the index-number formula in the previous section can be used to make a price index that measures the change in price for a single collection of goods and services over two periods. In application, however, price indices are computed for a variety of different goods and services, and are computed over many periods, not just two. These two points have implications for how the index-number formula in the previous section are used to calculate a price index in practice. This section of the course explores how the two-period index-number formula in the previous section can be used to calculate a price index for several groups of goods and services over many time periods.
+Any of the index-number formulas in the previous section can be used to make a price index that measures the change in price for a single collection of goods and services over two periods. In application, however, price indices are computed for a variety of different goods and services, and are computed over many periods, not just two. These two points have implications for how the index-number formulas in the previous section are used to calculate a price index in practice. This section of the course explores how the two-period index-number formulas in the previous section can be used to calculate a price index for several groups of goods and services over many time periods.
 
 📖 PPI manual: Chapter 4, section D; Chapter 9, paragraphs 9.6--9.24 and sections B3, B4, C1--C7.2.
 
@@ -494,13 +494,13 @@ Most price indices have a hierarchical (or aggregated) structure, so that goods 
 
 \includegraphics{img/plot1.png}
 
-A hierarchical structure does not pose any special challenges for making a price index---one of the index-number formula from the previous section can always be used to aggregate the price relatives for the goods and services in each group of the hierarchy to produce a collection of price indices for each level in the hierarchy. The index calculation simply needs to be repeated for each group of goods and services in the aggregation structure. This is the direct approach to calculating a price index with a hierarchical structure.
+A hierarchical structure does not pose any special challenges for making a price index---one of the index-number formulas from the previous section can always be used to aggregate the price relatives for the goods and services in each group of the hierarchy to produce a collection of price indices for each level in the hierarchy. The index calculation simply needs to be repeated for each group of goods and services in the aggregation structure. This is the direct approach to calculating a price index with a hierarchical structure.
 
-Having a hierarchical structure, however, suggests that the calculation can be simplified with a two-step procedure. In the first step, price relatives are combined at the lowest level of aggregation using one of the index-number formula from the previous section. This gives a collection of price indices called elementary (or elemental) indices. These price indices give the movement in price over time for small, relatively homogeneous groups of goods and services called elementary aggregates that form the basis of a price index. Once the elementary indices have been calculated, indices for higher levels of aggregation are calculated by combining elementary indices using weights. These weights provide a measure of the economic importance of the goods and services in each elementary aggregate in order to combine elementary indices together to form a higher-level index. If the target index is an arithmetic index, then the elementary aggregates should be combined with a weighted arithmetic average; otherwise, if a geometric index is the target index, a weighted geometric averaged should be used. Put differently, each elementary aggregate is treated as a single good, with the elementary indices being the price relatives for these goods, and this information is fed into an index-number formula to produce a higher-level index.
+Having a hierarchical structure, however, suggests that the calculation can be simplified with a two-step procedure. In the first step, price relatives are combined at the lowest level of aggregation using one of the index-number formulas from the previous section. This gives a collection of price indices called elementary (or elemental) indices. These price indices give the movement in price over time for small, relatively homogeneous groups of goods and services called elementary aggregates that form the basis of a price index. Once the elementary indices have been calculated, indices for higher levels of aggregation are calculated by combining elementary indices using weights. These weights provide a measure of the economic importance of the goods and services in each elementary aggregate in order to combine elementary indices together to form a higher-level index. If the target index is an arithmetic index, then the elementary aggregates should be combined with a weighted arithmetic average; otherwise, if a geometric index is the target index, a weighted geometric averaged should be used. Put differently, each elementary aggregate is treated as a single good, with the elementary indices being the price relatives for these goods, and this information is fed into an index-number formula to produce a higher-level index.
 
 \includegraphics{img/plot2.png}
 
-Given that there are two ways to calculate a price index with a hierarchical structure, does the direct calculation give the same result as the two-step calculation? The answer is yes for an arithmetic or geometric index, provided the weights used to aggregate the elementary aggregates are formed using the underlying weights for the target index. For example, if the goal is to calculate a Laspeyres index, then the weight for an elementary aggregate should be the expenditure/revenue share for the goods in that elementary aggregate in period 0. As both geometric and arithmetic indices are calculated as weighted averages, it should not be surprising that an index can be calculated by first grouping price relatives together, calculating group-level averages, then averaging the group-level averages to form an overall average. Consequently, these indices are said to be consistent in aggregation, although not all index-number formula are consistent in aggregation. For example, the Fisher index is not consistent in aggregation, and using the two-step procedure to calculate it will give a different answer than the direct calculation.
+Given that there are two ways to calculate a price index with a hierarchical structure, does the direct calculation give the same result as the two-step calculation? The answer is yes for an arithmetic or geometric index, provided the weights used to aggregate the elementary aggregates are formed using the underlying weights for the target index. For example, if the goal is to calculate a Laspeyres index, then the weight for an elementary aggregate should be the expenditure/revenue share for the goods in that elementary aggregate in period 0. As both geometric and arithmetic indices are calculated as weighted averages, it should not be surprising that an index can be calculated by first grouping price relatives together, calculating group-level averages, then averaging the group-level averages to form an overall average. Consequently, these indices are said to be consistent in aggregation, although not all index-number formulas are consistent in aggregation. For example, the Fisher index is not consistent in aggregation, and using the two-step procedure to calculate it will give a different answer than the direct calculation.
 
 It is easy to show that any arithmetic index is consistent in aggregation (the reasoning for the geometric case is almost identical). Suppose that goods are partitioned into \(k=1,\ldots,m\) distinct (mutually exclusive) categories---that is, there are \(m\) elementary aggregates. If category \(k\) contains \(n_{k}\) goods, then the (arithmetic) index for this category is
 
@@ -523,7 +523,7 @@ One advantage of the two-step calculation over the direct calculation is that th
 \hypertarget{factoring-an-index}{%
 \subsection{Factoring an index}\label{factoring-an-index}}
 
-When calculated over many periods, a price index gives a measure of the change in prices over time relative to a fixed base period. Calculating a price index over many periods poses no new challenges---once a base period is selected, one of the index-number formula in previous section can be directly applied to produce an index that evolves over time by simply forming price relatives that always calculate the change in price relative to the base period. For example, the series of geometric indices computed over periods 0, 1, and 2, with period 0 as the base period, is
+When calculated over many periods, a price index gives a measure of the change in prices over time relative to a fixed base period. Calculating a price index over many periods poses no new challenges---once a base period is selected, one of the index-number formulas in previous section can be directly applied to produce an index that evolves over time by simply forming price relatives that always calculate the change in price relative to the base period. For example, the series of geometric indices computed over periods 0, 1, and 2, with period 0 as the base period, is
 
 \begin{align*}
 1, \prod_{i = 1}^{n} \left(\frac{p_{i1}}{p_{i0}}\right)^{\omega_{i}}, \prod_{i = 1}^{n} \left(\frac{p_{i2}}{p_{i0}}\right)^{\omega_{i}}.
@@ -610,7 +610,7 @@ The chart below gives an example of what a chained index looks like.
 
 \includegraphics{price-index-course_files/figure-latex/unnamed-chunk-7-1.pdf}
 
-The important part about a chained index is the overlap period \(k\) when the weights change. The index needs to be calculated twice in this overlap period---once with the old weights and once with the new weights. If there is no overlap period then the index cannot be chained. Each index can be thought of as a link in the chain, giving the movement in prices for that section of time, and the overlap period is where the links meet.
+The important part about a chained index is the overlap period \(k\) when the weights change, and the prices in period \(k\) get used with two sets of weights. If there is no overlap period then the index cannot be chained. Each index can be thought of as a link in the chain, giving the movement in prices for that section of time, and the overlap period is where the links meet.
 
 \hypertarget{example-with-r-1}{%
 \subsection{Example with R}\label{example-with-r-1}}
@@ -690,17 +690,17 @@ The second example shows how to rebase a price index---simply divide the index s
 \begin{verbatim}
 ##    period value
 ## 1       0   100
-## 2       1   130
-## 3       2   109
-## 4       3   100
+## 2       1   101
+## 3       2    96
+## 4       3   123
 ## 5       4    92
-## 6       5   124
-## 7       6   101
-## 8       7   123
-## 9       8    99
-## 10      9   126
-## 11     10   114
-## 12     11   127
+## 6       5    95
+## 7       6   113
+## 8       7   103
+## 9       8   115
+## 10      9   122
+## 11     10   109
+## 12     11   118
 \end{verbatim}
 
 \begin{Shaded}
@@ -712,18 +712,18 @@ The second example shows how to rebase a price index---simply divide the index s
 
 \begin{verbatim}
 ##    period     value
-## 1       0  99.00990
-## 2       1 128.71287
-## 3       2 107.92079
-## 4       3  99.00990
-## 5       4  91.08911
-## 6       5 122.77228
+## 1       0  88.49558
+## 2       1  89.38053
+## 3       2  84.95575
+## 4       3 108.84956
+## 5       4  81.41593
+## 6       5  84.07080
 ## 7       6 100.00000
-## 8       7 121.78218
-## 9       8  98.01980
-## 10      9 124.75248
-## 11     10 112.87129
-## 12     11 125.74257
+## 8       7  91.15044
+## 9       8 101.76991
+## 10      9 107.96460
+## 11     10  96.46018
+## 12     11 104.42478
 \end{verbatim}
 
 \hypertarget{assignment}{%
@@ -958,9 +958,9 @@ Answers for these questions come from both the course content and the readings. 
 \hypertarget{syllabus-1}{%
 \section{Syllabus}\label{syllabus-1}}
 
-Why are certain index-number formula used to compute a price index? Answering this questions requires a theory of price indices that can be used to evaluate the properties of a price index, and determine if one index number is better than another.
+Why are certain index-number formulas used to compute a price index? Answering this questions requires a theory of price indices that can be used to evaluate the properties of a price index, and determine if one index number is better than another.
 
-The goal of this module is to provide the theoretical underpinnings of a price index, with a particular focus on motivating the index-number formula that are used in practice. By the end of the module, an individual should:
+The goal of this module is to provide the theoretical underpinnings of a price index, with a particular focus on motivating the index-number formulas that are used in practice. By the end of the module, an individual should:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -970,7 +970,7 @@ The goal of this module is to provide the theoretical underpinnings of a price i
   Know how the three approaches can be used to motivate commonly-used index numbers.
 \end{enumerate}
 
-This module is useful for both users and compilers of prices indices with a basic understanding of how to construct a price index, and who would like to get a deeper understanding of why particular index-number formula are used.
+This module is useful for both users and compilers of prices indices with a basic understanding of how to construct a price index, and who would like to get a deeper understanding of why particular index-number formulas are used.
 
 This module consists of self-directed readings, along with an assignment. In total, about 10 to 15 hours should be devoted for this module.
 
@@ -985,18 +985,18 @@ Please email the course instructor if you have any questions, or need help with 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-There are three broad approaches for motivating the price index formula that get used in practice by statistical agencies---the axiomatic approach, the economic approach, and the stochastic approach. Each approach is useful in its own right, and all three give different perspectives and understandings for the various index-number formula that are used to construct price indices. Taken together, these different approaches constitute a theory of price indices.
+There are three broad approaches for motivating the price-index formulas that get used in practice by statistical agencies---the axiomatic approach, the economic approach, and the stochastic approach. Each approach is useful in its own right, and all three give different perspectives and understandings for the various index-number formulas that are used to construct price indices. Taken together, these different approaches constitute a theory of price indices.
 
 Each of the three approaches can be thought of as answering a different question about how to construct a price index. The axiomatic approach attempts to answer the question ``How can information for a collection of prices and quantities be combined to satisfy certain properties?'' This is essentially a set theoretic approach for how to best construct an index number. By contrast, the economic approach attempts to answer the question ``What should a price index measure?'' The goal with the economic approach is to use the machinery of microeconomic theory to define a price index so as to measure the experience of a change in prices for consumers and producers. The stochastic approach is more pragmatic in its scope, and attempts to answer the question ``How can information on prices be used to best predict a change in price for a good or service?'' This is essentially a question about how to best inflate and deflate prices over time.
 
-This part of the course gives a practical introduction to each of the three approaches, focusing on how they can be used to motivate the way price indices are constructed in practice. Despite having a more practical focus, however, this material is still concerned with theory that be can quite technical. Rather than focusing on the technical details (of which there are many), the part of the course gives enough of a glimpse into the technical machinery to show what is going on, while providing the economic intuition and overarching ideas from the theory.
+This part of the course gives a practical introduction to each of the three approaches, focusing on how they can be used to motivate the way price indices are constructed in practice. Despite having a more practical focus, however, this material is still concerned with theory that can be quite technical. Rather than focusing on the technical details (of which there are many), the part of the course gives enough of a glimpse into the technical machinery to show what is going on, while providing the economic intuition and overarching ideas from the theory.
 
 \hypertarget{the-axiomatic-approach}{%
 \section{The axiomatic approach}\label{the-axiomatic-approach}}
 
-A price index combines information about prices and quantities at two points in time in order to produce a ratio of prices between these points in time. Unless there is only one price at each point in time, however, there is no unique way to combine prices over time---there are an infinity of possible index-number formula that can be used to calculate a price index. This embarrassment of riches is undesirable, as it introduces considerable choice into how a price change should be measured. The axiomatic approach attempts to solve this problem by considering a general class of price indices, and finding which members of this class satisfy certain intuitive, or reasonable, properties that a price index ought to satisfy. This is equivalent to making a normative statement about how a price index should behave---what are the fundamental axioms that define a price index? The idea is to start with a very broad class of possible index-number formula, and define axioms to whittle away index-number formula that don't behave as a price index should.
+A price index combines information about prices and quantities at two points in time in order to produce a ratio of prices between these points in time. Unless there is only one price at each point in time, however, there is no unique way to combine prices over time---there are an infinity of possible index-number formulas that can be used to calculate a price index. This embarrassment of riches is undesirable, as it introduces considerable choice into how a price change should be measured. The axiomatic approach attempts to solve this problem by considering a general class of price indices, and finding which members of this class satisfy certain intuitive, or reasonable, properties that a price index ought to satisfy. This is equivalent to making a normative statement about how a price index should behave---what are the fundamental axioms that define a price index? The idea is to start with a very broad class of possible index-number formulas, and define axioms to whittle away index-number formulas that don't behave as a price index should.
 
-The ideal outcome from the axiomatic approach is a single, unique index-number formula that satisfies a minimal set of uncontroversial conditions that a price index should satisfy. This would mean that there is only one index-number formula that should be used to make a price index. The reality, however, is that compromises must be made, and keeping certain conditions requires ignoring others. Consequently, a distinction is made between axioms---fundamental statements that any reasonable price index should satisfy---and tests, which are properties that are desirable but not as fundamental as axioms. A small set of key axioms are always maintained, whereas tests can be mutually inconsistent, and choices need to be made about which tests an index should satisfy depending on its purpose. Axioms can be seen as the first sieve to remove any unreasonable index-number formula, with tests acting as a second sieve to further refine what is left over.
+The ideal outcome from the axiomatic approach is a single, unique index-number formula that satisfies a minimal set of uncontroversial conditions that a price index should satisfy. This would mean that there is only one index-number formula that should be used to make a price index. The reality, however, is that compromises must be made, and keeping certain conditions requires ignoring others. Consequently, a distinction is made between axioms---fundamental statements that any reasonable price index should satisfy---and tests, which are properties that are desirable but not as fundamental as axioms. A small set of key axioms are always maintained, whereas tests can be mutually inconsistent, and choices need to be made about which tests an index should satisfy depending on its purpose. Axioms can be seen as the first sieve to remove any unreasonable index-number formulas, with tests acting as a second sieve to further refine what is left over.
 
 This section of the course starts the journey into price index theory by giving a brief outline of the axiomatic approach to price index theory. This has been an area of considerable study, and consequently there is a lot of interesting material that is not covered in this course. The interested reader can consult either (ILO et al. 2004a, Chapter 16) or (ILO et al. 2004b, Chapter 16) for more detail.
 
@@ -1015,13 +1015,13 @@ Most price indices can be expressed in this abstract form. For example, a Laspey
 I(p_{t}, p_{0}, q_{t}, q_{0}) = \frac{\sum_{i=1}^{n} p_{it}q_{i0}}{\sum_{i=1}^{n} p_{i0}q_{i0}}.
 \end{align*}
 
-Index-number formula that don't make use of quantity information require no special treatment---the index value is just independent of whatever quantities were sold. For example, the Jevons index is
+Index-number formulas that don't make use of quantity information require no special treatment---the index value is just independent of whatever quantities were sold. For example, the Jevons index is
 
 \begin{align*}
 I(p_{t}, p_{0}, q_{t}, q_{0}) = \prod_{i=1}^{n} \left(\frac{p_{it}}{p_{i0}}\right)^{1 / n}.
 \end{align*}
 
-While most index-number formula fit in this abstract representation, price indices that use information in a period other than period 0 or period \(t\), such as a Lowe or Young index, do not. This is an important point, as the axiomatic approach implicitly ignores these types of price indices from the start, rather than using axioms to evaluate their reasonableness as a price index.
+While most index-number formulas fit in this abstract representation, price indices that use information in a period other than period 0 or period \(t\), such as a Lowe or Young index, do not. This is an important point, as the axiomatic approach implicitly ignores these types of price indices from the start, rather than using axioms to evaluate their reasonableness as a price index.
 
 \hypertarget{the-axioms}{%
 \subsection{The axioms}\label{the-axioms}}
@@ -1042,7 +1042,7 @@ There are five key axioms that any price index should satisfy for all collection
   \textbf{Dimensional invariance} If \(A\) is a diagonal matrix of positive numbers, then \(I(Ap_{t}, Ap_{0}, A^{-1}q_{t}, A^{-1}q_{0}) = I(p_{t}, p_{0}, q_{t}, q_{0})\).
 \end{enumerate}
 
-All of these axioms are fairly straightforward to understand, perhaps with the exception of dimensional invariance. Monotonicity simply means that a price index is increasing in period \(t\) prices and decreasing in period 0 prices---larger period \(t\) prices produce larger index values and larger period 0 prices produce smaller index values. This seems like a necessary condition for a price index to meaningfully measure inflation, as an index that does not satisfy monotonicity can decrease when prices increase.
+All of these axioms are fairly straightforward to understand from their mathematical representation, perhaps with the exception of dimensional invariance, and are quite intuitive. Monotonicity simply means that a price index is increasing in period \(t\) prices and decreasing in period 0 prices---larger period \(t\) prices produce larger index values and larger period 0 prices produce smaller index values. This seems like a necessary condition for a price index to meaningfully measure inflation, as an index that does not satisfy monotonicity can decrease when prices increase.
 
 Linear homogeneity is probably the least intuitive of the axioms, and says that multiplying all period \(t\) prices by a constant is the same as multiplying the entire index by a constant, so that a proportional increase in prices results in a proportional increase in the index. To see why this makes sense, consider two cities (A and B) that have all the same prices in period 0. If all prices in city A increase by twice as much as prices in city B between period 0 and period \(t\), with quantities purchased remaining the same in the two cities (because relative prices are the same in both cities), then it is reasonable to say that prices in city A have increased by twice as much as in city B.
 
@@ -1105,7 +1105,7 @@ As an example, it is straightforward to see that the Laspeyres index satisfies a
    \end{align*}
 \end{enumerate}
 
-It should be fairly uncontroversial to say that any sensible price index should satisfy these axioms. Although there are many price indices that do, the axioms work to exclude unreasonable index-number formula that make no sense for measuring changes in prices.
+It should be fairly uncontroversial to say that any sensible price index should satisfy these axioms. Although there are many price indices that do, the axioms work to exclude unreasonable index-number formulas that make no sense for measuring changes in prices.
 
 \hypertarget{counter-examples}{%
 \subsection{Counter examples}\label{counter-examples}}
@@ -1212,7 +1212,7 @@ or
 I(p_{t}, p_{0}, q_{t}, q_{0}) = \frac{\sum_{i = 1}^{n} p_{it}q_{it}}{\sum_{i = 1}^{n} p_{i0}q_{it}}.
 \end{align*}
 
-These stark results help to motivate the use of these simple indices, and give some practical guidance for when to use them. A geometric index is useful when chaining an index is a relatively more important than deflating aggregate values, whereas an arithmetic Laspeyres (or Paasche) index is useful when deflating aggregate values in a national accounting framework is relatively more important that using a chained calculation. This helps to explain why price indices produced by statistical agencies tend to use a geometric index for calculating elemental indices, and an arithmetic index for calculating higher-level indices. At the lowest level in an index's hierarchy, it is important to be able to calculate the elemental indices using period-over-period changes in price, but these indices don't tend to be used for deflating aggregate values. At higher levels of aggregation, there is a need to be able to deflate aggregate values, but no need for chaining period-over-period changes in price to calculate the index, as it is aggregated up from the elemental indices.
+These stark results help to motivate the use of these simple indices, and give some practical guidance for when to use them. A geometric index is useful when chaining an index is relatively more important than deflating aggregate values, whereas an arithmetic Laspeyres (or Paasche) index is useful when deflating aggregate values in a national accounting framework is relatively more important than using a chained calculation. This helps to explain why price indices produced by statistical agencies tend to use a geometric index for calculating elemental indices, and an arithmetic index for calculating higher-level indices. At the lowest level in an index's hierarchy, it is important to be able to calculate the elemental indices using period-over-period changes in price, but these indices don't tend to be used for deflating aggregate values. At higher levels of aggregation, there is a need to be able to deflate aggregate values, but no need for chaining period-over-period changes in price to calculate the index, as it is aggregated up from the elemental indices.
 
 It is worth remarking that the Fisher index usually comes out as the theoretical ideal in an axiomatic framework (or sometimes the Törnqvist index, depending on the particular axioms). This occurs because the product test is maintained without requiring consistency in aggregation, as well as imposing some other tests. Consequently, the Fisher index may be more appropriate if a price index is not calculated using a hierarchical structure. But it is important to note that this is not a foregone conclusion---one of the key results from the axiomatic approach is the ideal price index depends on its purpose, and there do not exist any universally applicable price indices.
 
@@ -1223,7 +1223,7 @@ The axiomatic approach to constructing a price index revolves around finding a w
 
 Although the economic approach offers a parsimonious way to construct a price index, the validity of this approach relies on making strong assumptions about firm/consumer behavior and market conditions. The most important---and perhaps strongest---assumption is that there is a single, representative firm or consumer in the market with no market power (i.e., takes market prices as given). Having a representative firm is not a restrictive assumption if the market is competitive, but competitive behavior is indispensable (ILO et al. 2004b, Chapter 18).\footnote{The firm is also assumed to make choices to maximize profitability. Although not a controversial assumption, this need not be the only motivation for the firm---see Martin (2019).} This is problematic as most markets are characterized by some degree of imperfect competition, causing the theory to fall apart. Conversely, having a consumer take prices as given is not a controversial assumption, but having a representative consumer is difficult to justify, and cannot be easily relaxed (Pollak 1980; Kirman 1992).\footnote{The representative consumer is assumed to choose consumption to maximize utility. Although a standard assumption, it is becoming less accepted over time as behavioral considerations are becoming part of microeconomic theory.} Consequently, the economic approach is best seen as a consistent way to conceptualize a price index, rather than a recipe for finding an economically-superior price index, and is the least applicable of the three approaches.
 
-This section of the course gives a brief introduction to the economic approach. As with the axiomatic approach, the focus is on motivating index-number formula used in practice, and there is a good deal of interesting material that is not covered. Unlike the axiomatic approach, different types of indices require separate analysis because they're measuring different economic phenomena.
+This section of the course gives a brief introduction to the economic approach. As with the axiomatic approach, the focus is on motivating index-number formulas used in practice, and there is a good deal of interesting material that is not covered. Unlike the axiomatic approach, different types of indices require separate analysis because they're measuring different economic phenomena.
 
 📖 PPI Manual: Chapter 1, section E; Chapter 17, paragraphs 17.1--17.26 and 17.61--17.67.
 
@@ -1232,7 +1232,7 @@ This section of the course gives a brief introduction to the economic approach. 
 \hypertarget{input-price-index}{%
 \subsection{Input-price index}\label{input-price-index}}
 
-The goal of an input-price index it to measure the change in the cost of a representative firm's intermediate inputs, holding outputs fixed at some reference level. This is analogous to a fixed-basket index, except now the economic conditions facing the firm are held fixed, rather than the quantity of inputs used. This distinction is practically important, and means that there are no limits on the firm's ability to substitute more expensive inputs for less expensive inputs when prices change. An input-price index can alternatively be thought of as a cost-of-production index, analogous to a cost-of-living index for a consumer price index---an input-price index measures the firm's experience of a change in input prices.
+The goal of an input-price index is to measure the change in the cost of a representative firm's intermediate inputs, holding outputs fixed at some reference level. This is analogous to a fixed-basket index, except now the economic conditions facing the firm are held fixed, rather than the quantity of inputs used. This distinction is practically important, and means that there are no limits on the firm's ability to substitute more expensive inputs for less expensive inputs when prices change. An input-price index can alternatively be thought of as a cost-of-production index, analogous to a cost-of-living index for a consumer price index---an input-price index measures the firm's experience of a change in input prices.
 
 To fix notation, let \(y\) be the amount of output a firm produces, \(q\) be the quantity of inputs available, and \(p\) the price of primary inputs. As with the axiomatic approach, these are vectors of values (i.e., \(y\) is a vector with the quantity of each output the firm produces). Taking \(y\) as fixed, and assuming the firm has no market power in the inputs market (so that the firm treats \(p\) as fixed), a profit-maximizing firm will choose its inputs, \(q\), to minimize the cost of achieving outputs \(y\). The result of this exercise is the firm's expenditure function, \(e(p, y)\), that gives the minimum cost for purchasing the inputs required to produce \(y\) units of output.\footnote{Formally, \(e(p, y) = \min_{q \in V(y)} p \cdot q\), where \(V(y)\) is the set of inputs that produce at least \(y\) units of output. This function is well defined under fairly mild regularity conditions on the set \(V(y)\) (namely that is it non-empty and closed)---see McFadden (1978).} Because the firm is a profit-maximizer, this minimum cost of product will agree with their actual cost of production under different configurations of prices for inputs and outputs produced.
 
@@ -1266,7 +1266,7 @@ These two expression can now be used to show that
 \frac{e(p_{t}, y_{0})}{e(p_{0}, y_{0})} = \frac{e(p_{t}, y_{0})}{\sum_{i = 1}^{n} p_{i0} q_{i0}} \leq \frac{\sum_{i = 1}^{n} p_{it} q_{i0}}{\sum_{i = 1}^{n} p_{i0} q_{i0}}.
 \end{align*}
 
-The Laspeyres index thus overstates the price movement between period 0 and period \(t\) because it does not take into account the substitution of inputs from a change in price that features as part of the input-price index---there is a positive substitution bias. This is the key insight from the economic approach---there is a divergence between standard index-number formula used to measure a change in price and the economic change in price---and is the impetus to derive index-number formula that can be used to calculate the economic input-price index.
+The Laspeyres index thus overstates the price movement between period 0 and period \(t\) because it does not take into account the substitution of inputs from a change in price that features as part of the input-price index---there is a positive substitution bias. This is the key insight from the economic approach---there is a divergence between standard index-number formulas used to measure a change in price and the economic change in price---and is the impetus to derive index-number formulas that can be used to calculate the economic input-price index.
 
 \hypertarget{output-price-index}{%
 \subsection{Output-price index}\label{output-price-index}}
@@ -1369,15 +1369,19 @@ This section of the course concludes the journey into price index theory by givi
 \hypertarget{the-optimal-prediction-problem}{%
 \subsection{The optimal prediction problem}\label{the-optimal-prediction-problem}}
 
-The starting point for the stochastic approach is a distribution of \(n\) price relatives between period 0 and period \(t\), with the price relative for good \(i\) given by \(p_{it} / p_{i0}\), for the population (universe) of all \(n\) goods and services to be measured by the price index. Associated with each good \(i\) is the probability \(P_{i}\) of observing this good transacted over both periods in the population of goods measured by the index, and this is turn gives a measure of frequency for observing different values for changes in price over time. Put differently, a price relative \(p_{t} / p_{0}\) is treated as a random variable in the stochastic approach, the distribution of which depends on the underlying distribution of goods and services that form the scope of the price index.
+The starting point for the stochastic approach is a distribution of \(n\) price relatives between period 0 and period \(t\), with the price relative for good \(i\) given by \(p_{it} / p_{i0}\), for the population (universe) of all \(n\) goods and services to be measured by the price index. Associated with each good \(i\) is the probability \(P_{i}\) of observing this good transacted over both periods in the population of goods measured by the index, and this in turn gives a measure of frequency for observing different values for changes in price over time. Put differently, a price relative \(p_{t} / p_{0}\) is treated as a random variable in the stochastic approach, the distribution of which depends on the underlying distribution of goods and services that form the scope of the price index.\footnote{There is a tendency to think of this distribution as being Gaussian, but doing so means that some goods and services have negative prices. In most cases price relatives cannot be distributed Guassian.}
 
-Given a distribution of price relatives, the best predictor of a change in price between period 0 and period \(t\) is the value \(I^{A}\) that minimizes the expected prediction error. Formally, the best predictor solves the following problem\footnote{This is a prediction problem using a quadratic loss function, to ensure that the prediction error is always positive, and formalize the idea that larger misprediction are more costly. Different loss functions usually give different optimal predictors; for example, the absolute loss function returns the median as the best predictor, which finds applications for housing price indices. If price relatives are symmetrically distributed, then all symmetric, convex loss functions give the same price index (Lehmann and Casella 1998, Corollary 7.19).}
+Given a distribution of price relatives, the best predictor of a change in price between period 0 and period \(t\) is the value \(I^{A}\) that minimizes the expected prediction error. Formally, the best predictor solves the following problem\footnote{This is a prediction problem using a quadratic loss function, to ensure that the prediction error is always positive, and formalize the idea that larger mispredictions are more costly. Different loss functions usually give different optimal predictors; for example, the absolute loss function returns the median as the best predictor, which finds applications for housing price indices. If price relatives are symmetrically distributed, then all symmetric, convex loss functions give the same price index (Lehmann and Casella 1998, Chapter 1 Corollary 7.19).}
 
 \begin{align*}
 \min_{I^{A}} E\left[\left(\frac{p_{t}}{p_{0}} - I^{A} \right)^{2}\right],
 \end{align*}
 
-where \(E\) is the expected value operator, taken over the distribution of price relative. As is well known, the solution to this problem is to set \(I^{A} = E(p_{t} / p_{0})\) (Lehmann and Casella 1998, Example 7.17); that is, the best predictor of a change in price between two periods is the expected change in price. While it may seem unusual to express a price index in terms of an expected value, this simply emphasizes that a price index is rightfully a feature of the distribution of prices in the population. This is a key feature of the stochastic approach, and is what allows for a meaningful analysis of the statistical properties of a price index when calculated with a sample of price data from the population.
+where \(E\) is the expected value operator, taken over the distribution of price relative. As is well known, the solution to this problem is to set \(I^{A} = E(p_{t} / p_{0})\) (Lehmann and Casella 1998, Chapter 1 Example 7.17); that is, the best predictor of a change in price between two periods is the expected change in price. While it may seem unusual to express a price index in terms of an expected value, this simply emphasizes that a price index is rightfully a feature of the distribution of prices in the population. This is a key feature of the stochastic approach, and is what allows for a meaningful analysis of the statistical properties of a price index when calculated with a sample of price data from the population.
+
+The figure gives an example of what the prediction problem looks like. Given a distribution of price relatives (solid line), there is an associated expected prediction error with each value that a price index can take (dashed line). The best choice for a price index as a predictive tool is the value that minimizes the expected prediction error (dotted line).
+
+\includegraphics{price-index-course_files/figure-latex/unnamed-chunk-10-1.pdf}
 
 As the expected value is just a weighted average, the index \(I^{A} = E(p_{t} / p_{0})\) is simply an arithmetic index that averages price relatives. What's interesting is that the weights now have a new interpretation---they are the probability of observing a good or service transacted in the population. That is,
 
@@ -1385,7 +1389,7 @@ As the expected value is just a weighted average, the index \(I^{A} = E(p_{t} / 
 I^{A} = \sum_{i = 1}^{n} \frac{p_{it}}{p_{i0}} P_{i}.
 \end{align*}
 
-Different arithmetic price index formula---e.g., Laspeyres, Paasche, Lowe---thus correspond to different statements about what determines the probability of observing a transaction. For example, with a Laspeyres index the probabilities are given by period-0 expenditure or revenue shares. This amounts to a statement that the probability of observing a transaction for a good is the likelihood of spending or receiving a dollar on that good in period 0.
+Different arithmetic price-index formulas---e.g., Laspeyres, Paasche, Lowe---thus correspond to different statements about what determines the probability of observing a transaction. For example, with a Laspeyres index the probabilities are given by period-0 expenditure or revenue shares. This amounts to a statement that the probability of observing a transaction for a good is the likelihood of spending or receiving a dollar on that good in period 0.
 
 \hypertarget{geometric-price-indices-1}{%
 \subsection{Geometric price indices}\label{geometric-price-indices-1}}
@@ -1396,16 +1400,16 @@ A geometric index can be motivated in the same way as an arithmetic index. Forma
 \min_{I^{G}} E\left[\left(\log\left(\frac{p_{t}}{p_{0}}\right) - \log(I^{G}) \right)^{2}\right],
 \end{align*}
 
-the solution to which is \(I^{G} = \exp(E(\log(p_{t} / p_{0})))\). But this is just a geometric index, as
+the solution to which is \(I^{G} = \exp(E[\log(p_{t} / p_{0})])\). But this is just a geometric index, as
 
 \begin{align*}
-\exp\left(E\left(\log\left(\frac{p_{t}}{p_{0}}\right)\right)\right) &= \exp\left(P_{i} \sum_{i = 1}^{n} \log\left(\frac{p_{it}}{p_{i0}}\right)\right) \\
+\exp\left(E\left[\log\left(\frac{p_{t}}{p_{0}}\right)\right]\right) &= \exp\left(P_{i} \sum_{i = 1}^{n} \log\left(\frac{p_{it}}{p_{i0}}\right)\right) \\
 &= \prod_{i = 1}^{n} \left(\frac{p_{it}}{p_{i0}}\right)^{P_{i}},
 \end{align*}
 
-with weights equal to the probability of observing a price relative. It is worth noting that, due to the logarithms in the prediction problem, a geometric index can equally be motivated as finding a value \(I^{G}\) such that \(I^{G} \times p_{i0}\) best predicts \(p_{it}\) (or \(p_{it} / I^{G}\) best predicts \(p_{i0}\)), a property not shared with an arithmetic index. Consequently, a geometric index fits more neatly into the stochastic approach as it directly corresponds with how a price index is used to inflate and deflate prices over time.\footnote{Motivating a price index as solving the problem \(\min_{I} E[(p_{t} - p_{0} I)^{2}]\) results in \(I = E(p_{t} p_{0}) / E(p_{0}^{2})\), which is a rather unusual price index.}
+with weights equal to the probability of observing a price relative. It is worth noting that, due to the logarithms in the prediction problem, a geometric index can equally be motivated as finding a value \(I^{G}\) such that \(I^{G} \times p_{i0}\) best predicts \(p_{it}\) (or \(p_{it} / I^{G}\) best predicts \(p_{i0}\)), a property not shared with an arithmetic index. Whereas an arithmetic predicts price changes over time, a geometric index takes the price for a good in period 0, inflates/deflates it with the price index, and uses the result to predict the price for that good in period \(t\). Consequently, a geometric index fits more neatly into the stochastic approach as it directly corresponds with how a price index is used to inflate and deflate prices over time in practice.\footnote{Motivating a price index as solving the problem \(\min_{I} E[(p_{t} - p_{0} I)^{2}]\) results in \(I = E(p_{t} p_{0}) / E(p_{0}^{2})\), which is a rather unusual price index.}
 
-The Törnqvist index usually comes out as the best index in the stochastic approach because it picks a sensible value to represent the probably of observing a price relative. The idea behind the Törnqvist probabilities is that the likelihood of observing a particular price relative for a good depends on the expenditure/revenue share of that good across both periods. Thus, the Törnqvist index sets the probabilities as average expenditure shares:
+The Törnqvist index usually comes out as the best index in the stochastic approach because it picks a sensible value to represent the probability of observing a price relative. The idea behind the Törnqvist probabilities is that the likelihood of observing a particular price relative for a good depends on the expenditure/revenue share of that good across both periods. Thus, the Törnqvist index sets the probabilities as average expenditure shares:
 
 \begin{align*}
 P_{i} = \frac{1}{2} \frac{p_{i0}q_{i0}}{\sum_{j = 1}^{n} p_{j0}q_{j0}} + \frac{1}{2} \frac{p_{it}q_{it}}{\sum_{j = 1}^{n} p_{jt}q_{jt}}.
@@ -1419,7 +1423,7 @@ The disadvantage of these probabilities is that they require information for bot
 The arithmetic and geometric indices are special cases of a broader class of price indices that solve the following prediction problem:
 
 \begin{align*}
-\min_{I} E\left(\left(\frac{p_{t}}{p_{0}}\right)^{r} - I^{r} \right)^{2},
+\min_{I} E\left[\left(\left(\frac{p_{t}}{p_{0}}\right)^{r} - I^{r} \right)^{2}\right],
 \end{align*}
 
 for some \(r \neq 0\). The solution to this problem is \(I = E((p_{t} / p_{0})^{r})^{1 / r}\). Setting \(r = 1\) gives an arithmetic index, whereas taking \(r \rightarrow 0\) gives a geometric index (Bullen 2003, III 1 Theorem 2).
@@ -1447,7 +1451,7 @@ In practice the entire distribution of price relatives is usually not known, and
 
 With random sampling, a natural approach for estimating the arithmetic index is to replace the expected value---a population average---with the sample average. This gives a method-of-moments estimator \(\hat{I}^A = 1 / n_{s} \sum_{i = 1}^{n_{s}} p_{it} / p_{i0}\), where \(n_{s}\) is the sample size, which is just a Carli index. If price relatives are sampled at random, then is it easy to see that \(E(\hat{I}^{A}) = I^{A}\), so the Carli index is an unbiased estimator for the arithmetic index.
 
-A natural estimator for the geometric index is \(\hat{I}^{G} = \prod_{i = 1}^{n_{s}} (p_{it} / p_{i0})^{1 / n_{s}}\), the Jevons index. Unlike the Carli index, however, the Jevons index is a biased estimator of the geometric index. It is again straightforward to show that \(E(\hat{I}^{G}) \geq I^{G}\), with \(E(\hat{I}^{G}) = I^{G}\) only holding in very special circumstances---the Jevons index systematically overestimates the geometric index (i.e., it is biased upwards). Although biasedness is a disadvantage of the Jevons index, the bias is not the only important statistical property of an estimator, and the Jevons index has other desirable statistical properties (e.g., it is a consistent estimator of the geometric index, and in certain circumstances achieves the maximum likelihood efficiency bound).\footnote{The Carli index is also a consistent estimator of the arithmetic index under random sampling, but it cannot be a maximum likelihood estimator as this would require price relatives to be distributed Gaussian, which means that price relatives can be negative.} It is possible to adjust for the upwards bias in the Jevons by dividing the Jevons index by \(1 + \sigma^{2}/(2n)\), where \(\sigma^{2}\) is the variance of the log price relatives (Kennedy 2003, 41), but this is not usually done in practice.
+A natural estimator for the geometric index is \(\hat{I}^{G} = \prod_{i = 1}^{n_{s}} (p_{it} / p_{i0})^{1 / n_{s}}\), the Jevons index. Unlike the Carli index, however, the Jevons index is a biased estimator of the geometric index. It is again straightforward to show that \(E(\hat{I}^{G}) \geq I^{G}\), with \(E(\hat{I}^{G}) = I^{G}\) only holding in very special circumstances---the Jevons index systematically overestimates the geometric index (i.e., it is biased upwards).\footnote{The Jevons index is not biased in cases where the sampling distribution is degenarate, or the variance in price relatives is zero. See Lehmann and Casella (1998 Chapter 1 Theorem 7.5).} Although biasedness is a disadvantage of the Jevons index, the bias is not the only important statistical property of an estimator, and the Jevons index has other desirable statistical properties (e.g., it is a consistent estimator of the geometric index, and in certain circumstances achieves the maximum likelihood efficiency bound).\footnote{The Carli index is also a consistent estimator of the arithmetic index under random sampling, but it cannot be a maximum likelihood estimator as this would require price relatives to be distributed Gaussian, which means that price relatives can be negative. By contrast, the Jevons index is a maximum likelihood estimator for the geometric index if price relatives are distributed log-normal, which implies that prices are always positive.} It is possible to adjust for the upwards bias in the Jevons by dividing the Jevons index by \(1 + \sigma^{2}/(2n)\), where \(\sigma^{2}\) is the variance of the log price relatives (Kennedy 2003, 41), but this is not usually done in practice.
 
 \hypertarget{assignment-1}{%
 \section{Assignment}\label{assignment-1}}
@@ -1873,7 +1877,7 @@ In the extreme case when goods are grouped into pairs across time, so that each 
 I^{Q} = \prod_{i = 1}^{n_{p}} \left(\frac{p_{i1}}{p_{i0}}\right)^{\omega_{i}},
 \end{align*}
 
-where \(P(X = x) = \omega_{i}\), and \(p_{it}\) is the price of the good in pair \(i\) that sells in period \(t = 0,1\). Conditional independence holds for a matched-model index if the goods in each pair are sufficiently similar across time so that the transaction price for the good that sells in period 0 gives a good baseline for what the good that sells in period 1 would have sold for in period 0. This also shows that the standard index-number formula are special cases of the stratified index, and implicitly make an assumption of conditional independence.
+where \(P(X = x) = \omega_{i}\), and \(p_{it}\) is the price of the good in pair \(i\) that sells in period \(t = 0,1\). Conditional independence holds for a matched-model index if the goods in each pair are sufficiently similar across time so that the transaction price for the good that sells in period 0 gives a good baseline for what the good that sells in period 1 would have sold for in period 0. This also shows that the standard index-number formulas are special cases of the stratified index, and implicitly make an assumption of conditional independence.
 
 It is worth emphasizing that conditional independence is not a testable assumption. It is inherently an economic assumption about how goods sells over time. But it is what allows a constant-quality index to be identified from a transaction-price index.
 

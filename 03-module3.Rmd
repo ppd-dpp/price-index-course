@@ -184,7 +184,7 @@ In the extreme case when goods are grouped into pairs across time, so that each 
 I^{Q} = \prod_{i = 1}^{n_{p}} \left(\frac{p_{i1}}{p_{i0}}\right)^{\omega_{i}},
 \end{align*}
 
-where $P(X = x) = \omega_{i}$, and $p_{it}$ is the price of the good in pair $i$ that sells in period $t = 0,1$. Conditional independence holds for a matched-model index if the goods in each pair are sufficiently similar across time so that the transaction price for the good that sells in period 0 gives a good baseline for what the good that sells in period 1 would have sold for in period 0. This also shows that the standard index-number formula are special cases of the stratified index, and implicitly make an assumption of conditional independence.
+where $P(X = x) = \omega_{i}$, and $p_{it}$ is the price of the good in pair $i$ that sells in period $t = 0,1$. Conditional independence holds for a matched-model index if the goods in each pair are sufficiently similar across time so that the transaction price for the good that sells in period 0 gives a good baseline for what the good that sells in period 1 would have sold for in period 0. This also shows that the standard index-number formulas are special cases of the stratified index, and implicitly make an assumption of conditional independence.
 
 It is worth emphasizing that conditional independence is not a testable assumption. It is inherently an economic assumption about how goods sells over time. But it is what allows a constant-quality index to be identified from a transaction-price index.
 
