@@ -51,7 +51,7 @@ Treating each good as unique and selling only once may seem odd, but it is the a
 Motivating a constant-quality price index proceeds exactly as it did in the stochastic framework, except now potential prices are used in place of transaction prices. The idea is that there is a distribution of potential price relatives, one for each good, and a price index acts as a best predictor of the change in prices over time. By using potential prices, however, the exact same goods are being compared over time, even if a product as it appears in the market changes between period 0 and period 1. Formally, a constant-quality (geometric) price index is given by
 
 \begin{align*}
-I^{Q} &= \exp\left(E\left(\log\left(\frac{p(1)}{p(0)}\right)\right)\right) \\
+I^{Q} &= \exp\left(E\left[\log\left(\frac{p(1)}{p(0)}\right)\right]\right) \\
 &= \prod_{i = 1}^{n} \left(\frac{p_{i}(1)}{p_{i}(0)}\right)^{P_{i}},
 \end{align*}
 

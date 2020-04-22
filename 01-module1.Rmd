@@ -553,7 +553,7 @@ transform(index, value = value / value[period == 6] * 100)
 
 Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65% (13 out of 20 correct). Email your answers to the course instructor when you are finished.
 
-**Question 1** True or false: The Jevons index is always smaller than the Laspeyres index.
+**Question 1** True or false: The Jevons index is always smaller than or equal to the Laspeyres index.
 
 **Question 2** Why is the Laspeyres index always larger than the Paasche index?
 

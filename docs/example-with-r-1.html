@@ -257,32 +257,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb13-3" title="3">index</a></code></pre></div>
 <pre><code>##    period value
 ## 1       0   100
-## 2       1    95
-## 3       2   119
-## 4       3   107
-## 5       4    97
-## 6       5   105
-## 7       6   122
-## 8       7   120
-## 9       8    98
-## 10      9   117
-## 11     10   102
-## 12     11   129</code></pre>
+## 2       1   106
+## 3       2    97
+## 4       3    93
+## 5       4   104
+## 6       5   130
+## 7       6   105
+## 8       7    92
+## 9       8   113
+## 10      9    98
+## 11     10   112
+## 12     11   127</code></pre>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="co"># Rebase the index so that period 6 = 100</span></a>
 <a class="sourceLine" id="cb15-2" title="2"><span class="kw">transform</span>(index, <span class="dt">value =</span> value <span class="op">/</span><span class="st"> </span>value[period <span class="op">==</span><span class="st"> </span><span class="dv">6</span>] <span class="op">*</span><span class="st"> </span><span class="dv">100</span>)</a></code></pre></div>
 <pre><code>##    period     value
-## 1       0  81.96721
-## 2       1  77.86885
-## 3       2  97.54098
-## 4       3  87.70492
-## 5       4  79.50820
-## 6       5  86.06557
+## 1       0  95.23810
+## 2       1 100.95238
+## 3       2  92.38095
+## 4       3  88.57143
+## 5       4  99.04762
+## 6       5 123.80952
 ## 7       6 100.00000
-## 8       7  98.36066
-## 9       8  80.32787
-## 10      9  95.90164
-## 11     10  83.60656
-## 12     11 105.73770</code></pre>
+## 8       7  87.61905
+## 9       8 107.61905
+## 10      9  93.33333
+## 11     10 106.66667
+## 12     11 120.95238</code></pre>
 </div>
 <!-- </div> -->
             </section>

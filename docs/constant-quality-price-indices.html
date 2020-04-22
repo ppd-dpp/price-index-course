@@ -224,7 +224,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Constant-quality price indices</h2>
 <p>Motivating a constant-quality price index proceeds exactly as it did in the stochastic framework, except now potential prices are used in place of transaction prices. The idea is that there is a distribution of potential price relatives, one for each good, and a price index acts as a best predictor of the change in prices over time. By using potential prices, however, the exact same goods are being compared over time, even if a product as it appears in the market changes between period 0 and period 1. Formally, a constant-quality (geometric) price index is given by</p>
 <p><span class="math display">\[\begin{align*}
-I^{Q} &amp;= \exp\left(E\left(\log\left(\frac{p(1)}{p(0)}\right)\right)\right) \\
+I^{Q} &amp;= \exp\left(E\left[\log\left(\frac{p(1)}{p(0)}\right)\right]\right) \\
 &amp;= \prod_{i = 1}^{n} \left(\frac{p_{i}(1)}{p_{i}(0)}\right)^{P_{i}},
 \end{align*}\]</span></p>
 <p>where <span class="math inline">\(P_{i}\)</span> is the probability of observing good <span class="math inline">\(i\)</span> in the population of goods. A constant-quality index is a generalization of the standard geometric index that explicitly allows goods as well as prices to change over time.</p>
