@@ -690,17 +690,17 @@ The second example shows how to rebase a price index---simply divide the index s
 \begin{verbatim}
 ##    period value
 ## 1       0   100
-## 2       1   101
-## 3       2    96
-## 4       3   123
-## 5       4    92
-## 6       5    95
-## 7       6   113
-## 8       7   103
-## 9       8   115
-## 10      9   122
-## 11     10   109
-## 12     11   118
+## 2       1   111
+## 3       2   118
+## 4       3   106
+## 5       4   120
+## 6       5   113
+## 7       6   127
+## 8       7   121
+## 9       8   122
+## 10      9    97
+## 11     10   105
+## 12     11   107
 \end{verbatim}
 
 \begin{Shaded}
@@ -712,18 +712,18 @@ The second example shows how to rebase a price index---simply divide the index s
 
 \begin{verbatim}
 ##    period     value
-## 1       0  88.49558
-## 2       1  89.38053
-## 3       2  84.95575
-## 4       3 108.84956
-## 5       4  81.41593
-## 6       5  84.07080
+## 1       0  78.74016
+## 2       1  87.40157
+## 3       2  92.91339
+## 4       3  83.46457
+## 5       4  94.48819
+## 6       5  88.97638
 ## 7       6 100.00000
-## 8       7  91.15044
-## 9       8 101.76991
-## 10      9 107.96460
-## 11     10  96.46018
-## 12     11 104.42478
+## 8       7  95.27559
+## 9       8  96.06299
+## 10      9  76.37795
+## 11     10  82.67717
+## 12     11  84.25197
 \end{verbatim}
 
 \hypertarget{assignment}{%
@@ -1374,7 +1374,7 @@ The starting point for the stochastic approach is a distribution of \(n\) price 
 Given a distribution of price relatives, the best predictor of a change in price between period 0 and period \(t\) is the value \(I^{A}\) that minimizes the expected prediction error. Formally, the best predictor solves the following problem\footnote{This is a prediction problem using a quadratic loss function, to ensure that the prediction error is always positive, and formalize the idea that larger mispredictions are more costly. Different loss functions usually give different optimal predictors; for example, the absolute loss function returns the median as the best predictor, which finds applications for housing price indices. If price relatives are symmetrically distributed, then all symmetric, convex loss functions give the same price index (Lehmann and Casella 1998, Chapter 1 Corollary 7.19).}
 
 \begin{align*}
-\min_{I^{A}} E\left[\left(\frac{p_{t}}{p_{0}} - I^{A} \right)^{2}\right],
+\min_{I} E\left[\left(\frac{p_{t}}{p_{0}} - I \right)^{2}\right],
 \end{align*}
 
 where \(E\) is the expected value operator, taken over the distribution of price relative. As is well known, the solution to this problem is to set \(I^{A} = E(p_{t} / p_{0})\) (Lehmann and Casella 1998, Chapter 1 Example 7.17); that is, the best predictor of a change in price between two periods is the expected change in price. While it may seem unusual to express a price index in terms of an expected value, this simply emphasizes that a price index is rightfully a feature of the distribution of prices in the population. This is a key feature of the stochastic approach, and is what allows for a meaningful analysis of the statistical properties of a price index when calculated with a sample of price data from the population.
@@ -1397,7 +1397,7 @@ Different arithmetic price-index formulas---e.g., Laspeyres, Paasche, Lowe---thu
 A geometric index can be motivated in the same way as an arithmetic index. Formally, a geometric index is the value \(I^{G}\) that solves
 
 \begin{align*}
-\min_{I^{G}} E\left[\left(\log\left(\frac{p_{t}}{p_{0}}\right) - \log(I^{G}) \right)^{2}\right],
+\min_{I} E\left[\left(\log\left(\frac{p_{t}}{p_{0}}\right) - \log(I) \right)^{2}\right],
 \end{align*}
 
 the solution to which is \(I^{G} = \exp(E[\log(p_{t} / p_{0})])\). But this is just a geometric index, as
