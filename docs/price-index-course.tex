@@ -122,7 +122,7 @@
 \section*{Overview}\label{overview}}
 \addcontentsline{toc}{section}{Overview}
 
-This course give a modern and straightforward introduction to prices indices. The focus in on the main ideas and concepts that are important for both users and compilers of price indices; consequently, the course is not encyclopedic, and several important topics are either given a quick treatment, or not covered at all. Many references are provided to complement the material in this course, and extend the scope of the topics covered.
+This course gives a modern and straightforward introduction to prices indices. The focus in on the main ideas and concepts that are important for both users and compilers of price indices; consequently, the course is not encyclopedic, and several important topics are either given a quick treatment, or not covered at all. Many references are provided to complement the material in this course, and extend the scope of the topics covered.
 
 Overall the course rests firmly in the area of theory, and is designed to help foster an understanding of what a price index is. Several practical examples using the R programming language are given throughout the course, along with several applied exercises. But most of the more ``real world'' aspects of making a price index are ignored. This is not because these things are not important; rather, it is difficult to appreciate these more practical topics without a firm grasp of the theory.
 
@@ -690,17 +690,17 @@ The second example shows how to rebase a price index---simply divide the index s
 \begin{verbatim}
 ##    period value
 ## 1       0   100
-## 2       1   129
-## 3       2   113
-## 4       3   112
-## 5       4   114
-## 6       5   102
-## 7       6   115
-## 8       7   105
-## 9       8   126
-## 10      9   119
-## 11     10   108
-## 12     11    99
+## 2       1   127
+## 3       2   124
+## 4       3   115
+## 5       4    93
+## 6       5   108
+## 7       6   121
+## 8       7   104
+## 9       8   116
+## 10      9   112
+## 11     10   107
+## 12     11   122
 \end{verbatim}
 
 \begin{Shaded}
@@ -712,18 +712,18 @@ The second example shows how to rebase a price index---simply divide the index s
 
 \begin{verbatim}
 ##    period     value
-## 1       0  86.95652
-## 2       1 112.17391
-## 3       2  98.26087
-## 4       3  97.39130
-## 5       4  99.13043
-## 6       5  88.69565
+## 1       0  82.64463
+## 2       1 104.95868
+## 3       2 102.47934
+## 4       3  95.04132
+## 5       4  76.85950
+## 6       5  89.25620
 ## 7       6 100.00000
-## 8       7  91.30435
-## 9       8 109.56522
-## 10      9 103.47826
-## 11     10  93.91304
-## 12     11  86.08696
+## 8       7  85.95041
+## 9       8  95.86777
+## 10      9  92.56198
+## 11     10  88.42975
+## 12     11 100.82645
 \end{verbatim}
 
 \hypertarget{assignment}{%
@@ -1214,7 +1214,7 @@ I(p_{t}, p_{0}, q_{t}, q_{0}) = \frac{\sum_{i = 1}^{n} p_{it}q_{it}}{\sum_{i = 1
 
 These stark results help to motivate the use of these simple indices, and give some practical guidance for when to use them. A geometric index is useful when chaining an index is relatively more important than deflating aggregate values, whereas an arithmetic Laspeyres (or Paasche) index is useful when deflating aggregate values in a national accounting framework is relatively more important than using a chained calculation. This helps to explain why price indices produced by statistical agencies tend to use a geometric index for calculating elemental indices, and an arithmetic index for calculating higher-level indices. At the lowest level in an index's hierarchy, it is important to be able to calculate the elemental indices using period-over-period changes in price, but these indices don't tend to be used for deflating aggregate values. At higher levels of aggregation, there is a need to be able to deflate aggregate values, but no need for chaining period-over-period changes in price to calculate the index, as it is aggregated up from the elemental indices.
 
-It is worth remarking that the Fisher index usually comes out as the theoretical ideal in an axiomatic framework (or sometimes the Törnqvist index, depending on the particular axioms). This occurs because the product test is maintained without requiring consistency in aggregation, as well as imposing some other tests. Consequently, the Fisher index may be more appropriate if a price index is not calculated using a hierarchical structure. But it is important to note that this is not a foregone conclusion---one of the key results from the axiomatic approach is the ideal price index depends on its purpose, and there do not exist any universally applicable price indices.
+It is worth remarking that the Fisher index usually comes out as the theoretical ideal in an axiomatic framework.\footnote{Or sometimes the Törnqvist index, depending on the particular axioms---see Balk and Diewert (2001).} This occurs because the product test is maintained without requiring consistency in aggregation, as well as imposing some other tests. Consequently, the Fisher index may be more appropriate if a price index is not calculated using a hierarchical structure. But it is important to note that this is not a foregone conclusion---one of the key results from the axiomatic approach is the ideal price index depends on its purpose, and there do not exist any universally applicable price indices.
 
 \hypertarget{the-economic-approach}{%
 \section{The economic approach}\label{the-economic-approach}}
@@ -2610,6 +2610,9 @@ Angrist, J., and J-S. Pischke. 2009. \emph{Mostly Harmless Econometrics}. Prince
 
 \leavevmode\hypertarget{ref-balk1995}{}%
 Balk, B. M. 1995. ``Axiomatic Price Index Theory: A Survey.'' \emph{International Statistical Review/Revue Internationale de Statistique} 63 (1): 69--93.
+
+\leavevmode\hypertarget{ref-balk2001}{}%
+Balk, B. M., and W. E. Diewert. 2001. ``A Characterization of the Törnqvist Price Index.'' \emph{Economics Letters} 72 (3): 279--81.
 
 \leavevmode\hypertarget{ref-bullen2003}{}%
 Bullen, P. S. 2003. \emph{Handbook of Means and Their Inequalities}. Springer.
