@@ -221,6 +221,15 @@ I^{A}_{M} = \frac{\sum_{i = 1}^{n} p_{i1} (q_{i0} + q_{i1}) / 2}{\sum_{i = 1}^{n
 
 Like the Walsh index, this index uses a basket that takes an average of the period-0 and period-1 quantities.
 
+**Geary-Khamis index**. Setting $\omega_{i} = p_{i0}  / (1 / q_{i0} + 1 / q_{i1}) / \sum_{j = 1}^{n} p_{j0} / (1 / q_{j0} + 1 / q_{j1})$ results in the Geary-Khamis index
+
+\begin{align*}
+I^{A}_{G} = \frac{\sum_{i = 1}^{n} 2 p_{i1} / (1 / q_{i0} + 1 / q_{i1})}{\sum_{i = 1}^{n} 2 p_{i0} / (1 / q_{i0} + 1 / q_{i1})}.
+\end{align*}
+
+Like the Walsh and Marshall-Edgeworth indices, this index uses a basket that takes an average of the period-0 and period-1 quantities.
+
+
 ## Geometric price indices
 
 A geometric price index is entirely analogous to an arithmetic one, except that price relatives are aggregated with a geometric average instead of an arithmetic average. That is, a general geometric price index is given by^[The capital letter pi $\Pi$ is the product operator. For a collection of numbers $x_{1}, x_{2},\ldots,x_{n}$, $\prod_{i=1}^{n} x_{i}$ means $x_{1} \times x_{2} \times \ldots \times x_{n}$.]
@@ -229,7 +238,7 @@ A geometric price index is entirely analogous to an arithmetic one, except that 
 I^{G} = \prod_{i = 1}^{n} \left(\frac{p_{i1}}{p_{i0}}\right)^{\omega_{i}}.
 \end{align*}
 
-As with the arithmetic indices, different geometric indices correspond to different choices for the weights.
+As with the arithmetic indices, different geometric indices correspond to different choices for the weights.^[It is interesting to note that the weights can also be chosen so that any geometric index is also an arithmetic index (and vice versa). That is, for any $\omega_{i}$, there is an $\tilde{\omega}_{i}$ such that $\prod_{i = 1}^{n} (p_{i1} / p_{i0})^{\omega_{i}} = \sum_{i = 1}^{n} \tilde{\omega}_{i} p_{i1} / p_{i0}$. See @balk2008[Section 4.2] for what these weights look like. Framing an index as arithmetic or geometric is really just a case of framing the weights.]
 
 **Jevons index**. Setting $\omega_{i} = 1 / n$ results in the Jevons index
 
