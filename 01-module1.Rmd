@@ -342,7 +342,7 @@ Any of the index-number formulas in the previous section can be used to make a p
 
 &#128214; CPI manual: Chapter 1, paragraphs 1.147--1.164; Chapter 4, paragraphs 4.16--4.33.
 
-# Sub-indices and aggregation
+## Sub-indices and aggregation
 
 Most price indices have a hierarchical (or aggregated) structure, so that goods and services are partitioned into increasingly broad groups or categories that build up to all goods and services covered by the price index. For example, the goods in a CPI can be partitioned into broad categories such as food, shelter, transportation, etc. These categories are then broken into smaller categories; food may be partitioned into meat, diary, poultry, etc. This type of structure has the obvious benefit of providing a price index for sub-categories of goods and services that are often of interest in their own right (although there are other, more subtle reasons for wanting to structure a price index like this). The chart below gives an example of a simple aggregation structure with three levels.
 
