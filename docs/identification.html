@@ -222,21 +222,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="identification" class="section level2">
 <h2>Identification</h2>
-<p>It is not possible to construct a constant-quality price index with only knowledge of transaction prices and when goods sell. All that can be known is the transaction-price index, which need not agree with the constant-quality index. Making process towards identifying a constant-quality price index with information on transaction prices requires making assumptions.</p>
-<p>The most straightforward assumption that identifies the constant-quality price index with the transaction-price index is the assumption that there are no systematic difference between the goods that transact at different points in time, so that the movement in potential prices is the same as the movement in observable transaction prices. This is equivalent to assuming that potential prices are (statistically) independent of the time when a good actually sells, <span class="math inline">\(\{p(1), p(0)\} \perp t\)</span>, so the distribution of potential prices for goods that sell in period 0 is the same as the distribution of potential prices for goods that sell in period 1.</p>
+<p>It is not possible to construct a constant-quality price index with only knowledge of transaction prices and when goods sell. All that can be known is the transaction-price index, which need not agree with the constant-quality index. Making progress towards identifying a constant-quality price index with information on transaction prices requires making assumptions.</p>
 <p>If this independence assumption holds, then <span class="math inline">\(E(\rho(t) | t) = E(\rho(t))\)</span> for <span class="math inline">\(t=0,1\)</span> and so, as long as <span class="math inline">\(0 &lt; P(t = 1) &lt; 1\)</span>, so that there are goods that sell in both periods,</p>
 <p><span class="math display">\[\begin{align*}
 \log(I^{Q}) &amp;= E(\rho(1)) - E(\rho(0)) \\ 
 &amp;= E(\rho(1) | t = 1) - E(\rho(0) | t = 0) \\
 &amp;= \log(I^{T}).
 \end{align*}\]</span></p>
-<p>That is, the constant-quality index is identical to the observable transaction-price index.<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a></p>
+<p>That is, the constant-quality index is identical to the observable transaction-price index.<a href="#fn32" class="footnote-ref" id="fnref32"><sup>32</sup></a></p>
 <p>In practice, assuming that potential prices are independent of the time when a good sells is a fairly strong assumption. Unless there is reason to believe that goods sell at random, it is likely an inappropriate assumption. Nonetheless, it serves as the foundational assumption that justifies the use of more sophisticated methods for constructing a constant-quality price index.</p>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="31">
-<li id="fn31"><p>One of the key insights from the program evaluation literature is that it is often easier to get a treatment effect for a sub-population than for the entire population. For example, the average effect of treatment on the treated is identified under weaker conditions than the average treatment effect on the entire population. As a constant-quality price index is just an average treatment effect, it is worth wondering if independence can be relaxed while still delivering a constant-quality index. In certain cases the answer is yes, if a price index applies to a sub-population of goods (e.g., the population of goods that actually sell in period 1, which is the average treatment effect on the treated). This means that some of the tools in the program evaluation literature—such as instrumental variables for local average treatment effects, or regression discontinuity—can be used to calculate a constant-quality price index, although this is still a relatively new area.<a href="identification.html#fnref31" class="footnote-back">↩</a></p></li>
+<ol start="32">
+<li id="fn32"><p>One of the key insights from the program evaluation literature is that it is often easier to get a treatment effect for a sub-population than for the entire population. For example, the average effect of treatment on the treated is identified under weaker conditions than the average treatment effect on the entire population. As a constant-quality price index is just an average treatment effect, it is worth wondering if independence can be relaxed while still delivering a constant-quality index. In certain cases the answer is yes, if a price index applies to a sub-population of goods (e.g., the population of goods that actually sell in period 1, which is the average treatment effect on the treated). This means that tools in the program evaluation literature—such as instrumental variables for local average treatment effects, or regression discontinuity—can be used to calculate a constant-quality price index, although this is still a relatively new area.<a href="identification.html#fnref32" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>

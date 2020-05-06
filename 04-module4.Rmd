@@ -16,7 +16,7 @@ This module consists of a large assignment that has learners build and analyze a
 
 Prerequisites: Introduction to Price Indices, and a basic understanding of R. Price Index Theory and Constant-Quality Price Indices, along with an intermediate understanding of R, are helpful.
 
-Evaluation for this module is based on a single assignment that draws on learners' prior knowledge of price-index theory. The assignment consists of 4 questions (plus to a bonus question). Collaboration on the assignment is encouraged, but each person must submit their own unique work. Answers to the assignment, along with working code for each question (excluding the bonus question) is worth 15% (i.e., the instructor must be able to understand and run your code; see [example.R](scripts/example.R) for an example). Each correctly answered question is worth an additional 10%. Correctly answering the bonus question is worth 20%. Passing this module requires a grade of 60% or more. 
+Evaluation for this module is based on a single assignment that draws on learners' prior knowledge of price-index theory. The assignment consists of 4 questions (plus a bonus question). Collaboration on the assignment is encouraged, but each person must submit their own unique work. Answers to the assignment, along with working code for each question (excluding the bonus question) is worth 15%. The instructor must be able to understand and run your code; see [example.R](scripts/example.R) for an example. Each correctly answered question is worth an additional 10%. Correctly answering the bonus question is worth 20%. Passing this module requires a grade of 60% or more. 
 
 Please email the course instructor if you have any questions, or need help with any of the course material or assignment.
 

@@ -12,7 +12,7 @@ The goal of this module is to provide an introduction to price indices, with an 
 
 3. Have a basic understanding of the structure of a price index and its calculation.
 
-This module is useful for both users and compilers of prices indices with little prior knowledge of the uses and construction of a price index.
+This module is useful for both users and compilers of price indices with little prior knowledge of the uses and construction of a price index.
 
 This module consists of self-directed readings, along with an assignment. In total, about 10 to 15 hours should be devoted for this module
 
@@ -34,7 +34,7 @@ A price index is a tool to measure the change in price for goods and services ov
 
 ## What's a price index?
 
-A price index is an economic time series that gives the percent change in prices for a collection of goods and services between a given point in time and a fixed base period (or reference period).^[A price index can also be used to measure the difference in prices in different locations at the same point in time, although this is a less common use of a price index.] A price index is usually represented so that subtracting 100 from the value of the index gives the percent change in prices for the goods and services captured by the index. For example, if a price index for widgets has a value of 110 in some period, then prices for widgets have increased by 10% since the base period. This representation also means that the index has a value of 100 in the base period. 
+A price index is an economic time series that gives the percent change in prices for a collection of goods and services between a given point in time and a fixed reference point in time (i.e., the base period or reference period).^[A price index can also be used to measure the difference in prices in different locations at the same point in time, although this is a less common use of a price index.] A price index is usually represented so that subtracting 100 from the value of the index gives the percent change in prices for the goods and services captured by the index. For example, if a price index for widgets has a value of 110 in some period, then prices for widgets have increased by 10% since the base period. This representation also means that the index has a value of 100 in the base period. 
 
 The chart below gives an example of a monthly price index showing the change in prices in each month of the year with respect to January (the base period), so that each point on the graph gives the percent change in prices since January. For example, in March the index had a value of 103, meaning prices increased by 3% between March and January, whereas the index had a value of 99 in June, meaning prices decreased by 1% between January and June.
 
@@ -58,13 +58,13 @@ The usefulness of a price index is that it gives a way to systematically condens
 In practice there are two broad categories that the price indices published by national statistical agencies fall into: consumer price indices (CPIs) and producer price indices (PPIs). As the names suggest, CPIs are focused on measuring price changes for goods and services that are purchased by consumers (final consumption), whereas PPIs focus on measuring prices charged by producers for goods and services produced, and prices paid for inputs into production. Despite the many subtleties about what constitutes a consumer and what constitutes a producer, both CPIs and PPIs seek to measure the change in prices over time for the goods and services that are transacted in an economy. Consequently, there is often
 considerable overlap in how CPIs and PPIs are calculated and used, and a distinction does not need to be made between whether an index is a CPI or a PPI---it often suffices to talk about a general price index.
 
-Probably the most important use of a price index, be it a CPI or a PPI, is to measure inflation---the systematic change in prices in an economy over time. Beyond being an important macroeconomic indicator, the measure of inflation directly affects many economic interactions in modern economies. For instance, many central banks operate in a regime of inflation targeting, whereby monetary policy is conducted in part to keep the inflation rate in a predetermined range (e.g., 1% to 3% a year). This policy regime requires a (frequent and timely) measure of inflation, and the instrument used to measure inflation can have a direct impact on monetary policy, and consequently interest rates. Inflation also affects wages and service contracts, pension payments, and social security benefits, as these contracts are often indexed to inflation---if prices increase by 2% per year, then wages also increase by 2% per year. Indexation preserves the value of payments over time without constantly needing to renegotiate contracts or redesign policies. The measure of inflation thus has important implications for household income and industry revenues.
+Probably the most important use of a price index, be it a CPI or a PPI, is to measure inflation---the systematic change in prices in an economy over time. Beyond being an important macroeconomic indicator, the measure of inflation directly affects many economic interactions in modern economies. For instance, many central banks operate in a regime of inflation targeting, whereby monetary policy is conducted in part to keep the inflation rate in a predetermined range (e.g., 1% to 3% a year). This policy regime requires a frequent and timely measure of inflation, and the instrument used to measure inflation can have a direct impact on monetary policy, and consequently interest rates. Inflation also affects wages and service contracts, pension payments, and social security benefits, as these contracts are often indexed to inflation---if prices increase by 2% per year, then wages also increase by 2% per year. Indexation preserves the value of payments over time without constantly needing to renegotiate contracts or redesign policies. The measure of inflation thus has important implications for household income and industry revenues.
 
-Beyond measuring inflation, one of the major uses of price indices for national statistical agencies is to deflate aggregate values in a national accounting framework to get a measure of the change in the production of real goods and services over time. This is equivalent to finding a quantity index to systematically condense information about many outputs for a range of goods and services into a single value that measures the change in the quantity of goods and services produced over time. Although there are many details, the rationale behind deflating aggregates values to get a measure of real output is fairly simple. If $V_1/V_0$ is the ratio of the value of production in period 1 to the value of production in period 0, and if this can be decomposed into a quantity index $Q$ and a price index $I$ such that $V_1/V_0 = IQ$, then the change in real production between period 0 and period 1 is simply $Q = V_1 / (V_0 I)$. The change in the value of production over time---a known quantity---can be turned into a measure of the change in real output by simply deflating it with a price index.
+Beyond measuring inflation, one of the major uses of price indices for national statistical agencies is to deflate aggregate values in a national accounting framework to get a measure of the change in the production of real goods and services over time. This is equivalent to finding a quantity index to systematically condense information about many outputs for a range of goods and services into a single value that measures the change in the quantity of goods and services produced over time. Although there are many details, the rationale behind deflating aggregate values to get a measure of real output is fairly simple. If $V_1/V_0$ is the ratio of the value of production in period 1 to the value of production in period 0, and if this can be decomposed into a quantity index $Q$ and a price index $I$ such that $V_1/V_0 = IQ$, then the change in real production between period 0 and period 1 is simply $Q = V_1 / (V_0 I)$. The change in the value of production over time---a known quantity---can be turned into a measure of the change in real output by simply deflating it with a price index.
 
 ## Why a price index?
 
-The starting point for understanding the utility of a price index is recognizing that there is no need for one if the goal is to compare the price of a single good or service in one period to the price for the same good or service in another period. If $p_1$ is the price of a good in period 1 and $p_0$ is the price of that same good in period 0, then the price relative $p_1/p_0$ unambiguously gives the percent change in price between period 1 and period 0. The need for a price index arises out of a fundamental problem of comparing a collection two or more of prices at two points in time to arrive at an overall change in price.
+The starting point for understanding the utility of a price index is recognizing that there is no need for one if the goal is to compare the price of a single good or service in one period to the price for the same good or service in another period. If $p_1$ is the price of a good in period 1 and $p_0$ is the price of that same good in period 0, then the price relative $p_1/p_0$ unambiguously gives the percent change in price between period 1 and period 0. The need for a price index arises out of a fundamental problem of comparing a collection of two or more prices at two points in time to arrive at an overall change in price.
 
 To illustrate this comparison problem, suppose there are two goods, denoted by $i$ and $j$, that sell in periods 0 and 1. If the price of good $i$ and the price of good $j$ both increase between period 0 and period 1, then it is uncontroversial to say that prices have increased between period 0 and period 1 (although it is less obvious by how much prices have increased). Similarly, if both prices decrease, then it is natural to say that prices have decreased. However, an issue arises if the price of good $i$ increases between period 0 and
 period 1 while the price of good $j$ decreases. In this case it is unclear if prices have increased or decreased---there is no obvious way to give a single direction to the movement of prices over time.
@@ -73,11 +73,11 @@ A solution to this comparison problem is to find a way to aggregate price relati
 
 # Index-number formula
 
-There are a great many index-number formula that can be used to combine information on prices at two points in time to produce a price index, despite the common goal of measuring price changes over time. This section of the course covers 10 important index-number formula that are used in practice to calculate a price index. Associated with each formula is the name of the person who developed it, and it is important to associate the names with the formulas, as they are usually referred to by name in application. This is unfortunately an exercise is memorization, as most of the index-number formula have a similar form.
+There are a great many index-number formula that can be used to combine information on prices at two points in time to produce a price index, despite the common goal of measuring price changes over time. This section of the course covers 10 important index-number formulas that are used in practice to calculate a price index. Associated with each formula is the name of the person who developed it. It is important to associate the names with the formulas, as they are usually referred to by name in application. This is unfortunately an exercise is memorization, as most of the index-number formula have a similar form.
 
-To help build intuition and a deeper understanding of what the index-number formula are doing, these different approaches for calculating a price index can be broadly classified as either arithmetic price indices or geometric price indices. Not all index-number formula fall into these two groups---for example, there are also harmonic price indices, a category which can overlap with arithmetic indices---but arithmetic and geometric indices are fairly easy to understand, with most index-number formula falling into one of these two categories. 
+To help build intuition and a deeper understanding of what the index-number formula are doing, these different approaches for calculating a price index can be broadly classified as either arithmetic price indices or geometric price indices. Not all index-number formula fall into these two groups---for example, there are also harmonic price indices, a category which can overlap with arithmetic indices---but arithmetic and geometric indices are fairly easy to understand, with most index-number formulas falling into one of these two categories. 
 
-In practice a price index is multiplied by 100, so that the percent change in the index value over two periods is simply the index value minus 100. This is just a convenient normalization that has no bearing on the economic content of a price index, and is ignored in this section. (All the index-number formula can be multiplied by 100 to put them on the usual scale.)
+In practice a price index is multiplied by 100, so that the percent change in the index value over two periods is simply the index value minus 100. This is just a convenient normalization that has no bearing on the economic content of a price index, and is ignored in this section. Note that all the index-number formulas can be multiplied by 100 to put them on the usual scale.
 
 &#128214; PPI manual: Chapter 1, sections B1--B3.
 
@@ -91,7 +91,7 @@ I^{A} = \sum_{i = 1}^{n} \omega_{i} \frac{p_{i1}}{p_{i0}},
 
 where $p_{it}$ is the price of good $i$ in period $t = 0,1$, and $\omega_{i} \geq 0$ is the weight that good $i$ receives in the index calculation, such that $\sum_{i = 1}^{n} \omega_{i} = 1$.
 
-Different arithmetic price indices correspond to special cases of the general arithmetic index, depending on the choice of the weights. Most of these choices make use of information about the quantity of a good sold, so that the weights give a measure of the economic importance of a good, and so let $q_{it}$ be the amount of good $i$ consumed/produced in period $t = 0,1$.
+Different arithmetic price indices correspond to special cases of the general arithmetic index, depending on the choice of the weights. Most of these choices make use of information about the quantity of a good sold, so that the weights give a measure of the economic importance of a good. Denote by $q_{it}$ the amount of good $i$ consumed/produced in period $t = 0,1$.
 
 Before examining specific arithmetic indices, it is worth noting that an arithmetic index can always be written as the ratio of expenditure/revenue for a "basket" of goods and services at two points in time, so that for any set of weights there are implied "quantities" such that
 
@@ -111,7 +111,7 @@ There are six main arithmetic price indices that get used in practice, each corr
 I^{A}_{C} = \frac{1}{n} \sum_{i = 1}^{n} \frac{p_{i1}}{p_{i0}}.
 \end{align*}
 
-The Carli index takes an agnostic view of the weights, and treats each price relative as equally important.
+The Carli index takes a neutral stance on the weights, and treats each price relative as equally important.
 
 **Dutot index**. Setting $\omega_{i} = p_{i0} / \sum_{j = 1}^{n} p_{j0}$ results in the Dutot index
 
@@ -260,7 +260,7 @@ The Jevons index is the geometric analogue to the Carli or Dutot index.
 I^{G}_{L} = \prod_{i = 1}^{n} \left(\frac{p_{i1}}{p_{i0}}\right)^{\frac{p_{i0} q_{i0}}{\sum_{j = 1}^{n} p_{j0} q_{j0}}}.
 \end{align*}
 
-Similar to the Jevons index, this is the geometric analogue of the Laspeyres index. It is trivial to define a geometric Young index as well.^[Defining a geometric Lowe index is less obvious. For example, the geometric Paasche index uses period-1 expenditure/revenue shares as weights, instead of the hybrid weights used for the arithmetic Paasche index. Perhaps a better name for this index would be the geometric Palgrave index.]
+Similar to the Jevons index, this is the geometric analogue of the Laspeyres index. It is trivial to define a geometric Young index as well by using period-$b$ rather than period-0 expenditure/revenue shares.^[Defining a geometric Lowe index is less obvious. For example, the geometric Paasche index uses period-1 expenditure/revenue shares as weights, instead of the hybrid weights used for the arithmetic Paasche index. Perhaps a better name for this index would be the geometric Palgrave index.]
 
 **Törnqvist index**. Setting 
 
@@ -285,10 +285,11 @@ One point to note about the geometric indices is that they are always smaller th
 One important price index that is neither a geometric index nor an arithmetic index is the Fisher index, which is the geometric average of the (arithmetic) Laspeyres index and the (arithmetic) Paasche index,
 
 \begin{align*}
-I_{F} = \sqrt{\frac{\sum_{i = 1}^{n} p_{i1} q_{i0}}{\sum_{i = 1}^{n} p_{i0} q_{i0}} \times \frac{\sum_{i = 1}^{n} p_{i1} q_{i1}}{\sum_{i = 1}^{n} p_{i0} q_{i1}}}.
+I_{F} &= \sqrt{\frac{\sum_{i = 1}^{n} p_{i1} q_{i0}}{\sum_{i = 1}^{n} p_{i0} q_{i0}} \times \frac{\sum_{i = 1}^{n} p_{i1} q_{i1}}{\sum_{i = 1}^{n} p_{i0} q_{i1}}} \\
+&= \sqrt{I^{A}_{L} \times I^{A}_{P}}.
 \end{align*}
 
-The Fisher index is often seen as an ideal index because it treats information in period 0 and period 1 symmetrically. (The Törnqvist index is also seen as ideal for a similar reason, and these types of indices often get called superlative.) In practice, however, the Fisher index is not frequently used by national statistical agencies because it is not timely to calculate. This is because it depends on the Paasche index, which requires information on period 1 quantities in addition to period 1 prices, something that has historically been impractical for national statistical agencies to collect.
+The Fisher index is often seen as an ideal index because it treats information in period 0 and period 1 symmetrically.^[The Törnqvist index is also seen as ideal for a similar reason, and these types of indices often get called superlative.] In practice, however, the Fisher index is not frequently used by national statistical agencies because it is not timely to calculate. This is because it depends on the Paasche index, which requires information on period 1 quantities in addition to period 1 prices, something that has historically been impractical for national statistical agencies to collect.
 
 ## Example with R
 
@@ -387,7 +388,7 @@ height = 368)
 
 Given that there are two ways to calculate a price index with a hierarchical structure, does the direct calculation give the same result as the two-step calculation? The answer is yes for an arithmetic or geometric index, provided the weights used to aggregate the elementary aggregates are formed using the underlying weights for the target index. For example, if the goal is to calculate a Laspeyres index, then the weight for an elementary aggregate should be the expenditure/revenue share for the goods in that elementary aggregate in period 0. As both geometric and arithmetic indices are calculated as weighted averages, it should not be surprising that an index can be calculated by first grouping price relatives together, calculating group-level averages, then averaging the group-level averages to form an overall average. Consequently, these indices are said to be consistent in aggregation, although not all index-number formulas are consistent in aggregation. For example, the Fisher index is not consistent in aggregation, and using the two-step procedure to calculate it will give a different answer than the direct calculation.
 
-It is easy to show that any arithmetic index is consistent in aggregation (the reasoning for the geometric case is almost identical). Suppose that goods are partitioned into $k=1,\ldots,m$ distinct (mutually exclusive) categories---that is, there are $m$ elementary aggregates. If category $k$ contains $n_{k}$ goods, then the (arithmetic) index for this category is 
+It is easy to show that any arithmetic index is consistent in aggregation (the reasoning for the geometric case is almost identical). Suppose that goods are partitioned into $k=1,\ldots,m$ distinct and mutually exclusive categories---that is, there are $m$ elementary aggregates. If category $k$ contains $n_{k}$ goods, then the arithmetic index for this category is 
 
 \begin{align*}
 I_{k}^{A} = \sum_{i = 1}^{n_k} \frac{\omega_{ik}}{\sum_{j = 1}^{n_k} \omega_{jk}} \frac{p_{ik1}}{p_{ik0}},
@@ -403,11 +404,11 @@ I^{A} &= \sum_{k = 1}^{m} \omega_k I_{k}^{A}  \\
 
 But this is exactly the same as if the arithmetic index had been calculated by pooling all price relatives together and calculating the index directly, rather than partitioning them into groups and calculating the index in two steps.
 
-One advantage of the two-step calculation over the direct calculation is that the index-number formula used to calculate the elementary indices can differ from the index-number formula used at higher levels aggregation. It may seem odd to want to do this, but there are a number of subtle theoretical and practical reasons why a different index-number formula should be used for the elementary indices. In most applications elementary indices are calculated using a Jevons index, partly because detailed information on quantities bought or sold may be difficult to obtain at very low levels of aggregation, with higher levels calculated as an arithmetic index (usually a Young or Lowe index). 
+One advantage of the two-step calculation over the direct calculation is that the index-number formula used to calculate the elementary indices can differ from the index-number formula used at higher levels aggregation. It may seem odd to want to do this, but there are a number of subtle theoretical and practical reasons why a different index-number formula should be used for the elementary indices. In most applications the elementary indices are calculated using a Jevons index, partly because detailed information on quantities bought or sold may be difficult to obtain at very low levels of aggregation. Higher levels are then calculated as an arithmetic index, usually a Young or Lowe index. 
 
 ## Factoring an index
 
-When calculated over many periods, a price index gives a measure of the change in prices over time relative to a fixed base period. Calculating a price index over many periods poses no new challenges---once a base period is selected, one of the index-number formulas in previous section can be directly applied to produce an index that evolves over time by simply forming price relatives that always calculate the change in price relative to the base period. For example, the series of geometric indices computed over periods 0, 1, and 2, with period 0 as the base period, is
+When calculated over many periods, a price index gives a measure of the change in prices over time relative to a fixed base period. Calculating a price index over many periods poses no new challenges---once a base period is selected, one of the index-number formulas in the previous section can be directly applied to produce an index that evolves over time by simply forming price relatives that always calculate the change in price relative to the base period. For example, the series of geometric indices computed over periods 0, 1, and 2, with period 0 as the base period, is
 
 \begin{align*}
 1, \prod_{i = 1}^{n} \left(\frac{p_{i1}}{p_{i0}}\right)^{\omega_{i}}, \prod_{i = 1}^{n} \left(\frac{p_{i2}}{p_{i0}}\right)^{\omega_{i}}.
@@ -446,7 +447,7 @@ Intuitively, factoring an index simply tinkers with value of the index in the ba
 
 ## Rebasing
 
-The base period is an important point in time for a price index, as it gives the fixed reference point to which price changes are measured against. Having to choose a base period at all, however, introduces a potential problem: what works as a base period for one use of a price index may not work for another. Fortunately the choice of base period doesn't have much impact on the economic content of a price index---in most cases a new base period can be chosen for an index without needing to recompute the entire index series.
+The base period is an important point in time for a price index, as it gives the fixed reference point to which price changes are measured against. Having to choose a base period at all, however, introduces a potential problem: what works as a base period for one use of a price index may not work for another. Fortunately, the choice of base period doesn't have much impact on the economic content of a price index---in most cases a new base period can be chosen for an index without needing to recompute the entire index series.
 
 For a geometric index, the choice of base period has no impact on the economic content of a price index---the change in price between any two periods is the same regardless of the base period. The base period simply standardizes the index to a particular level. This can be seen by recalling that a geometric index can always be factored into two geometric indices. Given an index series with period 0 as the base period, the index value in period $t$ with period $k$ as the base period can always be found by simply dividing the index value in period $t$ by the index value in period $k$
 
@@ -474,7 +475,7 @@ ggplot(dat) +
   scale_x_date(date_labels = "%b")
 ```
 
-Rebasing is more complex for an arithmetic index. While it works for a Lowe and Dutot index in the exact same way a geometric index, in general rebasing an arithmetic index changes the weights used to average price relatives (because of the way an arithmetic index is factored). The rebased index is still an arithmetic index, but the weights are no longer correct. For example, rebasing a Laspeyres index changes the weights so that they are no longer the base-period expenditure shares---the index is still an arithmetic index (a Lowe index), but products that have seen a larger increase in price since the base period will receive more weight in the index calculation. In practice, however, this theoretical wrinkle is usually ignored, and an arithmetic price index gets rebased by simply dividing the entire index series by the index value in the new base period.
+Rebasing is more complex for an arithmetic index. While it works for a Lowe and Dutot index in the exact same way as a geometric index, in general rebasing an arithmetic index changes the weights used to average price relatives because of the way an arithmetic index is factored. The rebased index is still an arithmetic index, but the weights are no longer correct. For example, rebasing a Laspeyres index changes the weights so that they are no longer the base-period expenditure shares---the index is still an arithmetic index (a Lowe index), but products that have seen a larger increase in price since the base period will receive more weight in the index calculation. In practice, however, this theoretical wrinkle is usually ignored, and an arithmetic price index gets rebased by simply dividing the entire index series by the index value in the new base period.
 
 ## Chaining
 
@@ -593,7 +594,7 @@ f) a, b, and d.
 
 g) All of the above.
 
-**Question 4** True or false: The Jevons index is always smaller than the Carli index.
+**Question 4** True or false: The Jevons index is always smaller than or equal to the Carli index.
 
 **Question 5** True or false: A consumer price index gives a measure of the overall price level faced by consumers.
 

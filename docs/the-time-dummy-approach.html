@@ -222,11 +222,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="the-time-dummy-approach" class="section level2">
 <h2>The time-dummy approach</h2>
-<p>The hedonic index in the previous section can be simplified to make calculating the index easier with an approach called the time-dummy approach.<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a> The time-dummy approach simply takes the linear hedonic model in the previous section and restricts it so that <span class="math inline">\(\beta_{0} = \beta_{1} = \beta\)</span>. This doesn’t change anything fundamental about the index, except that it now requires fewer parameters to calculate, as</p>
+<p>The hedonic index in the previous section can be simplified to make calculating the index easier with an approach called the time-dummy approach.<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a> The time-dummy approach simply takes the linear hedonic model in the previous section and restricts it so that <span class="math inline">\(\beta_{0} = \beta_{1} = \beta\)</span>. This doesn’t change anything fundamental about the index, except that it now requires fewer parameters to calculate, as</p>
 <p><span class="math display">\[\begin{align*}
 E(\rho | X, t) = \alpha_{0} + t \log(I^{Q}) + X \beta.
 \end{align*}\]</span></p>
-<p>One interesting feature of the time-dummy index is that, like the general linear hedonic index, it is a type of stratified index when goods are partitioned by their observable characteristics. To see this, note that, with the assumption that <span class="math inline">\(\beta_{0} = \beta_{1} = \beta\)</span>, <span class="math inline">\(h(X, t) = \alpha_{0} + t (\alpha_{1} - \alpha_{0}) + X\beta\)</span>. When goods are stratified according to <span class="math inline">\(X\)</span>, then <span class="math inline">\(h\)</span> is saturated-in-<span class="math inline">\(X\)</span> such that there is a unique <span class="math inline">\(\beta_x\)</span> for each combination of <span class="math inline">\(x\)</span> for <span class="math inline">\(X\)</span>—each stratum gets its own parameter in the regression. In this case, the result in <span class="citation">Angrist and Pischke (2009 Section 3.3.1)</span> applies, so that</p>
+<p>One interesting feature of the time-dummy index is that, like the general linear hedonic index, it is a type of stratified index when goods are partitioned by their observable characteristics. To see this, note that, with the assumption that <span class="math inline">\(\beta_{0} = \beta_{1} = \beta\)</span>, the hedonic model becomes <span class="math inline">\(h(X, t) = \alpha_{0} + t (\alpha_{1} - \alpha_{0}) + X\beta\)</span>. When goods are stratified according to <span class="math inline">\(X\)</span>, then <span class="math inline">\(h\)</span> is saturated-in-<span class="math inline">\(X\)</span> such that there is a unique <span class="math inline">\(\beta_x\)</span> for each combination of <span class="math inline">\(x\)</span> for <span class="math inline">\(X\)</span>—each stratum gets its own parameter in the regression. In this case, the result in <span class="citation">Angrist and Pischke (2009 Section 3.3.1)</span> applies, so that</p>
 <p><span class="math display">\[\begin{align*}
 \log(I^{Q}) = \sum_{x}[E(\rho | X = x, t = 1) - E(\rho | X = x, t = 0)] \omega_{x},
 \end{align*}\]</span></p>
@@ -234,14 +234,14 @@ E(\rho | X, t) = \alpha_{0} + t \log(I^{Q}) + X \beta.
 <p><span class="math display">\[\begin{align*}
 \omega_{x} = \frac{\text{var}(t | X = x) P(X = x)}{\sum_{x} \text{var}(t | X = x) P(X = x)}.
 \end{align*}\]</span></p>
-<p>This index is of the same from as the stratified geometric index in the previous section, except that the weights depend on both the probability of a good belonging to a particular stratum and the variance of sales dates within a stratum. In the special case when each stratum contains a pair of goods, <span class="math inline">\(\omega_{x} = P(X = x)\)</span>, and the time-dummy index reduces to the pure matched-model index.</p>
+<p>This index is of the same form as the stratified geometric index in the previous section, except that the weights depend on both the probability of a good belonging to a particular stratum and the variance of sales dates within a stratum. In the special case when each stratum contains a pair of goods, <span class="math inline">\(\omega_{x} = P(X = x)\)</span>, and the time-dummy index reduces to the pure matched-model index.</p>
 <p>The point to take away here is that when goods are stratified according to their characteristics, the time-dummy approach for constructing a constant-quality index and the stratified approach are not fundamentally different approaches to operationalize a conditional independence assumption. Both approaches require the overlap condition, and aggregate within-stratum transaction-price indices to produce an overall price index. The usefulness of the time-dummy approach comes when overlap fails—so that goods cannot be stratified along a particular set of characteristics—as the time-dummy approach provides a parametric correction that gives the transaction-price index a constant-quality interpretation at the expense of an extra assumption.</p>
 <p>In practice the time-dummy hedonic model is more popular than the hedonic imputation approach, in part because it is simpler, easier to compute, and less data intensive. The disadvantage to the time-dummy approach is that it is more restrictive, and requires an extra assumption. In most cases, however, the two approaches give similar results.</p>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="38">
-<li id="fn38"><p>Again, this is a poor name, as the “hedonic imputation” approach recovers the index as the coefficient on a time-dummy variable.<a href="the-time-dummy-approach.html#fnref38" class="footnote-back">↩</a></p></li>
+<ol start="39">
+<li id="fn39"><p>Again, this is a poor name, as the “hedonic imputation” approach recovers the index as the coefficient on a time-dummy variable.<a href="the-time-dummy-approach.html#fnref39" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>

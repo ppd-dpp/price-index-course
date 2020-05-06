@@ -231,9 +231,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><strong>Consistency in aggregation</strong> For any partition of <span class="math inline">\(n\)</span> goods into <span class="math inline">\(k = 1, \ldots, m\)</span> distinct groups, there is a function <span class="math inline">\(\psi\)</span> such that <span class="math inline">\(\psi(I(p_{t}, p_{0}, q_{t}, q_{0}), V_{0}, V_{t}) = \sum_{k = 1}^{m} \psi(I(p_{kt}, p_{k0}, q_{kt}, q_{k0}), V_{k0}, V_{kt})\)</span>, where <span class="math inline">\(V_{kt} = \sum_{i = 1}^{n_{k}} p_{ikt}q_{ikt}\)</span> is the value of the <span class="math inline">\(n_{k}\)</span> goods for group <span class="math inline">\(k\)</span> in period <span class="math inline">\(t\)</span>, with <span class="math inline">\(V_{t} = \sum_{k = 1}^{m} V_{kt}\)</span> being the total value in period <span class="math inline">\(t\)</span>, and if <span class="math inline">\(I(p_{kt}, p_{k0}, q_{kt}, q_{k0}) = c\)</span> for all <span class="math inline">\(m\)</span> groups, then <span class="math inline">\(I(p_{t}, p_{0}, q_{t}, q_{0}) = c\)</span>.</p></li>
 </ol>
 <p>The circularity test is straightforward, and expresses the idea that an index between two periods can be calculated by chaining the index for consecutive periods together. The circularity test legitimizes the use of chaining when calculating an index, and using period-over-period changes in price to calculate an index with a fixed base period. It also legitimizes rebasing an index.</p>
-<p>The product test is similarly straightforward, and says that the change in aggregate value between two periods can be decomposed into a price index and a quantity index. The product tests legitimizes the use of prices indices for deflating aggregate values in a national accounting framework.</p>
-<p>The consistency in aggregation test looks complicated, but expresses a simple idea: a price index should be an aggregate of sub-indices, where aggregation depends on only the index itself and the total value of the goods for each sub-index. Consistency in aggregation legitimizes the hierarchical calculation of a price index, where price indices are calculated for increasingly broad categories of goods using the same index-number formula through, with value shares as weights.</p>
-<p>As an example, the Laspeyres index satisfies the product test and the consistency in aggregation test.<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a> For the product test, let the quantity index be</p>
+<p>The product test is similarly straightforward, and says that the change in aggregate value between two periods can be decomposed into a price index and a quantity index. The product tests legitimizes the use of price indices for deflating aggregate values in a national accounting framework.</p>
+<p>The consistency in aggregation test looks complicated, but expresses a simple idea: a price index should be an aggregate of sub-indices, where aggregation depends on only the index itself and the total value of the goods for each sub-index. Consistency in aggregation legitimizes the hierarchical calculation of a price index, where price indices are calculated for increasingly broad categories of goods using the same index-number formula throughout, with value shares as weights.</p>
+<p>As an example, the Laspeyres index satisfies the product test and the consistency in aggregation test.<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a> For the product test, let the quantity index be</p>
 <p><span class="math display">\[\begin{align*}
 Q(q_{t}, q_{0}, p_{t}, p_{0}) = \frac{\sum_{i = 1}^{n} p_{it}q_{it}}{\sum_{i = 1}^{n} p_{it}q_{i0}},
 \end{align*}\]</span></p>
@@ -250,8 +250,8 @@ I(p_{t}, p_{0}, q_{t}, q_{0}) = \sum_{k = 1}^{m} \frac{V_{k0}}{V_0} I(p_{kt}, p_
 </div>
 <div class="footnotes">
 <hr />
-<ol start="12">
-<li id="fn12"><p>The Laspeyres index does not satisfy the circularity test, as a Laspeyres index would need to be multiplied with a Lowe index to return a Laspeyres index.<a href="the-tests.html#fnref12" class="footnote-back">↩</a></p></li>
+<ol start="13">
+<li id="fn13"><p>The Laspeyres index does not satisfy the circularity test, as a Laspeyres index would need to be multiplied with a Lowe index to return a Laspeyres index.<a href="the-tests.html#fnref13" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>
