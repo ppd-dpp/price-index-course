@@ -227,7 +227,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[\begin{align*}
 I^{G}(k, t) &amp;= \prod_{i = 1}^{n} \left(\frac{p_{it}}{p_{ik}}\right)^{\omega_{i}} \\
 &amp;= \frac{\prod_{i = 1}^{n} \left(\frac{p_{it}}{p_{i0}}\right)^{\omega_{i}}}{\prod_{i = 1}^{n} \left(\frac{p_{ik}}{p_{i0}}\right)^{\omega_{i}}} \\
-&amp;= \frac{I^{G}(t, 0)}{I^{G}(k, 0)}.
+&amp;= \frac{I^{G}(0, t)}{I^{G}(0, k)}.
 \end{align*}\]</span></p>
 <p>Hence, dividing through the index series by the period <span class="math inline">\(k\)</span> index value produces an index series that is the same as if period <span class="math inline">\(k\)</span> were originally chosen as the base period. This is known as rebasing an index, and means that a change in price between two periods can be computed by simply scaling the price index. This also explains why the base period gets a value in the index series, for otherwise the index series would shrink each time the index is rebased.</p>
 <p>The chart below gives an example of how rebasing changes the time series. The index with a base period of December is simply the index with a base period of January divided by the value of the index in December (105). This simply shifts the index with January as the base period down, and squashes it a little, but does not change the relative shape of the time series.</p>

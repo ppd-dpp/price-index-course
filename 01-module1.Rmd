@@ -20,7 +20,7 @@ There are no prerequisites for this module, although individuals should be comfo
 
 Evaluation for this module is based on an assignment consisting of 20 multiple-choice/true-false questions that draw on material in the course content and readings. Collaboration on the assignment is welcomed, but each person must submit their own unique work. Passing this module requires at least a 65% on the assignment.
 
-Readings for this module come from chapters 1, 2, 4, and 9 of the Producer Price Index Manual [@ppimanual] and/or the Consumer Price Index Manual [@cpimanual], published by the IMF (freely available on their website). As there is a considerable amount of overlap between these sources, the PPI manual is used as the main reference.
+Readings for this module come from chapters 1, 2, 4, and 9 of the Producer Price Index Manual [@ppimanual] and/or the Consumer Price Index Manual [@cpimanual], published by the IMF (freely available on their website). As there is considerable overlap between these sources, the PPI manual is used as the main reference.
 
 Please email the course instructor if you have any questions, or need help with any of the course material or assignment.
 
@@ -73,9 +73,9 @@ A solution to this comparison problem is to find a way to aggregate price relati
 
 # Index-number formula
 
-There are a great many index-number formula that can be used to combine information on prices at two points in time to produce a price index, despite the common goal of measuring price changes over time. This section of the course covers 10 important index-number formulas that are used in practice to calculate a price index. Associated with each formula is the name of the person who developed it. It is important to associate the names with the formulas, as they are usually referred to by name in application. This is unfortunately an exercise is memorization, as most of the index-number formula have a similar form.
+There are a great many index-number formulas that can be used to combine information on prices at two points in time to produce a price index, despite the common goal of measuring price changes over time. This section of the course covers 10 important index-number formulas that are used in practice to calculate a price index. Associated with each formula is the name of the person who developed it. It is important to associate the names with the formulas, as they are usually referred to by name in application. This is unfortunately an exercise is memorization, as most of the index-number formulas have a similar form.
 
-To help build intuition and a deeper understanding of what the index-number formula are doing, these different approaches for calculating a price index can be broadly classified as either arithmetic price indices or geometric price indices. Not all index-number formula fall into these two groups---for example, there are also harmonic price indices, a category which can overlap with arithmetic indices---but arithmetic and geometric indices are fairly easy to understand, with most index-number formulas falling into one of these two categories. 
+To help build intuition and a deeper understanding of what the index-number formulas are doing, these different approaches for calculating a price index can be broadly classified as either arithmetic price indices or geometric price indices. Not all index-number formulas fall into these two groups---for example, there are also harmonic price indices, a category which can overlap with arithmetic indices---but arithmetic and geometric indices are fairly easy to understand, with most index-number formulas falling into one of these two categories. 
 
 In practice a price index is multiplied by 100, so that the percent change in the index value over two periods is simply the index value minus 100. This is just a convenient normalization that has no bearing on the economic content of a price index, and is ignored in this section. Note that all the index-number formulas can be multiplied by 100 to put them on the usual scale.
 
@@ -278,7 +278,7 @@ The Törnqvist index expands on the geometric Laspeyres index by using expenditu
 
 The Jevons index is usually synonymous with a geometric index, and it finds application in situations where there is no quantity information to form weights (as opposed to using a Carli or Dutot index). Sometimes a weighted Jevons index is used as a shorthand for the general geometric index.
 
-One point to note about the geometric indices is that they are always smaller than their arithmetic counterparts. For any given weights, it can be shown that $I^{G} \leq I^{A}$, with equality only when all price relatives are equal or all price relatives except one have zero weight. Consequently, a geometric index always shows a smaller increase in prices over time (or a larger decrease) than the corresponding arithmetic index.^[The difference between an arithmetic index and geometric index tends to be larger when price relatives are more dispersed, although this is not always the case. It is possible that the difference becomes larger when the variance between prices relatives becomes smaller---see @lord2002.] This is an important downside to having a menu of index numbers to choose from, as the choice of which index-number formula to use has an impact on the resulting measure of inflation.^[The same reasoning can be used to show that a harmonic price index is always smaller than the corresponding geometric index---see @bullen2003[II 2.1 Corollary 2].]
+One point to note about the geometric indices is that they are always smaller than their arithmetic counterparts. For any given weights, it can be shown that $I^{G} \leq I^{A}$, with equality only when all price relatives are equal or all price relatives except one have zero weight. Consequently, a geometric index always shows a smaller increase in prices over time (or a larger decrease) than the corresponding arithmetic index.^[The difference between an arithmetic index and geometric index tends to be larger when price relatives are more dispersed, although this is not always the case. It is possible that the difference becomes larger when the variance between prices relatives becomes smaller---see @lord2002.] This is an important downside to having a menu of index numbers to choose from, as the choice of index-number formula has an impact on the resulting measure of inflation.^[The same reasoning can be used to show that a harmonic price index is always smaller than the corresponding geometric index---see @bullen2003[II 2.1 Corollary 2].]
 
 ## The Fisher index
 
@@ -404,7 +404,7 @@ I^{A} &= \sum_{k = 1}^{m} \omega_k I_{k}^{A}  \\
 
 But this is exactly the same as if the arithmetic index had been calculated by pooling all price relatives together and calculating the index directly, rather than partitioning them into groups and calculating the index in two steps.
 
-One advantage of the two-step calculation over the direct calculation is that the index-number formula used to calculate the elementary indices can differ from the index-number formula used at higher levels aggregation. It may seem odd to want to do this, but there are a number of subtle theoretical and practical reasons why a different index-number formula should be used for the elementary indices. In most applications the elementary indices are calculated using a Jevons index, partly because detailed information on quantities bought or sold may be difficult to obtain at very low levels of aggregation. Higher levels are then calculated as an arithmetic index, usually a Young or Lowe index. 
+One advantage of the two-step calculation over the direct calculation is that the index-number formula used to calculate the elementary indices can differ from the index-number formula used at higher levels aggregation. It may seem odd to want to do this, but there are a number of subtle theoretical and practical reasons why a different index-number formula would be used for the elementary indices. In most applications the elementary indices are calculated using a Jevons index, partly because detailed information on quantities bought or sold may be difficult to obtain at very low levels of aggregation. Higher levels are then calculated as an arithmetic index, usually a Young or Lowe index. 
 
 ## Factoring an index
 
@@ -454,7 +454,7 @@ For a geometric index, the choice of base period has no impact on the economic c
 \begin{align*}
 I^{G}(k, t) &= \prod_{i = 1}^{n} \left(\frac{p_{it}}{p_{ik}}\right)^{\omega_{i}} \\
 &= \frac{\prod_{i = 1}^{n} \left(\frac{p_{it}}{p_{i0}}\right)^{\omega_{i}}}{\prod_{i = 1}^{n} \left(\frac{p_{ik}}{p_{i0}}\right)^{\omega_{i}}} \\
-&= \frac{I^{G}(t, 0)}{I^{G}(k, 0)}.
+&= \frac{I^{G}(0, t)}{I^{G}(0, k)}.
 \end{align*}
 
 Hence, dividing through the index series by the period $k$ index value produces an index series that is the same as if period $k$ were originally chosen as the base period. This is known as rebasing an index, and means that a change in price between two periods can be computed by simply scaling the price index. This also explains why the base period gets a value in the index series, for otherwise the index series would shrink each time the index is rebased.
