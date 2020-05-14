@@ -697,16 +697,16 @@ The second example shows how to rebase a price index---simply divide the index s
 \begin{verbatim}
 ##    period value
 ## 1       0   100
-## 2       1   129
-## 3       2   121
-## 4       3   100
-## 5       4   130
-## 6       5   118
-## 7       6    95
-## 8       7   109
-## 9       8    90
+## 2       1   121
+## 3       2   106
+## 4       3    95
+## 5       4   117
+## 6       5   114
+## 7       6   129
+## 8       7   102
+## 9       8   108
 ## 10      9    96
-## 11     10   119
+## 11     10   116
 ## 12     11   126
 \end{verbatim}
 
@@ -719,18 +719,18 @@ The second example shows how to rebase a price index---simply divide the index s
 
 \begin{verbatim}
 ##    period     value
-## 1       0 105.26316
-## 2       1 135.78947
-## 3       2 127.36842
-## 4       3 105.26316
-## 5       4 136.84211
-## 6       5 124.21053
+## 1       0  77.51938
+## 2       1  93.79845
+## 3       2  82.17054
+## 4       3  73.64341
+## 5       4  90.69767
+## 6       5  88.37209
 ## 7       6 100.00000
-## 8       7 114.73684
-## 9       8  94.73684
-## 10      9 101.05263
-## 11     10 125.26316
-## 12     11 132.63158
+## 8       7  79.06977
+## 9       8  83.72093
+## 10      9  74.41860
+## 11     10  89.92248
+## 12     11  97.67442
 \end{verbatim}
 
 \hypertarget{assignment}{%
@@ -996,7 +996,7 @@ There are three broad approaches for motivating the price-index formulas that ge
 
 Each of the three approaches can be thought of as answering a different question about how to construct a price index. The axiomatic approach attempts to answer the question ``How can information for a collection of prices and quantities be combined to satisfy certain properties?'' This is essentially a set theoretic approach for how to best construct an index number. By contrast, the economic approach attempts to answer the question ``What should a price index measure?'' The goal with the economic approach is to use the machinery of microeconomic theory to define a price index so as to measure the experience of a change in prices for consumers and producers. The stochastic approach is more pragmatic in its scope, and attempts to answer the question ``How can information on prices be used to best predict a change in price for a good or service?'' This is essentially a question about how to best inflate and deflate prices over time.
 
-This part of the course gives a practical introduction to each of the three approaches, focusing on how they can be used to motivate the way price indices are constructed in practice. Despite having a more practical focus, however, this material is still concerned with theory that can be quite technical. Rather than focusing on the technical details (of which there are many), the part of the course gives enough of a glimpse into the technical machinery to show what is going on, while providing the economic intuition and overarching ideas from the theory.
+This part of the course gives a practical introduction to each of the three approaches, focusing on how they can be used to motivate the way price indices are constructed in practice. Despite having a more practical focus, however, this material is still concerned with theory that can be quite technical. Rather than focusing on the technical details (of which there are many), this part of the course gives enough of a glimpse into the technical machinery to show what is going on, while providing the economic intuition and overarching ideas from the theory.
 
 \hypertarget{the-axiomatic-approach}{%
 \section{The axiomatic approach}\label{the-axiomatic-approach}}
@@ -1005,7 +1005,7 @@ A price index combines information about prices and quantities at two points in 
 
 The ideal outcome from the axiomatic approach is a single, unique index-number formula that satisfies a minimal set of uncontroversial conditions that a price index ought satisfy. This would mean that there is only one index-number formula that should be used to make a price index. The reality, however, is that compromises must be made, and keeping certain conditions requires ignoring others. Consequently, a distinction is made between axioms---fundamental statements that any reasonable price index should satisfy---and tests, which are properties that are desirable but not as fundamental as axioms. A small set of key axioms are always maintained, whereas tests can be mutually inconsistent, and choices need to be made about which tests an index should satisfy depending on its purpose. Axioms can be seen as the first sieve to remove any unreasonable index-number formulas, with tests acting as a second sieve to further refine what is left over.
 
-This section of the course starts the journey into price index theory by giving a brief outline of the axiomatic approach to price index theory. This has been an area of considerable study, and consequently there is a lot of interesting material that is not covered in this course. The interested reader can consult either (ILO et al. 2004a, Chapter 16) or (ILO et al. 2004b, Chapter 16) for more detail, or Balk (2008).
+This section of the course starts the journey into price index theory by giving a brief outline of the axiomatic approach to price index theory. This has been an area of considerable study, and consequently there is a lot of interesting material that is not covered in this course. The interested reader can consult either ILO et al. (2004a Chapter 16) or ILO et al. (2004b Chapter 16) for more detail, or Balk (2008).
 
 📖 Balk (1995), skip section 4 and appendix.
 
@@ -1014,7 +1014,7 @@ This section of the course starts the journey into price index theory by giving 
 \hypertarget{an-abstract-price-index}{%
 \subsection{An abstract price index}\label{an-abstract-price-index}}
 
-In its abstract form, a price index is a function \(I\) that takes four arguments---period 0 prices \(p_{0}\), period \(t\) prices \(p_{t}\), period 0 quantities \(q_{0}\), and period \(t\) quantities \(q_{t}\), for \(n\) distinct goods and services---and returns a single value. It is a rule that turns information on prices and quantities at two points in time into one number that summarizes the change in prices. To simplify notation, prices and quantities here are vectors of prices and quantities at a point in time; for example, with \(n\) distinct goods and services, prices in period 0 are given by \(p_0 = (p_{10}, p_{20}, \ldots, p_{n0})\). This notation is useful, as a price index is a way to distill information for many prices and quantities into a single value; for example, with 25 goods and services, the price index takes 100 pieces for information (50 prices and 50 quantities) and turns it into one piece of information. For a particular collection of prices and quantities, the index value is given by \(I(p_{t}, p_{0}, q_{t}, q_{0})\).
+In its abstract form, a price index is a function \(I\) that takes four arguments---period-0 prices \(p_{0}\), period-\(t\) prices \(p_{t}\), period-0 quantities \(q_{0}\), and period-\(t\) quantities \(q_{t}\), for \(n\) distinct goods and services---and returns a single value. It is a rule that turns information on prices and quantities at two points in time into one number that summarizes the change in prices. To simplify notation, prices and quantities here are vectors of prices and quantities at a point in time; for example, with \(n\) distinct goods and services, prices in period 0 are given by \(p_0 = (p_{10}, p_{20}, \ldots, p_{n0})\). This notation is useful, as a price index is a way to distill information for many prices and quantities into a single value; for example, with 25 goods and services, the price index takes 100 pieces for information (50 prices and 50 quantities) and turns it into one piece of information. For a particular collection of prices and quantities, the index value is given by \(I(p_{t}, p_{0}, q_{t}, q_{0})\).
 
 Most price indices can be expressed in this abstract form. For example, a Laspeyres index is simply
 
@@ -1100,7 +1100,7 @@ As an example, it is straightforward to see that the Laspeyres index satisfies a
   A = 
   \begin{bmatrix}
   a_1 & \ldots & 0 \\
-  \vdots & & \vdots \\
+  \vdots & \ddots & \vdots \\
   0 & \ldots & a_n
   \end{bmatrix}
    \end{align*}
@@ -1117,9 +1117,9 @@ It should be fairly safe to say that any sensible price index should satisfy the
 \hypertarget{counter-examples}{%
 \subsection{Counter examples}\label{counter-examples}}
 
-For the most part, it is difficult to write down a half-way decent price that does not satisfy the five axioms in the previous section. Pathological examples abound, but it is more interesting to look at reasonable cases where an index-number formula does not satisfy all the axioms.\footnote{Two interesting pathological cases have to do with failure of monotonicity for the geometric Laspeyres and Paasche indices. Although the geometric Laspeyres is always increasing in period-\(t\) prices, it can also increase in period-0 prices. Necessary for this is that \(p_{i1} / p_{i0} \geq \exp(1) I(p_{0}, p_{0}, q_{t}, q_{0}) \approx 2.72 I(p_{0}, p_{0}, q_{t}, q_{0})\) for at least one good \(i\), so that at least some goods experience a change in price that is considerably larger than the change in price for the other goods. Similarly, while the geometric Paasche is always decreasing in period-0 prices, it can also decrease in period-\(t\) prices. Necessary for this to be the case is that \(p_{i1} / p_{i0} \leq I(p_{0}, p_{0}, q_{t}, q_{0}) / \exp(1) \approx I(p_{0}, p_{0}, q_{t}, q_{0}) / 2.72\) for at least one good \(i\). See Balk (2008 Section 3.12).} Two interesting examples of reasonable price indices that do not satisfy the five axioms are the Dutot index and the median-value index (i.e., the index that takes the median price relative).
+For the most part, it is difficult to write down a half-way decent price that does not satisfy the five axioms in the previous section. Pathological examples abound, but it is more interesting to look at reasonable cases where an index-number formula does not satisfy all the axioms.\footnote{Two interesting pathological cases have to do with failure of monotonicity for the geometric Laspeyres and Paasche indices. Although the geometric Laspeyres is always increasing in period-\(t\) prices, it can also increase in period-0 prices. Necessary for this is that \(p_{i1} / p_{i0} \geq \exp(1) I(p_{1}, p_{0}, q_{t}, q_{0}) \approx 2.72 I(p_{1}, p_{0}, q_{t}, q_{0})\) for at least one good \(i\), so that at least some goods experience a change in price that is considerably larger than the change in price for the other goods. Similarly, while the geometric Paasche is always decreasing in period-0 prices, it can also decrease in period-\(t\) prices. Necessary for this to be the case is that \(p_{i1} / p_{i0} \leq I(p_{1}, p_{0}, q_{t}, q_{0}) / \exp(1) \approx I(p_{1}, p_{0}, q_{t}, q_{0}) / 2.72\) for at least one good \(i\). See Balk (2008 Section 3.12).} Two interesting examples of reasonable price indices that do not satisfy the five axioms are the Dutot index and the median-value index (i.e., the index that takes the median price relative).
 
-The Dutot index satisfies all axioms except dimensional invariance, whereas the mean-value index satisfies all axioms except monotonicity. To see why the Dutot index does not satisfy dimensional invariance, suppose there are only two goods (i.e., \(n = 2\)) with \(p_{1t} = 1\), \(p_{2t} = 2\), and \(p_{10} = p_{20} = 1\), with
+The Dutot index satisfies all axioms except dimensional invariance, whereas the mean-value index satisfies all axioms except monotonicity. To see why the Dutot index does not satisfy dimensional invariance, suppose there are only two goods (i.e., \(n = 2\)) with \(p_{1t} = 1\), \(p_{2t} = 2\), and \(p_{10} = p_{20} = 1\), and with
 
 \begin{align*}
 A = 
@@ -1322,7 +1322,7 @@ where \(u_{0}\) is the consumer's utility from consumption in period 0. Other th
 \hypertarget{approximating-an-economic-index}{%
 \subsection{Approximating an economic index}\label{approximating-an-economic-index}}
 
-In practice an economic price index cannot be directly calculated. There is no hope of calculating either an input price or output-price index Without knowledge of the firm's technology of production, because the form of the firms' expenditure or revenue function is unknown. The problem is even more severe for a cost-of-living index, as it requires knowledge of consumer preferences to construct the consumer's expenditure function. The best that can be done is to approximate an economic index using data on observable prices and quantities. Both the arithmetic Laspeyres and geometric Laspeyres indices offer a good approximation to either the input price, output-price index, or cost-of-living index, at least to a first-order approximation.
+An economic price index cannot be directly calculated in practice. There is no hope of calculating either an input-price or output-price index without knowledge of the firm's technology of production, because the form of the firms' expenditure or revenue function is unknown. The problem is even more severe for a cost-of-living index, as it requires knowledge of consumer preferences to construct the consumer's expenditure function. The best that can be done is to approximate an economic index using data on observable prices and quantities. Both the arithmetic Laspeyres and geometric Laspeyres indices offer a good approximation to either the input price, output-price index, or cost-of-living index, at least to a first-order approximation.
 
 The argument for approximating an economic index with an arithmetic Laspeyres or geometric Laspeyres is the same for an input-price index, an output-price index, and a cost-of-living index, and so attention is restricted to approximating an input-price index. To show that the Laspeyres index approximates the input-price index, recall that
 
@@ -1963,7 +1963,7 @@ The indices for each group can be calculated with a single linear regression, an
 \end{Shaded}
 
 \begin{verbatim}
-## [1] NaN
+## [1] 313.886
 \end{verbatim}
 
 \hypertarget{hedonic-price-indices}{%
