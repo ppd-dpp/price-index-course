@@ -697,17 +697,17 @@ The second example shows how to rebase a price index---simply divide the index s
 \begin{verbatim}
 ##    period value
 ## 1       0   100
-## 2       1   121
-## 3       2   106
-## 4       3    95
-## 5       4   117
-## 6       5   114
-## 7       6   129
-## 8       7   102
-## 9       8   108
-## 10      9    96
-## 11     10   116
-## 12     11   126
+## 2       1   111
+## 3       2   120
+## 4       3   110
+## 5       4   103
+## 6       5   116
+## 7       6   117
+## 8       7   106
+## 9       8   114
+## 10      9   122
+## 11     10   102
+## 12     11    99
 \end{verbatim}
 
 \begin{Shaded}
@@ -719,18 +719,18 @@ The second example shows how to rebase a price index---simply divide the index s
 
 \begin{verbatim}
 ##    period     value
-## 1       0  77.51938
-## 2       1  93.79845
-## 3       2  82.17054
-## 4       3  73.64341
-## 5       4  90.69767
-## 6       5  88.37209
+## 1       0  85.47009
+## 2       1  94.87179
+## 3       2 102.56410
+## 4       3  94.01709
+## 5       4  88.03419
+## 6       5  99.14530
 ## 7       6 100.00000
-## 8       7  79.06977
-## 9       8  83.72093
-## 10      9  74.41860
-## 11     10  89.92248
-## 12     11  97.67442
+## 8       7  90.59829
+## 9       8  97.43590
+## 10      9 104.27350
+## 11     10  87.17949
+## 12     11  84.61538
 \end{verbatim}
 
 \hypertarget{assignment}{%
@@ -1712,7 +1712,7 @@ Prerequisites: Price Index Theory, at least one introductory course in econometr
 
 Evaluation for this module is based on an assignment consisting of 20 multiple-choice/true-false questions that draw on material in the course content and readings. Collaboration on the assignment is welcomed, but each person must submit their own unique work. Passing this module requires at least a 65\% on the assignment.
 
-Readings for this module come from chapters 17 and 21 of the PPI manual (ILO et al. 2004b) and/or the CPI manual (ILO et al. 2004a), published by the IMF (freely available on their website), as well as chapter 4--6 in the Handbook on Residential Property Price Indices (ILO et al. 2013), published by Eurostat (freely available on their website).\footnote{Although the focus of the handbook is on residential property prices, the ideas are applicable to any goods or services, and the material is presented relatively well.}
+Readings for this module come from chapters 17 and 21 of the PPI manual (ILO et al. 2004b) and/or the CPI manual (ILO et al. 2004a), published by the IMF (freely available on their website), as well as chapters 4--6 in the Handbook on Residential Property Price Indices (ILO et al. 2013), published by Eurostat (freely available on their website).\footnote{Although the focus of the handbook is on residential property prices, the ideas are applicable to any goods or services, and the material is presented relatively well.}
 
 Please email the course instructor if you have any questions, or need help with any of the course material or assignment.
 
@@ -1725,7 +1725,7 @@ There are a number of techniques available to combat quality differences creepin
 
 One interesting feature of these different methods---matched model, stratification, and hedonics---is that they really aren't that different. Each relies on the same key assumption to produce a constant-quality index; what differs between the methods is simply how they go about implementing this assumption. This point is fundamental in order to understand how these different approaches can deliver a constant-quality index, and how they relate to each other.
 
-In the interest of simplicity, this course focuses on geometric price indices. The concepts for a geometric index are directly applicable to arithmetic indices, although there are some extra details to worry about in the arithmetic case.\footnote{See Lee (2016 Chapter 1) and Manski (2007 Chapter 7) for some of the details.} In most applications quality adjustments are done using a geometric index-number formula. Throughout this course, attention is focused on building a constant-quality index when the entire population of transactions for goods and services is known. This is almost never the case in practice, but it makes the exposition easier by ignoring issues associated with sampling and statistical inference. It also emphasizes that building a constant-quality index is fundamentally a population-level problem, and not an issue of sampling. Once a constant-quality index is defined in the population, it is simple to estimate it with a sample of transactions by replacing the population-level quantities with their sample analogs---see Manski (1988).
+In the interest of simplicity, this course focuses on geometric price indices. The concepts for a geometric index are directly applicable to arithmetic indices, although there are some extra details to worry about in the arithmetic case.\footnote{See Lee (2016 Chapter 1) and Manski (2007 Chapter 7) for some of the details.} In most applications quality adjustments are done using a geometric index-number formula. Throughout this course, attention is focused on building a constant-quality index when the entire population of transactions for goods and services is known. This is almost never the case in practice, but it makes the exposition easier by ignoring issues associated with sampling and statistical inference. It also emphasizes that building a constant-quality index is fundamentally a population-level problem, and not an issue of sampling. Once a constant-quality index is defined in the population, it is simple to estimate it with a sample of transactions by replacing the population-level quantities with their sample counterparts---see Manski (1988).
 
 \hypertarget{potential-prices}{%
 \section{Potential prices}\label{potential-prices}}
@@ -1792,6 +1792,8 @@ where \(P_{i} | t\) is the conditional probability of observing good \(i\) in pe
 \subsection{Identification}\label{identification}}
 
 It is not possible to construct a constant-quality price index with only knowledge of transaction prices and when goods sell. All that can be known is the transaction-price index, which need not agree with the constant-quality index. Making progress towards identifying a constant-quality price index with information on transaction prices requires making assumptions.
+
+The most straightforward assumption that identifies the constant-quality price index with the transaction-price index is the assumption that there are no systematic difference between the goods that transact at different points in time, so that the movement in potential prices is the same as the movement in observable transaction prices. This is equivalent to assuming that potential prices are (statistically) independent of the time when a good actually sells, \(\{p(1), p(0)\} \perp t\), so the distribution of potential prices for goods that sell in period 0 is the same as the distribution of potential prices for goods that sell in period 1.
 
 If this independence assumption holds, then \(E(\rho(t) | t) = E(\rho(t))\) for \(t=0,1\) and so, as long as \(0 < P(t = 1) < 1\), so that there are goods that sell in both periods,
 
@@ -1911,7 +1913,9 @@ The constant-quality index is simply a weighted product of each sub-index, calcu
 \hypertarget{issues-with-stratification}{%
 \subsection{Issues with stratification}\label{issues-with-stratification}}
 
-A clear benefit of the stratified approach for constructing a constant-quality index is that it relies on only two assumptions to deliver such an index---conditional independence and overlap. These assumptions also have the benefit of being relatively transparent. Both conditional independence and overlap are intuitively simple conditions, although conditional independence is not a testable assumption. The challenge with a stratified approach is finding the right balance between these two assumptions. If the stratification is too granular, then the overlap condition can fail---a good with a particular combination of characteristics may not sell in a given period, so that the sub-index for that stratum is not defined. When it comes time to aggregate each sub-index, it will not be possible to aggregate over the population of strata, and hence the overall constant-quality index is not identified from transaction prices.\footnote{One way to mitigate this problem is to construct a price index for a sub-population of goods. For example, a Paasche-like index only requires transactions in period 0 and period 1 for strata in which a good sells in period 1, \(P(t = 1 | X = x) < 1\). This also has the benefit of weakening the conditional independence assumption so that only potential prices in period 0 need to be conditionally independent of time, \(p(0) \perp t | X\).} This is problematic, as a more granular partition of characteristics may give more credibility to the assumption of conditional independence. This is easiest to see when goods are grouped into pairs (the most granular partition), so that the transaction price index is a matched-model index. In this case, overlap fails when a good does not sell in either period 0 or period 1, and so the price relative for a pair of goods cannot be constructed.\footnote{One interesting way to relax overlap in a matched-model index is to calculate the index over more than two periods. See Kirby-McGregor and Martin (2019) for an example.}
+A clear benefit of the stratified approach for constructing a constant-quality index is that it relies on only two assumptions to deliver such an index---conditional independence and overlap. These assumptions also have the benefit of being relatively transparent. Both conditional independence and overlap are intuitively simple conditions, although conditional independence is not a testable assumption.
+
+The challenge with a stratified approach is finding the right balance between these two assumptions. If the stratification is too granular, then the overlap condition can fail---a good with a particular combination of characteristics may not sell in a given period, so that the sub-index for that stratum is not defined. When it comes time to aggregate each sub-index, it will not be possible to aggregate over the population of strata, and hence the overall constant-quality index is not identified from transaction prices.\footnote{One way to mitigate this problem is to construct a price index for a sub-population of goods. For example, a Paasche-like index only requires transactions in period 0 and period 1 for strata in which a good sells in period 1, \(P(t = 1 | X = x) < 1\). This also has the benefit of weakening the conditional independence assumption so that only potential prices in period 0 need to be conditionally independent of time, \(p(0) \perp t | X\).} This is problematic, as a more granular partition of characteristics may give more credibility to the assumption of conditional independence. This is easiest to see when goods are grouped into pairs (the most granular partition), so that the transaction price index is a matched-model index. In this case, overlap fails when a good does not sell in either period 0 or period 1, and so the price relative for a pair of goods cannot be constructed.\footnote{One interesting way to relax overlap in a matched-model index is to calculate the index over more than two periods. See Kirby-McGregor and Martin (2019) for an example.}
 
 A related issue with stratification is that, if stratification occurs for many characteristics of a good, \(X\) may be of large dimension. In this case, the cell sizes for each strata may be very small, and the stratum-specific indices may be very sensitive to the addition or removal of transactions for a good. Both overlap and dimensionality serve to limit the ability to make homogeneous groups of goods for which it is easier to motivate conditional independence.
 
@@ -1963,7 +1967,7 @@ The indices for each group can be calculated with a single linear regression, an
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 313.886
+## [1] NaN
 \end{verbatim}
 
 \hypertarget{hedonic-price-indices}{%
@@ -1981,7 +1985,7 @@ Every geometric hedonic index has this form, and can be thought of as using the 
 
 It is worth noting that the hedonic model is usually given a structural interpretation (ILO et al. 2013, Chapter 5), so that it captures the structural contribution of each characteristic towards price. This is indeed where the name hedonics comes from. The problem with giving the hedonic model \(h\) a structural interpretation is that it requires a tremendous amount of prior knowledge, essentially understanding how the individual characteristics of a product determine its price. This is entirely unnecessary, however, once an assumption of conditional independence is made---the hedonic model is simply a model for how average transaction prices relate to characteristics and time. Consequently, the label ``hedonics'' is not very useful, and is potentially misleading. In the interest of keeping with the broader literature, however, the label will be maintained. What's important to keep in mind is that the hedonic model is simply a model for how average transaction price relates to the characteristics of a good and when it sells.
 
-📖 RPPI Handbook: Chapter 5--6.
+📖 RPPI Handbook: Chapters 5--6.
 
 📖 PPI Manual: Chapter 21, sections A, C, D.
 
