@@ -359,8 +359,7 @@ mermaid("
     B --- B2(Elementary aggregate 2)
     C --- C1(Elementary aggregate 3)
     C --- C2(Elementary aggregate 4)
-",
-height = 256)
+")
 ```
 
 A hierarchical structure does not pose any special challenges for making a price index---one of the index-number formulas from the previous section can always be used to aggregate the price relatives for the goods and services in each group of the hierarchy to produce a collection of price indices for each level in the hierarchy. The index calculation simply needs to be repeated for each group of goods and services in the aggregation structure. This is the direct approach to calculating a price index with a hierarchical structure.
@@ -382,8 +381,7 @@ mermaid("
     D[Index-number formula] --- E1(Relative 1)
     D --- E2(Relative 2)
     D --- E3(Relative 3)
-",
-height = 368)
+")
 ```
 
 Given that there are two ways to calculate a price index with a hierarchical structure, does the direct calculation give the same result as the two-step calculation? The answer is yes for an arithmetic or geometric index, provided the weights used to aggregate the elementary aggregates are formed using the underlying weights for the target index. For example, if the goal is to calculate a Laspeyres index, then the weight for an elementary aggregate should be the expenditure/revenue share for the goods in that elementary aggregate in period 0. As both geometric and arithmetic indices are calculated as weighted averages, it should not be surprising that an index can be calculated by first grouping price relatives together, calculating group-level averages, then averaging the group-level averages to form an overall average. Consequently, these indices are said to be consistent in aggregation, although not all index-number formulas are consistent in aggregation. For example, the Fisher index is not consistent in aggregation, and using the two-step procedure to calculate it will give a different answer than the direct calculation.

@@ -241,7 +241,7 @@ library(ppd)
 mdl <- lm(log(price) ~ group + group:period - 1, df)
 
 # Turn regression coefficients into indices
-index <- exp(coef(mdl)[-seq_len(nlevels(mdl$model$group))])
+index <- exp(coef(mdl)[-seq_len(length(unique((mdl$model$group))))])
 
 # Aggregate, assuming both strata have equal weight
 geomean(index) * 100

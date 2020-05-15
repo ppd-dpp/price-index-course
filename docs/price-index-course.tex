@@ -697,17 +697,17 @@ The second example shows how to rebase a price index---simply divide the index s
 \begin{verbatim}
 ##    period value
 ## 1       0   100
-## 2       1    92
-## 3       2   130
-## 4       3    94
-## 5       4   115
-## 6       5   110
-## 7       6   102
+## 2       1   105
+## 3       2   118
+## 4       3   124
+## 5       4   102
+## 6       5    96
+## 7       6    93
 ## 8       7   126
-## 9       8   119
-## 10      9    90
-## 11     10   109
-## 12     11   117
+## 9       8   114
+## 10      9   117
+## 11     10   129
+## 12     11   106
 \end{verbatim}
 
 \begin{Shaded}
@@ -718,19 +718,19 @@ The second example shows how to rebase a price index---simply divide the index s
 \end{Shaded}
 
 \begin{verbatim}
-##    period     value
-## 1       0  98.03922
-## 2       1  90.19608
-## 3       2 127.45098
-## 4       3  92.15686
-## 5       4 112.74510
-## 6       5 107.84314
-## 7       6 100.00000
-## 8       7 123.52941
-## 9       8 116.66667
-## 10      9  88.23529
-## 11     10 106.86275
-## 12     11 114.70588
+##    period    value
+## 1       0 107.5269
+## 2       1 112.9032
+## 3       2 126.8817
+## 4       3 133.3333
+## 5       4 109.6774
+## 6       5 103.2258
+## 7       6 100.0000
+## 8       7 135.4839
+## 9       8 122.5806
+## 10      9 125.8065
+## 11     10 138.7097
+## 12     11 113.9785
 \end{verbatim}
 
 \hypertarget{assignment}{%
@@ -1959,7 +1959,7 @@ The indices for each group can be calculated with a single linear regression, an
 \NormalTok{mdl <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(}\KeywordTok{log}\NormalTok{(price) }\OperatorTok{~}\StringTok{ }\NormalTok{group }\OperatorTok{+}\StringTok{ }\NormalTok{group}\OperatorTok{:}\NormalTok{period }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{, df)}
 
 \CommentTok{# Turn regression coefficients into indices}
-\NormalTok{index <-}\StringTok{ }\KeywordTok{exp}\NormalTok{(}\KeywordTok{coef}\NormalTok{(mdl)[}\OperatorTok{-}\KeywordTok{seq_len}\NormalTok{(}\KeywordTok{nlevels}\NormalTok{(mdl}\OperatorTok{$}\NormalTok{model}\OperatorTok{$}\NormalTok{group))])}
+\NormalTok{index <-}\StringTok{ }\KeywordTok{exp}\NormalTok{(}\KeywordTok{coef}\NormalTok{(mdl)[}\OperatorTok{-}\KeywordTok{seq_len}\NormalTok{(}\KeywordTok{length}\NormalTok{(}\KeywordTok{unique}\NormalTok{((mdl}\OperatorTok{$}\NormalTok{model}\OperatorTok{$}\NormalTok{group))))])}
 
 \CommentTok{# Aggregate, assuming both strata have equal weight}
 \KeywordTok{geomean}\NormalTok{(index) }\OperatorTok{*}\StringTok{ }\DecValTok{100}
@@ -1967,7 +1967,7 @@ The indices for each group can be calculated with a single linear regression, an
 \end{Shaded}
 
 \begin{verbatim}
-## [1] NaN
+## [1] 313.886
 \end{verbatim}
 
 \hypertarget{hedonic-price-indices}{%
