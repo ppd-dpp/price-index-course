@@ -276,7 +276,7 @@ the value of the period-0 expenditure function is simply the observable expendit
 e(p_{t}, y_{0}) \leq \sum_{i = 1}^{n} p_{it} q_{i0}.
 \end{align*}
 
-Obviously the inputs used in period 0 are good enough to produce the amount of output in period 0, but this choice of inputs need not minimize the cost of production at period-$t$ prices. If the price of an input increases between period 0 and period $t$, the firm will usually substitute away from that input and use more of a relatively cheaper input in order to minimize cost while still producing $y_{0}$ units of output. This substitution is not reflected in the choice of inputs $q_{0}$, and so this bundle of inputs will cost more than the cost-minimizing bundle of inputs that can produce $y_{0}$ units of output at period $t$ prices.
+Obviously the inputs used in period 0 are good enough to produce the amount of output in period 0, but this choice of inputs need not minimize the cost of production at period-$t$ prices. If the price of an input increases between period 0 and period $t$, the firm will usually substitute away from that input and use more of a relatively cheaper input in order to minimize cost while still producing $y_{0}$ units of output. This substitution is not reflected in the choice of inputs $q_{0}$, and so this bundle of inputs will cost more than the cost-minimizing bundle of inputs that can produce $y_{0}$ units of output at period-$t$ prices.
 
 These two expression can now be used to show that 
 
