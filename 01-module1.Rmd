@@ -14,7 +14,7 @@ The goal of this module is to provide an introduction to price indices, with an 
 
 This module is useful for both users and compilers of price indices with little prior knowledge of the uses and construction of a price index.
 
-This module consists of self-directed readings, along with an assignment. In total, about 10 to 15 hours should be devoted for this module
+This module consists of self-directed readings, along with an assignment. In total, about 10 to 15 hours should be devoted for this module.
 
 There are no prerequisites for this module, although individuals should be comfortable with basic algebra and simple mathematical arguments. An introductory course in macroeconomics is helpful.
 
