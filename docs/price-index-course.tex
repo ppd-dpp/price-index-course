@@ -122,9 +122,9 @@
 \section*{Overview}\label{overview}}
 \addcontentsline{toc}{section}{Overview}
 
-This course gives a modern and straightforward introduction to prices indices. The focus in on the main ideas and concepts that are important for both users and compilers of price indices; consequently, the course is not encyclopedic, and several important topics are either given a quick treatment, or not covered at all. Many references are provided to complement the material in this course, and extend the scope of the topics covered. Overall the course rests firmly in the area of theory, and is designed to help foster an understanding of what a price index is. Several practical examples using the R programming language are given throughout the course, along with several applied exercises. But most of the more ``real world'' aspects of making a price index are ignored. This is not because these things are not important; rather, it is difficult to appreciate these more practical topics without a firm grasp of the theory.
+This course gives a modern and straightforward introduction to prices indices. The focus is on the main ideas and concepts that are important for both users and compilers of price indices; consequently, the course is not encyclopedic, and several important topics are either given a quick treatment, or not covered at all. Many references are provided to complement the material in this course, and extend the scope of the topics covered. Overall the course rests firmly in the area of theory, and is designed to help foster an understanding of what a price index is. Several practical examples using the R programming language are given throughout the course, along with several applied exercises. But most of the more ``real world'' aspects of making a price index are ignored. This is not because these things are not important; rather, it is difficult to appreciate these more practical topics without a firm grasp of the theory.
 
-The course is broken into four modules that building on each other. The first module gives an introduction to price indices, focusing mainly on the computational aspects of a price index. The second module gives a broad introduction to the theory of price indices, with a focus on motivating the price indices that get produced by national statistical agencies. The third module covers quality adjustments, one of the main practical hurdles when building a price index. The fourth modules brings everything together with an extended exercise to build and analyze a price index with R.
+The course is broken into four modules that build on each other. The first module gives an introduction to price indices, focusing mainly on the computational aspects of a price index. The second module gives a broad introduction to the theory of price indices, with a focus on motivating the price indices that get produced by national statistical agencies. The third module covers quality adjustments, one of the main practical hurdles when building a price index. The fourth modules brings everything together with an extended exercise to build and analyze a price index with R.
 
 \hypertarget{part-introduction-to-price-indices}{%
 \part{Introduction to Price Indices}\label{part-introduction-to-price-indices}}
@@ -148,7 +148,7 @@ The goal of this module is to provide an introduction to price indices, with an 
 
 This module is useful for both users and compilers of price indices with little prior knowledge of the uses and construction of a price index.
 
-This module consists of self-directed readings, along with an assignment. In total, about 10 to 15 hours should be devoted for this module
+This module consists of self-directed readings, along with an assignment. In total, about 10 to 15 hours should be devoted for this module.
 
 There are no prerequisites for this module, although individuals should be comfortable with basic algebra and simple mathematical arguments. An introductory course in macroeconomics is helpful.
 
@@ -432,8 +432,8 @@ All of the index-number formulas presented in this section are simply weighted a
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Bring in ppd library}
-\KeywordTok{library}\NormalTok{(ppd)}
+\CommentTok{# Bring in gpindex library}
+\KeywordTok{library}\NormalTok{(gpindex) }\CommentTok{# install.packages("gpindex")}
 
 \CommentTok{# Make some price relatives}
 \NormalTok{relatives <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{1.1}\NormalTok{, }\FloatTok{1.2}\NormalTok{, }\FloatTok{0.9}\NormalTok{, }\FloatTok{1.1}\NormalTok{)}
@@ -443,10 +443,10 @@ All of the index-number formulas presented in this section are simply weighted a
 
 \CommentTok{# Calculate indices}
 \KeywordTok{c}\NormalTok{(}
-  \DataTypeTok{Carli =} \KeywordTok{mean}\NormalTok{(relatives), }
-  \DataTypeTok{Jevons =} \KeywordTok{geomean}\NormalTok{(relatives), }
-  \DataTypeTok{Arithmetic =} \KeywordTok{weighted.mean}\NormalTok{(relatives, weights),}
-  \DataTypeTok{Geometric =} \KeywordTok{geomean}\NormalTok{(relatives, weights)}
+  \DataTypeTok{Carli =} \KeywordTok{mean_arithmetic}\NormalTok{(relatives), }
+  \DataTypeTok{Jevons =} \KeywordTok{mean_geometric}\NormalTok{(relatives), }
+  \DataTypeTok{Arithmetic =} \KeywordTok{mean_arithmetic}\NormalTok{(relatives, weights),}
+  \DataTypeTok{Geometric =} \KeywordTok{mean_geometric}\NormalTok{(relatives, weights)}
 \NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -468,12 +468,12 @@ The type of arithmetic and geometric indices that this calculates depends entire
 
 \CommentTok{# Calculate indices}
 \KeywordTok{c}\NormalTok{(}
-  \DataTypeTok{Laspeyres =} \KeywordTok{weighted.mean}\NormalTok{(relatives, share0),}
-  \DataTypeTok{Paasche =} \KeywordTok{harmean}\NormalTok{(relatives, share1),}
-  \DataTypeTok{Fisher =} \KeywordTok{sqrt}\NormalTok{(}\KeywordTok{weighted.mean}\NormalTok{(relatives, share0) }\OperatorTok{*}\StringTok{ }\KeywordTok{harmean}\NormalTok{(relatives, share1)),}
-  \StringTok{`}\DataTypeTok{Geometric Laspeyres}\StringTok{`}\NormalTok{ =}\StringTok{ }\KeywordTok{geomean}\NormalTok{(relatives, share0),}
-  \StringTok{`}\DataTypeTok{Geometric Paasche}\StringTok{`}\NormalTok{ =}\StringTok{ }\KeywordTok{geomean}\NormalTok{(relatives, share1),}
-  \DataTypeTok{Tornqvist =} \KeywordTok{geomean}\NormalTok{(relatives, (share0 }\OperatorTok{+}\StringTok{ }\NormalTok{share1) }\OperatorTok{/}\StringTok{ }\DecValTok{2}\NormalTok{)}
+  \DataTypeTok{Laspeyres =} \KeywordTok{mean_arithmetic}\NormalTok{(relatives, share0),}
+  \DataTypeTok{Paasche =} \KeywordTok{mean_harmonic}\NormalTok{(relatives, share1),}
+  \DataTypeTok{Fisher =} \KeywordTok{sqrt}\NormalTok{(}\KeywordTok{mean_arithmetic}\NormalTok{(relatives, share0) }\OperatorTok{*}\StringTok{ }\KeywordTok{mean_harmonic}\NormalTok{(relatives, share1)),}
+  \StringTok{`}\DataTypeTok{Geometric Laspeyres}\StringTok{`}\NormalTok{ =}\StringTok{ }\KeywordTok{mean_geometric}\NormalTok{(relatives, share0),}
+  \StringTok{`}\DataTypeTok{Geometric Paasche}\StringTok{`}\NormalTok{ =}\StringTok{ }\KeywordTok{mean_geometric}\NormalTok{(relatives, share1),}
+  \DataTypeTok{Tornqvist =} \KeywordTok{mean_geometric}\NormalTok{(relatives, (share0 }\OperatorTok{+}\StringTok{ }\NormalTok{share1) }\OperatorTok{/}\StringTok{ }\DecValTok{2}\NormalTok{)}
 \NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -483,6 +483,42 @@ The type of arithmetic and geometric indices that this calculates depends entire
 ##            1.070000            1.025907            1.047721            1.063125 
 ##   Geometric Paasche           Tornqvist 
 ##            1.032976            1.047942
+\end{verbatim}
+
+It is interesting to note that any geometric index can be turned into an arithmetic index by an appropriate change of weights. This gives an easy way to determine the contribution that each price relative has towards the index value.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Tornqvist index}
+\KeywordTok{mean_geometric}\NormalTok{(relatives, (share0 }\OperatorTok{+}\StringTok{ }\NormalTok{share1) }\OperatorTok{/}\StringTok{ }\DecValTok{2}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.047942
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Change the weights}
+\NormalTok{new_weights <-}\StringTok{ }\KeywordTok{weights_g2a}\NormalTok{(relatives, (share0 }\OperatorTok{+}\StringTok{ }\NormalTok{share1) }\OperatorTok{/}\StringTok{ }\DecValTok{2}\NormalTok{)}
+\KeywordTok{mean_arithmetic}\NormalTok{(relatives, new_weights) }\CommentTok{# same as geometric mean}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.047942
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Contribution of each relative}
+\NormalTok{(relatives }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{) }\OperatorTok{*}\StringTok{ }\NormalTok{new_weights}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  0.02193407  0.04663616 -0.03768802  0.01705983
 \end{verbatim}
 
 \hypertarget{computing-a-price-index}{%
@@ -584,7 +620,7 @@ Hence, dividing through the index series by the period \(k\) index value produce
 
 The chart below gives an example of how rebasing changes the time series. The index with a base period of December is simply the index with a base period of January divided by the value of the index in December (105). This simply shifts the index with January as the base period down, and squashes it a little, but does not change the relative shape of the time series.
 
-\includegraphics{price-index-course_files/figure-latex/unnamed-chunk-6-1.pdf}
+\includegraphics{price-index-course_files/figure-latex/unnamed-chunk-7-1.pdf}
 
 Rebasing is more complex for an arithmetic index. While it works for a Lowe and Dutot index in the exact same way as a geometric index, in general rebasing an arithmetic index changes the weights used to average price relatives because of the way an arithmetic index is factored. The rebased index is still an arithmetic index, but the weights are no longer correct. For example, rebasing a Laspeyres index changes the weights so that they are no longer the base-period expenditure shares---the index is still an arithmetic index (a Lowe index), but products that have seen a larger increase in price since the base period will receive more weight in the index calculation. In practice, however, this theoretical wrinkle is usually ignored, and an arithmetic price index gets rebased by simply dividing the entire index series by the index value in the new base period.
 
@@ -615,7 +651,7 @@ I^{A}(0, t) = \sum_{i = 1}^{n} \omega_{i0} \frac{p_{ik}}{p_{i0}} \times \sum_{i 
 
 The chart below gives an example of what a chained index looks like.
 
-\includegraphics{price-index-course_files/figure-latex/unnamed-chunk-7-1.pdf}
+\includegraphics{price-index-course_files/figure-latex/unnamed-chunk-8-1.pdf}
 
 The important part about a chained index is the overlap period \(k\) when the weights change, and the prices in period \(k\) get used with two sets of weights. If there is no overlap period then the index cannot be chained. Each index can be thought of as a link in the chain, giving the movement in prices for that section of time, and the overlap period is where the links meet.
 
@@ -626,11 +662,11 @@ It is useful to finish this section of the course with a couple examples in R. T
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Bring in ppd library}
-\KeywordTok{library}\NormalTok{(ppd)}
+\CommentTok{# Bring in gpindex library}
+\KeywordTok{library}\NormalTok{(gpindex)}
 
 \CommentTok{# Make some price relatives}
-\NormalTok{dat <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{relatives =} \KeywordTok{c}\NormalTok{(}\FloatTok{1.1}\NormalTok{, }\FloatTok{1.2}\NormalTok{, }\FloatTok{0.9}\NormalTok{, }\FloatTok{1.1}\NormalTok{),}
+\NormalTok{dat <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{relative =} \KeywordTok{c}\NormalTok{(}\FloatTok{1.1}\NormalTok{, }\FloatTok{1.2}\NormalTok{, }\FloatTok{0.9}\NormalTok{, }\FloatTok{1.1}\NormalTok{),}
                   \DataTypeTok{weight =} \KeywordTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{, }\FloatTok{0.3}\NormalTok{, }\FloatTok{0.3}\NormalTok{, }\FloatTok{0.15}\NormalTok{),}
                   \DataTypeTok{group =}\NormalTok{ letters[}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)]}
 \NormalTok{)}
@@ -639,18 +675,18 @@ It is useful to finish this section of the course with a couple examples in R. T
 \end{Shaded}
 
 \begin{verbatim}
-##   relatives weight group
-## 1       1.1   0.25     a
-## 2       1.2   0.30     a
-## 3       0.9   0.30     b
-## 4       1.1   0.15     b
+##   relative weight group
+## 1      1.1   0.25     a
+## 2      1.2   0.30     a
+## 3      0.9   0.30     b
+## 4      1.1   0.15     b
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# Calculate geometric index for group a and b relatives}
 \NormalTok{index_ab <-}\StringTok{ }\KeywordTok{sapply}\NormalTok{(}\KeywordTok{split}\NormalTok{(dat, dat}\OperatorTok{$}\NormalTok{group), }
-                   \ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{geomean}\NormalTok{(x}\OperatorTok{$}\NormalTok{relatives, x}\OperatorTok{$}\NormalTok{weight) }\OperatorTok{*}\StringTok{ }\DecValTok{100}
+                   \ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{mean_geometric}\NormalTok{(x}\OperatorTok{$}\NormalTok{relative, x}\OperatorTok{$}\NormalTok{weight) }\OperatorTok{*}\StringTok{ }\DecValTok{100}
 \NormalTok{                   )}
 \NormalTok{index_ab}
 \end{Highlighting}
@@ -664,7 +700,7 @@ It is useful to finish this section of the course with a couple examples in R. T
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# Aggregate lower-level indices}
-\NormalTok{index_top <-}\StringTok{ }\KeywordTok{geomean}\NormalTok{(index_ab, }\KeywordTok{tapply}\NormalTok{(dat}\OperatorTok{$}\NormalTok{weight, dat}\OperatorTok{$}\NormalTok{group, sum))}
+\NormalTok{index_top <-}\StringTok{ }\KeywordTok{mean_geometric}\NormalTok{(index_ab, }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{tapply}\NormalTok{(dat}\OperatorTok{$}\NormalTok{weight, dat}\OperatorTok{$}\NormalTok{group, sum)))}
 \NormalTok{index_top}
 \end{Highlighting}
 \end{Shaded}
@@ -676,7 +712,7 @@ It is useful to finish this section of the course with a couple examples in R. T
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# Same as the direct calculation}
-\KeywordTok{geomean}\NormalTok{(dat}\OperatorTok{$}\NormalTok{relatives, dat}\OperatorTok{$}\NormalTok{weight) }\OperatorTok{*}\StringTok{ }\DecValTok{100}
+\KeywordTok{mean_geometric}\NormalTok{(dat}\OperatorTok{$}\NormalTok{relative, dat}\OperatorTok{$}\NormalTok{weight) }\OperatorTok{*}\StringTok{ }\DecValTok{100}
 \end{Highlighting}
 \end{Shaded}
 
@@ -697,17 +733,17 @@ The second example shows how to rebase a price index---simply divide the index s
 \begin{verbatim}
 ##    period value
 ## 1       0   100
-## 2       1   105
-## 3       2   118
-## 4       3   124
-## 5       4   102
-## 6       5    96
-## 7       6    93
-## 8       7   126
-## 9       8   114
-## 10      9   117
-## 11     10   129
-## 12     11   106
+## 2       1   113
+## 3       2   129
+## 4       3   104
+## 5       4   118
+## 6       5   100
+## 7       6   121
+## 8       7   120
+## 9       8   103
+## 10      9   126
+## 11     10    93
+## 12     11   114
 \end{verbatim}
 
 \begin{Shaded}
@@ -718,19 +754,19 @@ The second example shows how to rebase a price index---simply divide the index s
 \end{Shaded}
 
 \begin{verbatim}
-##    period    value
-## 1       0 107.5269
-## 2       1 112.9032
-## 3       2 126.8817
-## 4       3 133.3333
-## 5       4 109.6774
-## 6       5 103.2258
-## 7       6 100.0000
-## 8       7 135.4839
-## 9       8 122.5806
-## 10      9 125.8065
-## 11     10 138.7097
-## 12     11 113.9785
+##    period     value
+## 1       0  82.64463
+## 2       1  93.38843
+## 3       2 106.61157
+## 4       3  85.95041
+## 5       4  97.52066
+## 6       5  82.64463
+## 7       6 100.00000
+## 8       7  99.17355
+## 9       8  85.12397
+## 10      9 104.13223
+## 11     10  76.85950
+## 12     11  94.21488
 \end{verbatim}
 
 \hypertarget{assignment}{%
@@ -1388,7 +1424,7 @@ where \(E\) is the expected value operator, taken over the distribution of price
 
 The figure gives an example of what the prediction problem looks like. Given a distribution of price relatives (solid line), there is an associated expected prediction error with each value that a price index can take (dashed line). The best choice for a price index as a predictive tool is the value that minimizes the expected prediction error (dotted line).
 
-\includegraphics{price-index-course_files/figure-latex/unnamed-chunk-10-1.pdf}
+\includegraphics{price-index-course_files/figure-latex/unnamed-chunk-11-1.pdf}
 
 As the expected value is just a weighted average, the index \(I^{A} = E(p_{t} / p_{0})\) is simply an arithmetic index that averages price relatives. What's interesting is that the weights now have a new interpretation---they are the probability of observing a good or service transacted in the population. That is,
 
@@ -1952,7 +1988,7 @@ The indices for each group can be calculated with a single linear regression, an
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Bring in pdd library}
+\CommentTok{# Bring in gpindex library}
 \KeywordTok{library}\NormalTok{(ppd)}
 
 \CommentTok{# Calculate strata-level indices with a linear regression}
@@ -1962,7 +1998,7 @@ The indices for each group can be calculated with a single linear regression, an
 \NormalTok{index <-}\StringTok{ }\KeywordTok{exp}\NormalTok{(}\KeywordTok{coef}\NormalTok{(mdl)[}\OperatorTok{-}\KeywordTok{seq_len}\NormalTok{(}\KeywordTok{length}\NormalTok{(}\KeywordTok{unique}\NormalTok{((mdl}\OperatorTok{$}\NormalTok{model}\OperatorTok{$}\NormalTok{group))))])}
 
 \CommentTok{# Aggregate, assuming both strata have equal weight}
-\KeywordTok{geomean}\NormalTok{(index) }\OperatorTok{*}\StringTok{ }\DecValTok{100}
+\KeywordTok{mean_geometric}\NormalTok{(index) }\OperatorTok{*}\StringTok{ }\DecValTok{100}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2155,8 +2191,8 @@ It is also the same as manually calculating the stratified index.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Bring in ppd library}
-\KeywordTok{library}\NormalTok{(ppd)}
+\CommentTok{# Bring in gpindex library}
+\KeywordTok{library}\NormalTok{(gpindex)}
 
 \CommentTok{# Weight cat food by its frequency}
 \NormalTok{weights <-}\StringTok{ }\KeywordTok{colSums}\NormalTok{(df[}\OperatorTok{-}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{)])}
@@ -2166,11 +2202,11 @@ It is also the same as manually calculating the stratified index.
 \StringTok{  }\KeywordTok{sapply}\NormalTok{(}\KeywordTok{list}\NormalTok{(}\KeywordTok{subset}\NormalTok{(df, chicken }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{), }
               \KeywordTok{subset}\NormalTok{(df, liver }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{), }
               \KeywordTok{subset}\NormalTok{(df, salmon }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{)),}
-         \ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{with}\NormalTok{(x, }\KeywordTok{geomean}\NormalTok{(price[period }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{]) }\OperatorTok{/}\StringTok{ }\KeywordTok{geomean}\NormalTok{(price[period }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{]))}
+         \ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{with}\NormalTok{(x, }\KeywordTok{mean_geometric}\NormalTok{(price[period }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{]) }\OperatorTok{/}\StringTok{ }\KeywordTok{mean_geometric}\NormalTok{(price[period }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{]))}
 \NormalTok{         )}
 
 \CommentTok{# Aggregate}
-\KeywordTok{geomean}\NormalTok{(strata_indices, weights) }\OperatorTok{*}\StringTok{ }\DecValTok{100}
+\KeywordTok{mean_geometric}\NormalTok{(strata_indices, weights) }\OperatorTok{*}\StringTok{ }\DecValTok{100}
 \end{Highlighting}
 \end{Shaded}
 

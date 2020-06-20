@@ -229,7 +229,6 @@ I^{A}_{G} = \frac{\sum_{i = 1}^{n} 2 p_{i1} / (1 / q_{i0} + 1 / q_{i1})}{\sum_{i
 
 Like the Walsh and Marshall-Edgeworth indices, this index uses a basket that takes an average of the period-0 and period-1 quantities.
 
-
 ## Geometric price indices
 
 A geometric price index is entirely analogous to an arithmetic one, except that price relatives are aggregated with a geometric average instead of an arithmetic average. That is, a general geometric price index is given by^[The capital letter pi $\Pi$ is the product operator. For a collection of numbers $x_{1}, x_{2},\ldots,x_{n}$, $\prod_{i=1}^{n} x_{i}$ means $x_{1} \times x_{2} \times \ldots \times x_{n}$.]
@@ -296,8 +295,8 @@ The Fisher index is often seen as an ideal index because it treats information i
 All of the index-number formulas presented in this section are simply weighted averages, and are fairly easy to calculate in R given information on prices and some weights.
 
 ```{r}
-# Bring in ppd library
-library(ppd)
+# Bring in gpindex library
+library(gpindex) # install.packages("gpindex")
 
 # Make some price relatives
 relatives <- c(1.1, 1.2, 0.9, 1.1)
@@ -307,10 +306,10 @@ weights <- c(0.25, 0.3, 0.3, 0.15)
 
 # Calculate indices
 c(
-  Carli = mean(relatives), 
-  Jevons = geomean(relatives), 
-  Arithmetic = weighted.mean(relatives, weights),
-  Geometric = geomean(relatives, weights)
+  Carli = mean_arithmetic(relatives), 
+  Jevons = mean_geometric(relatives), 
+  Arithmetic = mean_arithmetic(relatives, weights),
+  Geometric = mean_geometric(relatives, weights)
 )
 ```
 
@@ -325,16 +324,28 @@ share1 <- c(0.2, 0.2, 0.4, 0.2)
 
 # Calculate indices
 c(
-  Laspeyres = weighted.mean(relatives, share0),
-  Paasche = harmean(relatives, share1),
-  Fisher = sqrt(weighted.mean(relatives, share0) * harmean(relatives, share1)),
-  `Geometric Laspeyres` = geomean(relatives, share0),
-  `Geometric Paasche` = geomean(relatives, share1),
-  Tornqvist = geomean(relatives, (share0 + share1) / 2)
+  Laspeyres = mean_arithmetic(relatives, share0),
+  Paasche = mean_harmonic(relatives, share1),
+  Fisher = sqrt(mean_arithmetic(relatives, share0) * mean_harmonic(relatives, share1)),
+  `Geometric Laspeyres` = mean_geometric(relatives, share0),
+  `Geometric Paasche` = mean_geometric(relatives, share1),
+  Tornqvist = mean_geometric(relatives, (share0 + share1) / 2)
 )
-
 ```
 
+It is interesting to note that any geometric index can be turned into an arithmetic index by an appropriate change of weights. This gives an easy way to determine the contribution that each price relative has towards the index value.
+
+```{r}
+# Tornqvist index
+mean_geometric(relatives, (share0 + share1) / 2) 
+
+# Change the weights
+new_weights <- weights_g2a(relatives, (share0 + share1) / 2)
+mean_arithmetic(relatives, new_weights) # same as geometric mean
+
+# Contribution of each relative
+(relatives - 1) * new_weights
+```
 # Computing a price index
 
 Any of the index-number formulas in the previous section can be used to make a price index that measures the change in price for a single collection of goods and services over two periods. In application, however, price indices are computed for a variety of different goods and services, and are computed over many periods, not just two. These two points have implications for how the index-number formulas in the previous section are used to calculate a price index in practice. This section of the course explores how the two-period index-number formulas in the previous section can be used to calculate a price index for several groups of goods and services over many time periods.
@@ -522,11 +533,11 @@ The important part about a chained index is the overlap period $k$ when the weig
 It is useful to finish this section of the course with a couple examples in R. The first example shows that a geometric index is consistent in aggregation. Calculating the index in two steps gives the same answer as the direct calculation.
 
 ```{r}
-# Bring in ppd library
-library(ppd)
+# Bring in gpindex library
+library(gpindex)
 
 # Make some price relatives
-dat <- data.frame(relatives = c(1.1, 1.2, 0.9, 1.1),
+dat <- data.frame(relative = c(1.1, 1.2, 0.9, 1.1),
                   weight = c(0.25, 0.3, 0.3, 0.15),
                   group = letters[c(1, 1, 2, 2)]
 )
@@ -534,16 +545,16 @@ dat
 
 # Calculate geometric index for group a and b relatives
 index_ab <- sapply(split(dat, dat$group), 
-                   function(x) geomean(x$relatives, x$weight) * 100
+                   function(x) mean_geometric(x$relative, x$weight) * 100
                    )
 index_ab
 
 # Aggregate lower-level indices
-index_top <- geomean(index_ab, tapply(dat$weight, dat$group, sum))
+index_top <- mean_geometric(index_ab, as.numeric(tapply(dat$weight, dat$group, sum)))
 index_top
 
 # Same as the direct calculation
-geomean(dat$relatives, dat$weight) * 100
+mean_geometric(dat$relative, dat$weight) * 100
 ```
 
 The second example shows how to rebase a price index---simply divide the index series by the value of the index in the new base period.

@@ -234,7 +234,7 @@ df
 The indices for each group can be calculated with a single linear regression, and then aggregated with an average.
 
 ```{r}
-# Bring in pdd library
+# Bring in gpindex library
 library(ppd)
 
 # Calculate strata-level indices with a linear regression
@@ -244,7 +244,7 @@ mdl <- lm(log(price) ~ group + group:period - 1, df)
 index <- exp(coef(mdl)[-seq_len(length(unique((mdl$model$group))))])
 
 # Aggregate, assuming both strata have equal weight
-geomean(index) * 100
+mean_geometric(index) * 100
 ```
 
 # Hedonic price indices
@@ -375,8 +375,8 @@ exp(mean(predict(hi1, df) - predict(hi0, df))) * 100
 
 It is also the same as manually calculating the stratified index.
 ```{r}
-# Bring in ppd library
-library(ppd)
+# Bring in gpindex library
+library(gpindex)
 
 # Weight cat food by its frequency
 weights <- colSums(df[-(1:2)])
@@ -386,11 +386,11 @@ strata_indices <-
   sapply(list(subset(df, chicken == 1), 
               subset(df, liver == 1), 
               subset(df, salmon == 1)),
-         function(x) with(x, geomean(price[period == 1]) / geomean(price[period == 0]))
+         function(x) with(x, mean_geometric(price[period == 1]) / mean_geometric(price[period == 0]))
          )
 
 # Aggregate
-geomean(strata_indices, weights) * 100
+mean_geometric(strata_indices, weights) * 100
 ```
 
 The results are very similar if a time-dummy model is used instead. 
