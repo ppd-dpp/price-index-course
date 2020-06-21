@@ -1,21 +1,18 @@
 #### Building and analyzing a price index with R ####
 # Steve Martin
-# March 30 2020
+# June 2020
 
 #---- Bring in libraries ----
 library(dplyr)
-library(ppd)
+library(gpindex)
 
 #---- Bring in data ----
 source('https://raw.githubusercontent.com/marberts/H-PPD-04/master/get_data.R')
 
 #---- Step 1: Make the weights ----
 # Make product weights
-weights_prod <- weights %>%
+weights_prov <- weights %>%
   group_by(year, province) %>%
-  mutate(share_prod = weight/sum(weight)) %>%
+  summarize(weight = sum(weight)) %>%
+  mutate(share_prov = weights_scale(weight)) %>%
   select(-weight)
-
-#---- Step 9: Quarter the monthly indices ----
-# Turn my monthly index into a quarterly index
-index_stc <- aggregate(index ~ quarter, transform(quarter = year_quarter(period)), mean)

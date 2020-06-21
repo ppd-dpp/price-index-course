@@ -93,7 +93,7 @@ mermaid('
 
 ## Instructions
 
-These instructions outline a simple way to build the price index for widgets, although feel free to use a different approach if it's easier. The goal is to understand the process, rather than design the most computationally efficient system. (Hint: look into the dplyr package and the [ppd](https://github.com/marberts/ppd) package for some useful tools.)
+These instructions outline a simple way to build the price index for widgets, although feel free to use a different approach if it's easier. The goal is to understand the process, rather than design the most computationally efficient system. (Hint: look into the [dplyr](https://cran.r-project.org/package=dplyr) package, the [gpindex](https://cran.r-project.org/package=gpindex) package, and the [calpr](https://github.com/ppd-dpp/calpr) packages for some useful tools.)
 
 Run the following code to grab all the data files and put them in your working environment.
 
@@ -104,34 +104,100 @@ source('https://raw.githubusercontent.com/ppd-dpp/price-index-course/master/scri
 1. **Make the weights**
 
     Using the `weights` file, make one set of weights that give the value share of each product sold within each province in each year, and another that gives the value share of all products sold in each province in each year. This first set of weights will be used to aggregate elemental indices to get 10 province-level indices, and the second set of weights will be used to aggregate the province-level indices to a national index. There should be 200 weights in the first file and 20 weights in the second file.
+    
+    ```{r, eval=FALSE}
+# Make provincial weights
+weights_prov <- weights %>%
+  group_by(year, province) %>%
+  summarize(weight = sum(weight)) %>%
+  mutate(share_prov = weights_scale(weight)) %>%
+  select(-weight)
+
+# Make product weights
+weights_prod <- weights %>%
+  # your code here %>%
+  mutate(share_prod = weights_scale(weight)) %>%
+  select(-weight)
+    ```
 
 2. **Calculate the geomean for product K**
 
     Using the microdata for product K in the `dat_micro` file, calculate the geometric average of the prices in each province in each month in each reference year. This file should have 250 geomeans.
+    
+    ```{r, eval = FALSE}
+dat_micro <- dat_micro %>%
+  mutate(period = year_month(period)) %>%
+  # your code here %>%
+  summarize(geomean = mean_geometric(price))
+    ```
 
 3. **Calculate the geomean for products A to J**
 
     Using the data from the Globular Prices System in `dat_gps`, calculate the geometric average of the price quotes for each product in each province in each month in each reference year, for products A to J. Combine these data with the data prepared in step 2. The resulting file should have 2,500 geomeans.
+    
+    ```{r, eval = FALSE}
+dat_index <- dat_gps %>%
+  # your code here %>%
+  gather(key = 'quote', value = 'price', price1:price3) %>% # gather is from the tidyr package
+  group_by(province, product, year, period) %>%
+  # your code here %>%
+  bind_rows(dat_micro)
+    ```
 
 4. **Calculate the period-over-period elemental indices** 
 
     For each product in each province in each reference year, calculate the ratio of the geometric averages computed in step 3, making sure to have a price relative of 1 in January 2018 and January 2019. (January 2019 will be the link month when it is time to chain the index.)
+    
+    ```{r, eval = FALSE}
+dat_index <- dat_index %>%  
+  # your code here
+    ```
 
 5. **Price update the product weights**
 
     Merge the product-by-province level weights from step 1 into the dataset created in step 4, and use the period-over-period elemental indices to price update the weights.
+    
+    ```{r, eval = FALSE}
+dat_index <- dat_index %>%  
+  left_join(weights_prod, by = c('province', 'product', 'year')) %>%
+  # your code here
+    ```
 
 6. **Calculate the province-level index**
 
     Calculate an arithmetic index for each province in each reference year, using the period-over-period elemental indices and the price updated weights from steps 4 and 5.
+    
+    ```{r, eval = FALSE}
+index_prov <- dat_index %>%
+  group_by(period, year, province) %>%
+  # your code here
+    ```
 
 7. **Calculate the Canada-level index**
 
     Merge the province-level weights in step 1 with the provincial indices from step 6 to calculate a Canada-level index for each reference year.
+    
+    ```{r, eval = FALSE}
+index <- index_prov %>%
+  # your code here
+  group_by(period, year) %>%
+  # your code here
+  mutate(province = 0) %>%
+  bind_rows(index_prov)
+    ```
 
 8. **Chain the 2018 and 2019 indices**
 
     Chain the 2018 and 2019 province-level and Canada-level indices together, using January 2019 as the link month, to get an index from January 2018 to December 2019 with January 2018 as the base period (usually the base period would be a calendar year, but there are only 24 months of data).
+    
+    ```{r, eval = FALSE}
+index_chain <- index %>%
+  group_by(province) %>%
+  # your code here
+  group_by(period, province) %>%
+  summarize(index = unique(index)) %>%
+  ungroup()
+    ```
 
 The end result should be a file with 11 price indices, one for each province and a national index, from January 2018 to December 2019, with January 2018 as the base period (= 100).
 
@@ -140,6 +206,25 @@ Validating the Canada-level index requires putting the Canadian Regulatory Econo
 9. **Quarter the monthly indices**
 
     Turn the index you just made and the Canadian Regulatory Economic Analysis group's index in `index_crea` into a quarterly index, with quarter 1 2019 as the base period, by taking the average of the three index values in each quarter.
+    
+    ```{r, eval = FALSE}
+my_index <- index_chain %>%
+  filter(province == '0') %>%
+  mutate(period = year_quarter(period)) %>%
+  group_by(period) %>%
+  summarize(index = mean(index)) %>%
+  mutate(index = index/index[period == '2019-01-01'] * 100)
+    
+index_crea <- index_crea %>%
+  # your code here %>%
+  # your code here %>%
+  # your code here %>%
+  # your code here %>%
+  # your code here %>%
+    
+index_mw <- index_mw %>%
+  # your code here
+    ```
 
 10. **Append all three indices together**
 

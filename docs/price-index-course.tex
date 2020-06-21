@@ -733,17 +733,17 @@ The second example shows how to rebase a price index---simply divide the index s
 \begin{verbatim}
 ##    period value
 ## 1       0   100
-## 2       1   113
-## 3       2   129
-## 4       3   104
-## 5       4   118
-## 6       5   100
-## 7       6   121
-## 8       7   120
-## 9       8   103
-## 10      9   126
-## 11     10    93
-## 12     11   114
+## 2       1   125
+## 3       2   118
+## 4       3   113
+## 5       4   127
+## 6       5   116
+## 7       6   129
+## 8       7    92
+## 9       8   106
+## 10      9   111
+## 11     10   130
+## 12     11   102
 \end{verbatim}
 
 \begin{Shaded}
@@ -755,18 +755,18 @@ The second example shows how to rebase a price index---simply divide the index s
 
 \begin{verbatim}
 ##    period     value
-## 1       0  82.64463
-## 2       1  93.38843
-## 3       2 106.61157
-## 4       3  85.95041
-## 5       4  97.52066
-## 6       5  82.64463
+## 1       0  77.51938
+## 2       1  96.89922
+## 3       2  91.47287
+## 4       3  87.59690
+## 5       4  98.44961
+## 6       5  89.92248
 ## 7       6 100.00000
-## 8       7  99.17355
-## 9       8  85.12397
-## 10      9 104.13223
-## 11     10  76.85950
-## 12     11  94.21488
+## 8       7  71.31783
+## 9       8  82.17054
+## 10      9  86.04651
+## 11     10 100.77519
+## 12     11  79.06977
 \end{verbatim}
 
 \hypertarget{assignment}{%
@@ -2582,7 +2582,7 @@ Widgets are going to be stratified by province and widget type to produce elemen
 \hypertarget{instructions}{%
 \subsection{Instructions}\label{instructions}}
 
-These instructions outline a simple way to build the price index for widgets, although feel free to use a different approach if it's easier. The goal is to understand the process, rather than design the most computationally efficient system. (Hint: look into the dplyr package and the \href{https://github.com/marberts/ppd}{ppd} package for some useful tools.)
+These instructions outline a simple way to build the price index for widgets, although feel free to use a different approach if it's easier. The goal is to understand the process, rather than design the most computationally efficient system. (Hint: look into the \href{https://cran.r-project.org/package=dplyr}{dplyr} package, the \href{https://cran.r-project.org/package=gpindex}{gpindex} package, and the \href{https://github.com/ppd-dpp/calpr}{calpr} packages for some useful tools.)
 
 Run the following code to grab all the data files and put them in your working environment.
 
@@ -2598,34 +2598,116 @@ Run the following code to grab all the data files and put them in your working e
   \textbf{Make the weights}
 
   Using the \texttt{weights} file, make one set of weights that give the value share of each product sold within each province in each year, and another that gives the value share of all products sold in each province in each year. This first set of weights will be used to aggregate elemental indices to get 10 province-level indices, and the second set of weights will be used to aggregate the province-level indices to a national index. There should be 200 weights in the first file and 20 weights in the second file.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Make provincial weights}
+\NormalTok{weights_prov <-}\StringTok{ }\NormalTok{weights }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(year, province) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{weight =} \KeywordTok{sum}\NormalTok{(weight)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{share_prov =} \KeywordTok{weights_scale}\NormalTok{(weight)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{weight)}
+
+\CommentTok{# Make product weights}
+\NormalTok{weights_prod <-}\StringTok{ }\NormalTok{weights }\OperatorTok{%>%}
+\StringTok{  }\CommentTok{# your code here %>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{share_prod =} \KeywordTok{weights_scale}\NormalTok{(weight)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{weight)}
+\end{Highlighting}
+\end{Shaded}
 \item
   \textbf{Calculate the geomean for product K}
 
   Using the microdata for product K in the \texttt{dat\_micro} file, calculate the geometric average of the prices in each province in each month in each reference year. This file should have 250 geomeans.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat_micro <-}\StringTok{ }\NormalTok{dat_micro }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{period =} \KeywordTok{year_month}\NormalTok{(period)) }\OperatorTok{%>%}
+\StringTok{  }\CommentTok{# your code here %>%}
+\StringTok{  }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{geomean =} \KeywordTok{mean_geometric}\NormalTok{(price))}
+\end{Highlighting}
+\end{Shaded}
 \item
   \textbf{Calculate the geomean for products A to J}
 
   Using the data from the Globular Prices System in \texttt{dat\_gps}, calculate the geometric average of the price quotes for each product in each province in each month in each reference year, for products A to J. Combine these data with the data prepared in step 2. The resulting file should have 2,500 geomeans.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat_index <-}\StringTok{ }\NormalTok{dat_gps }\OperatorTok{%>%}
+\StringTok{  }\CommentTok{# your code here %>%}
+\StringTok{  }\KeywordTok{gather}\NormalTok{(}\DataTypeTok{key =} \StringTok{'quote'}\NormalTok{, }\DataTypeTok{value =} \StringTok{'price'}\NormalTok{, price1}\OperatorTok{:}\NormalTok{price3) }\OperatorTok{%>%}\StringTok{ }\CommentTok{# gather is from the tidyr package}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(province, product, year, period) }\OperatorTok{%>%}
+\StringTok{  }\CommentTok{# your code here %>%}
+\StringTok{  }\KeywordTok{bind_rows}\NormalTok{(dat_micro)}
+\end{Highlighting}
+\end{Shaded}
 \item
   \textbf{Calculate the period-over-period elemental indices}
 
   For each product in each province in each reference year, calculate the ratio of the geometric averages computed in step 3, making sure to have a price relative of 1 in January 2018 and January 2019. (January 2019 will be the link month when it is time to chain the index.)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat_index <-}\StringTok{ }\NormalTok{dat_index }\OperatorTok{%>%}\StringTok{  }
+\StringTok{  }\CommentTok{# your code here}
+\end{Highlighting}
+\end{Shaded}
 \item
   \textbf{Price update the product weights}
 
   Merge the product-by-province level weights from step 1 into the dataset created in step 4, and use the period-over-period elemental indices to price update the weights.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat_index <-}\StringTok{ }\NormalTok{dat_index }\OperatorTok{%>%}\StringTok{  }
+\StringTok{  }\KeywordTok{left_join}\NormalTok{(weights_prod, }\DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{'province'}\NormalTok{, }\StringTok{'product'}\NormalTok{, }\StringTok{'year'}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\CommentTok{# your code here}
+\end{Highlighting}
+\end{Shaded}
 \item
   \textbf{Calculate the province-level index}
 
   Calculate an arithmetic index for each province in each reference year, using the period-over-period elemental indices and the price updated weights from steps 4 and 5.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{index_prov <-}\StringTok{ }\NormalTok{dat_index }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(period, year, province) }\OperatorTok{%>%}
+\StringTok{  }\CommentTok{# your code here}
+\end{Highlighting}
+\end{Shaded}
 \item
   \textbf{Calculate the Canada-level index}
 
   Merge the province-level weights in step 1 with the provincial indices from step 6 to calculate a Canada-level index for each reference year.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{index <-}\StringTok{ }\NormalTok{index_prov }\OperatorTok{%>%}
+\StringTok{  }\CommentTok{# your code here}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(period, year) }\OperatorTok{%>%}
+\StringTok{  }\CommentTok{# your code here}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{province =} \DecValTok{0}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{bind_rows}\NormalTok{(index_prov)}
+\end{Highlighting}
+\end{Shaded}
 \item
   \textbf{Chain the 2018 and 2019 indices}
 
   Chain the 2018 and 2019 province-level and Canada-level indices together, using January 2019 as the link month, to get an index from January 2018 to December 2019 with January 2018 as the base period (usually the base period would be a calendar year, but there are only 24 months of data).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{index_chain <-}\StringTok{ }\NormalTok{index }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(province) }\OperatorTok{%>%}
+\StringTok{  }\CommentTok{# your code here}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(period, province) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{index =} \KeywordTok{unique}\NormalTok{(index)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ungroup}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
 \end{enumerate}
 
 The end result should be a file with 11 price indices, one for each province and a national index, from January 2018 to December 2019, with January 2018 as the base period (= 100).
@@ -2639,6 +2721,27 @@ Validating the Canada-level index requires putting the Canadian Regulatory Econo
   \textbf{Quarter the monthly indices}
 
   Turn the index you just made and the Canadian Regulatory Economic Analysis group's index in \texttt{index\_crea} into a quarterly index, with quarter 1 2019 as the base period, by taking the average of the three index values in each quarter.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_index <-}\StringTok{ }\NormalTok{index_chain }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(province }\OperatorTok{==}\StringTok{ '0'}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{period =} \KeywordTok{year_quarter}\NormalTok{(period)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(period) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{index =} \KeywordTok{mean}\NormalTok{(index)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{index =}\NormalTok{ index}\OperatorTok{/}\NormalTok{index[period }\OperatorTok{==}\StringTok{ '2019-01-01'}\NormalTok{] }\OperatorTok{*}\StringTok{ }\DecValTok{100}\NormalTok{)}
+
+\NormalTok{index_crea <-}\StringTok{ }\NormalTok{index_crea }\OperatorTok{%>%}
+\StringTok{  }\CommentTok{# your code here %>%}
+\StringTok{  }\CommentTok{# your code here %>%}
+\StringTok{  }\CommentTok{# your code here %>%}
+\StringTok{  }\CommentTok{# your code here %>%}
+\StringTok{  }\CommentTok{# your code here %>%}
+
+\NormalTok{index_mw <-}\StringTok{ }\NormalTok{index_mw }\OperatorTok{%>%}
+\StringTok{  }\CommentTok{# your code here}
+\end{Highlighting}
+\end{Shaded}
 \item
   \textbf{Append all three indices together}
 
