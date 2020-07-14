@@ -205,7 +205,7 @@ The indices for each group can be calculated with a single linear regression, an
 
 ```{r}
 # Bring in gpindex library
-library(ppd)
+library(gpindex)
 
 # Calculate strata-level indices with a linear regression
 mdl <- lm(log(price) ~ group + group:period - 1, df)

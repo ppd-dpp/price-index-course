@@ -678,17 +678,17 @@ The second example shows how to rebase a price index---simply divide the index s
 \begin{verbatim}
 ##    period value
 ## 1       0   100
-## 2       1    97
-## 3       2   128
+## 2       1   113
+## 3       2   116
 ## 4       3   105
-## 5       4   122
-## 6       5   118
-## 7       6   117
-## 8       7   124
-## 9       8   113
-## 10      9   116
-## 11     10   125
-## 12     11    90
+## 5       4   125
+## 6       5    90
+## 7       6   121
+## 8       7   127
+## 9       8   118
+## 10      9    97
+## 11     10   104
+## 12     11   124
 \end{verbatim}
 
 \begin{Shaded}
@@ -700,18 +700,18 @@ The second example shows how to rebase a price index---simply divide the index s
 
 \begin{verbatim}
 ##    period     value
-## 1       0  85.47009
-## 2       1  82.90598
-## 3       2 109.40171
-## 4       3  89.74359
-## 5       4 104.27350
-## 6       5 100.85470
+## 1       0  82.64463
+## 2       1  93.38843
+## 3       2  95.86777
+## 4       3  86.77686
+## 5       4 103.30579
+## 6       5  74.38017
 ## 7       6 100.00000
-## 8       7 105.98291
-## 9       8  96.58120
-## 10      9  99.14530
-## 11     10 106.83761
-## 12     11  76.92308
+## 8       7 104.95868
+## 9       8  97.52066
+## 10      9  80.16529
+## 11     10  85.95041
+## 12     11 102.47934
 \end{verbatim}
 
 \hypertarget{assignment}{%
@@ -1832,7 +1832,7 @@ The indices for each group can be calculated with a single linear regression, an
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# Bring in gpindex library}
-\KeywordTok{library}\NormalTok{(ppd)}
+\KeywordTok{library}\NormalTok{(gpindex)}
 
 \CommentTok{# Calculate strata-level indices with a linear regression}
 \NormalTok{mdl <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(}\KeywordTok{log}\NormalTok{(price) }\OperatorTok{~}\StringTok{ }\NormalTok{group }\OperatorTok{+}\StringTok{ }\NormalTok{group}\OperatorTok{:}\NormalTok{period }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{, df)}
