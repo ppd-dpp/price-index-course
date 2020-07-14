@@ -18,7 +18,7 @@ Prerequisites: Introduction to Price Indices, and a basic understanding of R. Pr
 
 Evaluation for this module is based on a single assignment that draws on learners' prior knowledge of price-index theory. The assignment consists of 4 questions (plus a bonus question). Collaboration on the assignment is encouraged, but each person must submit their own unique work. Answers to the assignment, along with working code for each question (excluding the bonus question) is worth 15%. The instructor must be able to understand and run your code; see [example.R](scripts/example.R) for an example. Each correctly answered question is worth an additional 10%. Correctly answering the bonus question is worth 20%. Passing this module requires a grade of 60% or more. 
 
-Please email the course instructor if you have any questions, or need help with any of the course material or assignment.
+Please email one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Rebecca Meier](mailto:rebecca.meier@canada.ca)) if you have any questions, or need help with any of the course material or assignment.
 
 # Assignment
 

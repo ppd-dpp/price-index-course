@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
   
 
-<meta name="author" content="Steve Martin" />
+<meta name="author" content="Steve Martin and Rebecca Meier" />
 
 
 
@@ -222,17 +222,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="motivating-the-jevons-and-laspeyres-indices" class="section level2">
 <h2>Motivating the Jevons and Laspeyres indices</h2>
-<p>Although there is no index that satisfies all five axioms and all three tests, the five axioms, along with the circularity test, uniquely define a price index as being a geometric price index with weights that do not change over time <span class="citation">(Balk 1995, Theorem 11 and Remark 11.1)</span>. That is, a price index satisfies the five axioms and the circularity test if and only if</p>
-<p><span class="math display">\[\begin{align*}
+<p>Although there is no index that satisfies all five axioms and all three tests, the five axioms, along with the circularity test, uniquely define a price index as being a geometric price index with weights that do not change over time <span class="citation">(Balk 1995, Theorem 11 and Remark 11.1)</span>. That is, a price index satisfies the five axioms and the circularity test if and only if
+<span class="math display">\[\begin{align*}
 I(p_{t}, p_{0}, q_{t}, q_{0}) = \prod_{i = 1}^{n} \left(\frac{p_{it}}{p_{i0}}\right)^{\omega_{i}},
-\end{align*}\]</span></p>
-<p>where <span class="math inline">\(\sum_{i = 1}^{n} \omega_{i} = 1\)</span>. Note that constancy of the weights over time rules out the Törnqvist index.</p>
-<p>Switching out the circularity test for the product test, the arithmetic Laspeyres and Paasche indices are the only indices that satisfy the five axioms, the product test, and the consistency in aggregation test <span class="citation">(Balk 1995, Corollary 16)</span>. That is, the price index must either be</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+where <span class="math inline">\(\sum_{i = 1}^{n} \omega_{i} = 1\)</span>. Note that constancy of the weights over time rules out the Törnqvist index.</p>
+<p>Switching out the circularity test for the product test, the arithmetic Laspeyres and Paasche indices are the only indices that satisfy the five axioms, the product test, and the consistency in aggregation test <span class="citation">(Balk 1995, Corollary 16)</span>. That is, the price index must either be
+<span class="math display">\[\begin{align*}
 I(p_{t}, p_{0}, q_{t}, q_{0}) = \frac{\sum_{i = 1}^{n} p_{it}q_{i0}}{\sum_{i = 1}^{n} p_{i0}q_{i0}}
-\end{align*}\]</span></p>
-<p>or</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+or
+<span class="math display">\[\begin{align*}
 I(p_{t}, p_{0}, q_{t}, q_{0}) = \frac{\sum_{i = 1}^{n} p_{it}q_{it}}{\sum_{i = 1}^{n} p_{i0}q_{it}}.
 \end{align*}\]</span></p>
 <p>These stark results help to motivate the use of these simple indices, and give some practical guidance for when to use them. A geometric index is useful when chaining an index is relatively more important than deflating aggregate values, whereas an arithmetic Laspeyres (or Paasche) index is useful when deflating aggregate values in a national accounting framework is relatively more important than using a chained calculation. This helps to explain why price indices produced by statistical agencies tend to use a geometric index for calculating elemental indices, and an arithmetic index for calculating higher-level indices. At the lowest level in an index’s hierarchy, it is important to be able to calculate the elemental indices using period-over-period changes in price, but these indices don’t tend to be used for deflating aggregate values. At higher levels of aggregation, there is a need to be able to deflate aggregate values, but no need for chaining period-over-period changes in price to calculate the index, as it is aggregated up from the elemental indices.</p>

@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
   
 
-<meta name="author" content="Steve Martin" />
+<meta name="author" content="Steve Martin and Rebecca Meier" />
 
 
 
@@ -222,20 +222,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="more-general-price-indices" class="section level2">
 <h2>More general price indices</h2>
-<p>The arithmetic and geometric indices are special cases of a broader class of price indices that solve the following prediction problem:</p>
-<p><span class="math display">\[\begin{align*}
+<p>The arithmetic and geometric indices are special cases of a broader class of price indices that solve the following prediction problem:
+<span class="math display">\[\begin{align*}
 \min_{I} E\left[\left(\left(\frac{p_{t}}{p_{0}}\right)^{r} - I^{r} \right)^{2}\right],
-\end{align*}\]</span></p>
-<p>for some <span class="math inline">\(r \neq 0\)</span>. The solution to this problem is <span class="math inline">\(I = E((p_{t} / p_{0})^{r})^{1 / r}\)</span>. Setting <span class="math inline">\(r = 1\)</span> gives an arithmetic index, whereas taking <span class="math inline">\(r \rightarrow 0\)</span> gives a geometric index <span class="citation">(Bullen 2003, III 1 Theorem 2)</span>.</p>
-<p>What’s useful about this approach is that many other types of price indices correspond to different choices of <span class="math inline">\(r\)</span>, and these in turn can be motivated as solving a type of prediction problem. Setting <span class="math inline">\(r = -1\)</span>, for example, yields a harmonic price index</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+for some <span class="math inline">\(r \neq 0\)</span>. The solution to this problem is <span class="math inline">\(I = E((p_{t} / p_{0})^{r})^{1 / r}\)</span>. Setting <span class="math inline">\(r = 1\)</span> gives an arithmetic index, whereas taking <span class="math inline">\(r \rightarrow 0\)</span> gives a geometric index <span class="citation">(Bullen 2003, III 1 Theorem 2)</span>.</p>
+<p>What’s useful about this approach is that many other types of price indices correspond to different choices of <span class="math inline">\(r\)</span>, and these in turn can be motivated as solving a type of prediction problem. Setting <span class="math inline">\(r = -1\)</span>, for example, yields a harmonic price index
+<span class="math display">\[\begin{align*}
 I^{H} = \left(\sum_{i = 1}^{n} \frac{P_{i}}{p_{it} / p_{i0}} \right)^{-1}.
-\end{align*}\]</span></p>
-<p>When the probability of observing a good is given by its period-<span class="math inline">\(t\)</span> expenditure share, then this is the Paasche index. Setting <span class="math inline">\(r = 1 - \sigma\)</span>, where <span class="math inline">\(\sigma\)</span> is the elasticity of substitution, results in the Lloyd-Moulton price index</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+When the probability of observing a good is given by its period-<span class="math inline">\(t\)</span> expenditure share, then this is the Paasche index. Setting <span class="math inline">\(r = 1 - \sigma\)</span>, where <span class="math inline">\(\sigma\)</span> is the elasticity of substitution, results in the Lloyd-Moulton price index
+<span class="math display">\[\begin{align*}
 I^{LM} = \left(\sum_{i = 1}^{n} P_{i} \left(\frac{p_{it}}{p_{i0}}\right)^{1 - \sigma}\right)^{1 / (1 - \sigma)}
-\end{align*}\]</span></p>
-<p>when the probabilities are period-0 expenditure/revenue shares.</p>
+\end{align*}\]</span>
+when the probabilities are period-0 expenditure/revenue shares.</p>
 <p>An interesting point about these more general types of price indices is that, for a given set of weights, the index value is larger when the parameter <span class="math inline">\(r\)</span> increases <span class="citation">(Bullen 2003, III 3.1 Theorem 1)</span>. This gives the familiar result that an arithmetic index is larger than a geometric index, which in turn is larger than a harmonic index, but it can also be used to rank more exotic types of indices like the Lloyd-Moulton index.</p>
 </div>
             </section>

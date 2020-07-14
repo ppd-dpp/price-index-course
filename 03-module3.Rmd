@@ -22,7 +22,7 @@ Evaluation for this module is based on an assignment consisting of 20 multiple-c
 
 Readings for this module come from chapters 17 and 21 of the PPI manual [@ppimanual] and/or the CPI manual [@cpimanual], published by the IMF (freely available on their website), as well as chapters 4--6 in the Handbook on Residential Property Price Indices [@rppihandbook], published by Eurostat (freely available on their website).^[Although the focus of the handbook is on residential property prices, the ideas are applicable to any goods or services, and the material is presented relatively well.]
 
-Please email the course instructor if you have any questions, or need help with any of the course material or assignment.
+Please email one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Rebecca Meier](mailto:rebecca.meier@canada.ca)) if you have any questions, or need help with any of the course material or assignment.
 
 # Introduction
 
@@ -49,34 +49,27 @@ Treating each good as unique and selling only once may seem odd, but it is the a
 ## Constant-quality price indices
 
 Motivating a constant-quality price index proceeds exactly as it did in the stochastic framework, except now potential prices are used in place of transaction prices. The idea is that there is a distribution of potential price relatives, one for each good, and a price index acts as a best predictor of the change in prices over time. By using potential prices, however, the exact same goods are being compared over time, even if a product as it appears in the market changes between period 0 and period 1. Formally, a constant-quality (geometric) price index is given by
-
 \begin{align*}
 I^{Q} &= \exp\left(E\left[\log\left(\frac{p(1)}{p(0)}\right)\right]\right) \\
 &= \prod_{i = 1}^{n} \left(\frac{p_{i}(1)}{p_{i}(0)}\right)^{P_{i}},
 \end{align*}
-
 where $P_{i}$ is the probability of observing good $i$ in the population of goods. A constant-quality index is a generalization of the standard geometric index that explicitly allows goods, as well as prices, to change over time.
 
 In order to simplify the notation, let $\rho(t) = \log(p(t))$. With this new notation, a constant-quality price index is given by
-
 \begin{align*}
 \log(I^{Q}) = E(\rho(1)) - E(\rho(0)).
 \end{align*}
-
 This notation is convenient because it allows a constant-quality price index to be written as a difference in average potential prices, although the index is still a geometric average of potential price relatives.^[This is a Törnqvist-like index, as it gives the change in price for all goods and services transacted between period 0 and period 1. A Laspeyres-like index uses only the distribution of goods that transact in period 0, so that $\log(I^{Q}) = E(\rho(1) | t = 0) - E(\rho(0) | t = 0)$; a Paasche-like index uses the distribution of goods that transact in period 1, so that $\log(I^{Q}) = E(\rho(1) | t = 1) - E(\rho(0) | t = 1)$. In the language of an experiment, a Törnqvist-like constant-quality index is the average treatment effect, whereas a Laspeyres-like index is the average treatment effect on the untreated, and a Paasche-like index is the average treatment effect on the treated.]
 
 ## Transaction-price indices
 
 The challenge with constructing a constant-quality price index is that potential prices are not observable, and only information on transaction prices and the time when a good sells can be used to calculate an index. There is a problem of missing data. This can be seen by linking transaction prices to potential prices as
-
 \begin{align*}
 \rho = \rho(0) + t(\rho(1) - \rho(0)),
 \end{align*}
-
 where $\rho$ is the (log) transaction price, and $t$ gives the period of sale (either $t = 1$ or $t = 0$). The only information that can be observed from market transactions is $\rho$ and $t$---the price that a good sold for and the time when it actually sold.
 
 Given information on transaction prices, a geometric transaction-price index attempts to mimic the constant-quality index by comparing the average transaction price for the goods that sell in period 1 with the average transaction price for the goods that sell in period 0, and is thus given by
-
 \begin{align*}
 \log(I^{T}) &= E(\rho | t = 1) - E(\rho | t = 0) \\
 &= E(\rho(1) | t = 1) - E(\rho(0) | t = 0).
@@ -85,11 +78,9 @@ Given information on transaction prices, a geometric transaction-price index att
 The transaction-price index generally differs from the constant-quality index, as it compares potential prices for those goods that sell in period 1 to potential prices for those goods that sell in period 0, rather than for all goods. Any change in the composition of goods selling between period 0 and period 1 will contaminate the measurement of a pure price movement, as the same goods are not being compared over time. What the goods selling in period 0 sold for may differ from what the goods selling in period 1 would have sold for in period 0, so comparing average transaction price mixes up a change in price with a change in the composition of goods selling at different points in time.^[Returning to the narrative of an experiment, goods that sell in period 1 are the treatment group and goods that sell in period 0 are the control group, with the transaction-price index giving the average difference in the outcome of the experiment. This may or may not correspond the causal effect of treatment, depending on how the treatment and control groups are formed. For example, suppose the treatment is visiting a hospital and the outcome is a measure of health. Simply comparing health outcomes for those that have recently visited a hospital to those that have not, while ignoring how these groups are formed, would lead one to falsely conclude that visiting a hospital makes people unhealthy as on average those who have recently visited the hospital are in worse health than those who have not. This is because those visiting a hospital were likely to have worse health outcomes anyways, hence an apples-to-orange comparison.] 
 
 Note that this index is not necessarily based on price relatives, as the same number of goods may not sell in each period. If $n(t)$ denotes the set of goods that sell in period $t$, the geometric transaction-price index is a ratio of geometric averages,
-
 \begin{align*}
 \log(I^{T}) = \frac{\prod_{i \in n(1)} p_{i}(1)^{P_{i}|t = 1}}{\prod_{i \in n(0)} p_{i}(1)^{P_{i}|t = 0}},
 \end{align*}
-
 where $P_{i} | t$ is the conditional probability of observing good $i$ in period $t$. This is just a generalization of the usual geometric price index when different goods sell over time.
 
 ## Identification
@@ -99,13 +90,11 @@ It is not possible to construct a constant-quality price index with only knowled
 The most straightforward assumption that identifies the constant-quality price index with the transaction-price index is the assumption that there are no systematic difference between the goods that transact at different points in time, so that the movement in potential prices is the same as the movement in observable transaction prices. This is equivalent to assuming that potential prices are (statistically) independent of the time when a good actually sells, $\{p(1), p(0)\} \perp t$, so the distribution of potential prices for goods that sell in period 0 is the same as the distribution of potential prices for goods that sell in period 1. 
 
 If this independence assumption holds, then $E(\rho(t) | t) = E(\rho(t))$ for $t=0,1$ and so, as long as $0 < P(t = 1) < 1$, so that there are goods that sell in both periods,
-
 \begin{align*}
 \log(I^{Q}) &= E(\rho(1)) - E(\rho(0)) \\ 
 &= E(\rho(1) | t = 1) - E(\rho(0) | t = 0) \\
 &= \log(I^{T}).
 \end{align*}
-
 That is, the constant-quality index is identical to the observable transaction-price index.^[One of the key insights from the program evaluation literature is that it is often easier to get a treatment effect for a sub-population than for the entire population. For example, the average effect of treatment on the treated is identified under weaker conditions than the average treatment effect on the entire population. As a constant-quality price index is just an average treatment effect, it is worth wondering if independence can be relaxed while still delivering a constant-quality index. In certain cases the answer is yes, if a price index applies to a sub-population of goods (e.g., the population of goods that actually sell in period 1, which is the average treatment effect on the treated). This means that tools in the program evaluation literature---such as instrumental variables for local average treatment effects, or regression discontinuity---can be used to calculate a constant-quality price index, although this is still a relatively new area.]
 
 In practice, assuming that potential prices are independent of the time when a good sells is a fairly strong assumption. Unless there is reason to believe that goods sell at random, it is likely an inappropriate assumption. Nonetheless, it serves as the foundational assumption that justifies the use of more sophisticated methods for constructing a constant-quality price index.
@@ -113,35 +102,27 @@ In practice, assuming that potential prices are independent of the time when a g
 ## Example
 
 It is worth going through an example to fix the ideas discussed so far. Suppose the goal is to construct a constant-quality Jevons index for cat food. Cat food can come in three varieties---chicken ($c$), liver ($l$), or salmon ($s$). Both chicken and salmon cat food sell in period 1, and only liver cat food sells in period 0. In this setting, the constant-quality price index is
-
 \begin{align*}
 I^{Q} = \frac{(p_{c}(1) p_{l}(1) p_{s}(1))^{1 / 3}}{(p_{c}(0) p_{l}(0) p_{s}(0))^{1 / 3}}.
 \end{align*}
-
 This index compares potential prices over time for all three varieties of cat food, and so the quality of cat food is held fixed over time.
 
 In practice, all that can be computed with information on transaction prices is
-
 \begin{align*}
 I^{T} = \frac{(p_{c}(1) p_{s}(1))^{1 / 2}}{(p_{l}(0) p_{l}(0))^{1 / 2}}.
 \end{align*}
-
 This index compares the average price of cat food in period 1 to the average price of cat food in period 0.
 
 If potential prices are independent of time, so that there are no systematic differences between liver, chicken, and salmon cat food that affect price, then, at least in this example, $p_{c}(1) = p_{l}(1) = p_{s}(1)$ and $p_{c}(0) = p_{l}(0) = p_{s}(0)$, so that
-
 \begin{align*}
 I^{Q} = \frac{(p_{c}(1) p_{l}(1) p_{s}(1))^{1 / 3}}{(p_{c}(0) p_{l}(0) p_{s}(0))^{1 / 3}} = \frac{(p_{c}(1) p_{s}(1))^{1 / 2}}{(p_{l}(0) p_{l}(0))^{1 / 2}} = I^{T};
 \end{align*}
-
 the transaction-price index equals the constant-quality index, and thus gives the pure price movement for cat food. Even though the chicken and salmon cat food do not sell in period 0, independence ensures that the price of liver cat food serves as a good comparison for what chicken and salmon cat food would have sold for in period 0.
 
 If instead liver and chicken cat food are systematically less expensive than salmon cat food, say because they're of lower quality, then $p_{c}(1) = p_{l}(1) = p_{s}(1)$ and $p_{c}(0) = p_{l}(0) < p_{s}(0)$, so that $p_{s}(1) / p_{s}(0) < p_{s}(1) / p_{l}(0)$. Therefore
-
 \begin{align*}
 I^{Q} = \frac{(p_{c}(1) p_{l}(1) p_{s}(1))^{1 / 3}}{(p_{c}(0) p_{l}(0) p_{s}(0))^{1 / 3}} < \frac{(p_{c}(1) p_{s}(1))^{1 / 2}}{(p_{l}(0) p_{l}(0))^{1 / 2}} = I^{T};
 \end{align*}
-
 the transaction-price index shows a larger increase in prices over time (or a smaller decrease) because salmon cat food would have sold for more than liver cat food in period 0. Comparing the price of salmon cat food to the price of liver cat food confounds a change in price over time with a change in the quality of what sells over time. Independence between potential prices and time rules out these sorts of systematic differences between the goods that actually sell in different periods.
 
 # Stratified price indices
@@ -161,29 +142,22 @@ A stratified approach for constructing a constant-quality price index is just a 
 The setup for the stratified index closely follows the setup for the general constant-quality index in the previous section, except that the characteristics for a good need to be explicitly modeled. To do so, let $X$ be a (random) vector of observable characteristics upon which goods can be stratified. In the context of housing, for example, $X$ may include square footage, number of bedrooms, and the age of the house. Each stratum corresponds to a different realization of $x$ for $X$ (e.g., houses with 1500-2500 square feet, 3 bedrooms, and that are 10-25 years old).
 
 The geometric transaction-price index between period 0 and period 1 for stratum $x$ compares average transaction prices over time for the goods in stratum $x$, and is given by
-
 \begin{align*}
 \log(I^{T}_{x}) = E(\rho | X = x, t = 1) - E(\rho | X = x, t = 0).
 \end{align*}
-
-If potential price is independent of time, conditional on the characteristics used to stratify goods, then the sub-indices for each stratum, computed with transaction prices, have a constant quality interpretation. Formally, this is the conditional independence assumption $\{p(1), p(0)\} \perp t | X$, the within-stratum analogue of the independence assumption from the previous section. For each stratum, whether a good sells in period 0 or period 1 is essentially due to chance, and so there are no systematic differences between goods that sell in period 0 and period 1 that influence price within a stratum. Put differently, the only reason that potential prices could change over time is due to a change in the composition of the
-characteristics $X$---once these characteristics are held fixed, any change in observed prices over time must be a pure price change. 
+If potential price is independent of time, conditional on the characteristics used to stratify goods, then the sub-indices for each stratum, computed with transaction prices, have a constant quality interpretation. Formally, this is the conditional independence assumption $\{p(1), p(0)\} \perp t | X$, the within-stratum analogue of the independence assumption from the previous section. For each stratum, whether a good sells in period 0 or period 1 is essentially due to chance, and so there are no systematic differences between goods that sell in period 0 and period 1 that influence price within a stratum. Put differently, the only reason that potential prices could change over time is due to a change in the composition of the characteristics $X$---once these characteristics are held fixed, any change in observed prices over time must be a pure price change. 
 
 Formally, with conditional independence, it must be that $E(\rho(t) | X, t) = E(\rho(t) | X)$ for $t = 0,1$, and therefore
-
 \begin{align*}
 \log(I^{T}_{x}) &= E(\rho(1) | X = x, t = 1) - E(\rho(0) | X = x, t = 0) \\
  &= E(\rho(1) | X = x) - E(\rho(0) | X = x).
 \end{align*}
-
 Conditional independence gives a constant-quality index for each stratum that coincides with the transaction-price index for that stratum.
 
 In the extreme case when goods are grouped into pairs across time, so that each stratum contains two goods, the stratified index is just a pure matched-model index. To see this, enumerate the population of pairs by $i = 1,\ldots, n_{p}$ so that
-
 \begin{align*}
 I^{Q} = \prod_{i = 1}^{n_{p}} \left(\frac{p_{i1}}{p_{i0}}\right)^{\omega_{i}},
 \end{align*}
-
 where $P(X = x) = \omega_{i}$, and $p_{it}$ is the price of the good in pair $i$ that sells in period $t = 0,1$. Conditional independence holds for a matched-model index if the goods in each pair are sufficiently similar across time so that the transaction price for the good that sells in period 0 gives a good baseline for what the good that sells in period 1 would have sold for in period 0. This also shows that the standard index-number formulas are special cases of the stratified index, and implicitly make an assumption of conditional independence.
 
 It is worth emphasizing that conditional independence is not a testable assumption. It is inherently an economic assumption about how goods sells over time. But it is what allows a constant-quality index to be identified from a transaction-price index.
@@ -193,20 +167,16 @@ It is worth emphasizing that conditional independence is not a testable assumpti
 In order to aggregate the sub-indices for each stratum into an overall price index, it must be that $0 < P(t = 1 | X = x) < 1$---this means that, for each stratum, some goods must sell in each period. This is the overlap (or common support) condition that ensures a price index can be constructed for each stratum. Unlike conditional independence, overlap is verifiable.
 
 When the overlap condition holds, along with conditional independence,
-
 \begin{align*}
 \log(I^{Q}) &= E(\rho(1)) - E(\rho(0)) \\
 &= E[E(\rho(1) | X) - E(\rho(0) | X)] \\
 &= E[E(\rho(1) | X, t = 1) - E(\rho(0) | X, t = 0)] \\
 &= E[E(\rho | X, t = 1) - E(\rho | X, t = 0)],
 \end{align*}
-
 so that
-
 \begin{align*}
 I^{Q} = \prod_{x} (I^{T}_{x})^{P(X = x)}.
 \end{align*}
-
 The constant-quality index is simply a weighted product of each sub-index, calculated with transaction prices, where the weights correspond to the likelihood of a good belonging to a particular stratum. All this information is observable, and hence the constant-quality index is identified.
 
 ## Issues with stratification
@@ -252,11 +222,9 @@ mean_geometric(index) * 100
 The stratified approach for constructing a constant-quality index partitions goods along observable characteristics to help justify an assumption of conditional independence between potential prices and the time when a good sells. This results in a collection of constant-quality indices for each stratum that can be identified by within-stratum transaction prices. The trick with the stratified approach is finding a coarse enough stratification to justify conditional independence while ensuring that the overlap condition holds. Otherwise, if overlap fails, the overall constant-quality index cannot be constructed from the stratum-specific transaction-price indices because it is not possible to construct a transaction-price index for each stratum.
 
 One motivation for hedonics is to specify a model for prices to extrapolate across strata when overlap fails. There may be a list of characteristics for a good that are agreed to appropriately capture what is confounding changes in price over time with changes in the underlying quality of a good, but it is not possible to stratify prices along this list of characteristics due to a failure of overlap. The idea behind hedonics is to model $E(\rho | X, t)$ with a parametric model, $h(X, t)$, that does not require overlap (or requires a weaker form of overlap). With conditional independence, the constant-quality price index is then simply
-
 \begin{align*}
 \log(I^{Q}) = E[E(\rho | X, t = 1) - E(\rho | X, t = 0)] = E[h(X, 1) - h(X, 0)].
 \end{align*}
-
 Every geometric hedonic index has this form, and can be thought of as using the model $h$ to construct modeled price relatives that compare goods with the same characteristics over time, and then aggregating these with a geometric index.
 
 It is worth noting that the hedonic model is usually given a structural interpretation [@rppihandbook, Chapter 5], so that it captures the structural contribution of each characteristic towards price. This is indeed where the name hedonics comes from. The problem with giving the hedonic model $h$ a structural interpretation is that it requires a tremendous amount of prior knowledge, essentially understanding how the individual characteristics of a product determine its price. This is entirely unnecessary, however, once an assumption of conditional independence is made---the hedonic model is simply a model for how average transaction prices relate to characteristics and time. Consequently, the label "hedonics" is not very useful, and is potentially misleading. In the interest of keeping with the broader literature, however, the label will be maintained. What's important to keep in mind is that the hedonic model is simply a model for how average transaction price relates to the characteristics of a good and when it sells.
@@ -268,40 +236,32 @@ It is worth noting that the hedonic model is usually given a structural interpre
 ## Linear hedonic indices
 
 The canonical form for the hedonic model $h$ is a linear function of a good's characteristics, so that $h(X, 0) = \alpha_{0} + X\beta_{0}$ and $h(X, 1) = \alpha_{1} + X\beta_{1}$, and thus
-
 \begin{align*}
 E(\rho | X, t) = \alpha_{0} + t(\alpha_{1} - \alpha_{0}) + X\beta_{0} + t \cdot X (\beta_{1} - \beta_{0}).
 \end{align*}
-
 With a linear form for the hedonic model, transaction prices are expressed as a linear regression on the characteristics of a good---the parameters in a hedonic model are just population regression coefficients. The parameter vector $\beta_{t}$ is usually interpreted as a vector of implicit prices for the non-market characteristics of a good. This interpretation stems from a structural view of a hedonic model---the goal here is simply to specific a parametric model for the conditional price function, $E(\rho | X, t)$, so $\beta_{t}$ need not be given any special interpretation.^[There are some theoretical issues with specifying a linear hedonic model---see @hausman2003 for an example when a CPI is supposed to measure changes in the cost of living, and @rosen1974, which is usually taken as giving the conceptual foundation for the hedonic approach.]
 
 With a linear hedonic model, and conditional independence between potential prices and time,
-
 \begin{align*}
 \log(I^{Q}) = E(h(X, 1) - h(X, 0)) = \alpha_{1} - \alpha_{0} + E(X)(\beta_{1} - \beta_{0}). 
 \end{align*}
-
 The effect of specifying a model for $E(\rho | X, t)$ is that a constant-quality price index now has a simple parametric form that can be used to relax the overlap condition.^[Overlap is not gone entirely---goods still need to sell in both periods and, at each point in time, none of the characteristics in $X$ can be a linear combination of each other---but is not as onerous as with a stratified index.] Nothing precludes using a more complex non-linear model, but in application the hedonic model is usually linear.^[It is easy to show that a set of linear regression coefficients for the regression of $X$ on $y$ solves the following problem: $\min_{b \in \mathbb{R}^{k}} E[(E(y | X) - Xb)^{2}]$. That is, a linear regression gives the minimum mean-square error linear approximation to the conditional expectation function. Hence, even if average price is a non-linear function of characteristics, the linear hedonic model may still give a good approximation.]
 
 This type of hedonic index is sometimes called the hedonic imputation model, because it is the geometric index formed by taking the ratio of the average predicted prices from the linear regressions of (log) price on characteristics at two points in time. As mentioned in the previous section, however, all hedonic price indices have this form, whether average price is modeled as a linear function of characteristics or not. Consequently, the label "hedonic imputation" is not very useful and leads to a variety of "different" hedonic price indices that are really all the same thing.
 
 One advantage of specifying a linear model for $E(\rho | X, t)$ is that the resulting index has a very intuitive form:^[To show this directly, note that $E(\rho | t) = E(E(\rho | X, t)) = E(\alpha_{t} + X\beta_{t} | t) = \alpha_{t} + E(X | t) \beta_{t}$.]
-
 \begin{align*}
 \log(I^{Q}) =& \underbrace{E(\rho | t = 1) - E(\rho | t = 0)}_{\text{transaction-price index}}\\
 &+ \underbrace{[E(X | t = 0) - E(X | t = 1)][\beta_{0} P(t = 1) + \beta_{1} P(t = 0)]}_{\text{correction term}}.
 \end{align*}
-
 Provided that conditional independence holds, and that average transaction price is a linear function of the characteristics of the goods sold, the constant-quality index can be decomposed into a geometric transaction-price index and a correction term that captures the change in the composition of product characteristics over time. The correction term takes the average change in characteristics over time, and uses this to adjust the transaction-price index---the term $\beta_{0} P(t = 1) + \beta_{1} P(t = 0)$ governs whether increasing the presence of a characteristic on average increases prices or not. For example, if products in period 1 have, on average, more of characteristics that are positively associated with price, then the correction term will exert a negative influence on the transaction-price index to arrive at a constant-quality index. This is because the transaction-price index will show an increase in price over time in part because the goods selling in period 1 are of higher quality than those selling in period 0, and would have sold for more in period 0 than the goods that actually sold in period 0. Consequently, the transaction-price index overstates the pure change in price, hence the negative correction term.
 
 Calculating a linear hedonic price index is easy, as
-
 \begin{align*}
 E(\rho | X, t) &= \alpha_{0} + t (\alpha_{1} - \alpha_{0}) + X \beta_{0} + t \cdot X (\beta_{1} - \beta_{0}) \\
 &= \alpha_{0} + t (\alpha_{1} - \alpha_{0} + E(X)(\beta_{1} - \beta_{0})) + X \beta_{0} + t (X - E(X)) (\beta_{1} - \beta_{0}) \\
 &= \alpha_{0} + t \log(I^{Q}) + X \beta_{0} + t (X - E(X)) (\beta_{1} - \beta_{0}).
 \end{align*}
-
 The hedonic index is then just the coefficient on a time-dummy variable in a linear regression, and is therefore extremely easy to calculate.
 
 It is worth concluding this section by noting that in almost all cases it is an assumption that average transaction price is a linear function of characteristics. There is, however, one interesting case where this assumption is always correct. If goods are partitioned by their characteristics, so that each combination of $x$ for $X$ belongs to its own group and gets its own parameter in the hedonic model at each point in time, then $E(\rho | X, t)$ is necessarily linear. In this case the hedonic price index is simply a stratified price index. In this way the linear hedonic price index is a more general type of price index than the stratified index, and finds its value when the stratified index cannot be calculated because of a failure of overlap.
@@ -309,19 +269,15 @@ It is worth concluding this section by noting that in almost all cases it is an 
 ## The time-dummy approach
 
 The hedonic index in the previous section can be simplified to make calculating the index easier with an approach called the time-dummy approach.^[Again, this is a poor name, as the "hedonic imputation" approach recovers the index as the coefficient on a time-dummy variable.] The time-dummy approach simply takes the linear hedonic model in the previous section and restricts it so that $\beta_{0} = \beta_{1} = \beta$. This doesn't change anything fundamental about the index, except that it now requires fewer parameters to calculate, as
-
 \begin{align*}
 E(\rho | X, t) = \alpha_{0} + t \log(I^{Q}) + X \beta.
 \end{align*}
 
 One interesting feature of the time-dummy index is that, like the general linear hedonic index, it is a type of stratified index when goods are partitioned by their observable characteristics. To see this, note that, with the assumption that $\beta_{0} = \beta_{1} = \beta$, the hedonic model becomes $h(X, t) = \alpha_{0} + t (\alpha_{1} - \alpha_{0}) + X\beta$. When goods are stratified according to $X$, then $h$ is saturated-in-$X$ such that there is a unique $\beta_x$ for each combination of $x$ for $X$---each stratum gets its own parameter in the regression. In this case, the result in @angrist2009[Section 3.3.1] applies, so that
-
 \begin{align*}
 \log(I^{Q}) = \sum_{x}[E(\rho | X = x, t = 1) - E(\rho | X = x, t = 0)] \omega_{x},
 \end{align*}
-
 where 
-
 \begin{align*}
 \omega_{x} = \frac{\text{var}(t | X = x) P(X = x)}{\sum_{x} \text{var}(t | X = x) P(X = x)}.
 \end{align*}
@@ -428,7 +384,7 @@ exp(weighted.mean(predict(hi1, df) - predict(hi0, df), df$weights)) * 100
 
 # Assignment
 
-Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65% (13 out of 20 correct). Email your answers to the course instructor when you are finished.
+Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65% (13 out of 20 correct). Email your answers to one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Rebecca Meier](mailto:rebecca.meier@canada.ca)) when you are finished.
 
 **Question 1** True or false: The time-dummy hedonic index is a biased estimator of the constant-quality geometric index.
 
@@ -580,7 +536,6 @@ d) None of the above.
 **Question 19** True or false: It is possible to mix stratification with hedonics to relax overlap.
 
 **Question 20** It can be shown that 
-
 \begin{align*}
 \underbrace{E(\rho | t = 1) - E(\rho | t = 0)}_{\text{transaction-price index}} =& \underbrace{E(\rho(1) | t = 0) - E(\rho(0) | t = 0)}_{\text{Laspeyres-like constant-quality index}} \\ 
 &+ \underbrace{E(\rho(1) | t = 1) - E(\rho(1) | t = 0)}_{\text{selection bias}}.

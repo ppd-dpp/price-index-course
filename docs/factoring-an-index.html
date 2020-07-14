@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
   
 
-<meta name="author" content="Steve Martin" />
+<meta name="author" content="Steve Martin and Rebecca Meier" />
 
 
 
@@ -222,26 +222,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="factoring-an-index" class="section level2">
 <h2>Factoring an index</h2>
-<p>When calculated over many periods, a price index gives a measure of the change in prices over time relative to a fixed base period. Calculating a price index over many periods poses no new challenges—once a base period is selected, one of the index-number formulas in the previous section can be directly applied to produce an index that evolves over time by simply forming price relatives that always calculate the change in price relative to the base period. For example, the series of geometric indices computed over periods 0, 1, and 2, with period 0 as the base period, is</p>
-<p><span class="math display">\[\begin{align*}
+<p>When calculated over many periods, a price index gives a measure of the change in prices over time relative to a fixed base period. Calculating a price index over many periods poses no new challenges—once a base period is selected, one of the index-number formulas in the previous section can be directly applied to produce an index that evolves over time by simply forming price relatives that always calculate the change in price relative to the base period. For example, the series of geometric indices computed over periods 0, 1, and 2, with period 0 as the base period, is
+<span class="math display">\[\begin{align*}
 1, \prod_{i = 1}^{n} \left(\frac{p_{i1}}{p_{i0}}\right)^{\omega_{i}}, \prod_{i = 1}^{n} \left(\frac{p_{i2}}{p_{i0}}\right)^{\omega_{i}}.
-\end{align*}\]</span></p>
-<p>Thus the period 1 index value gives the change in prices between period 1 and period 0, and the period 2 index gives the change in prices between period 2 and period 0. The period 0 value is 1 because the ratio of period 0 prices to period 0 prices is always 1.</p>
+\end{align*}\]</span>
+Thus the period 1 index value gives the change in prices between period 1 and period 0, and the period 2 index gives the change in prices between period 2 and period 0. The period 0 value is 1 because the ratio of period 0 prices to period 0 prices is always 1.</p>
 <p>Most price indices are calculated frequently—usually monthly or quarterly—and it is useful to be able to calculate a price index using only the previous period’s index value and the most recent price relatives for each good covered by the index.<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a> That is, it is useful to be able to factor an index into two terms: the previous period’s index value, and an index that depends on only the current-period prices and previous-period prices. Such a factorization allows for an index to be calculated period-by-period, and saves from having to hold onto the price data in the base period for the life of an index. This is practically significant, as it means that an index can still be produced even if base-period price data are lost.</p>
-<p>Factoring a geometric index is trivial; for a given set of weights, the geometric index that runs from period 0 to period <span class="math inline">\(t\)</span> can always be written as the product of the geometric index that runs for period 0 to period <span class="math inline">\(k\)</span> and the geometric index that runs from period <span class="math inline">\(k\)</span> to period <span class="math inline">\(t\)</span>. That is,</p>
-<p><span class="math display">\[\begin{align*}
+<p>Factoring a geometric index is trivial; for a given set of weights, the geometric index that runs from period 0 to period <span class="math inline">\(t\)</span> can always be written as the product of the geometric index that runs for period 0 to period <span class="math inline">\(k\)</span> and the geometric index that runs from period <span class="math inline">\(k\)</span> to period <span class="math inline">\(t\)</span>. That is,
+<span class="math display">\[\begin{align*}
 I^{G}(0, t) &amp;= \prod_{i = 1}^{n} \left(\frac{p_{it}}{p_{i0}}\right)^{\omega_i} \\
 &amp;= \prod_{i = 1}^{n} \left(\frac{p_{ik}}{p_{i0}}\right)^{\omega_i} \times \prod_{i = 1}^{n} \left(\frac{p_{it}}{p_{ik}}\right)^{\omega_i} \\
 &amp;= I^{G}(0, k) \times I^{G}(k, t).
 \end{align*}\]</span></p>
 <p>This should be deeply intuitive. If prices increased by 20% between period 0 and period <span class="math inline">\(k\)</span>, and then increase by another 10% between period <span class="math inline">\(k\)</span> and period <span class="math inline">\(t\)</span>, the total increase in price from period 0 to period <span class="math inline">\(t\)</span> is 32%. This is the same as multiplying an index value of 1.2 by an index value of 1.1, as the result is 1.32.</p>
-<p>Factoring an arithmetic index is slightly more complex, as it requires changing the weights used to aggregate price relatives. The arithmetic index that runs from period 0 to period <span class="math inline">\(t\)</span> can be written as</p>
-<p><span class="math display">\[\begin{align*}
+<p>Factoring an arithmetic index is slightly more complex, as it requires changing the weights used to aggregate price relatives. The arithmetic index that runs from period 0 to period <span class="math inline">\(t\)</span> can be written as
+<span class="math display">\[\begin{align*}
 I^{A}(0, t) &amp;= \sum_{i = 1}^{n} \omega_{i} \frac{p_{it}}{p_{i0}} \\  
 &amp;= I^{A}(0, k) \times \sum_{i = 1}^{n} \tilde{\omega}_{i} \frac{p_{it}}{p_{ik}},
-\end{align*}\]</span></p>
-<p>where</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+where
+<span class="math display">\[\begin{align*}
 \tilde{\omega}_{i} = \frac{\omega_{i} \frac{p_{ik}}{p_{i0}}}{I^{A}(0, k)}. 
 \end{align*}\]</span></p>
 <p>Unlike the geometric index, factoring an arithmetic index requires changing the weights for the index running from period <span class="math inline">\(k\)</span> to <span class="math inline">\(t\)</span>. Sometimes this gets called price updating the weights, but this terminology is used inconsistently. Despite this wrinkle, however, the basic idea is the same as in the geometric case—an arithmetic index can always be decomposed into two arithmetic indices.</p>

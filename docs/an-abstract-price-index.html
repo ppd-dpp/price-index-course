@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
   
 
-<meta name="author" content="Steve Martin" />
+<meta name="author" content="Steve Martin and Rebecca Meier" />
 
 
 
@@ -223,12 +223,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="an-abstract-price-index" class="section level2">
 <h2>An abstract price index</h2>
 <p>In its abstract form, a price index is a function <span class="math inline">\(I\)</span> that takes four arguments—period-0 prices <span class="math inline">\(p_{0}\)</span>, period-<span class="math inline">\(t\)</span> prices <span class="math inline">\(p_{t}\)</span>, period-0 quantities <span class="math inline">\(q_{0}\)</span>, and period-<span class="math inline">\(t\)</span> quantities <span class="math inline">\(q_{t}\)</span>, for <span class="math inline">\(n\)</span> distinct goods and services—and returns a single value. It is a rule that turns information on prices and quantities at two points in time into one number that summarizes the change in prices. To simplify notation, prices and quantities here are vectors of prices and quantities at a point in time; for example, with <span class="math inline">\(n\)</span> distinct goods and services, prices in period 0 are given by <span class="math inline">\(p_0 = (p_{10}, p_{20}, \ldots, p_{n0})\)</span>. This notation is useful, as a price index is a way to distill information for many prices and quantities into a single value; for example, with 25 goods and services, the price index takes 100 pieces for information (50 prices and 50 quantities) and turns it into one piece of information. For a particular collection of prices and quantities, the index value is given by <span class="math inline">\(I(p_{t}, p_{0}, q_{t}, q_{0})\)</span>.</p>
-<p>Most price indices can be expressed in this abstract form. For example, a Laspeyres index is simply</p>
-<p><span class="math display">\[\begin{align*}
+<p>Most price indices can be expressed in this abstract form. For example, a Laspeyres index is simply
+<span class="math display">\[\begin{align*}
 I(p_{t}, p_{0}, q_{t}, q_{0}) = \frac{\sum_{i=1}^{n} p_{it}q_{i0}}{\sum_{i=1}^{n} p_{i0}q_{i0}}.
-\end{align*}\]</span></p>
-<p>Index-number formulas that don’t make use of quantity information require no special treatment—the index value is just independent of whatever quantities were sold. For example, the Jevons index is</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+Index-number formulas that don’t make use of quantity information require no special treatment—the index value is just independent of whatever quantities were sold. For example, the Jevons index is
+<span class="math display">\[\begin{align*}
 I(p_{t}, p_{0}, q_{t}, q_{0}) = \prod_{i=1}^{n} \left(\frac{p_{it}}{p_{i0}}\right)^{1 / n}.
 \end{align*}\]</span></p>
 <p>While most index-number formulas fit in this abstract representation, price indices that use information in a period other than period 0 or period <span class="math inline">\(t\)</span>, such as a Lowe or Young index, do not. This is an important point, as the axiomatic approach implicitly ignores these types of price indices from the start, rather than using axioms to evaluate their reasonableness as a price index.</p>

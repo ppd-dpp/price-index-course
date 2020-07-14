@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
   
 
-<meta name="author" content="Steve Martin" />
+<meta name="author" content="Steve Martin and Rebecca Meier" />
 
 
 
@@ -222,16 +222,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="the-time-dummy-approach" class="section level2">
 <h2>The time-dummy approach</h2>
-<p>The hedonic index in the previous section can be simplified to make calculating the index easier with an approach called the time-dummy approach.<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a> The time-dummy approach simply takes the linear hedonic model in the previous section and restricts it so that <span class="math inline">\(\beta_{0} = \beta_{1} = \beta\)</span>. This doesn’t change anything fundamental about the index, except that it now requires fewer parameters to calculate, as</p>
-<p><span class="math display">\[\begin{align*}
+<p>The hedonic index in the previous section can be simplified to make calculating the index easier with an approach called the time-dummy approach.<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a> The time-dummy approach simply takes the linear hedonic model in the previous section and restricts it so that <span class="math inline">\(\beta_{0} = \beta_{1} = \beta\)</span>. This doesn’t change anything fundamental about the index, except that it now requires fewer parameters to calculate, as
+<span class="math display">\[\begin{align*}
 E(\rho | X, t) = \alpha_{0} + t \log(I^{Q}) + X \beta.
 \end{align*}\]</span></p>
-<p>One interesting feature of the time-dummy index is that, like the general linear hedonic index, it is a type of stratified index when goods are partitioned by their observable characteristics. To see this, note that, with the assumption that <span class="math inline">\(\beta_{0} = \beta_{1} = \beta\)</span>, the hedonic model becomes <span class="math inline">\(h(X, t) = \alpha_{0} + t (\alpha_{1} - \alpha_{0}) + X\beta\)</span>. When goods are stratified according to <span class="math inline">\(X\)</span>, then <span class="math inline">\(h\)</span> is saturated-in-<span class="math inline">\(X\)</span> such that there is a unique <span class="math inline">\(\beta_x\)</span> for each combination of <span class="math inline">\(x\)</span> for <span class="math inline">\(X\)</span>—each stratum gets its own parameter in the regression. In this case, the result in <span class="citation">Angrist and Pischke (2009 Section 3.3.1)</span> applies, so that</p>
-<p><span class="math display">\[\begin{align*}
+<p>One interesting feature of the time-dummy index is that, like the general linear hedonic index, it is a type of stratified index when goods are partitioned by their observable characteristics. To see this, note that, with the assumption that <span class="math inline">\(\beta_{0} = \beta_{1} = \beta\)</span>, the hedonic model becomes <span class="math inline">\(h(X, t) = \alpha_{0} + t (\alpha_{1} - \alpha_{0}) + X\beta\)</span>. When goods are stratified according to <span class="math inline">\(X\)</span>, then <span class="math inline">\(h\)</span> is saturated-in-<span class="math inline">\(X\)</span> such that there is a unique <span class="math inline">\(\beta_x\)</span> for each combination of <span class="math inline">\(x\)</span> for <span class="math inline">\(X\)</span>—each stratum gets its own parameter in the regression. In this case, the result in <span class="citation">Angrist and Pischke (2009 Section 3.3.1)</span> applies, so that
+<span class="math display">\[\begin{align*}
 \log(I^{Q}) = \sum_{x}[E(\rho | X = x, t = 1) - E(\rho | X = x, t = 0)] \omega_{x},
-\end{align*}\]</span></p>
-<p>where</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+where
+<span class="math display">\[\begin{align*}
 \omega_{x} = \frac{\text{var}(t | X = x) P(X = x)}{\sum_{x} \text{var}(t | X = x) P(X = x)}.
 \end{align*}\]</span></p>
 <p>This index is of the same form as the stratified geometric index in the previous section, except that the weights depend on both the probability of a good belonging to a particular stratum and the variance of sales dates within a stratum. In the special case when each stratum contains a pair of goods, <span class="math inline">\(\omega_{x} = P(X = x)\)</span>, and the time-dummy index reduces to the pure matched-model index.</p>

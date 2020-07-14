@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
   
 
-<meta name="author" content="Steve Martin" />
+<meta name="author" content="Steve Martin and Rebecca Meier" />
 
 
 
@@ -223,30 +223,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="approximating-an-economic-index" class="section level2">
 <h2>Approximating an economic index</h2>
 <p>An economic price index cannot be directly calculated in practice. There is no hope of calculating either an input-price or output-price index without knowledge of the firm’s technology of production, because the form of the firms’ expenditure or revenue function is unknown. The problem is even more severe for a cost-of-living index, as it requires knowledge of consumer preferences to construct the consumer’s expenditure function. The best that can be done is to approximate an economic index using data on observable prices and quantities. Both the arithmetic Laspeyres and geometric Laspeyres indices offer a good approximation to either the input price, output-price index, or cost-of-living index, at least to a first-order approximation.</p>
-<p>The argument for approximating an economic index with an arithmetic Laspeyres or geometric Laspeyres is the same for an input-price index, an output-price index, and a cost-of-living index, and so attention is restricted to approximating an input-price index. To show that the Laspeyres index approximates the input-price index, recall that</p>
-<p><span class="math display">\[\begin{align*}
+<p>The argument for approximating an economic index with an arithmetic Laspeyres or geometric Laspeyres is the same for an input-price index, an output-price index, and a cost-of-living index, and so attention is restricted to approximating an input-price index. To show that the Laspeyres index approximates the input-price index, recall that
+<span class="math display">\[\begin{align*}
 e(p_{0}, y_{0}) = \sum_{i = 1}^{n} p_{i0} q_{i0}.
-\end{align*}\]</span></p>
-<p>Now, it can be shown that the best linear approximation to the expenditure function with period <span class="math inline">\(t\)</span> prices is</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+Now, it can be shown that the best linear approximation to the expenditure function with period <span class="math inline">\(t\)</span> prices is
+<span class="math display">\[\begin{align*}
 e(p_{t}, y_{0}) \approx \sum_{i = 1}^{n} p_{it}q_{i0}
-\end{align*}\]</span></p>
-<p>whenever period-<span class="math inline">\(t\)</span> prices are not too different from period-0 prices.<a href="#fn19" class="footnote-ref" id="fnref19"><sup>19</sup></a> Therefore</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+whenever period-<span class="math inline">\(t\)</span> prices are not too different from period-0 prices.<a href="#fn19" class="footnote-ref" id="fnref19"><sup>19</sup></a> Therefore
+<span class="math display">\[\begin{align*}
 \frac{e(p_{t}, y_{0})}{e(p_{0}, y_{0})} \approx \frac{\sum_{i = 1}^{n} p_{it} q_{i0}}{\sum_{i = 1}^{n} p_{i0} q_{i0}},
-\end{align*}\]</span></p>
-<p>at least for small price changes.</p>
-<p>Similarly, for the geometric Laspeyres, the best linear approximation is based on</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+at least for small price changes.</p>
+<p>Similarly, for the geometric Laspeyres, the best linear approximation is based on
+<span class="math display">\[\begin{align*}
 \log(e(p_{t}, y_{0})) - \log(e(p_{0}, y_{0})) \approx \sum_{i = 1}^{n} \frac{p_{i0} q_{i0}}{\sum_{j = 1}^{n} p_{j0} q_{j0}} \log\left(\frac{p_{it}}{p_{i0}} \right).
-\end{align*}\]</span></p>
-<p>Therefore</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+Therefore
+<span class="math display">\[\begin{align*}
 I{^C} &amp;= \exp(\log(e(p_{t}, y_{0})) - \log(e(p_{0}, y_{0}))) \\
 &amp;\approx \exp\left( \sum_{i = 1}^{n} \frac{p_{i0} q_{i0}}{\sum_{j = 1}^{n} p_{j0} q_{j0}} \log\left(\frac{p_{it}}{p_{i0}} \right) \right) \\
 &amp;= \prod_{i = 1}^{n} \left(\frac{p_{it}}{p_{i0}} \right)^{\omega_{i0}}
-\end{align*}\]</span></p>
-<p>where <span class="math inline">\(\omega_{i0} = p_{i0} q_{i0} / \sum_{j = 1}^{n} p_{j0} q_{j0}\)</span> is the period-0 expenditure weight for good <span class="math inline">\(i\)</span>. As a geometric index is always smaller than its corresponding arithmetic index, and the Laspeyres index is too large relative to the input-price index (i.e., the approximation error is always positive due to substitution bias), the geometric Laspeyres index will give a better approximation to the input-price index than the Laspeyres index whenever the approximation error for the geometric index is positive.</p>
+\end{align*}\]</span>
+where <span class="math inline">\(\omega_{i0} = p_{i0} q_{i0} / \sum_{j = 1}^{n} p_{j0} q_{j0}\)</span> is the period-0 expenditure weight for good <span class="math inline">\(i\)</span>. As a geometric index is always smaller than its corresponding arithmetic index, and the Laspeyres index is too large relative to the input-price index (i.e., the approximation error is always positive due to substitution bias), the geometric Laspeyres index will give a better approximation to the input-price index than the Laspeyres index whenever the approximation error for the geometric index is positive.</p>
 <p>In many cases the Fisher or Törnqvist index offers an even better approximation to an input-price index than the Laspeyres or geometric Laspeyres index. The argument for why these indices can be a better approximation are more complex—see <span class="citation">ILO et al. (2004a Chapter 17)</span> and <span class="citation">ILO et al. (2004b Chapter 17)</span> for details. The cost for this better approximation, however, is the need for more information about period <span class="math inline">\(t\)</span> quantities, which may or may not be available at the time when the index is actually calculated.<a href="#fn20" class="footnote-ref" id="fnref20"><sup>20</sup></a></p>
 </div>
 <!-- </div> -->

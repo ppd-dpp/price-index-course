@@ -1,7 +1,7 @@
 ---
 title: "A Course on Price Indices"
-author: "Steve Martin"
-date: "May 2020"
+author: "Steve Martin and Rebecca Meier"
+date: "July 2020"
 documentclass: article
 geometry: margin=1in
 site: bookdown::bookdown_site
@@ -16,3 +16,10 @@ This course gives a modern and straightforward introduction to prices indices. T
 
 The course is broken into four modules that build on each other. The first module gives an introduction to price indices, focusing mainly on the computational aspects of a price index. The second module gives a broad introduction to the theory of price indices, with a focus on motivating the price indices that get produced by national statistical agencies. The third module covers quality adjustments, one of the main practical hurdles when building a price index. The fourth modules brings everything together with an extended exercise to build and analyze a price index with R.
 
+Not all modules are needed to gain an understanding of price indices, and the material in this course can be used by learners with a variety of backgrounds and objectives. In all cases the first module should be the starting point, as it provides a basic introduction without delving too deep into the mathematical theory. 
+
+Those interested primarily in the computational aspects of a price index can take module 4 after module 1, skipping the more theoretical material in modules 2 and 3. This sequence is appropriate for individuals with little to no prior knowledge of economics or statistics, and who do not need to use a price index for analytic work.
+
+Those with some prior exposure to economic theory can take module 2 after module 1 to gain a deeper understanding of the material in module 1, followed by module 4 to put these ideas into practice. This sequence is appropriate for those that use price indices for analytic work.
+
+Individuals with prior exposure to econometrics and statistics can take module 3 after module 2 to learn about some practical challenges when building a price index, followed again by module 4. This sequence is appropriate for those that both use and build price indices, as it gives the foundational tools required to design a price index.

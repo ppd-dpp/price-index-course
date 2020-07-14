@@ -22,7 +22,7 @@ Evaluation for this module is based on an assignment consisting of 20 multiple-c
 
 Readings for this module come from chapters 1, 2, 4, and 9 of the Producer Price Index Manual [@ppimanual] and/or the Consumer Price Index Manual [@cpimanual], published by the IMF (freely available on their website). As there is considerable overlap between these sources, the PPI manual is used as the main reference.
 
-Please email the course instructor if you have any questions, or need help with any of the course material or assignment.
+Please email one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Rebecca Meier](mailto:rebecca.meier@canada.ca)) if you have any questions, or need help with any of the course material or assignment.
 
 # What’s a price index and why do we need one?
 
@@ -84,81 +84,63 @@ In practice a price index is multiplied by 100, so that the percent change in th
 ## Arithmetic price indices
 
 An arithmetic price index takes price relatives for a collection of goods and services over two periods and combines them together as a weighted average. That is, an arithmetic index is simply the average change in price between two points in time. Letting goods be enumerated by $i = 1,\ldots, n$, an arithmetic index between period 0 and period 1 has the general form^[The capital letter sigma $\Sigma$ is the summation operator. For a collection of numbers $x_{1}, x_{2},\ldots,x_{n}$, $\sum_{i=1}^{n} x_{i}$ means $x_{1} + x_{2} + \ldots + x_{n}$.]
-
 \begin{align*}
 I^{A} = \sum_{i = 1}^{n} \omega_{i} \frac{p_{i1}}{p_{i0}},
 \end{align*}
-
 where $p_{it}$ is the price of good $i$ in period $t = 0,1$, and $\omega_{i} \geq 0$ is the weight that good $i$ receives in the index calculation, such that $\sum_{i = 1}^{n} \omega_{i} = 1$.
 
 Different arithmetic price indices correspond to special cases of the general arithmetic index, depending on the choice of the weights. Most of these choices make use of information about the quantity of a good sold, so that the weights give a measure of the economic importance of a good. Denote by $q_{it}$ the amount of good $i$ consumed/produced in period $t = 0,1$.
 
 Before examining specific arithmetic indices, it is worth noting that an arithmetic index can always be written as the ratio of expenditure/revenue for a "basket" of goods and services at two points in time, so that for any set of weights there are implied "quantities" such that
-
 \begin{align*}
 I^{A} = \frac{\sum_{i = 1}^{n} p_{i1} \tilde{q}_{i}}{\sum_{i = 1}^{n} p_{i0} \tilde{q}_{i}},
 \end{align*}
-
-where $\tilde{q}_{i} = \alpha \omega_{i} / p_{i0}$ for some factor of proportionality $\alpha$.^[The value of $\alpha$ has no impact on the index, but is needed to property interpret $\tilde{q}_{i}$ as a quantity. For example, if $\omega_{i}$ is the period-0 expenditure share on good $i$, $p_{i0} q_{i0} / \sum_{j = 1}^{n} p_{j0} q_{j0}$, then $\alpha = \sum_{j = 1}^{n} p_{j0} q_{j0}$ so that $\tilde{q}_{i} = q_{i0}$.] Thus, an arithmetic index can always be interpreted as the ratio of the expenditure required to purchase a fixed basket of goods at two points in time (or the revenue from a fixed basket of goods at two points in time). The choice of basket is linked one-to-one with the choice of weights used to aggregate price relatives. Both representations of the arithmetic index get used, as some indices are easier to represent in one form than the other.
+where $\tilde{q}_{i} = \alpha \omega_{i} / p_{i0}$ for some factor of proportionality $\alpha$.^[The value of $\alpha$ has no impact on the index, but is needed to properly interpret $\tilde{q}_{i}$ as a quantity. For example, if $\omega_{i}$ is the period-0 expenditure share on good $i$, $p_{i0} q_{i0} / \sum_{j = 1}^{n} p_{j0} q_{j0}$, then $\alpha = \sum_{j = 1}^{n} p_{j0} q_{j0}$ so that $\tilde{q}_{i} = q_{i0}$.] Thus, an arithmetic index can always be interpreted as the ratio of the expenditure required to purchase a fixed basket of goods at two points in time (or the revenue from a fixed basket of goods at two points in time). The choice of basket is linked one-to-one with the choice of weights used to aggregate price relatives. Both representations of the arithmetic index get used, as some indices are easier to represent in one form than the other.
 
 ## Common arithmetic indices
 
 There are six main arithmetic price indices that get used in practice, each corresponding to a different statement about how much weight a price relative should receive in the index calculation.
 
 **Carli index**. Setting $\omega_{i} = 1 / n$ results in the Carli index
-
 \begin{align*}
 I^{A}_{C} = \frac{1}{n} \sum_{i = 1}^{n} \frac{p_{i1}}{p_{i0}}.
 \end{align*}
-
 The Carli index takes a neutral stance on the weights, and treats each price relative as equally important.
 
 **Dutot index**. Setting $\omega_{i} = p_{i0} / \sum_{j = 1}^{n} p_{j0}$ results in the Dutot index
-
 \begin{align*}
 I^{A}_D = \frac{\sum_{i = 1}^{n} p_{i1}}{\sum_{i = 1}^{n} p_{i0}}.
 \end{align*}
-
 The Dutot index gives more weight to price relatives that have a greater period-0 price, comparing the average price of goods in period 1 to the average price in period 0.
 
 **Lowe index**. Setting $\omega_{i} = p_{i0} q_{ib} / \sum_{j = 1}^{n} p_{j0} q_{jb}$ results in the Lowe index
-
 \begin{align*}
 I^{A}_{l} = \frac{\sum_{i = 1}^{n} p_{i1} q_{ib}}{\sum_{i = 1}^{n} p_{i0} q_{ib}},
 \end{align*}
-
 where $q_{ib}$ is the quantity of good $i$ in some base period $b$, usually prior to period 0. The weights for the Lowe index are "hybrid" expenditure/revenue shares for the basket of goods and services in period $b$ using period 0 prices.
 
 **Laspeyres index**. Setting $\omega_{i} = p_{i0} q_{i0} / \sum_{j = 1}^{n} p_{j0} q_{j0}$ results in the Laspeyres index
-
 \begin{align*}
 I^{A}_{L} = \frac{\sum_{i = 1}^{n} p_{i1} q_{i0}}{\sum_{i = 1}^{n} p_{i0} q_{i0}}.
 \end{align*}
-
 The Laspeyres index weights price relatives according to their period-0 expenditure/revenue share, and is a special case of the Lowe index.
 
 **Paasche index**. Setting $\omega_{i} = p_{i0} q_{i1} / \sum_{j = 1}^{n} p_{j0} q_{j1}$ results in the Paasche index
-
 \begin{align*}
 I^{A}_{P} = \frac{\sum_{i = 1}^{n} p_{i1} q_{i1}}{\sum_{i = 1}^{n} p_{i0} q_{i1}}.
 \end{align*}
-
 Like the Laspeyres index, the Paasche index is a special case of the Lowe index, and uses hybrid expenditure/revenue shares to weight price relatives. 
 
 It is worth noting that the Paasche index is often calculated as a weighted harmonic average, with period 1 expenditure/revenue shares as weights, so that 
-
 \begin{align*}
 I^{A}_{P} = \left(\sum_{i = 1}^{n} \frac{\frac{p_{i1} q_{i1}}{\sum_{j = 1}^{n} p_{j1} q_{j1}}}{\frac{p_{i1}}{p_{i0}}}\right)^{-1}.
 \end{align*}
-
 This is an example of a harmonic price index, and is a convenient way to calculate a Paasche index if only period-1 expenditure/revenue shares are known, rather than period-1 quantities.
 
 **Young index**. Setting $\omega_{i} = p_{ib} q_{ib} / \sum_{j = 1}^{n} p_{jb} q_{jb}$ results in the Young index
-
 \begin{align*}
 I^{A}_{Y} = \sum_{i = 1}^{n} \frac{p_{ib} q_{ib}}{\sum_{j = 1}^{n} p_{jb} q_{jb}} \frac{p_{i1}}{p_{i0}},
 \end{align*}
-
 where $q_{ib}$ is the quantity of good $i$ in some base period $b$, with $p_{ib}$ as the price, usually prior to period 0. The Young index uses period $b$ expenditure/revenue shares as weights.^[In some cases a Young index is used to refer to a general arithmetic index, rather than an arithmetic index with a particular set of weights.] The Laspeyres index is a special case of the Young index.
 
 In most applications a Laspeyres index is the desired index-number formula for an arithmetic price index, in part because the weights can be observed separately from the price information. Weights for a CPI, for example, can come from a nationally representative survey of household spending, and so only price information needs to be collected to calculate a Laspeyres index. Although the Young weights are directly observable as well, they do not necessarily reflect changes in the composition of spending or sources of revenue between period $b$ and period 0. Alternatively, both the Lowe and Paasche indices have weights that need to be explicitly calculated. Like the Young index, the Lowe index uses out-of-date quantity information, whereas the Paasche index uses current-period quantity information, and this usually means that it cannot be computed in a timely manner. 
@@ -170,109 +152,82 @@ Despite the goal of calculating a Laspeyres index, in most applications an arith
 There are a variety of arithmetic indices that are rarely used in practice, but can be useful to know about. As these index-number formulas are seldom used, this material can be safely be skipped.
 
 **Palgrave index**. Setting $\omega_{i} = p_{i1} q_{i1} / \sum_{j = 1}^{n} p_{j1} q_{j1}$ results in the Palgrave index
-
 \begin{align*}
 I^{A}_{p} = \sum_{i = 1}^{n} \frac{p_{i1} q_{i1}}{\sum_{j = 1}^{n} p_{j1} q_{j1}} \frac{p_{i1}}{p_{i0}}.
 \end{align*}
-
 The Palgrave index uses period-1 expenditure shares as weights, and is a special case of the Young index.
 
 **Unnamed index**. Setting 
-
 \begin{align*}
 \omega_{i} = \frac{1}{2} \frac{p_{i0} q_{i0}}{\sum_{j = 1}^{n} p_{j0} q_{j0}} + \frac{1}{2} \frac{p_{i1} q_{i1}}{\sum_{j = 1}^{n} p_{j1} q_{j1}}
 \end{align*}
-
 results in an index-number formula without a name,
-
 \begin{align*}
 I^{A}_{U} = \sum_{i = 1}^{n} \left(\frac{1}{2} \frac{p_{i0} q_{i0}}{\sum_{j = 1}^{n} p_{j0} q_{j0}} + \frac{1}{2} \frac{p_{i1} q_{i1}}{\sum_{j = 1}^{n} p_{j1} q_{j1}}\right) \frac{p_{i1}}{p_{i0}}.
 \end{align*}
-
 This index is a mixture of the Laspeyres and Palgrave indices, with weights given by the average expenditure/revenue share between period 0 and period 1.
 
 **Drobisch index**. Setting 
-
 \begin{align*}
 \omega_{i} = \frac{1}{2} \frac{p_{i0} q_{i0}}{\sum_{j = 1}^{n} p_{j0} q_{j0}} + \frac{1}{2} \frac{p_{i0} q_{i1}}{\sum_{j = 1}^{n} p_{j0} q_{j1}}
 \end{align*}
-
 results in the Drobisch index
-
 \begin{align*}
 I^{A}_{d} = \frac{1}{2} \frac{\sum_{i = 1}^{n} p_{i1} q_{i0}}{\sum_{i = 1}^{n} p_{i0} q_{i0}} + \frac{1}{2} \frac{\sum_{i = 1}^{n} p_{i1} q_{i1}}{\sum_{i = 1}^{n} p_{i0} q_{i1}}.
 \end{align*}
-
 This index is a mixture of the Laspeyres and Paasche indices.
 
 **Walsh index**. Setting $\omega_{i} = p_{i0} \sqrt{q_{i0} q_{i1}} / \sum_{j = 1}^{n} p_{j0} \sqrt{q_{j0} q_{j1}}$ results in the Walsh index
-
 \begin{align*}
 I^{A}_{W} = \frac{\sum_{i = 1}^{n} p_{i1} \sqrt{q_{i0} q_{i1}}}{\sum_{i = 1}^{n} p_{i0} \sqrt{q_{i0} q_{i1}}}.
 \end{align*}
-
 This index uses a basket that contains the geometric average of the period-0 and period-1 quantities.
 
 **Marshall-Edgeworth index**. Setting $\omega_{i} = p_{i0} (q_{i0} + q_{i1}) / \sum_{j = 1}^{n} p_{j0} (q_{j0} + q_{j1})$ results in the Marshall-Edgeworth index
-
 \begin{align*}
 I^{A}_{M} = \frac{\sum_{i = 1}^{n} p_{i1} (q_{i0} + q_{i1}) / 2}{\sum_{i = 1}^{n} p_{i0} (q_{i0} + q_{i1}) / 2}.
 \end{align*}
-
 Like the Walsh index, this index uses a basket that takes an average of the period-0 and period-1 quantities.
 
 **Geary-Khamis index**. Setting $\omega_{i} = p_{i0}  / (1 / q_{i0} + 1 / q_{i1}) / \sum_{j = 1}^{n} p_{j0} / (1 / q_{j0} + 1 / q_{j1})$ results in the Geary-Khamis index
-
 \begin{align*}
 I^{A}_{G} = \frac{\sum_{i = 1}^{n} 2 p_{i1} / (1 / q_{i0} + 1 / q_{i1})}{\sum_{i = 1}^{n} 2 p_{i0} / (1 / q_{i0} + 1 / q_{i1})}.
 \end{align*}
-
 Like the Walsh and Marshall-Edgeworth indices, this index uses a basket that takes an average of the period-0 and period-1 quantities.
 
 ## Geometric price indices
 
 A geometric price index is entirely analogous to an arithmetic one, except that price relatives are aggregated with a geometric average instead of an arithmetic average. That is, a general geometric price index is given by^[The capital letter pi $\Pi$ is the product operator. For a collection of numbers $x_{1}, x_{2},\ldots,x_{n}$, $\prod_{i=1}^{n} x_{i}$ means $x_{1} \times x_{2} \times \ldots \times x_{n}$.]
-
 \begin{align*}
 I^{G} = \prod_{i = 1}^{n} \left(\frac{p_{i1}}{p_{i0}}\right)^{\omega_{i}}.
 \end{align*}
 
-As with the arithmetic indices, different geometric indices correspond to different choices for the weights.^[It is interesting to note that the weights can also be chosen so that any geometric index is also an arithmetic index (and vice versa). That is, for any $\omega_{i}$, there is an $\tilde{\omega}_{i}$ such that $\prod_{i = 1}^{n} (p_{i1} / p_{i0})^{\omega_{i}} = \sum_{i = 1}^{n} \tilde{\omega}_{i} p_{i1} / p_{i0}$. See @balk2008[Section 4.2] for what these weights look like. Framing an index as arithmetic or geometric is really just a case of framing the weights.]
+As with the arithmetic indices, different geometric indices correspond to different choices for the weights.^[It is interesting to note that the weights can also be chosen so that any geometric index is also an arithmetic index (and vice versa). That is, for any $\omega_{i}$, there is an $\tilde{\omega}_{i}$ such that $\prod_{i = 1}^{n} (p_{i1} / p_{i0})^{\omega_{i}} = \sum_{i = 1}^{n} \tilde{\omega}_{i} p_{i1} / p_{i0}$. See @balk2008[Section 4.2] for what these weights look like. Framing an index as arithmetic or geometric is really just a case of framing the weights. The same holds true for a number of other types of indices, such as harmonic indices---see @martin2020.]
 
 **Jevons index**. Setting $\omega_{i} = 1 / n$ results in the Jevons index
-
 \begin{align*}
 I^{G}_{J} = \prod_{i = 1}^{n} \left(\frac{p_{i1}}{p_{i0}}\right)^{1 / n},
 \end{align*}
-
 or, equivalently,
-
 \begin{align*}
 I^{G}_{J} = \frac{\prod_{i = 1}^{n} p_{i1}^{1 / n}}{\prod_{i = 1}^{n} p_{i0}^{1 / n}}.
 \end{align*}
-
 The Jevons index is the geometric analogue to the Carli or Dutot index.
 
 **Geometric Laspeyres index**. Setting $\omega_{i} = p_{i0} q_{i0} / \sum_{j = 1}^{n} p_{j0} q_{j0}$ results in the geometric Laspeyres index
-
 \begin{align*}
 I^{G}_{L} = \prod_{i = 1}^{n} \left(\frac{p_{i1}}{p_{i0}}\right)^{\frac{p_{i0} q_{i0}}{\sum_{j = 1}^{n} p_{j0} q_{j0}}}.
 \end{align*}
-
 Similar to the Jevons index, this is the geometric analogue of the Laspeyres index. It is trivial to define a geometric Young index as well by using period-$b$ rather than period-0 expenditure/revenue shares.^[Defining a geometric Lowe index is less obvious. For example, the geometric Paasche index uses period-1 expenditure/revenue shares as weights, instead of the hybrid weights used for the arithmetic Paasche index. Perhaps a better name for this index would be the geometric Palgrave index.]
 
 **Törnqvist index**. Setting 
-
 \begin{align*}
 \omega_{i} = \frac{1}{2} \frac{p_{i0} q_{i0}}{\sum_{j = 1}^{n} p_{j0} q_{j0}} + \frac{1}{2} \frac{p_{i1} q_{i1}}{\sum_{j = 1}^{n} p_{j1} q_{j1}}
 \end{align*}
-
 results in the Törnqvist index, which is usually expressed as
-
 \begin{align*}
 \log(I^{G}_{T}) = \sum_{i = 1}^{n} \left(\frac{1}{2} \frac{p_{i0} q_{i0}}{\sum_{j = 1}^{n} p_{j0} q_{j0}} + \frac{1}{2} \frac{p_{i1} q_{i1}}{\sum_{j = 1}^{n} p_{j1} q_{j1}}\right) \log\left(\frac{p_{i1}}{p_{i0}}\right).
 \end{align*}
-
 The Törnqvist index expands on the geometric Laspeyres index by using expenditure shares in both period 0 and period 1 to form weights (i.e., the average expenditure share between period 0 and period 1).
 
 The Jevons index is usually synonymous with a geometric index, and it finds application in situations where there is no quantity information to form weights (as opposed to using a Carli or Dutot index). Sometimes a weighted Jevons index is used as a shorthand for the general geometric index.
@@ -282,7 +237,6 @@ One point to note about the geometric indices is that they are always smaller th
 ## The Fisher index
 
 One important price index that is neither a geometric index nor an arithmetic index is the Fisher index, which is the geometric average of the (arithmetic) Laspeyres index and the (arithmetic) Paasche index,
-
 \begin{align*}
 I_{F} &= \sqrt{\frac{\sum_{i = 1}^{n} p_{i1} q_{i0}}{\sum_{i = 1}^{n} p_{i0} q_{i0}} \times \frac{\sum_{i = 1}^{n} p_{i1} q_{i1}}{\sum_{i = 1}^{n} p_{i0} q_{i1}}} \\
 &= \sqrt{I^{A}_{L} \times I^{A}_{P}}.
@@ -398,19 +352,15 @@ mermaid("
 Given that there are two ways to calculate a price index with a hierarchical structure, does the direct calculation give the same result as the two-step calculation? The answer is yes for an arithmetic or geometric index, provided the weights used to aggregate the elementary aggregates are formed using the underlying weights for the target index. For example, if the goal is to calculate a Laspeyres index, then the weight for an elementary aggregate should be the expenditure/revenue share for the goods in that elementary aggregate in period 0. As both geometric and arithmetic indices are calculated as weighted averages, it should not be surprising that an index can be calculated by first grouping price relatives together, calculating group-level averages, then averaging the group-level averages to form an overall average. Consequently, these indices are said to be consistent in aggregation, although not all index-number formulas are consistent in aggregation. For example, the Fisher index is not consistent in aggregation, and using the two-step procedure to calculate it will give a different answer than the direct calculation.
 
 It is easy to show that any arithmetic index is consistent in aggregation (the reasoning for the geometric case is almost identical). Suppose that goods are partitioned into $k=1,\ldots,m$ distinct and mutually exclusive categories---that is, there are $m$ elementary aggregates. If category $k$ contains $n_{k}$ goods, then the arithmetic index for this category is 
-
 \begin{align*}
 I_{k}^{A} = \sum_{i = 1}^{n_k} \frac{\omega_{ik}}{\sum_{j = 1}^{n_k} \omega_{jk}} \frac{p_{ik1}}{p_{ik0}},
 \end{align*}
-
 where $p_{ik1} / p_{ik0}$ is the price relative of good $i$ in category $k$ and $\omega_{ik}$ is the weight for good $i$ in category $k$. These $m$ indices can now be aggregated together to form an overall index by taking a weighted-average of each index, with weights given by $\omega_{k} = \sum_{j = 1}^{n_k} \omega_{jk}$, so that 
-
 \begin{align*}
 I^{A} &= \sum_{k = 1}^{m} \omega_k I_{k}^{A}  \\
 &= \sum_{k = 1}^{m} \omega_k \sum_{i = 1}^{n_k} \frac{\omega_{ik}}{\sum_{j = 1}^{n_k} \omega_{jk}} \frac{p_{ik1}}{p_{ik0}} \\
 &= \sum_{k = 1}^{m} \sum_{i = 1}^{n_k} \omega_{ik} \frac{p_{ik1}}{p_{ik0}}.
 \end{align*}
-
 But this is exactly the same as if the arithmetic index had been calculated by pooling all price relatives together and calculating the index directly, rather than partitioning them into groups and calculating the index in two steps.
 
 One advantage of the two-step calculation over the direct calculation is that the index-number formula used to calculate the elementary indices can differ from the index-number formula used at higher levels aggregation. It may seem odd to want to do this, but there are a number of subtle theoretical and practical reasons why a different index-number formula would be used for the elementary indices. In most applications the elementary indices are calculated using a Jevons index, partly because detailed information on quantities bought or sold may be difficult to obtain at very low levels of aggregation. Higher levels are then calculated as an arithmetic index, usually a Young or Lowe index. 
@@ -418,17 +368,14 @@ One advantage of the two-step calculation over the direct calculation is that th
 ## Factoring an index
 
 When calculated over many periods, a price index gives a measure of the change in prices over time relative to a fixed base period. Calculating a price index over many periods poses no new challenges---once a base period is selected, one of the index-number formulas in the previous section can be directly applied to produce an index that evolves over time by simply forming price relatives that always calculate the change in price relative to the base period. For example, the series of geometric indices computed over periods 0, 1, and 2, with period 0 as the base period, is
-
 \begin{align*}
 1, \prod_{i = 1}^{n} \left(\frac{p_{i1}}{p_{i0}}\right)^{\omega_{i}}, \prod_{i = 1}^{n} \left(\frac{p_{i2}}{p_{i0}}\right)^{\omega_{i}}.
 \end{align*}
-
 Thus the period 1 index value gives the change in prices between period 1 and period 0, and the period 2 index gives the change in prices between period 2 and period 0. The period 0 value is 1 because the ratio of period 0 prices to period 0 prices is always 1.
 
 Most price indices are calculated frequently---usually monthly or quarterly---and it is useful to be able to calculate a price index using only the previous period's index value and the most recent price relatives for each good covered by the index.^[One reason is that it can make sampling price information easier, as the same units don't need to be sampled in both the current period and base period.] That is, it is useful to be able to factor an index into two terms: the previous period's index value, and an index that depends on only the current-period prices and previous-period prices. Such a factorization allows for an index to be calculated period-by-period, and saves from having to hold onto the price data in the base period for the life of an index. This is practically significant, as it means that an index can still be produced even if base-period price data are lost.
 
 Factoring a geometric index is trivial; for a given set of weights, the geometric index that runs from period 0 to period $t$ can always be written as the product of the geometric index that runs for period 0 to period $k$ and the geometric index that runs from period $k$ to period $t$. That is,
-
 \begin{align*}
 I^{G}(0, t) &= \prod_{i = 1}^{n} \left(\frac{p_{it}}{p_{i0}}\right)^{\omega_i} \\
 &= \prod_{i = 1}^{n} \left(\frac{p_{ik}}{p_{i0}}\right)^{\omega_i} \times \prod_{i = 1}^{n} \left(\frac{p_{it}}{p_{ik}}\right)^{\omega_i} \\
@@ -438,14 +385,11 @@ I^{G}(0, t) &= \prod_{i = 1}^{n} \left(\frac{p_{it}}{p_{i0}}\right)^{\omega_i} \
 This should be deeply intuitive. If prices increased by 20% between period 0 and period $k$, and then increase by another 10% between period $k$ and period $t$, the total increase in price from period 0 to period $t$ is 32%. This is the same as multiplying an index value of 1.2 by an index value of 1.1, as the result is 1.32.
 
 Factoring an arithmetic index is slightly more complex, as it requires changing the weights used to aggregate price relatives. The arithmetic index that runs from period 0 to period $t$ can be written as
-
 \begin{align*}
 I^{A}(0, t) &= \sum_{i = 1}^{n} \omega_{i} \frac{p_{it}}{p_{i0}} \\  
 &= I^{A}(0, k) \times \sum_{i = 1}^{n} \tilde{\omega}_{i} \frac{p_{it}}{p_{ik}},
 \end{align*}
-
 where 
-
 \begin{align*}
 \tilde{\omega}_{i} = \frac{\omega_{i} \frac{p_{ik}}{p_{i0}}}{I^{A}(0, k)}. 
 \end{align*}
@@ -459,7 +403,6 @@ Intuitively, factoring an index simply tinkers with value of the index in the ba
 The base period is an important point in time for a price index, as it gives the fixed reference point to which price changes are measured against. Having to choose a base period at all, however, introduces a potential problem: what works as a base period for one use of a price index may not work for another. Fortunately, the choice of base period doesn't have much impact on the economic content of a price index---in most cases a new base period can be chosen for an index without needing to recompute the entire index series.
 
 For a geometric index, the choice of base period has no impact on the economic content of a price index---the change in price between any two periods is the same regardless of the base period. The base period simply standardizes the index to a particular level. This can be seen by recalling that a geometric index can always be factored into two geometric indices. Given an index series with period 0 as the base period, the index value in period $t$ with period $k$ as the base period can always be found by simply dividing the index value in period $t$ by the index value in period $k$
-
 \begin{align*}
 I^{G}(k, t) &= \prod_{i = 1}^{n} \left(\frac{p_{it}}{p_{ik}}\right)^{\omega_{i}} \\
 &= \frac{\prod_{i = 1}^{n} \left(\frac{p_{it}}{p_{i0}}\right)^{\omega_{i}}}{\prod_{i = 1}^{n} \left(\frac{p_{ik}}{p_{i0}}\right)^{\omega_{i}}} \\
@@ -493,23 +436,17 @@ The weights for an index ideally give a measure of the economic importance of th
 The idea behind chaining is the same as that for factoring an index---break an index into two pieces that can be glued together at a common overlap period. The difference is that while factoring an index is simply a trick of algebra, chaining an index is a practical solution for producing an index with a longer time series, rather than restarting the index in the period when the weights change. In both cases the idea is to modify the value in the base period of an index to reflect the cumulative change in price up to that point in time.
 
 The steps for chaining any kind of index are the same, so consider an arithmetic index running from period 0 to period $t$, and suppose the weights for this index change in some period $k$. This could be because the previous weights have become sufficiently out-of-date that they need to change, or goods and services for which the index applies have changed. Whatever the reason, this gives rise to two indices, one running from period 0 to period $k$, using period-0 weights
-
 \begin{align*}
 I^{A}(0, k) = \sum_{i = 1}^{n} \omega_{i0} \frac{p_{ik}}{p_{i0}},
 \end{align*}
-
 and another running from period $k$ to period $t$ using period-$k$ weights
-
 \begin{align*}
 I^{A}(k, t) = \sum_{i = 1}^{m} \omega_{ik} \frac{p_{it}}{p_{ik}}.
 \end{align*}
-
 The chained index simply multiplies these two indices together, so that
-
 \begin{align*}
 I^{A}(0, t) = \sum_{i = 1}^{n} \omega_{i0} \frac{p_{ik}}{p_{i0}} \times \sum_{i = 1}^{m} \omega_{ik} \frac{p_{it}}{p_{ik}}.
 \end{align*}
-
 The chart below gives an example of what a chained index looks like.
 
 ```{r, echo=FALSE}
@@ -570,7 +507,7 @@ transform(index, value = value / value[period == 6] * 100)
 
 # Assignment
 
-Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65% (13 out of 20 correct). Email your answers to the course instructor when you are finished.
+Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65% (13 out of 20 correct). Email your answers to one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Rebecca Meier](mailto:rebecca.meier@canada.ca)) when you are finished.
 
 **Question 1** True or false: The Jevons index is always smaller than or equal to the Laspeyres index.
 

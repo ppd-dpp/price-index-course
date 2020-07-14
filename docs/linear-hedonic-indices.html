@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
   
 
-<meta name="author" content="Steve Martin" />
+<meta name="author" content="Steve Martin and Rebecca Meier" />
 
 
 
@@ -222,30 +222,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="linear-hedonic-indices" class="section level2">
 <h2>Linear hedonic indices</h2>
-<p>The canonical form for the hedonic model <span class="math inline">\(h\)</span> is a linear function of a good’s characteristics, so that <span class="math inline">\(h(X, 0) = \alpha_{0} + X\beta_{0}\)</span> and <span class="math inline">\(h(X, 1) = \alpha_{1} + X\beta_{1}\)</span>, and thus</p>
-<p><span class="math display">\[\begin{align*}
+<p>The canonical form for the hedonic model <span class="math inline">\(h\)</span> is a linear function of a good’s characteristics, so that <span class="math inline">\(h(X, 0) = \alpha_{0} + X\beta_{0}\)</span> and <span class="math inline">\(h(X, 1) = \alpha_{1} + X\beta_{1}\)</span>, and thus
+<span class="math display">\[\begin{align*}
 E(\rho | X, t) = \alpha_{0} + t(\alpha_{1} - \alpha_{0}) + X\beta_{0} + t \cdot X (\beta_{1} - \beta_{0}).
-\end{align*}\]</span></p>
-<p>With a linear form for the hedonic model, transaction prices are expressed as a linear regression on the characteristics of a good—the parameters in a hedonic model are just population regression coefficients. The parameter vector <span class="math inline">\(\beta_{t}\)</span> is usually interpreted as a vector of implicit prices for the non-market characteristics of a good. This interpretation stems from a structural view of a hedonic model—the goal here is simply to specific a parametric model for the conditional price function, <span class="math inline">\(E(\rho | X, t)\)</span>, so <span class="math inline">\(\beta_{t}\)</span> need not be given any special interpretation.<a href="#fn35" class="footnote-ref" id="fnref35"><sup>35</sup></a></p>
-<p>With a linear hedonic model, and conditional independence between potential prices and time,</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+With a linear form for the hedonic model, transaction prices are expressed as a linear regression on the characteristics of a good—the parameters in a hedonic model are just population regression coefficients. The parameter vector <span class="math inline">\(\beta_{t}\)</span> is usually interpreted as a vector of implicit prices for the non-market characteristics of a good. This interpretation stems from a structural view of a hedonic model—the goal here is simply to specific a parametric model for the conditional price function, <span class="math inline">\(E(\rho | X, t)\)</span>, so <span class="math inline">\(\beta_{t}\)</span> need not be given any special interpretation.<a href="#fn35" class="footnote-ref" id="fnref35"><sup>35</sup></a></p>
+<p>With a linear hedonic model, and conditional independence between potential prices and time,
+<span class="math display">\[\begin{align*}
 \log(I^{Q}) = E(h(X, 1) - h(X, 0)) = \alpha_{1} - \alpha_{0} + E(X)(\beta_{1} - \beta_{0}). 
-\end{align*}\]</span></p>
-<p>The effect of specifying a model for <span class="math inline">\(E(\rho | X, t)\)</span> is that a constant-quality price index now has a simple parametric form that can be used to relax the overlap condition.<a href="#fn36" class="footnote-ref" id="fnref36"><sup>36</sup></a> Nothing precludes using a more complex non-linear model, but in application the hedonic model is usually linear.<a href="#fn37" class="footnote-ref" id="fnref37"><sup>37</sup></a></p>
+\end{align*}\]</span>
+The effect of specifying a model for <span class="math inline">\(E(\rho | X, t)\)</span> is that a constant-quality price index now has a simple parametric form that can be used to relax the overlap condition.<a href="#fn36" class="footnote-ref" id="fnref36"><sup>36</sup></a> Nothing precludes using a more complex non-linear model, but in application the hedonic model is usually linear.<a href="#fn37" class="footnote-ref" id="fnref37"><sup>37</sup></a></p>
 <p>This type of hedonic index is sometimes called the hedonic imputation model, because it is the geometric index formed by taking the ratio of the average predicted prices from the linear regressions of (log) price on characteristics at two points in time. As mentioned in the previous section, however, all hedonic price indices have this form, whether average price is modeled as a linear function of characteristics or not. Consequently, the label “hedonic imputation” is not very useful and leads to a variety of “different” hedonic price indices that are really all the same thing.</p>
-<p>One advantage of specifying a linear model for <span class="math inline">\(E(\rho | X, t)\)</span> is that the resulting index has a very intuitive form:<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a></p>
-<p><span class="math display">\[\begin{align*}
+<p>One advantage of specifying a linear model for <span class="math inline">\(E(\rho | X, t)\)</span> is that the resulting index has a very intuitive form:<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a>
+<span class="math display">\[\begin{align*}
 \log(I^{Q}) =&amp; \underbrace{E(\rho | t = 1) - E(\rho | t = 0)}_{\text{transaction-price index}}\\
 &amp;+ \underbrace{[E(X | t = 0) - E(X | t = 1)][\beta_{0} P(t = 1) + \beta_{1} P(t = 0)]}_{\text{correction term}}.
-\end{align*}\]</span></p>
-<p>Provided that conditional independence holds, and that average transaction price is a linear function of the characteristics of the goods sold, the constant-quality index can be decomposed into a geometric transaction-price index and a correction term that captures the change in the composition of product characteristics over time. The correction term takes the average change in characteristics over time, and uses this to adjust the transaction-price index—the term <span class="math inline">\(\beta_{0} P(t = 1) + \beta_{1} P(t = 0)\)</span> governs whether increasing the presence of a characteristic on average increases prices or not. For example, if products in period 1 have, on average, more of characteristics that are positively associated with price, then the correction term will exert a negative influence on the transaction-price index to arrive at a constant-quality index. This is because the transaction-price index will show an increase in price over time in part because the goods selling in period 1 are of higher quality than those selling in period 0, and would have sold for more in period 0 than the goods that actually sold in period 0. Consequently, the transaction-price index overstates the pure change in price, hence the negative correction term.</p>
-<p>Calculating a linear hedonic price index is easy, as</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+Provided that conditional independence holds, and that average transaction price is a linear function of the characteristics of the goods sold, the constant-quality index can be decomposed into a geometric transaction-price index and a correction term that captures the change in the composition of product characteristics over time. The correction term takes the average change in characteristics over time, and uses this to adjust the transaction-price index—the term <span class="math inline">\(\beta_{0} P(t = 1) + \beta_{1} P(t = 0)\)</span> governs whether increasing the presence of a characteristic on average increases prices or not. For example, if products in period 1 have, on average, more of characteristics that are positively associated with price, then the correction term will exert a negative influence on the transaction-price index to arrive at a constant-quality index. This is because the transaction-price index will show an increase in price over time in part because the goods selling in period 1 are of higher quality than those selling in period 0, and would have sold for more in period 0 than the goods that actually sold in period 0. Consequently, the transaction-price index overstates the pure change in price, hence the negative correction term.</p>
+<p>Calculating a linear hedonic price index is easy, as
+<span class="math display">\[\begin{align*}
 E(\rho | X, t) &amp;= \alpha_{0} + t (\alpha_{1} - \alpha_{0}) + X \beta_{0} + t \cdot X (\beta_{1} - \beta_{0}) \\
 &amp;= \alpha_{0} + t (\alpha_{1} - \alpha_{0} + E(X)(\beta_{1} - \beta_{0})) + X \beta_{0} + t (X - E(X)) (\beta_{1} - \beta_{0}) \\
 &amp;= \alpha_{0} + t \log(I^{Q}) + X \beta_{0} + t (X - E(X)) (\beta_{1} - \beta_{0}).
-\end{align*}\]</span></p>
-<p>The hedonic index is then just the coefficient on a time-dummy variable in a linear regression, and is therefore extremely easy to calculate.</p>
+\end{align*}\]</span>
+The hedonic index is then just the coefficient on a time-dummy variable in a linear regression, and is therefore extremely easy to calculate.</p>
 <p>It is worth concluding this section by noting that in almost all cases it is an assumption that average transaction price is a linear function of characteristics. There is, however, one interesting case where this assumption is always correct. If goods are partitioned by their characteristics, so that each combination of <span class="math inline">\(x\)</span> for <span class="math inline">\(X\)</span> belongs to its own group and gets its own parameter in the hedonic model at each point in time, then <span class="math inline">\(E(\rho | X, t)\)</span> is necessarily linear. In this case the hedonic price index is simply a stratified price index. In this way the linear hedonic price index is a more general type of price index than the stratified index, and finds its value when the stratified index cannot be calculated because of a failure of overlap.</p>
 </div>
 <div class="footnotes">

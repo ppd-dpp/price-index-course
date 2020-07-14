@@ -20,7 +20,7 @@ Evaluation for this module is based on an assignment consisting of 20 multiple-c
 
 Readings for this module come from chapters 15--18 of the PPI manual [@ppimanual] and/or the CPI manual [@cpimanual], published by the IMF (freely available on their website), as well as the review of price-index theory by @balk1995.
 
-Please email the course instructor if you have any questions, or need help with any of the course material or assignment.
+Please email one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Rebecca Meier](mailto:rebecca.meier@canada.ca)) if you have any questions, or need help with any of the course material or assignment.
 
 # Introduction
 
@@ -47,13 +47,10 @@ This section of the course starts the journey into price index theory by giving 
 In its abstract form, a price index is a function $I$ that takes four arguments---period-0 prices $p_{0}$, period-$t$ prices $p_{t}$, period-0 quantities $q_{0}$, and period-$t$ quantities $q_{t}$, for $n$ distinct goods and services---and returns a single value. It is a rule that turns information on prices and quantities at two points in time into one number that summarizes the change in prices. To simplify notation, prices and quantities here are vectors of prices and quantities at a point in time; for example, with $n$ distinct goods and services, prices in period 0 are given by $p_0 = (p_{10}, p_{20}, \ldots, p_{n0})$. This notation is useful, as a price index is a way to distill information for many prices and quantities into a single value; for example, with 25 goods and services, the price index takes 100 pieces for information (50 prices and 50 quantities) and turns it into one piece of information. For a particular collection of prices and quantities, the index value is given by $I(p_{t}, p_{0}, q_{t}, q_{0})$.
 
 Most price indices can be expressed in this abstract form. For example, a Laspeyres index is simply
-
 \begin{align*}
 I(p_{t}, p_{0}, q_{t}, q_{0}) = \frac{\sum_{i=1}^{n} p_{it}q_{i0}}{\sum_{i=1}^{n} p_{i0}q_{i0}}.
 \end{align*}
-
 Index-number formulas that don't make use of quantity information require no special treatment---the index value is just independent of whatever quantities were sold. For example, the Jevons index is 
-
 \begin{align*}
 I(p_{t}, p_{0}, q_{t}, q_{0}) = \prod_{i=1}^{n} \left(\frac{p_{it}}{p_{i0}}\right)^{1 / n}.
 \end{align*}
@@ -87,37 +84,29 @@ Dimensional invariance looks complex, but it simply says that changing the units
 As an example, it is straightforward to see that the Laspeyres index satisfies all five axioms.
 
 1. For monotonicity, 
-
     \begin{align*}
 I(p'_{t}, p_{0}, q_{t}, q_{0}) =  \frac{\sum_{i=1}^{n} p'_{it}q_{i0}}{\sum_{i=1}^{n} p_{i0}q_{i0}} > \frac{\sum_{i=1}^{n} p_{it}q_{i0}}{\sum_{i=1}^{n} p_{i0}q_{i0}} = I(p_{t}, p_{0}, q_{t}, q_{0}) 
     \end{align*}
-
     whenever each $p'_{it} \geq p_{it}$, with at least one strictly greater. The opposite holds if each $p'_{i0} \geq p_{i0}$, with at least one strictly greater.
 
 2. For linear homogeneity,
-
     \begin{align*}
 I(cp_{t}, p_{0}, q_{t}, q_{0}) =  \frac{\sum_{i=1}^{n} cp_{it}q_{i0}}{\sum_{i=1}^{n} p_{i0}q_{i0}} = \frac{c\sum_{i=1}^{n} p_{it}q_{i0}}{\sum_{i=1}^{n} p_{i0}q_{i0}} = cI(p_{t}, p_{0}, q_{t}, q_{0}) 
     \end{align*}
-
     for any $c > 0$.
 
 3. For identity, 
-
     \begin{align*}
 I(p_{0}, p_{0}, q_{t}, q_{0}) =  \frac{\sum_{i=1}^{n} p_{i0}q_{i0}}{\sum_{i=1}^{n} p_{i0}q_{i0}} = 1.
     \end{align*}
 
 4. For homogeneity of degree zero,
-
     \begin{align*}
 I(cp_{t}, cp_{0}, q_{t}, q_{0}) =  \frac{\sum_{i=1}^{n} cp_{it}q_{i0}}{\sum_{i=1}^{n} cp_{i0}q_{i0}} = \frac{c\sum_{i=1}^{n} p_{it}q_{i0}}{c\sum_{i=1}^{n} p_{i0}q_{i0}} = I(p_{t}, p_{0}, q_{t}, q_{0}) 
     \end{align*}
-
     for any $c > 0$.
 
 5. For dimensional invariance, if
-
     \begin{align*}
 A = 
 \begin{bmatrix}
@@ -126,9 +115,7 @@ a_1 & \ldots & 0 \\
 0 & \ldots & a_n
 \end{bmatrix}
     \end{align*}
-
     then 
-
     \begin{align*}
 I(Ap_{t}, Ap_{0}, A^{-1}q_{t}, A^{-1}q_{0}) = \frac{\sum_{i=1}^{n} a_{i}p_{it}a_{i}^{-1}q_{i0}}{\sum_{i=1}^{n} a_{i}p_{i0}a_{i}^{-1}q_{i0}} = \frac{\sum_{i=1}^{n} p_{it}q_{i0}}{\sum_{i=1}^{n} p_{i0}q_{i0}} = I(p_{t}, p_{0}, q_{t}, q_{0}). 
     \end{align*}
@@ -140,7 +127,6 @@ It should be fairly safe to say that any sensible price index should satisfy the
 For the most part, it is difficult to write down a half-way decent price that does not satisfy the five axioms in the previous section. Pathological examples abound, but it is more interesting to look at reasonable cases where an index-number formula does not satisfy all the axioms.^[Two interesting pathological cases have to do with failure of monotonicity for the geometric Laspeyres and Paasche indices. Although the geometric Laspeyres is always increasing in period-$t$ prices, it can also increase in period-0 prices. Necessary for this is that $p_{i1} / p_{i0} \geq \exp(1) I(p_{1}, p_{0}, q_{t}, q_{0}) \approx 2.72 I(p_{1}, p_{0}, q_{t}, q_{0})$ for at least one good $i$, so that at least some goods experience a change in price that is considerably larger than the change in price for the other goods. Similarly, while the geometric Paasche is always decreasing in period-0 prices, it can also decrease in period-$t$ prices. Necessary for this to be the case is that $p_{i1} / p_{i0} \leq I(p_{1}, p_{0}, q_{t}, q_{0}) / \exp(1) \approx I(p_{1}, p_{0}, q_{t}, q_{0}) / 2.72$ for at least one good $i$. See @balk2008[Section 3.12].] Two interesting examples of reasonable price indices that do not satisfy the five axioms are the Dutot index and the median-value index (i.e., the index that takes the median price relative). 
 
 The Dutot index satisfies all axioms except dimensional invariance, whereas the mean-value index satisfies all axioms except monotonicity. To see why the Dutot index does not satisfy dimensional invariance, suppose there are only two goods (i.e., $n = 2$) with $p_{1t} = 1$, $p_{2t} = 2$, and $p_{10} = p_{20} = 1$, and with 
-
 \begin{align*}
 A = 
 \begin{bmatrix}
@@ -148,19 +134,14 @@ A =
 0 & 2
 \end{bmatrix}.
 \end{align*}
-
 In this case
-
 \begin{align*}
 I(Ap_{t}, Ap_{0}, A^{-1}q_{t}, A^{-1}q_{0}) = \frac{1 \times 1 + 2 \times 2}{1 \times 1 + 2 \times 1} = 5 / 3
 \end{align*}
-
 and 
-
 \begin{align*}
 I(p_{t}, p_{0}, q_{t}, q_{0}) = \frac{1 + 2}{1 + 1} = 3 / 2 \neq I(Ap_{t}, Ap_{0}, A^{-1}q_{t}, A^{-1}q_{0}),
 \end{align*}
-
 thus failing the dimensional invariance axiom. This simply formalizes the well known issue with the Dutot index that all goods and services must be measured in the same units for it to be useful.
 
 To see that the median price index does not satisfy monotonicity, suppose there are 3 goods such that $p_{1t} = 1$, $p_{2t} = 2$, $p_{3t} = 3$, and $p_{10} = p_{20} = p_{30} = 1$. The median index returns the value 2 (the median price relative). Now if $p'_{1t} = 1$, $p'_{2t} = 2$, and $p'_{3t} = 4$, the median index still returns 2; prices have increased, but the index value remains the same.
@@ -186,24 +167,19 @@ The product test is similarly straightforward, and says that the change in aggre
 The consistency in aggregation test looks complicated, but expresses a simple idea: a price index should be an aggregate of sub-indices, where aggregation depends on only the index itself and the total value of the goods for each sub-index. Consistency in aggregation legitimizes the hierarchical calculation of a price index, where price indices are calculated for increasingly broad categories of goods using the same index-number formula throughout, with value shares as weights.
 
 As an example, the Laspeyres index satisfies the product test and the consistency in aggregation test.^[The Laspeyres index does not satisfy the circularity test, as a Laspeyres index would need to be multiplied with a Lowe index to return a Laspeyres index.] For the product test, let the quantity index be
-
 \begin{align*}
 Q(q_{t}, q_{0}, p_{t}, p_{0}) = \frac{\sum_{i = 1}^{n} p_{it}q_{it}}{\sum_{i = 1}^{n} p_{it}q_{i0}},
 \end{align*}
-
 (this is the Paasche quantity index) so that
-
 \begin{align*}
 I(p_{t}, p_{0}, q_{t}, q_{0}) Q(q_{t}, q_{0}, p_{t}, p_{0}) &= \frac{\sum_{i = 1}^{n} p_{it}q_{i0}}{\sum_{i = 1}^{n} p_{i0}q_{i0}} \frac{\sum_{i = 1}^{n} p_{it}q_{it}}{\sum_{i = 1}^{n} p_{it}q_{i0}} \\
 &= \frac{\sum_{i = 1}^{n} p_{it}q_{it}}{\sum_{i = 1}^{n} p_{it}q_{i0}}.
 \end{align*}
 
 For the consistency in aggregation test, let $\psi(I(p_{t}, p_{0}, q_{t}, q_{0}), V_{0}, V_{t}) = V_0 I(p_{t}, p_{0}, q_{t}, q_{0})$, so that the test becomes
-
 \begin{align*}
 I(p_{t}, p_{0}, q_{t}, q_{0}) = \sum_{k = 1}^{m} \frac{V_{k0}}{V_0} I(p_{kt}, p_{k0}, q_{kt}, q_{k0}).
 \end{align*}
-
 The Laspeyres index obviously satisfies this condition as $V_{k0} / V_0$ is the period-0 expenditure/revenue share for the products in group $k$.
 
 ## An impossibility result
@@ -213,21 +189,16 @@ Ideally there would be a single price index that satisfies the five axioms and t
 ## Motivating the Jevons and Laspeyres indices
 
 Although there is no index that satisfies all five axioms and all three tests, the five axioms, along with the circularity test, uniquely define a price index as being a geometric price index with weights that do not change over time [@balk1995, Theorem 11 and Remark 11.1]. That is, a price index satisfies the five axioms and the circularity test if and only if
-
 \begin{align*}
 I(p_{t}, p_{0}, q_{t}, q_{0}) = \prod_{i = 1}^{n} \left(\frac{p_{it}}{p_{i0}}\right)^{\omega_{i}},
 \end{align*}
-
 where $\sum_{i = 1}^{n} \omega_{i} = 1$. Note that constancy of the weights over time rules out the Törnqvist index.
 
 Switching out the circularity test for the product test, the arithmetic Laspeyres and Paasche indices are the only indices that satisfy the five axioms, the product test, and the consistency in aggregation test [@balk1995, Corollary 16]. That is, the price index must either be
-
 \begin{align*}
 I(p_{t}, p_{0}, q_{t}, q_{0}) = \frac{\sum_{i = 1}^{n} p_{it}q_{i0}}{\sum_{i = 1}^{n} p_{i0}q_{i0}}
 \end{align*}
-
 or
-
 \begin{align*}
 I(p_{t}, p_{0}, q_{t}, q_{0}) = \frac{\sum_{i = 1}^{n} p_{it}q_{it}}{\sum_{i = 1}^{n} p_{i0}q_{it}}.
 \end{align*}
@@ -255,23 +226,18 @@ The goal of an input-price index is to measure the change in the cost of a repre
 To fix notation, let $y$ be the amount of output a firm produces, $q$ be the quantity of inputs available, and $p$ the price of primary inputs. As with the axiomatic approach, these are vectors of values (i.e., $y$ is a vector with the quantity of each output the firm produces). Taking $y$ as fixed, and assuming the firm has no market power in the inputs market (so that the firm treats $p$ as fixed), a profit-maximizing firm will choose its inputs, $q$, to minimize the cost of achieving outputs $y$. The result of this exercise is the firm’s expenditure function, $e(p, y)$, that gives the minimum cost for purchasing the inputs required to produce $y$ units of output.^[Formally, $e(p, y) = \min_{q \in V(y)} p \cdot q$, where $V(y)$ is the set of inputs that produce at least $y$ units of output. This function is well-defined under fairly mild regularity conditions on the set $V(y)$ (namely that is it non-empty and closed)---see @mcfadden1978.] Because the firm is a profit-maximizer, this minimum cost of product will agree with their actual cost of production under different configurations of prices for inputs and outputs produced.
 
 Having defined the firm’s expenditure function, it is then simple to define an input cost index between period 0 and period $t$ as
-
 \begin{align*}
 I^{C} = \frac{e(p_{t}, y_{0})}{e(p_{0}, y_{0})},
 \end{align*}
-
 where $y_{0}$ is the amount of output produced by the firm in period 0. The input-price index measures a change in input prices by comparing the expenditure required to satisfy a fixed set of economic (output) conditions over time.
 
 There is actually an entire family of input-price indices depending on the level at which quantities are fixed in the expenditure function. The input-price index defined above is a Laspeyres-like input-price index because the economic conditions facing the firm are fixed at their period 0 values; a Paasche-like index fixes output at its period-$t$ level. However, the intuition is the same in all cases, so attention is restricted to the Laspeyres-like input-price index above to keep the presentation simple.
 
 It is helpful to understand how the input-price index differs from a Laspeyres index in order to appreciate the economic approach to constructing a price index. It is easy to see that
-
 \begin{align*}
 e(p_{0}, y_{0}) = \sum_{i = 1}^{n} p_{i0} q_{i0};
 \end{align*}
-
 the value of the period-0 expenditure function is simply the observable expenditure on inputs in period 0, for otherwise the firm couldn't be operating to maximize profit in period 0. Now, in period $t$,
-
 \begin{align*}
 e(p_{t}, y_{0}) \leq \sum_{i = 1}^{n} p_{it} q_{i0}.
 \end{align*}
@@ -279,11 +245,9 @@ e(p_{t}, y_{0}) \leq \sum_{i = 1}^{n} p_{it} q_{i0}.
 Obviously the inputs used in period 0 are good enough to produce the amount of output in period 0, but this choice of inputs need not minimize the cost of production at period-$t$ prices. If the price of an input increases between period 0 and period $t$, the firm will usually substitute away from that input and use more of a relatively cheaper input in order to minimize cost while still producing $y_{0}$ units of output. This substitution is not reflected in the choice of inputs $q_{0}$, and so this bundle of inputs will cost more than the cost-minimizing bundle of inputs that can produce $y_{0}$ units of output at period-$t$ prices.
 
 These two expression can now be used to show that 
-
 \begin{align*}
 \frac{e(p_{t}, y_{0})}{e(p_{0}, y_{0})} = \frac{e(p_{t}, y_{0})}{\sum_{i = 1}^{n} p_{i0} q_{i0}} \leq \frac{\sum_{i = 1}^{n} p_{it} q_{i0}}{\sum_{i = 1}^{n} p_{i0} q_{i0}}.
 \end{align*}
-
 The Laspeyres index thus overstates the price movement between period 0 and period $t$ because it does not take into account the substitution of inputs from a change in price that features as part of the input-price index---there is a positive substitution bias. This is the key insight from the economic approach---there is a divergence between standard index-number formulas used to measure a change in price and the economic change in price---and is the impetus to derive index-number formulas that can be used to calculate the economic input-price index.
 
 ## Output-price index
@@ -291,41 +255,31 @@ The Laspeyres index thus overstates the price movement between period 0 and peri
 An output-price index is analogous to an input-price index; the only difference is that the index compares the value of output over time, rather than the cost of inputs, holding economic conditions fixed. To this end, an output-price index compares the maximum revenue a representative firm could receive at two points in time, given a fixed set inputs for production.
 
 Modifying the notation of the previous section, let $p$ be the price of outputs $y$, rather than the price of inputs $q$. Taking inputs fixed at $q$, a profit maximizing firm chooses its outputs $y$ to maximize revenue, given prices $p$. This results in the firm’s revenue function, $r(p, q)$, that gives the maximum revenue the firm could earn given market prices and a fixed quantity of inputs.^[Formally, $r(p, q) = \max_{y \in Y(q)} p \cdot y$, where $Y(q)$ is the set of outputs that produce with at most $q$ units of input. This function is well-defined under fairly mild regularity conditions on the set $Y(q)$ (namely that is it compact)---see @mcfadden1978.] As with an input-price index, the output-price index is defined as
-
 \begin{align*}
 I^{R} = \frac{r(p_{t}, q_{0})}{r(p_{0}, q_{0})}.
 \end{align*}
-
 An output-price index measures the value of a firm’s output over time, given a fixed amount of inputs.
 
 In contrast to an input-price index, an output-price index is always larger than a Laspeyres index. In period 0, the revenue for a firm is simply
-
 \begin{align*}
 r(p_{0}, q_{0}) = \sum_{i = 1}^{n} p_{i0} y_{i0};
 \end{align*}
-
 the value of the period-0 revenue function is simply the observable revenue period 0, for otherwise the firm couldn't be operating to maximize profit in period 0. Now, in period $t$,
-
 \begin{align*}
 r(p_{t}, q_{0}) \geq \sum_{i = 1}^{n} p_{it} y_{i0}
 \end{align*}
-
 as the firm will produce relatively more of the outputs that have increased in price, while using the same amount of inputs. The firm substitutes away from less profitable outputs, something not reflected in the firm’s choice of period-0 production. Consequently,
-
 \begin{align*}
 \frac{r(p_{t}, q_{0})}{r(p_{0}, q_{0})} = \frac{r(p_{t}, q_{0})}{\sum_{i = 1}^{n} p_{i0} y_{i0}} \geq \frac{\sum_{i = 1}^{n} p_{it} y_{i0}}{\sum_{i = 1}^{n} p_{i0} y_{i0}};
 \end{align*}
-
 a Laspeyres index understates an increase in price over time because it does not take into account the substitution of outputs over time that is part of the output-price index. This is the opposite direction of substitution bias for an input-price index, and means that the direction of substitution bias depends on what the price index is trying to measure.
 
 ## Cost-of-living index
 
 A cost-of-living index is entirely analogous to an input-price index, except that it measures the cost to a representative consumer associated with achieving a fixed level of utility from consumption---how does a consumer's expenditure change from a change in price to keep them as well off as they were in period 0? The theory is exactly the same as an input-price index, except that outputs $y_0$ are replaced with a measure of utility from consumption in period 0 in the expenditure function. That is, a cost of living index is
-
 \begin{align*}
 I^{C} = \frac{e(p_{t}, u_{0})}{e(p_{0}, u_{0})},
 \end{align*}
-
 where $u_{0}$ is the consumer's utility from consumption in period 0. Other than a change in interpretation, the mechanics of a cost-of-living index are identical to an input-price index, and will not be repeated.
 
 ## Approximating an economic index
@@ -333,39 +287,29 @@ where $u_{0}$ is the consumer's utility from consumption in period 0. Other than
 An economic price index cannot be directly calculated in practice. There is no hope of calculating either an input-price or output-price index without knowledge of the firm’s technology of production, because the form of the firms' expenditure or revenue function is unknown. The problem is even more severe for a cost-of-living index, as it requires knowledge of consumer preferences to construct the consumer's expenditure function. The best that can be done is to approximate an economic index using data on observable prices and quantities. Both the arithmetic Laspeyres and geometric Laspeyres indices offer a good approximation to either the input price, output-price index, or cost-of-living index, at least to a first-order approximation.
 
 The argument for approximating an economic index with an arithmetic Laspeyres or geometric Laspeyres is the same for an input-price index, an output-price index, and a cost-of-living index, and so attention is restricted to approximating an input-price index. To show that the Laspeyres index approximates the input-price index, recall that
-
 \begin{align*}
 e(p_{0}, y_{0}) = \sum_{i = 1}^{n} p_{i0} q_{i0}.
 \end{align*}
-
 Now, it can be shown that the best linear approximation to the expenditure function with period $t$ prices is
-
 \begin{align*}
 e(p_{t}, y_{0}) \approx \sum_{i = 1}^{n} p_{it}q_{i0}
 \end{align*}
-
 whenever period-$t$ prices are not too different from period-0 prices.^[This follows from Shephard's lemma [@mcfadden1978], which implies that $e(p_{t}, y_{0}) = \sum_{i = 1}^{n} p_{it}q_{i0} + \eta(p_{t} - p_{0})||p_{t} - p_{0}||$, where $\eta(p_{t} - p_{0}) \rightarrow 0$ when $p_{t} \rightarrow p_{0}$.] Therefore
-
 \begin{align*}
 \frac{e(p_{t}, y_{0})}{e(p_{0}, y_{0})} \approx \frac{\sum_{i = 1}^{n} p_{it} q_{i0}}{\sum_{i = 1}^{n} p_{i0} q_{i0}},
 \end{align*}
-
 at least for small price changes. 
 
 Similarly, for the geometric Laspeyres, the best linear approximation is based on
-
 \begin{align*}
 \log(e(p_{t}, y_{0})) - \log(e(p_{0}, y_{0})) \approx \sum_{i = 1}^{n} \frac{p_{i0} q_{i0}}{\sum_{j = 1}^{n} p_{j0} q_{j0}} \log\left(\frac{p_{it}}{p_{i0}} \right).
 \end{align*}
-
 Therefore
-
 \begin{align*}
 I{^C} &= \exp(\log(e(p_{t}, y_{0})) - \log(e(p_{0}, y_{0}))) \\
 &\approx \exp\left( \sum_{i = 1}^{n} \frac{p_{i0} q_{i0}}{\sum_{j = 1}^{n} p_{j0} q_{j0}} \log\left(\frac{p_{it}}{p_{i0}} \right) \right) \\
 &= \prod_{i = 1}^{n} \left(\frac{p_{it}}{p_{i0}} \right)^{\omega_{i0}}
 \end{align*}
-
 where $\omega_{i0} = p_{i0} q_{i0} / \sum_{j = 1}^{n} p_{j0} q_{j0}$ is the period-0 expenditure weight for good $i$. As a geometric index is always smaller than its corresponding arithmetic index, and the Laspeyres index is too large relative to the input-price index (i.e., the approximation error is always positive due to substitution bias), the geometric Laspeyres index will give a better approximation to the input-price index than the Laspeyres index whenever the approximation error for the geometric index is positive.
 
 In many cases the Fisher or Törnqvist index offers an even better approximation to an input-price index than the Laspeyres or geometric Laspeyres index. The argument for why these indices can be a better approximation are more complex---see @cpimanual[Chapter 17] and @ppimanual[Chapter 17] for details. The cost for this better approximation, however, is the need for more information about period $t$ quantities, which may or may not be available at the time when the index is actually calculated.^[In certain cases these approximations are exact. A Laspeyres index will be a true input-price index if the firm has a Leontief production function; a Fisher index will also be exact in this case. Similarly, a geometric Laspeyres will be a true input-price index if the firm has a Cobb-Douglas production functions; a Törnqvist index will also be exact in this case. The Lloyd-Moulton price index is an interesting case as it is exact whenever the firm has a constant elasticity of substitution production function, but it only requires period-0 quantity information.]
@@ -385,11 +329,9 @@ This section of the course concludes the journey into price index theory by givi
 The starting point for the stochastic approach is a distribution of $n$ price relatives between period 0 and period $t$, with the price relative for good $i$ given by $p_{it} / p_{i0}$, for the population (universe) of all $n$ goods and services to be measured by the price index. Associated with each good $i$ is the probability $P_{i}$ of observing this good transacted over both periods in the population of goods measured by the index, and this in turn gives a measure of frequency for observing different values for changes in price over time. Put differently, a price relative $p_{t} / p_{0}$ is treated as a random variable in the stochastic approach, the distribution of which depends on the underlying distribution of goods and services that form the scope of the price index.^[There is a tendency to think of this distribution as being Gaussian, but doing so means that some goods and services have negative prices. In most cases price relatives cannot be distributed Gaussian.]
 
 Given a distribution of price relatives, the best predictor of a change in price between period 0 and period $t$ is the value $I^{A}$ that minimizes the expected prediction error. Formally, the best predictor solves the following problem^[This is a prediction problem using a quadratic loss function, to ensure that the prediction error is always positive, and to formalize the idea that a large misprediction is more costly than many small mispredictions. Different loss functions usually give different optimal predictors; for example, the absolute loss function returns the median as the best predictor, which finds applications for housing price indices. If price relatives are symmetrically distributed, then all symmetric, convex loss functions give the same price index [@lehmann1998, Chapter 1 Corollary 7.19].]
-
 \begin{align*}
 \min_{I} E\left[\left(\frac{p_{t}}{p_{0}} - I \right)^{2}\right],
 \end{align*}
-
 where $E$ is the expected value operator, taken over the distribution of price relative. As is well known, the solution to this problem is to set $I^{A} = E(p_{t} / p_{0})$ [@lehmann1998, Chapter 1 Example 7.17]; that is, the best predictor of a change in price between two periods is the expected change in price. While it may seem unusual to express a price index in terms of an expected value, this simply emphasizes that a price index is rightfully a feature of the distribution of prices in the population. This is a key feature of the stochastic approach, and is what allows for a meaningful analysis of the statistical properties of a price index when calculated with a sample of price data from the population.
 
 The figure gives an example of what the prediction problem looks like. Given a distribution of price relatives (solid line), there is an associated expected prediction error with each value that a price index can take (dashed line). The best choice for a price index as a predictive tool is the value that minimizes the expected prediction error (dotted line).
@@ -411,60 +353,46 @@ ggplot() +
 ```
 
 As the expected value is just a weighted average, the index $I^{A} = E(p_{t} / p_{0})$ is simply an arithmetic index that averages price relatives. What’s interesting is that the weights now have a new interpretation---they are the probability of observing a good or service transacted in the population. That is,
-
 \begin{align*}
 I^{A} = \sum_{i = 1}^{n} \frac{p_{it}}{p_{i0}} P_{i}.
 \end{align*}
-
 Different arithmetic price-index formulas---e.g., Laspeyres, Paasche, Lowe---thus correspond to different statements about what determines the probability of observing a transaction. For example, with a Laspeyres index the probabilities are given by period-0 expenditure or revenue shares. This amounts to a statement that the probability of observing a transaction for a good is the likelihood of spending or receiving a dollar on that good in period 0.
 
 ## Geometric price indices
 
 A geometric index can be motivated in the same way as an arithmetic index. Formally, a geometric index is the value $I^{G}$ that solves
-
 \begin{align*}
 \min_{I} E\left[\left(\log\left(\frac{p_{t}}{p_{0}}\right) - \log(I) \right)^{2}\right],
 \end{align*}
-
 the solution to which is $I^{G} = \exp(E[\log(p_{t} / p_{0})])$. But this is just a geometric index, as
-
 \begin{align*}
 \exp\left(E\left[\log\left(\frac{p_{t}}{p_{0}}\right)\right]\right) &= \exp\left(P_{i} \sum_{i = 1}^{n} \log\left(\frac{p_{it}}{p_{i0}}\right)\right) \\
 &= \prod_{i = 1}^{n} \left(\frac{p_{it}}{p_{i0}}\right)^{P_{i}},
 \end{align*}
-  
 with weights equal to the probability of observing a price relative. It is worth noting that, due to the logarithms in the prediction problem, a geometric index can equally be motivated as finding a value $I^{G}$ such that $I^{G} \times p_{i0}$ best predicts $p_{it}$ (or $p_{it} / I^{G}$ best predicts $p_{i0}$). This is a property not shared with arithmetic indices. Whereas an arithmetic index predicts price changes over time, a geometric index takes the price for a good in period 0, inflates/deflates it with the price index, and uses the result to predict the price for that good in period $t$. Consequently, a geometric index fits more neatly into the stochastic approach as it directly corresponds with how a price index is used to inflate and deflate prices over time in practice.^[Motivating a price index as solving the problem $\min_{I} E[(p_{t} - p_{0} I)^{2}]$ results in $I = E(p_{t} p_{0}) / E(p_{0}^{2})$, which is a rather unusual price index.] 
 
 The Törnqvist index usually comes out as the best index in the stochastic approach because it picks a sensible value to represent the probability of observing a price relative. The idea behind the Törnqvist probabilities is that the likelihood of observing a particular price relative for a good depends on the expenditure/revenue share of that good across both periods. Thus, the Törnqvist index sets the probabilities as average expenditure shares:
-
 \begin{align*}
 P_{i} = \frac{1}{2} \frac{p_{i0}q_{i0}}{\sum_{j = 1}^{n} p_{j0}q_{j0}} + \frac{1}{2} \frac{p_{it}q_{it}}{\sum_{j = 1}^{n} p_{jt}q_{jt}}.
 \end{align*}
-
 The disadvantage of these probabilities is that they require information for both period-0 and period-$t$ expenditure/revenue shares, something that may not be known at the time the index is calculated.
 
 ## More general price indices
 
 The arithmetic and geometric indices are special cases of a broader class of price indices that solve the following prediction problem:
-
 \begin{align*}
 \min_{I} E\left[\left(\left(\frac{p_{t}}{p_{0}}\right)^{r} - I^{r} \right)^{2}\right],
 \end{align*}
-
 for some $r \neq 0$. The solution to this problem is $I = E((p_{t} / p_{0})^{r})^{1 / r}$. Setting $r = 1$ gives an arithmetic index, whereas taking $r \rightarrow 0$ gives a geometric index [@bullen2003, III 1 Theorem 2].
 
 What's useful about this approach is that many other types of price indices correspond to different choices of $r$, and these in turn can be motivated as solving a type of prediction problem. Setting $r = -1$, for example, yields a harmonic price index
-
 \begin{align*}
 I^{H} = \left(\sum_{i = 1}^{n} \frac{P_{i}}{p_{it} / p_{i0}} \right)^{-1}.
 \end{align*}
-
 When the probability of observing a good is given by its period-$t$ expenditure share, then this is the Paasche index. Setting $r = 1 - \sigma$, where $\sigma$ is the elasticity of substitution, results in the Lloyd-Moulton price index
-
 \begin{align*}
 I^{LM} = \left(\sum_{i = 1}^{n} P_{i} \left(\frac{p_{it}}{p_{i0}}\right)^{1 - \sigma}\right)^{1 / (1 - \sigma)}
 \end{align*}
-
 when the probabilities are period-0 expenditure/revenue shares.
 
 An interesting point about these more general types of price indices is that, for a given set of weights, the index value is larger when the parameter $r$ increases [@bullen2003, III 3.1 Theorem 1]. This gives the familiar result that an arithmetic index is larger than a geometric index, which in turn is larger than a harmonic index, but it can also be used to rank more exotic types of indices like the Lloyd-Moulton index.
@@ -479,7 +407,7 @@ A natural estimator for the geometric index is $\hat{I}^{G} = \prod_{i = 1}^{n_{
 
 # Assignment
 
-Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65% (13 out of 20 correct). Email your answers to the course instructor when you are finished.
+Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65% (13 out of 20 correct). Email your answers to one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Rebecca Meier](mailto:rebecca.meier@canada.ca)) when you are finished.
 
 **Question 1** True or false: The Laspeyres index is a cost-of-living index if consumers do not substitute away from more expensive goods when prices change.
 

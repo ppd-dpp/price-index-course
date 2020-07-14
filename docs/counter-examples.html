@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
   
 
-<meta name="author" content="Steve Martin" />
+<meta name="author" content="Steve Martin and Rebecca Meier" />
 
 
 
@@ -223,23 +223,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="counter-examples" class="section level2">
 <h2>Counter examples</h2>
 <p>For the most part, it is difficult to write down a half-way decent price that does not satisfy the five axioms in the previous section. Pathological examples abound, but it is more interesting to look at reasonable cases where an index-number formula does not satisfy all the axioms.<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a> Two interesting examples of reasonable price indices that do not satisfy the five axioms are the Dutot index and the median-value index (i.e., the index that takes the median price relative).</p>
-<p>The Dutot index satisfies all axioms except dimensional invariance, whereas the mean-value index satisfies all axioms except monotonicity. To see why the Dutot index does not satisfy dimensional invariance, suppose there are only two goods (i.e., <span class="math inline">\(n = 2\)</span>) with <span class="math inline">\(p_{1t} = 1\)</span>, <span class="math inline">\(p_{2t} = 2\)</span>, and <span class="math inline">\(p_{10} = p_{20} = 1\)</span>, and with</p>
-<p><span class="math display">\[\begin{align*}
+<p>The Dutot index satisfies all axioms except dimensional invariance, whereas the mean-value index satisfies all axioms except monotonicity. To see why the Dutot index does not satisfy dimensional invariance, suppose there are only two goods (i.e., <span class="math inline">\(n = 2\)</span>) with <span class="math inline">\(p_{1t} = 1\)</span>, <span class="math inline">\(p_{2t} = 2\)</span>, and <span class="math inline">\(p_{10} = p_{20} = 1\)</span>, and with
+<span class="math display">\[\begin{align*}
 A = 
 \begin{bmatrix}
 1 &amp; 0 \\
 0 &amp; 2
 \end{bmatrix}.
-\end{align*}\]</span></p>
-<p>In this case</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+In this case
+<span class="math display">\[\begin{align*}
 I(Ap_{t}, Ap_{0}, A^{-1}q_{t}, A^{-1}q_{0}) = \frac{1 \times 1 + 2 \times 2}{1 \times 1 + 2 \times 1} = 5 / 3
-\end{align*}\]</span></p>
-<p>and</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+and
+<span class="math display">\[\begin{align*}
 I(p_{t}, p_{0}, q_{t}, q_{0}) = \frac{1 + 2}{1 + 1} = 3 / 2 \neq I(Ap_{t}, Ap_{0}, A^{-1}q_{t}, A^{-1}q_{0}),
-\end{align*}\]</span></p>
-<p>thus failing the dimensional invariance axiom. This simply formalizes the well known issue with the Dutot index that all goods and services must be measured in the same units for it to be useful.</p>
+\end{align*}\]</span>
+thus failing the dimensional invariance axiom. This simply formalizes the well known issue with the Dutot index that all goods and services must be measured in the same units for it to be useful.</p>
 <p>To see that the median price index does not satisfy monotonicity, suppose there are 3 goods such that <span class="math inline">\(p_{1t} = 1\)</span>, <span class="math inline">\(p_{2t} = 2\)</span>, <span class="math inline">\(p_{3t} = 3\)</span>, and <span class="math inline">\(p_{10} = p_{20} = p_{30} = 1\)</span>. The median index returns the value 2 (the median price relative). Now if <span class="math inline">\(p&#39;_{1t} = 1\)</span>, <span class="math inline">\(p&#39;_{2t} = 2\)</span>, and <span class="math inline">\(p&#39;_{3t} = 4\)</span>, the median index still returns 2; prices have increased, but the index value remains the same.</p>
 </div>
 <div class="footnotes">

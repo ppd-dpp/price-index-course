@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
   
 
-<meta name="author" content="Steve Martin" />
+<meta name="author" content="Steve Martin and Rebecca Meier" />
 
 
 
@@ -223,41 +223,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="common-arithmetic-indices" class="section level2">
 <h2>Common arithmetic indices</h2>
 <p>There are six main arithmetic price indices that get used in practice, each corresponding to a different statement about how much weight a price relative should receive in the index calculation.</p>
-<p><strong>Carli index</strong>. Setting <span class="math inline">\(\omega_{i} = 1 / n\)</span> results in the Carli index</p>
-<p><span class="math display">\[\begin{align*}
+<p><strong>Carli index</strong>. Setting <span class="math inline">\(\omega_{i} = 1 / n\)</span> results in the Carli index
+<span class="math display">\[\begin{align*}
 I^{A}_{C} = \frac{1}{n} \sum_{i = 1}^{n} \frac{p_{i1}}{p_{i0}}.
-\end{align*}\]</span></p>
-<p>The Carli index takes a neutral stance on the weights, and treats each price relative as equally important.</p>
-<p><strong>Dutot index</strong>. Setting <span class="math inline">\(\omega_{i} = p_{i0} / \sum_{j = 1}^{n} p_{j0}\)</span> results in the Dutot index</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+The Carli index takes a neutral stance on the weights, and treats each price relative as equally important.</p>
+<p><strong>Dutot index</strong>. Setting <span class="math inline">\(\omega_{i} = p_{i0} / \sum_{j = 1}^{n} p_{j0}\)</span> results in the Dutot index
+<span class="math display">\[\begin{align*}
 I^{A}_D = \frac{\sum_{i = 1}^{n} p_{i1}}{\sum_{i = 1}^{n} p_{i0}}.
-\end{align*}\]</span></p>
-<p>The Dutot index gives more weight to price relatives that have a greater period-0 price, comparing the average price of goods in period 1 to the average price in period 0.</p>
-<p><strong>Lowe index</strong>. Setting <span class="math inline">\(\omega_{i} = p_{i0} q_{ib} / \sum_{j = 1}^{n} p_{j0} q_{jb}\)</span> results in the Lowe index</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+The Dutot index gives more weight to price relatives that have a greater period-0 price, comparing the average price of goods in period 1 to the average price in period 0.</p>
+<p><strong>Lowe index</strong>. Setting <span class="math inline">\(\omega_{i} = p_{i0} q_{ib} / \sum_{j = 1}^{n} p_{j0} q_{jb}\)</span> results in the Lowe index
+<span class="math display">\[\begin{align*}
 I^{A}_{l} = \frac{\sum_{i = 1}^{n} p_{i1} q_{ib}}{\sum_{i = 1}^{n} p_{i0} q_{ib}},
-\end{align*}\]</span></p>
-<p>where <span class="math inline">\(q_{ib}\)</span> is the quantity of good <span class="math inline">\(i\)</span> in some base period <span class="math inline">\(b\)</span>, usually prior to period 0. The weights for the Lowe index are “hybrid” expenditure/revenue shares for the basket of goods and services in period <span class="math inline">\(b\)</span> using period 0 prices.</p>
-<p><strong>Laspeyres index</strong>. Setting <span class="math inline">\(\omega_{i} = p_{i0} q_{i0} / \sum_{j = 1}^{n} p_{j0} q_{j0}\)</span> results in the Laspeyres index</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+where <span class="math inline">\(q_{ib}\)</span> is the quantity of good <span class="math inline">\(i\)</span> in some base period <span class="math inline">\(b\)</span>, usually prior to period 0. The weights for the Lowe index are “hybrid” expenditure/revenue shares for the basket of goods and services in period <span class="math inline">\(b\)</span> using period 0 prices.</p>
+<p><strong>Laspeyres index</strong>. Setting <span class="math inline">\(\omega_{i} = p_{i0} q_{i0} / \sum_{j = 1}^{n} p_{j0} q_{j0}\)</span> results in the Laspeyres index
+<span class="math display">\[\begin{align*}
 I^{A}_{L} = \frac{\sum_{i = 1}^{n} p_{i1} q_{i0}}{\sum_{i = 1}^{n} p_{i0} q_{i0}}.
-\end{align*}\]</span></p>
-<p>The Laspeyres index weights price relatives according to their period-0 expenditure/revenue share, and is a special case of the Lowe index.</p>
-<p><strong>Paasche index</strong>. Setting <span class="math inline">\(\omega_{i} = p_{i0} q_{i1} / \sum_{j = 1}^{n} p_{j0} q_{j1}\)</span> results in the Paasche index</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+The Laspeyres index weights price relatives according to their period-0 expenditure/revenue share, and is a special case of the Lowe index.</p>
+<p><strong>Paasche index</strong>. Setting <span class="math inline">\(\omega_{i} = p_{i0} q_{i1} / \sum_{j = 1}^{n} p_{j0} q_{j1}\)</span> results in the Paasche index
+<span class="math display">\[\begin{align*}
 I^{A}_{P} = \frac{\sum_{i = 1}^{n} p_{i1} q_{i1}}{\sum_{i = 1}^{n} p_{i0} q_{i1}}.
-\end{align*}\]</span></p>
-<p>Like the Laspeyres index, the Paasche index is a special case of the Lowe index, and uses hybrid expenditure/revenue shares to weight price relatives.</p>
-<p>It is worth noting that the Paasche index is often calculated as a weighted harmonic average, with period 1 expenditure/revenue shares as weights, so that</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+Like the Laspeyres index, the Paasche index is a special case of the Lowe index, and uses hybrid expenditure/revenue shares to weight price relatives.</p>
+<p>It is worth noting that the Paasche index is often calculated as a weighted harmonic average, with period 1 expenditure/revenue shares as weights, so that
+<span class="math display">\[\begin{align*}
 I^{A}_{P} = \left(\sum_{i = 1}^{n} \frac{\frac{p_{i1} q_{i1}}{\sum_{j = 1}^{n} p_{j1} q_{j1}}}{\frac{p_{i1}}{p_{i0}}}\right)^{-1}.
-\end{align*}\]</span></p>
-<p>This is an example of a harmonic price index, and is a convenient way to calculate a Paasche index if only period-1 expenditure/revenue shares are known, rather than period-1 quantities.</p>
-<p><strong>Young index</strong>. Setting <span class="math inline">\(\omega_{i} = p_{ib} q_{ib} / \sum_{j = 1}^{n} p_{jb} q_{jb}\)</span> results in the Young index</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+This is an example of a harmonic price index, and is a convenient way to calculate a Paasche index if only period-1 expenditure/revenue shares are known, rather than period-1 quantities.</p>
+<p><strong>Young index</strong>. Setting <span class="math inline">\(\omega_{i} = p_{ib} q_{ib} / \sum_{j = 1}^{n} p_{jb} q_{jb}\)</span> results in the Young index
+<span class="math display">\[\begin{align*}
 I^{A}_{Y} = \sum_{i = 1}^{n} \frac{p_{ib} q_{ib}}{\sum_{j = 1}^{n} p_{jb} q_{jb}} \frac{p_{i1}}{p_{i0}},
-\end{align*}\]</span></p>
-<p>where <span class="math inline">\(q_{ib}\)</span> is the quantity of good <span class="math inline">\(i\)</span> in some base period <span class="math inline">\(b\)</span>, with <span class="math inline">\(p_{ib}\)</span> as the price, usually prior to period 0. The Young index uses period <span class="math inline">\(b\)</span> expenditure/revenue shares as weights.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> The Laspeyres index is a special case of the Young index.</p>
+\end{align*}\]</span>
+where <span class="math inline">\(q_{ib}\)</span> is the quantity of good <span class="math inline">\(i\)</span> in some base period <span class="math inline">\(b\)</span>, with <span class="math inline">\(p_{ib}\)</span> as the price, usually prior to period 0. The Young index uses period <span class="math inline">\(b\)</span> expenditure/revenue shares as weights.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> The Laspeyres index is a special case of the Young index.</p>
 <p>In most applications a Laspeyres index is the desired index-number formula for an arithmetic price index, in part because the weights can be observed separately from the price information. Weights for a CPI, for example, can come from a nationally representative survey of household spending, and so only price information needs to be collected to calculate a Laspeyres index. Although the Young weights are directly observable as well, they do not necessarily reflect changes in the composition of spending or sources of revenue between period <span class="math inline">\(b\)</span> and period 0. Alternatively, both the Lowe and Paasche indices have weights that need to be explicitly calculated. Like the Young index, the Lowe index uses out-of-date quantity information, whereas the Paasche index uses current-period quantity information, and this usually means that it cannot be computed in a timely manner.</p>
 <p>Despite the goal of calculating a Laspeyres index, in most applications an arithmetic index is often calculated as a Young index (or sometimes a Lowe index), as it is difficult to get timely expenditure/revenue share information. Waiting for the weighting information may require delaying the production of an index until well after period 0. The hope is that the weights used in the Young index offer a reasonable approximation for the Laspeyres weights.</p>
 </div>

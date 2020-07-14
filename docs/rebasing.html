@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
   
 
-<meta name="author" content="Steve Martin" />
+<meta name="author" content="Steve Martin and Rebecca Meier" />
 
 
 
@@ -223,8 +223,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="rebasing" class="section level2">
 <h2>Rebasing</h2>
 <p>The base period is an important point in time for a price index, as it gives the fixed reference point to which price changes are measured against. Having to choose a base period at all, however, introduces a potential problem: what works as a base period for one use of a price index may not work for another. Fortunately, the choice of base period doesn’t have much impact on the economic content of a price index—in most cases a new base period can be chosen for an index without needing to recompute the entire index series.</p>
-<p>For a geometric index, the choice of base period has no impact on the economic content of a price index—the change in price between any two periods is the same regardless of the base period. The base period simply standardizes the index to a particular level. This can be seen by recalling that a geometric index can always be factored into two geometric indices. Given an index series with period 0 as the base period, the index value in period <span class="math inline">\(t\)</span> with period <span class="math inline">\(k\)</span> as the base period can always be found by simply dividing the index value in period <span class="math inline">\(t\)</span> by the index value in period <span class="math inline">\(k\)</span></p>
-<p><span class="math display">\[\begin{align*}
+<p>For a geometric index, the choice of base period has no impact on the economic content of a price index—the change in price between any two periods is the same regardless of the base period. The base period simply standardizes the index to a particular level. This can be seen by recalling that a geometric index can always be factored into two geometric indices. Given an index series with period 0 as the base period, the index value in period <span class="math inline">\(t\)</span> with period <span class="math inline">\(k\)</span> as the base period can always be found by simply dividing the index value in period <span class="math inline">\(t\)</span> by the index value in period <span class="math inline">\(k\)</span>
+<span class="math display">\[\begin{align*}
 I^{G}(k, t) &amp;= \prod_{i = 1}^{n} \left(\frac{p_{it}}{p_{ik}}\right)^{\omega_{i}} \\
 &amp;= \frac{\prod_{i = 1}^{n} \left(\frac{p_{it}}{p_{i0}}\right)^{\omega_{i}}}{\prod_{i = 1}^{n} \left(\frac{p_{ik}}{p_{i0}}\right)^{\omega_{i}}} \\
 &amp;= \frac{I^{G}(0, t)}{I^{G}(0, k)}.

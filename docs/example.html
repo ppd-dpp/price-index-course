@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
   
 
-<meta name="author" content="Steve Martin" />
+<meta name="author" content="Steve Martin and Rebecca Meier" />
 
 
 
@@ -222,26 +222,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="example" class="section level2">
 <h2>Example</h2>
-<p>It is worth going through an example to fix the ideas discussed so far. Suppose the goal is to construct a constant-quality Jevons index for cat food. Cat food can come in three varieties—chicken (<span class="math inline">\(c\)</span>), liver (<span class="math inline">\(l\)</span>), or salmon (<span class="math inline">\(s\)</span>). Both chicken and salmon cat food sell in period 1, and only liver cat food sells in period 0. In this setting, the constant-quality price index is</p>
-<p><span class="math display">\[\begin{align*}
+<p>It is worth going through an example to fix the ideas discussed so far. Suppose the goal is to construct a constant-quality Jevons index for cat food. Cat food can come in three varieties—chicken (<span class="math inline">\(c\)</span>), liver (<span class="math inline">\(l\)</span>), or salmon (<span class="math inline">\(s\)</span>). Both chicken and salmon cat food sell in period 1, and only liver cat food sells in period 0. In this setting, the constant-quality price index is
+<span class="math display">\[\begin{align*}
 I^{Q} = \frac{(p_{c}(1) p_{l}(1) p_{s}(1))^{1 / 3}}{(p_{c}(0) p_{l}(0) p_{s}(0))^{1 / 3}}.
-\end{align*}\]</span></p>
-<p>This index compares potential prices over time for all three varieties of cat food, and so the quality of cat food is held fixed over time.</p>
-<p>In practice, all that can be computed with information on transaction prices is</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+This index compares potential prices over time for all three varieties of cat food, and so the quality of cat food is held fixed over time.</p>
+<p>In practice, all that can be computed with information on transaction prices is
+<span class="math display">\[\begin{align*}
 I^{T} = \frac{(p_{c}(1) p_{s}(1))^{1 / 2}}{(p_{l}(0) p_{l}(0))^{1 / 2}}.
-\end{align*}\]</span></p>
-<p>This index compares the average price of cat food in period 1 to the average price of cat food in period 0.</p>
-<p>If potential prices are independent of time, so that there are no systematic differences between liver, chicken, and salmon cat food that affect price, then, at least in this example, <span class="math inline">\(p_{c}(1) = p_{l}(1) = p_{s}(1)\)</span> and <span class="math inline">\(p_{c}(0) = p_{l}(0) = p_{s}(0)\)</span>, so that</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+This index compares the average price of cat food in period 1 to the average price of cat food in period 0.</p>
+<p>If potential prices are independent of time, so that there are no systematic differences between liver, chicken, and salmon cat food that affect price, then, at least in this example, <span class="math inline">\(p_{c}(1) = p_{l}(1) = p_{s}(1)\)</span> and <span class="math inline">\(p_{c}(0) = p_{l}(0) = p_{s}(0)\)</span>, so that
+<span class="math display">\[\begin{align*}
 I^{Q} = \frac{(p_{c}(1) p_{l}(1) p_{s}(1))^{1 / 3}}{(p_{c}(0) p_{l}(0) p_{s}(0))^{1 / 3}} = \frac{(p_{c}(1) p_{s}(1))^{1 / 2}}{(p_{l}(0) p_{l}(0))^{1 / 2}} = I^{T};
-\end{align*}\]</span></p>
-<p>the transaction-price index equals the constant-quality index, and thus gives the pure price movement for cat food. Even though the chicken and salmon cat food do not sell in period 0, independence ensures that the price of liver cat food serves as a good comparison for what chicken and salmon cat food would have sold for in period 0.</p>
-<p>If instead liver and chicken cat food are systematically less expensive than salmon cat food, say because they’re of lower quality, then <span class="math inline">\(p_{c}(1) = p_{l}(1) = p_{s}(1)\)</span> and <span class="math inline">\(p_{c}(0) = p_{l}(0) &lt; p_{s}(0)\)</span>, so that <span class="math inline">\(p_{s}(1) / p_{s}(0) &lt; p_{s}(1) / p_{l}(0)\)</span>. Therefore</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+the transaction-price index equals the constant-quality index, and thus gives the pure price movement for cat food. Even though the chicken and salmon cat food do not sell in period 0, independence ensures that the price of liver cat food serves as a good comparison for what chicken and salmon cat food would have sold for in period 0.</p>
+<p>If instead liver and chicken cat food are systematically less expensive than salmon cat food, say because they’re of lower quality, then <span class="math inline">\(p_{c}(1) = p_{l}(1) = p_{s}(1)\)</span> and <span class="math inline">\(p_{c}(0) = p_{l}(0) &lt; p_{s}(0)\)</span>, so that <span class="math inline">\(p_{s}(1) / p_{s}(0) &lt; p_{s}(1) / p_{l}(0)\)</span>. Therefore
+<span class="math display">\[\begin{align*}
 I^{Q} = \frac{(p_{c}(1) p_{l}(1) p_{s}(1))^{1 / 3}}{(p_{c}(0) p_{l}(0) p_{s}(0))^{1 / 3}} &lt; \frac{(p_{c}(1) p_{s}(1))^{1 / 2}}{(p_{l}(0) p_{l}(0))^{1 / 2}} = I^{T};
-\end{align*}\]</span></p>
-<p>the transaction-price index shows a larger increase in prices over time (or a smaller decrease) because salmon cat food would have sold for more than liver cat food in period 0. Comparing the price of salmon cat food to the price of liver cat food confounds a change in price over time with a change in the quality of what sells over time. Independence between potential prices and time rules out these sorts of systematic differences between the goods that actually sell in different periods.</p>
+\end{align*}\]</span>
+the transaction-price index shows a larger increase in prices over time (or a smaller decrease) because salmon cat food would have sold for more than liver cat food in period 0. Comparing the price of salmon cat food to the price of liver cat food confounds a change in price over time with a change in the quality of what sells over time. Independence between potential prices and time rules out these sorts of systematic differences between the goods that actually sell in different periods.</p>
 </div>
 <!-- </div> -->
             </section>

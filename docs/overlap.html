@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
   
 
-<meta name="author" content="Steve Martin" />
+<meta name="author" content="Steve Martin and Rebecca Meier" />
 
 
 
@@ -223,18 +223,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="overlap" class="section level2">
 <h2>Overlap</h2>
 <p>In order to aggregate the sub-indices for each stratum into an overall price index, it must be that <span class="math inline">\(0 &lt; P(t = 1 | X = x) &lt; 1\)</span>—this means that, for each stratum, some goods must sell in each period. This is the overlap (or common support) condition that ensures a price index can be constructed for each stratum. Unlike conditional independence, overlap is verifiable.</p>
-<p>When the overlap condition holds, along with conditional independence,</p>
-<p><span class="math display">\[\begin{align*}
+<p>When the overlap condition holds, along with conditional independence,
+<span class="math display">\[\begin{align*}
 \log(I^{Q}) &amp;= E(\rho(1)) - E(\rho(0)) \\
 &amp;= E[E(\rho(1) | X) - E(\rho(0) | X)] \\
 &amp;= E[E(\rho(1) | X, t = 1) - E(\rho(0) | X, t = 0)] \\
 &amp;= E[E(\rho | X, t = 1) - E(\rho | X, t = 0)],
-\end{align*}\]</span></p>
-<p>so that</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+so that
+<span class="math display">\[\begin{align*}
 I^{Q} = \prod_{x} (I^{T}_{x})^{P(X = x)}.
-\end{align*}\]</span></p>
-<p>The constant-quality index is simply a weighted product of each sub-index, calculated with transaction prices, where the weights correspond to the likelihood of a good belonging to a particular stratum. All this information is observable, and hence the constant-quality index is identified.</p>
+\end{align*}\]</span>
+The constant-quality index is simply a weighted product of each sub-index, calculated with transaction prices, where the weights correspond to the likelihood of a good belonging to a particular stratum. All this information is observable, and hence the constant-quality index is identified.</p>
 </div>
             </section>
 

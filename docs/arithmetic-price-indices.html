@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
   
 
-<meta name="author" content="Steve Martin" />
+<meta name="author" content="Steve Martin and Rebecca Meier" />
 
 
 
@@ -222,23 +222,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="arithmetic-price-indices" class="section level2">
 <h2>Arithmetic price indices</h2>
-<p>An arithmetic price index takes price relatives for a collection of goods and services over two periods and combines them together as a weighted average. That is, an arithmetic index is simply the average change in price between two points in time. Letting goods be enumerated by <span class="math inline">\(i = 1,\ldots, n\)</span>, an arithmetic index between period 0 and period 1 has the general form<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
-<p><span class="math display">\[\begin{align*}
+<p>An arithmetic price index takes price relatives for a collection of goods and services over two periods and combines them together as a weighted average. That is, an arithmetic index is simply the average change in price between two points in time. Letting goods be enumerated by <span class="math inline">\(i = 1,\ldots, n\)</span>, an arithmetic index between period 0 and period 1 has the general form<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>
+<span class="math display">\[\begin{align*}
 I^{A} = \sum_{i = 1}^{n} \omega_{i} \frac{p_{i1}}{p_{i0}},
-\end{align*}\]</span></p>
-<p>where <span class="math inline">\(p_{it}\)</span> is the price of good <span class="math inline">\(i\)</span> in period <span class="math inline">\(t = 0,1\)</span>, and <span class="math inline">\(\omega_{i} \geq 0\)</span> is the weight that good <span class="math inline">\(i\)</span> receives in the index calculation, such that <span class="math inline">\(\sum_{i = 1}^{n} \omega_{i} = 1\)</span>.</p>
+\end{align*}\]</span>
+where <span class="math inline">\(p_{it}\)</span> is the price of good <span class="math inline">\(i\)</span> in period <span class="math inline">\(t = 0,1\)</span>, and <span class="math inline">\(\omega_{i} \geq 0\)</span> is the weight that good <span class="math inline">\(i\)</span> receives in the index calculation, such that <span class="math inline">\(\sum_{i = 1}^{n} \omega_{i} = 1\)</span>.</p>
 <p>Different arithmetic price indices correspond to special cases of the general arithmetic index, depending on the choice of the weights. Most of these choices make use of information about the quantity of a good sold, so that the weights give a measure of the economic importance of a good. Denote by <span class="math inline">\(q_{it}\)</span> the amount of good <span class="math inline">\(i\)</span> consumed/produced in period <span class="math inline">\(t = 0,1\)</span>.</p>
-<p>Before examining specific arithmetic indices, it is worth noting that an arithmetic index can always be written as the ratio of expenditure/revenue for a “basket” of goods and services at two points in time, so that for any set of weights there are implied “quantities” such that</p>
-<p><span class="math display">\[\begin{align*}
+<p>Before examining specific arithmetic indices, it is worth noting that an arithmetic index can always be written as the ratio of expenditure/revenue for a “basket” of goods and services at two points in time, so that for any set of weights there are implied “quantities” such that
+<span class="math display">\[\begin{align*}
 I^{A} = \frac{\sum_{i = 1}^{n} p_{i1} \tilde{q}_{i}}{\sum_{i = 1}^{n} p_{i0} \tilde{q}_{i}},
-\end{align*}\]</span></p>
-<p>where <span class="math inline">\(\tilde{q}_{i} = \alpha \omega_{i} / p_{i0}\)</span> for some factor of proportionality <span class="math inline">\(\alpha\)</span>.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> Thus, an arithmetic index can always be interpreted as the ratio of the expenditure required to purchase a fixed basket of goods at two points in time (or the revenue from a fixed basket of goods at two points in time). The choice of basket is linked one-to-one with the choice of weights used to aggregate price relatives. Both representations of the arithmetic index get used, as some indices are easier to represent in one form than the other.</p>
+\end{align*}\]</span>
+where <span class="math inline">\(\tilde{q}_{i} = \alpha \omega_{i} / p_{i0}\)</span> for some factor of proportionality <span class="math inline">\(\alpha\)</span>.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> Thus, an arithmetic index can always be interpreted as the ratio of the expenditure required to purchase a fixed basket of goods at two points in time (or the revenue from a fixed basket of goods at two points in time). The choice of basket is linked one-to-one with the choice of weights used to aggregate price relatives. Both representations of the arithmetic index get used, as some indices are easier to represent in one form than the other.</p>
 </div>
 <div class="footnotes">
 <hr />
 <ol start="2">
 <li id="fn2"><p>The capital letter sigma <span class="math inline">\(\Sigma\)</span> is the summation operator. For a collection of numbers <span class="math inline">\(x_{1}, x_{2},\ldots,x_{n}\)</span>, <span class="math inline">\(\sum_{i=1}^{n} x_{i}\)</span> means <span class="math inline">\(x_{1} + x_{2} + \ldots + x_{n}\)</span>.<a href="arithmetic-price-indices.html#fnref2" class="footnote-back">↩</a></p></li>
-<li id="fn3"><p>The value of <span class="math inline">\(\alpha\)</span> has no impact on the index, but is needed to property interpret <span class="math inline">\(\tilde{q}_{i}\)</span> as a quantity. For example, if <span class="math inline">\(\omega_{i}\)</span> is the period-0 expenditure share on good <span class="math inline">\(i\)</span>, <span class="math inline">\(p_{i0} q_{i0} / \sum_{j = 1}^{n} p_{j0} q_{j0}\)</span>, then <span class="math inline">\(\alpha = \sum_{j = 1}^{n} p_{j0} q_{j0}\)</span> so that <span class="math inline">\(\tilde{q}_{i} = q_{i0}\)</span>.<a href="arithmetic-price-indices.html#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>The value of <span class="math inline">\(\alpha\)</span> has no impact on the index, but is needed to properly interpret <span class="math inline">\(\tilde{q}_{i}\)</span> as a quantity. For example, if <span class="math inline">\(\omega_{i}\)</span> is the period-0 expenditure share on good <span class="math inline">\(i\)</span>, <span class="math inline">\(p_{i0} q_{i0} / \sum_{j = 1}^{n} p_{j0} q_{j0}\)</span>, then <span class="math inline">\(\alpha = \sum_{j = 1}^{n} p_{j0} q_{j0}\)</span> so that <span class="math inline">\(\tilde{q}_{i} = q_{i0}\)</span>.<a href="arithmetic-price-indices.html#fnref3" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>

@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
   
 
-<meta name="author" content="Steve Martin" />
+<meta name="author" content="Steve Martin and Rebecca Meier" />
 
 
 
@@ -223,23 +223,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="conditional-independence" class="section level2">
 <h2>Conditional independence</h2>
 <p>The setup for the stratified index closely follows the setup for the general constant-quality index in the previous section, except that the characteristics for a good need to be explicitly modeled. To do so, let <span class="math inline">\(X\)</span> be a (random) vector of observable characteristics upon which goods can be stratified. In the context of housing, for example, <span class="math inline">\(X\)</span> may include square footage, number of bedrooms, and the age of the house. Each stratum corresponds to a different realization of <span class="math inline">\(x\)</span> for <span class="math inline">\(X\)</span> (e.g., houses with 1500-2500 square feet, 3 bedrooms, and that are 10-25 years old).</p>
-<p>The geometric transaction-price index between period 0 and period 1 for stratum <span class="math inline">\(x\)</span> compares average transaction prices over time for the goods in stratum <span class="math inline">\(x\)</span>, and is given by</p>
-<p><span class="math display">\[\begin{align*}
+<p>The geometric transaction-price index between period 0 and period 1 for stratum <span class="math inline">\(x\)</span> compares average transaction prices over time for the goods in stratum <span class="math inline">\(x\)</span>, and is given by
+<span class="math display">\[\begin{align*}
 \log(I^{T}_{x}) = E(\rho | X = x, t = 1) - E(\rho | X = x, t = 0).
-\end{align*}\]</span></p>
-<p>If potential price is independent of time, conditional on the characteristics used to stratify goods, then the sub-indices for each stratum, computed with transaction prices, have a constant quality interpretation. Formally, this is the conditional independence assumption <span class="math inline">\(\{p(1), p(0)\} \perp t | X\)</span>, the within-stratum analogue of the independence assumption from the previous section. For each stratum, whether a good sells in period 0 or period 1 is essentially due to chance, and so there are no systematic differences between goods that sell in period 0 and period 1 that influence price within a stratum. Put differently, the only reason that potential prices could change over time is due to a change in the composition of the
-characteristics <span class="math inline">\(X\)</span>—once these characteristics are held fixed, any change in observed prices over time must be a pure price change.</p>
-<p>Formally, with conditional independence, it must be that <span class="math inline">\(E(\rho(t) | X, t) = E(\rho(t) | X)\)</span> for <span class="math inline">\(t = 0,1\)</span>, and therefore</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+If potential price is independent of time, conditional on the characteristics used to stratify goods, then the sub-indices for each stratum, computed with transaction prices, have a constant quality interpretation. Formally, this is the conditional independence assumption <span class="math inline">\(\{p(1), p(0)\} \perp t | X\)</span>, the within-stratum analogue of the independence assumption from the previous section. For each stratum, whether a good sells in period 0 or period 1 is essentially due to chance, and so there are no systematic differences between goods that sell in period 0 and period 1 that influence price within a stratum. Put differently, the only reason that potential prices could change over time is due to a change in the composition of the characteristics <span class="math inline">\(X\)</span>—once these characteristics are held fixed, any change in observed prices over time must be a pure price change.</p>
+<p>Formally, with conditional independence, it must be that <span class="math inline">\(E(\rho(t) | X, t) = E(\rho(t) | X)\)</span> for <span class="math inline">\(t = 0,1\)</span>, and therefore
+<span class="math display">\[\begin{align*}
 \log(I^{T}_{x}) &amp;= E(\rho(1) | X = x, t = 1) - E(\rho(0) | X = x, t = 0) \\
  &amp;= E(\rho(1) | X = x) - E(\rho(0) | X = x).
-\end{align*}\]</span></p>
-<p>Conditional independence gives a constant-quality index for each stratum that coincides with the transaction-price index for that stratum.</p>
-<p>In the extreme case when goods are grouped into pairs across time, so that each stratum contains two goods, the stratified index is just a pure matched-model index. To see this, enumerate the population of pairs by <span class="math inline">\(i = 1,\ldots, n_{p}\)</span> so that</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+Conditional independence gives a constant-quality index for each stratum that coincides with the transaction-price index for that stratum.</p>
+<p>In the extreme case when goods are grouped into pairs across time, so that each stratum contains two goods, the stratified index is just a pure matched-model index. To see this, enumerate the population of pairs by <span class="math inline">\(i = 1,\ldots, n_{p}\)</span> so that
+<span class="math display">\[\begin{align*}
 I^{Q} = \prod_{i = 1}^{n_{p}} \left(\frac{p_{i1}}{p_{i0}}\right)^{\omega_{i}},
-\end{align*}\]</span></p>
-<p>where <span class="math inline">\(P(X = x) = \omega_{i}\)</span>, and <span class="math inline">\(p_{it}\)</span> is the price of the good in pair <span class="math inline">\(i\)</span> that sells in period <span class="math inline">\(t = 0,1\)</span>. Conditional independence holds for a matched-model index if the goods in each pair are sufficiently similar across time so that the transaction price for the good that sells in period 0 gives a good baseline for what the good that sells in period 1 would have sold for in period 0. This also shows that the standard index-number formulas are special cases of the stratified index, and implicitly make an assumption of conditional independence.</p>
+\end{align*}\]</span>
+where <span class="math inline">\(P(X = x) = \omega_{i}\)</span>, and <span class="math inline">\(p_{it}\)</span> is the price of the good in pair <span class="math inline">\(i\)</span> that sells in period <span class="math inline">\(t = 0,1\)</span>. Conditional independence holds for a matched-model index if the goods in each pair are sufficiently similar across time so that the transaction price for the good that sells in period 0 gives a good baseline for what the good that sells in period 1 would have sold for in period 0. This also shows that the standard index-number formulas are special cases of the stratified index, and implicitly make an assumption of conditional independence.</p>
 <p>It is worth emphasizing that conditional independence is not a testable assumption. It is inherently an economic assumption about how goods sells over time. But it is what allows a constant-quality index to be identified from a transaction-price index.</p>
 </div>
             </section>

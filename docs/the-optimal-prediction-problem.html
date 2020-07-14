@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
   
 
-<meta name="author" content="Steve Martin" />
+<meta name="author" content="Steve Martin and Rebecca Meier" />
 
 
 
@@ -223,18 +223,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-optimal-prediction-problem" class="section level2">
 <h2>The optimal prediction problem</h2>
 <p>The starting point for the stochastic approach is a distribution of <span class="math inline">\(n\)</span> price relatives between period 0 and period <span class="math inline">\(t\)</span>, with the price relative for good <span class="math inline">\(i\)</span> given by <span class="math inline">\(p_{it} / p_{i0}\)</span>, for the population (universe) of all <span class="math inline">\(n\)</span> goods and services to be measured by the price index. Associated with each good <span class="math inline">\(i\)</span> is the probability <span class="math inline">\(P_{i}\)</span> of observing this good transacted over both periods in the population of goods measured by the index, and this in turn gives a measure of frequency for observing different values for changes in price over time. Put differently, a price relative <span class="math inline">\(p_{t} / p_{0}\)</span> is treated as a random variable in the stochastic approach, the distribution of which depends on the underlying distribution of goods and services that form the scope of the price index.<a href="#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a></p>
-<p>Given a distribution of price relatives, the best predictor of a change in price between period 0 and period <span class="math inline">\(t\)</span> is the value <span class="math inline">\(I^{A}\)</span> that minimizes the expected prediction error. Formally, the best predictor solves the following problem<a href="#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a></p>
-<p><span class="math display">\[\begin{align*}
+<p>Given a distribution of price relatives, the best predictor of a change in price between period 0 and period <span class="math inline">\(t\)</span> is the value <span class="math inline">\(I^{A}\)</span> that minimizes the expected prediction error. Formally, the best predictor solves the following problem<a href="#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a>
+<span class="math display">\[\begin{align*}
 \min_{I} E\left[\left(\frac{p_{t}}{p_{0}} - I \right)^{2}\right],
-\end{align*}\]</span></p>
-<p>where <span class="math inline">\(E\)</span> is the expected value operator, taken over the distribution of price relative. As is well known, the solution to this problem is to set <span class="math inline">\(I^{A} = E(p_{t} / p_{0})\)</span> <span class="citation">(Lehmann and Casella 1998, Chapter 1 Example 7.17)</span>; that is, the best predictor of a change in price between two periods is the expected change in price. While it may seem unusual to express a price index in terms of an expected value, this simply emphasizes that a price index is rightfully a feature of the distribution of prices in the population. This is a key feature of the stochastic approach, and is what allows for a meaningful analysis of the statistical properties of a price index when calculated with a sample of price data from the population.</p>
+\end{align*}\]</span>
+where <span class="math inline">\(E\)</span> is the expected value operator, taken over the distribution of price relative. As is well known, the solution to this problem is to set <span class="math inline">\(I^{A} = E(p_{t} / p_{0})\)</span> <span class="citation">(Lehmann and Casella 1998, Chapter 1 Example 7.17)</span>; that is, the best predictor of a change in price between two periods is the expected change in price. While it may seem unusual to express a price index in terms of an expected value, this simply emphasizes that a price index is rightfully a feature of the distribution of prices in the population. This is a key feature of the stochastic approach, and is what allows for a meaningful analysis of the statistical properties of a price index when calculated with a sample of price data from the population.</p>
 <p>The figure gives an example of what the prediction problem looks like. Given a distribution of price relatives (solid line), there is an associated expected prediction error with each value that a price index can take (dashed line). The best choice for a price index as a predictive tool is the value that minimizes the expected prediction error (dotted line).</p>
 <p><img src="price-index-course_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<p>As the expected value is just a weighted average, the index <span class="math inline">\(I^{A} = E(p_{t} / p_{0})\)</span> is simply an arithmetic index that averages price relatives. What’s interesting is that the weights now have a new interpretation—they are the probability of observing a good or service transacted in the population. That is,</p>
-<p><span class="math display">\[\begin{align*}
+<p>As the expected value is just a weighted average, the index <span class="math inline">\(I^{A} = E(p_{t} / p_{0})\)</span> is simply an arithmetic index that averages price relatives. What’s interesting is that the weights now have a new interpretation—they are the probability of observing a good or service transacted in the population. That is,
+<span class="math display">\[\begin{align*}
 I^{A} = \sum_{i = 1}^{n} \frac{p_{it}}{p_{i0}} P_{i}.
-\end{align*}\]</span></p>
-<p>Different arithmetic price-index formulas—e.g., Laspeyres, Paasche, Lowe—thus correspond to different statements about what determines the probability of observing a transaction. For example, with a Laspeyres index the probabilities are given by period-0 expenditure or revenue shares. This amounts to a statement that the probability of observing a transaction for a good is the likelihood of spending or receiving a dollar on that good in period 0.</p>
+\end{align*}\]</span>
+Different arithmetic price-index formulas—e.g., Laspeyres, Paasche, Lowe—thus correspond to different statements about what determines the probability of observing a transaction. For example, with a Laspeyres index the probabilities are given by period-0 expenditure or revenue shares. This amounts to a statement that the probability of observing a transaction for a good is the likelihood of spending or receiving a dollar on that good in period 0.</p>
 </div>
 <div class="footnotes">
 <hr />

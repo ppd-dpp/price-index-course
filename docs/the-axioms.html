@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
   
 
-<meta name="author" content="Steve Martin" />
+<meta name="author" content="Steve Martin and Rebecca Meier" />
 
 
 
@@ -237,36 +237,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Dimensional invariance looks complex, but it simply says that changing the units of measurement does not change the index value. A price index should not change if all prices are multiplied by a constant and all quantities are divided by the same constant—a price index should not depend on the units of measurement.</p>
 <p>As an example, it is straightforward to see that the Laspeyres index satisfies all five axioms.</p>
 <ol style="list-style-type: decimal">
-<li><p>For monotonicity,</p>
-<p><span class="math display">\[\begin{align*}
+<li><p>For monotonicity,
+<span class="math display">\[\begin{align*}
 I(p&#39;_{t}, p_{0}, q_{t}, q_{0}) =  \frac{\sum_{i=1}^{n} p&#39;_{it}q_{i0}}{\sum_{i=1}^{n} p_{i0}q_{i0}} &gt; \frac{\sum_{i=1}^{n} p_{it}q_{i0}}{\sum_{i=1}^{n} p_{i0}q_{i0}} = I(p_{t}, p_{0}, q_{t}, q_{0}) 
- \end{align*}\]</span></p>
-<p>whenever each <span class="math inline">\(p&#39;_{it} \geq p_{it}\)</span>, with at least one strictly greater. The opposite holds if each <span class="math inline">\(p&#39;_{i0} \geq p_{i0}\)</span>, with at least one strictly greater.</p></li>
-<li><p>For linear homogeneity,</p>
-<p><span class="math display">\[\begin{align*}
+ \end{align*}\]</span>
+whenever each <span class="math inline">\(p&#39;_{it} \geq p_{it}\)</span>, with at least one strictly greater. The opposite holds if each <span class="math inline">\(p&#39;_{i0} \geq p_{i0}\)</span>, with at least one strictly greater.</p></li>
+<li><p>For linear homogeneity,
+<span class="math display">\[\begin{align*}
 I(cp_{t}, p_{0}, q_{t}, q_{0}) =  \frac{\sum_{i=1}^{n} cp_{it}q_{i0}}{\sum_{i=1}^{n} p_{i0}q_{i0}} = \frac{c\sum_{i=1}^{n} p_{it}q_{i0}}{\sum_{i=1}^{n} p_{i0}q_{i0}} = cI(p_{t}, p_{0}, q_{t}, q_{0}) 
- \end{align*}\]</span></p>
-<p>for any <span class="math inline">\(c &gt; 0\)</span>.</p></li>
-<li><p>For identity,</p>
-<p><span class="math display">\[\begin{align*}
+ \end{align*}\]</span>
+for any <span class="math inline">\(c &gt; 0\)</span>.</p></li>
+<li><p>For identity,
+<span class="math display">\[\begin{align*}
 I(p_{0}, p_{0}, q_{t}, q_{0}) =  \frac{\sum_{i=1}^{n} p_{i0}q_{i0}}{\sum_{i=1}^{n} p_{i0}q_{i0}} = 1.
  \end{align*}\]</span></p></li>
-<li><p>For homogeneity of degree zero,</p>
-<p><span class="math display">\[\begin{align*}
+<li><p>For homogeneity of degree zero,
+<span class="math display">\[\begin{align*}
 I(cp_{t}, cp_{0}, q_{t}, q_{0}) =  \frac{\sum_{i=1}^{n} cp_{it}q_{i0}}{\sum_{i=1}^{n} cp_{i0}q_{i0}} = \frac{c\sum_{i=1}^{n} p_{it}q_{i0}}{c\sum_{i=1}^{n} p_{i0}q_{i0}} = I(p_{t}, p_{0}, q_{t}, q_{0}) 
- \end{align*}\]</span></p>
-<p>for any <span class="math inline">\(c &gt; 0\)</span>.</p></li>
-<li><p>For dimensional invariance, if</p>
-<p><span class="math display">\[\begin{align*}
+ \end{align*}\]</span>
+for any <span class="math inline">\(c &gt; 0\)</span>.</p></li>
+<li><p>For dimensional invariance, if
+<span class="math display">\[\begin{align*}
 A = 
 \begin{bmatrix}
 a_1 &amp; \ldots &amp; 0 \\
 \vdots &amp; \ddots &amp; \vdots \\
 0 &amp; \ldots &amp; a_n
 \end{bmatrix}
- \end{align*}\]</span></p>
-<p>then</p>
-<p><span class="math display">\[\begin{align*}
+ \end{align*}\]</span>
+then
+<span class="math display">\[\begin{align*}
 I(Ap_{t}, Ap_{0}, A^{-1}q_{t}, A^{-1}q_{0}) = \frac{\sum_{i=1}^{n} a_{i}p_{it}a_{i}^{-1}q_{i0}}{\sum_{i=1}^{n} a_{i}p_{i0}a_{i}^{-1}q_{i0}} = \frac{\sum_{i=1}^{n} p_{it}q_{i0}}{\sum_{i=1}^{n} p_{i0}q_{i0}} = I(p_{t}, p_{0}, q_{t}, q_{0}). 
  \end{align*}\]</span></p></li>
 </ol>

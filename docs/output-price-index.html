@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
   
 
-<meta name="author" content="Steve Martin" />
+<meta name="author" content="Steve Martin and Rebecca Meier" />
 
 
 
@@ -223,24 +223,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="output-price-index" class="section level2">
 <h2>Output-price index</h2>
 <p>An output-price index is analogous to an input-price index; the only difference is that the index compares the value of output over time, rather than the cost of inputs, holding economic conditions fixed. To this end, an output-price index compares the maximum revenue a representative firm could receive at two points in time, given a fixed set inputs for production.</p>
-<p>Modifying the notation of the previous section, let <span class="math inline">\(p\)</span> be the price of outputs <span class="math inline">\(y\)</span>, rather than the price of inputs <span class="math inline">\(q\)</span>. Taking inputs fixed at <span class="math inline">\(q\)</span>, a profit maximizing firm chooses its outputs <span class="math inline">\(y\)</span> to maximize revenue, given prices <span class="math inline">\(p\)</span>. This results in the firm’s revenue function, <span class="math inline">\(r(p, q)\)</span>, that gives the maximum revenue the firm could earn given market prices and a fixed quantity of inputs.<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a> As with an input-price index, the output-price index is defined as</p>
-<p><span class="math display">\[\begin{align*}
+<p>Modifying the notation of the previous section, let <span class="math inline">\(p\)</span> be the price of outputs <span class="math inline">\(y\)</span>, rather than the price of inputs <span class="math inline">\(q\)</span>. Taking inputs fixed at <span class="math inline">\(q\)</span>, a profit maximizing firm chooses its outputs <span class="math inline">\(y\)</span> to maximize revenue, given prices <span class="math inline">\(p\)</span>. This results in the firm’s revenue function, <span class="math inline">\(r(p, q)\)</span>, that gives the maximum revenue the firm could earn given market prices and a fixed quantity of inputs.<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a> As with an input-price index, the output-price index is defined as
+<span class="math display">\[\begin{align*}
 I^{R} = \frac{r(p_{t}, q_{0})}{r(p_{0}, q_{0})}.
-\end{align*}\]</span></p>
-<p>An output-price index measures the value of a firm’s output over time, given a fixed amount of inputs.</p>
-<p>In contrast to an input-price index, an output-price index is always larger than a Laspeyres index. In period 0, the revenue for a firm is simply</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+An output-price index measures the value of a firm’s output over time, given a fixed amount of inputs.</p>
+<p>In contrast to an input-price index, an output-price index is always larger than a Laspeyres index. In period 0, the revenue for a firm is simply
+<span class="math display">\[\begin{align*}
 r(p_{0}, q_{0}) = \sum_{i = 1}^{n} p_{i0} y_{i0};
-\end{align*}\]</span></p>
-<p>the value of the period-0 revenue function is simply the observable revenue period 0, for otherwise the firm couldn’t be operating to maximize profit in period 0. Now, in period <span class="math inline">\(t\)</span>,</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+the value of the period-0 revenue function is simply the observable revenue period 0, for otherwise the firm couldn’t be operating to maximize profit in period 0. Now, in period <span class="math inline">\(t\)</span>,
+<span class="math display">\[\begin{align*}
 r(p_{t}, q_{0}) \geq \sum_{i = 1}^{n} p_{it} y_{i0}
-\end{align*}\]</span></p>
-<p>as the firm will produce relatively more of the outputs that have increased in price, while using the same amount of inputs. The firm substitutes away from less profitable outputs, something not reflected in the firm’s choice of period-0 production. Consequently,</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+as the firm will produce relatively more of the outputs that have increased in price, while using the same amount of inputs. The firm substitutes away from less profitable outputs, something not reflected in the firm’s choice of period-0 production. Consequently,
+<span class="math display">\[\begin{align*}
 \frac{r(p_{t}, q_{0})}{r(p_{0}, q_{0})} = \frac{r(p_{t}, q_{0})}{\sum_{i = 1}^{n} p_{i0} y_{i0}} \geq \frac{\sum_{i = 1}^{n} p_{it} y_{i0}}{\sum_{i = 1}^{n} p_{i0} y_{i0}};
-\end{align*}\]</span></p>
-<p>a Laspeyres index understates an increase in price over time because it does not take into account the substitution of outputs over time that is part of the output-price index. This is the opposite direction of substitution bias for an input-price index, and means that the direction of substitution bias depends on what the price index is trying to measure.</p>
+\end{align*}\]</span>
+a Laspeyres index understates an increase in price over time because it does not take into account the substitution of outputs over time that is part of the output-price index. This is the opposite direction of substitution bias for an input-price index, and means that the direction of substitution bias depends on what the price index is trying to measure.</p>
 </div>
 <div class="footnotes">
 <hr />

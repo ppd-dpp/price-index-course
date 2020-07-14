@@ -1,13 +1,13 @@
 #### Building and analyzing a price index with R ####
 # Steve Martin
-# June 2020
+# July 2020
 
 #---- Bring in libraries ----
 library(dplyr)
 library(gpindex)
 
 #---- Bring in data ----
-source('https://raw.githubusercontent.com/marberts/H-PPD-04/master/get_data.R')
+source('https://raw.githubusercontent.com/ppd-dpp/price-index-course/master/scripts/get_data.R')
 
 #---- Step 1: Make the weights ----
 # Make product weights

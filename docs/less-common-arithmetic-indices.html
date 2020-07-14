@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
   
 
-<meta name="author" content="Steve Martin" />
+<meta name="author" content="Steve Martin and Rebecca Meier" />
 
 
 
@@ -223,44 +223,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="less-common-arithmetic-indices" class="section level2">
 <h2>Less common arithmetic indices</h2>
 <p>There are a variety of arithmetic indices that are rarely used in practice, but can be useful to know about. As these index-number formulas are seldom used, this material can be safely be skipped.</p>
-<p><strong>Palgrave index</strong>. Setting <span class="math inline">\(\omega_{i} = p_{i1} q_{i1} / \sum_{j = 1}^{n} p_{j1} q_{j1}\)</span> results in the Palgrave index</p>
-<p><span class="math display">\[\begin{align*}
+<p><strong>Palgrave index</strong>. Setting <span class="math inline">\(\omega_{i} = p_{i1} q_{i1} / \sum_{j = 1}^{n} p_{j1} q_{j1}\)</span> results in the Palgrave index
+<span class="math display">\[\begin{align*}
 I^{A}_{p} = \sum_{i = 1}^{n} \frac{p_{i1} q_{i1}}{\sum_{j = 1}^{n} p_{j1} q_{j1}} \frac{p_{i1}}{p_{i0}}.
-\end{align*}\]</span></p>
-<p>The Palgrave index uses period-1 expenditure shares as weights, and is a special case of the Young index.</p>
-<p><strong>Unnamed index</strong>. Setting</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+The Palgrave index uses period-1 expenditure shares as weights, and is a special case of the Young index.</p>
+<p><strong>Unnamed index</strong>. Setting
+<span class="math display">\[\begin{align*}
 \omega_{i} = \frac{1}{2} \frac{p_{i0} q_{i0}}{\sum_{j = 1}^{n} p_{j0} q_{j0}} + \frac{1}{2} \frac{p_{i1} q_{i1}}{\sum_{j = 1}^{n} p_{j1} q_{j1}}
-\end{align*}\]</span></p>
-<p>results in an index-number formula without a name,</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+results in an index-number formula without a name,
+<span class="math display">\[\begin{align*}
 I^{A}_{U} = \sum_{i = 1}^{n} \left(\frac{1}{2} \frac{p_{i0} q_{i0}}{\sum_{j = 1}^{n} p_{j0} q_{j0}} + \frac{1}{2} \frac{p_{i1} q_{i1}}{\sum_{j = 1}^{n} p_{j1} q_{j1}}\right) \frac{p_{i1}}{p_{i0}}.
-\end{align*}\]</span></p>
-<p>This index is a mixture of the Laspeyres and Palgrave indices, with weights given by the average expenditure/revenue share between period 0 and period 1.</p>
-<p><strong>Drobisch index</strong>. Setting</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+This index is a mixture of the Laspeyres and Palgrave indices, with weights given by the average expenditure/revenue share between period 0 and period 1.</p>
+<p><strong>Drobisch index</strong>. Setting
+<span class="math display">\[\begin{align*}
 \omega_{i} = \frac{1}{2} \frac{p_{i0} q_{i0}}{\sum_{j = 1}^{n} p_{j0} q_{j0}} + \frac{1}{2} \frac{p_{i0} q_{i1}}{\sum_{j = 1}^{n} p_{j0} q_{j1}}
-\end{align*}\]</span></p>
-<p>results in the Drobisch index</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+results in the Drobisch index
+<span class="math display">\[\begin{align*}
 I^{A}_{d} = \frac{1}{2} \frac{\sum_{i = 1}^{n} p_{i1} q_{i0}}{\sum_{i = 1}^{n} p_{i0} q_{i0}} + \frac{1}{2} \frac{\sum_{i = 1}^{n} p_{i1} q_{i1}}{\sum_{i = 1}^{n} p_{i0} q_{i1}}.
-\end{align*}\]</span></p>
-<p>This index is a mixture of the Laspeyres and Paasche indices.</p>
-<p><strong>Walsh index</strong>. Setting <span class="math inline">\(\omega_{i} = p_{i0} \sqrt{q_{i0} q_{i1}} / \sum_{j = 1}^{n} p_{j0} \sqrt{q_{j0} q_{j1}}\)</span> results in the Walsh index</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+This index is a mixture of the Laspeyres and Paasche indices.</p>
+<p><strong>Walsh index</strong>. Setting <span class="math inline">\(\omega_{i} = p_{i0} \sqrt{q_{i0} q_{i1}} / \sum_{j = 1}^{n} p_{j0} \sqrt{q_{j0} q_{j1}}\)</span> results in the Walsh index
+<span class="math display">\[\begin{align*}
 I^{A}_{W} = \frac{\sum_{i = 1}^{n} p_{i1} \sqrt{q_{i0} q_{i1}}}{\sum_{i = 1}^{n} p_{i0} \sqrt{q_{i0} q_{i1}}}.
-\end{align*}\]</span></p>
-<p>This index uses a basket that contains the geometric average of the period-0 and period-1 quantities.</p>
-<p><strong>Marshall-Edgeworth index</strong>. Setting <span class="math inline">\(\omega_{i} = p_{i0} (q_{i0} + q_{i1}) / \sum_{j = 1}^{n} p_{j0} (q_{j0} + q_{j1})\)</span> results in the Marshall-Edgeworth index</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+This index uses a basket that contains the geometric average of the period-0 and period-1 quantities.</p>
+<p><strong>Marshall-Edgeworth index</strong>. Setting <span class="math inline">\(\omega_{i} = p_{i0} (q_{i0} + q_{i1}) / \sum_{j = 1}^{n} p_{j0} (q_{j0} + q_{j1})\)</span> results in the Marshall-Edgeworth index
+<span class="math display">\[\begin{align*}
 I^{A}_{M} = \frac{\sum_{i = 1}^{n} p_{i1} (q_{i0} + q_{i1}) / 2}{\sum_{i = 1}^{n} p_{i0} (q_{i0} + q_{i1}) / 2}.
-\end{align*}\]</span></p>
-<p>Like the Walsh index, this index uses a basket that takes an average of the period-0 and period-1 quantities.</p>
-<p><strong>Geary-Khamis index</strong>. Setting <span class="math inline">\(\omega_{i} = p_{i0} / (1 / q_{i0} + 1 / q_{i1}) / \sum_{j = 1}^{n} p_{j0} / (1 / q_{j0} + 1 / q_{j1})\)</span> results in the Geary-Khamis index</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+Like the Walsh index, this index uses a basket that takes an average of the period-0 and period-1 quantities.</p>
+<p><strong>Geary-Khamis index</strong>. Setting <span class="math inline">\(\omega_{i} = p_{i0} / (1 / q_{i0} + 1 / q_{i1}) / \sum_{j = 1}^{n} p_{j0} / (1 / q_{j0} + 1 / q_{j1})\)</span> results in the Geary-Khamis index
+<span class="math display">\[\begin{align*}
 I^{A}_{G} = \frac{\sum_{i = 1}^{n} 2 p_{i1} / (1 / q_{i0} + 1 / q_{i1})}{\sum_{i = 1}^{n} 2 p_{i0} / (1 / q_{i0} + 1 / q_{i1})}.
-\end{align*}\]</span></p>
-<p>Like the Walsh and Marshall-Edgeworth indices, this index uses a basket that takes an average of the period-0 and period-1 quantities.</p>
+\end{align*}\]</span>
+Like the Walsh and Marshall-Edgeworth indices, this index uses a basket that takes an average of the period-0 and period-1 quantities.</p>
 </div>
             </section>
 

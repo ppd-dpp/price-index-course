@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
   
 
-<meta name="author" content="Steve Martin" />
+<meta name="author" content="Steve Martin and Rebecca Meier" />
 
 
 
@@ -222,22 +222,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="transaction-price-indices" class="section level2">
 <h2>Transaction-price indices</h2>
-<p>The challenge with constructing a constant-quality price index is that potential prices are not observable, and only information on transaction prices and the time when a good sells can be used to calculate an index. There is a problem of missing data. This can be seen by linking transaction prices to potential prices as</p>
-<p><span class="math display">\[\begin{align*}
+<p>The challenge with constructing a constant-quality price index is that potential prices are not observable, and only information on transaction prices and the time when a good sells can be used to calculate an index. There is a problem of missing data. This can be seen by linking transaction prices to potential prices as
+<span class="math display">\[\begin{align*}
 \rho = \rho(0) + t(\rho(1) - \rho(0)),
-\end{align*}\]</span></p>
-<p>where <span class="math inline">\(\rho\)</span> is the (log) transaction price, and <span class="math inline">\(t\)</span> gives the period of sale (either <span class="math inline">\(t = 1\)</span> or <span class="math inline">\(t = 0\)</span>). The only information that can be observed from market transactions is <span class="math inline">\(\rho\)</span> and <span class="math inline">\(t\)</span>—the price that a good sold for and the time when it actually sold.</p>
-<p>Given information on transaction prices, a geometric transaction-price index attempts to mimic the constant-quality index by comparing the average transaction price for the goods that sell in period 1 with the average transaction price for the goods that sell in period 0, and is thus given by</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+where <span class="math inline">\(\rho\)</span> is the (log) transaction price, and <span class="math inline">\(t\)</span> gives the period of sale (either <span class="math inline">\(t = 1\)</span> or <span class="math inline">\(t = 0\)</span>). The only information that can be observed from market transactions is <span class="math inline">\(\rho\)</span> and <span class="math inline">\(t\)</span>—the price that a good sold for and the time when it actually sold.</p>
+<p>Given information on transaction prices, a geometric transaction-price index attempts to mimic the constant-quality index by comparing the average transaction price for the goods that sell in period 1 with the average transaction price for the goods that sell in period 0, and is thus given by
+<span class="math display">\[\begin{align*}
 \log(I^{T}) &amp;= E(\rho | t = 1) - E(\rho | t = 0) \\
 &amp;= E(\rho(1) | t = 1) - E(\rho(0) | t = 0).
 \end{align*}\]</span></p>
 <p>The transaction-price index generally differs from the constant-quality index, as it compares potential prices for those goods that sell in period 1 to potential prices for those goods that sell in period 0, rather than for all goods. Any change in the composition of goods selling between period 0 and period 1 will contaminate the measurement of a pure price movement, as the same goods are not being compared over time. What the goods selling in period 0 sold for may differ from what the goods selling in period 1 would have sold for in period 0, so comparing average transaction price mixes up a change in price with a change in the composition of goods selling at different points in time.<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a></p>
-<p>Note that this index is not necessarily based on price relatives, as the same number of goods may not sell in each period. If <span class="math inline">\(n(t)\)</span> denotes the set of goods that sell in period <span class="math inline">\(t\)</span>, the geometric transaction-price index is a ratio of geometric averages,</p>
-<p><span class="math display">\[\begin{align*}
+<p>Note that this index is not necessarily based on price relatives, as the same number of goods may not sell in each period. If <span class="math inline">\(n(t)\)</span> denotes the set of goods that sell in period <span class="math inline">\(t\)</span>, the geometric transaction-price index is a ratio of geometric averages,
+<span class="math display">\[\begin{align*}
 \log(I^{T}) = \frac{\prod_{i \in n(1)} p_{i}(1)^{P_{i}|t = 1}}{\prod_{i \in n(0)} p_{i}(1)^{P_{i}|t = 0}},
-\end{align*}\]</span></p>
-<p>where <span class="math inline">\(P_{i} | t\)</span> is the conditional probability of observing good <span class="math inline">\(i\)</span> in period <span class="math inline">\(t\)</span>. This is just a generalization of the usual geometric price index when different goods sell over time.</p>
+\end{align*}\]</span>
+where <span class="math inline">\(P_{i} | t\)</span> is the conditional probability of observing good <span class="math inline">\(i\)</span> in period <span class="math inline">\(t\)</span>. This is just a generalization of the usual geometric price index when different goods sell over time.</p>
 </div>
 <div class="footnotes">
 <hr />

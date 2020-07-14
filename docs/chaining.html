@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
   
 
-<meta name="author" content="Steve Martin" />
+<meta name="author" content="Steve Martin and Rebecca Meier" />
 
 
 
@@ -224,19 +224,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Chaining</h2>
 <p>The weights for an index ideally give a measure of the economic importance of the goods that comprise the index, so that price relatives for goods and services with greater economic importance have a larger influence on the overall price movement between periods. In application the weights are often reused over time, as it is costly and time consuming to continuously update the weights. Keeping the same weights period after period, however, means that the weights will eventually become out of date, and may fail to capture changes in the economic importance of certain goods. Chaining an index provides a way to update the weights for an index and append new index values to the index series calculated with the old weights, without having to revise the old index series. Chaining can also be used to change the composition of goods and services covered by a price index, and this can change as new goods are introduced into a market and old goods disappear.</p>
 <p>The idea behind chaining is the same as that for factoring an index—break an index into two pieces that can be glued together at a common overlap period. The difference is that while factoring an index is simply a trick of algebra, chaining an index is a practical solution for producing an index with a longer time series, rather than restarting the index in the period when the weights change. In both cases the idea is to modify the value in the base period of an index to reflect the cumulative change in price up to that point in time.</p>
-<p>The steps for chaining any kind of index are the same, so consider an arithmetic index running from period 0 to period <span class="math inline">\(t\)</span>, and suppose the weights for this index change in some period <span class="math inline">\(k\)</span>. This could be because the previous weights have become sufficiently out-of-date that they need to change, or goods and services for which the index applies have changed. Whatever the reason, this gives rise to two indices, one running from period 0 to period <span class="math inline">\(k\)</span>, using period-0 weights</p>
-<p><span class="math display">\[\begin{align*}
+<p>The steps for chaining any kind of index are the same, so consider an arithmetic index running from period 0 to period <span class="math inline">\(t\)</span>, and suppose the weights for this index change in some period <span class="math inline">\(k\)</span>. This could be because the previous weights have become sufficiently out-of-date that they need to change, or goods and services for which the index applies have changed. Whatever the reason, this gives rise to two indices, one running from period 0 to period <span class="math inline">\(k\)</span>, using period-0 weights
+<span class="math display">\[\begin{align*}
 I^{A}(0, k) = \sum_{i = 1}^{n} \omega_{i0} \frac{p_{ik}}{p_{i0}},
-\end{align*}\]</span></p>
-<p>and another running from period <span class="math inline">\(k\)</span> to period <span class="math inline">\(t\)</span> using period-<span class="math inline">\(k\)</span> weights</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+and another running from period <span class="math inline">\(k\)</span> to period <span class="math inline">\(t\)</span> using period-<span class="math inline">\(k\)</span> weights
+<span class="math display">\[\begin{align*}
 I^{A}(k, t) = \sum_{i = 1}^{m} \omega_{ik} \frac{p_{it}}{p_{ik}}.
-\end{align*}\]</span></p>
-<p>The chained index simply multiplies these two indices together, so that</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+The chained index simply multiplies these two indices together, so that
+<span class="math display">\[\begin{align*}
 I^{A}(0, t) = \sum_{i = 1}^{n} \omega_{i0} \frac{p_{ik}}{p_{i0}} \times \sum_{i = 1}^{m} \omega_{ik} \frac{p_{it}}{p_{ik}}.
-\end{align*}\]</span></p>
-<p>The chart below gives an example of what a chained index looks like.</p>
+\end{align*}\]</span>
+The chart below gives an example of what a chained index looks like.</p>
 <p><img src="price-index-course_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>The important part about a chained index is the overlap period <span class="math inline">\(k\)</span> when the weights change, and the prices in period <span class="math inline">\(k\)</span> get used with two sets of weights. If there is no overlap period then the index cannot be chained. Each index can be thought of as a link in the chain, giving the movement in prices for that section of time, and the overlap period is where the links meet.</p>
 </div>

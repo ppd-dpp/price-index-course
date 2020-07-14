@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="A modern and straightforward introduction to price indices" />
   
 
-<meta name="author" content="Steve Martin" />
+<meta name="author" content="Steve Martin and Rebecca Meier" />
 
 
 
@@ -224,26 +224,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Input-price index</h2>
 <p>The goal of an input-price index is to measure the change in the cost of a representative firm’s intermediate inputs, holding outputs fixed at some reference level. This is analogous to a fixed-basket index, except now the economic conditions facing the firm are held fixed, rather than the quantity of inputs used. This distinction is practically important, and means that there are no limits on the firm’s ability to substitute more expensive inputs for less expensive inputs when prices change. An input-price index can alternatively be thought of as a cost-of-production index, analogous to a cost-of-living index for a consumer price index—an input-price index measures the firm’s experience of a change in input prices.</p>
 <p>To fix notation, let <span class="math inline">\(y\)</span> be the amount of output a firm produces, <span class="math inline">\(q\)</span> be the quantity of inputs available, and <span class="math inline">\(p\)</span> the price of primary inputs. As with the axiomatic approach, these are vectors of values (i.e., <span class="math inline">\(y\)</span> is a vector with the quantity of each output the firm produces). Taking <span class="math inline">\(y\)</span> as fixed, and assuming the firm has no market power in the inputs market (so that the firm treats <span class="math inline">\(p\)</span> as fixed), a profit-maximizing firm will choose its inputs, <span class="math inline">\(q\)</span>, to minimize the cost of achieving outputs <span class="math inline">\(y\)</span>. The result of this exercise is the firm’s expenditure function, <span class="math inline">\(e(p, y)\)</span>, that gives the minimum cost for purchasing the inputs required to produce <span class="math inline">\(y\)</span> units of output.<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a> Because the firm is a profit-maximizer, this minimum cost of product will agree with their actual cost of production under different configurations of prices for inputs and outputs produced.</p>
-<p>Having defined the firm’s expenditure function, it is then simple to define an input cost index between period 0 and period <span class="math inline">\(t\)</span> as</p>
-<p><span class="math display">\[\begin{align*}
+<p>Having defined the firm’s expenditure function, it is then simple to define an input cost index between period 0 and period <span class="math inline">\(t\)</span> as
+<span class="math display">\[\begin{align*}
 I^{C} = \frac{e(p_{t}, y_{0})}{e(p_{0}, y_{0})},
-\end{align*}\]</span></p>
-<p>where <span class="math inline">\(y_{0}\)</span> is the amount of output produced by the firm in period 0. The input-price index measures a change in input prices by comparing the expenditure required to satisfy a fixed set of economic (output) conditions over time.</p>
+\end{align*}\]</span>
+where <span class="math inline">\(y_{0}\)</span> is the amount of output produced by the firm in period 0. The input-price index measures a change in input prices by comparing the expenditure required to satisfy a fixed set of economic (output) conditions over time.</p>
 <p>There is actually an entire family of input-price indices depending on the level at which quantities are fixed in the expenditure function. The input-price index defined above is a Laspeyres-like input-price index because the economic conditions facing the firm are fixed at their period 0 values; a Paasche-like index fixes output at its period-<span class="math inline">\(t\)</span> level. However, the intuition is the same in all cases, so attention is restricted to the Laspeyres-like input-price index above to keep the presentation simple.</p>
-<p>It is helpful to understand how the input-price index differs from a Laspeyres index in order to appreciate the economic approach to constructing a price index. It is easy to see that</p>
-<p><span class="math display">\[\begin{align*}
+<p>It is helpful to understand how the input-price index differs from a Laspeyres index in order to appreciate the economic approach to constructing a price index. It is easy to see that
+<span class="math display">\[\begin{align*}
 e(p_{0}, y_{0}) = \sum_{i = 1}^{n} p_{i0} q_{i0};
-\end{align*}\]</span></p>
-<p>the value of the period-0 expenditure function is simply the observable expenditure on inputs in period 0, for otherwise the firm couldn’t be operating to maximize profit in period 0. Now, in period <span class="math inline">\(t\)</span>,</p>
-<p><span class="math display">\[\begin{align*}
+\end{align*}\]</span>
+the value of the period-0 expenditure function is simply the observable expenditure on inputs in period 0, for otherwise the firm couldn’t be operating to maximize profit in period 0. Now, in period <span class="math inline">\(t\)</span>,
+<span class="math display">\[\begin{align*}
 e(p_{t}, y_{0}) \leq \sum_{i = 1}^{n} p_{it} q_{i0}.
 \end{align*}\]</span></p>
 <p>Obviously the inputs used in period 0 are good enough to produce the amount of output in period 0, but this choice of inputs need not minimize the cost of production at period-<span class="math inline">\(t\)</span> prices. If the price of an input increases between period 0 and period <span class="math inline">\(t\)</span>, the firm will usually substitute away from that input and use more of a relatively cheaper input in order to minimize cost while still producing <span class="math inline">\(y_{0}\)</span> units of output. This substitution is not reflected in the choice of inputs <span class="math inline">\(q_{0}\)</span>, and so this bundle of inputs will cost more than the cost-minimizing bundle of inputs that can produce <span class="math inline">\(y_{0}\)</span> units of output at period-<span class="math inline">\(t\)</span> prices.</p>
-<p>These two expression can now be used to show that</p>
-<p><span class="math display">\[\begin{align*}
+<p>These two expression can now be used to show that
+<span class="math display">\[\begin{align*}
 \frac{e(p_{t}, y_{0})}{e(p_{0}, y_{0})} = \frac{e(p_{t}, y_{0})}{\sum_{i = 1}^{n} p_{i0} q_{i0}} \leq \frac{\sum_{i = 1}^{n} p_{it} q_{i0}}{\sum_{i = 1}^{n} p_{i0} q_{i0}}.
-\end{align*}\]</span></p>
-<p>The Laspeyres index thus overstates the price movement between period 0 and period <span class="math inline">\(t\)</span> because it does not take into account the substitution of inputs from a change in price that features as part of the input-price index—there is a positive substitution bias. This is the key insight from the economic approach—there is a divergence between standard index-number formulas used to measure a change in price and the economic change in price—and is the impetus to derive index-number formulas that can be used to calculate the economic input-price index.</p>
+\end{align*}\]</span>
+The Laspeyres index thus overstates the price movement between period 0 and period <span class="math inline">\(t\)</span> because it does not take into account the substitution of inputs from a change in price that features as part of the input-price index—there is a positive substitution bias. This is the key insight from the economic approach—there is a divergence between standard index-number formulas used to measure a change in price and the economic change in price—and is the impetus to derive index-number formulas that can be used to calculate the economic input-price index.</p>
 </div>
 <div class="footnotes">
 <hr />
