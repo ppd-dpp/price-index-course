@@ -1,6 +1,6 @@
 # (PART) Constant-Quality Price Indices{-}
 
-# Syllabus
+# Syllabus for Constant-Quality Price Indices
 
 A price index should measure a pure price movement over time. In practice, however, goods and services change over time, and this can contaminate a price index---without additional information, there is no way to disentangle a price movement from a change in the quality of a good or service.
 
@@ -20,7 +20,7 @@ Prerequisites: Price Index Theory, at least one introductory course in econometr
 
 Evaluation for this module is based on an assignment consisting of 20 multiple-choice/true-false questions that draw on material in the course content and readings. Collaboration on the assignment is welcomed, but each person must submit their own unique work. Passing this module requires at least a 65% on the assignment.
 
-Readings for this module come from chapters 17 and 21 of the PPI manual [@ppimanual] and/or the CPI manual [@cpimanual], published by the IMF (freely available on their website), as well as chapters 4--6 in the Handbook on Residential Property Price Indices [@rppihandbook], published by Eurostat (freely available on their website).^[Although the focus of the handbook is on residential property prices, the ideas are applicable to any goods or services, and the material is presented relatively well.]
+Readings for this module come from chapters 17 and 21 of the PPI manual [@ppimanual] and/or the CPI manual [@cpimanual], published by the IMF ([freely available on their website](https://www.imf.org/en/Publications/Manuals-Guides/Issues/2016/12/30/Producer-Price-Index-Manual-Theory-and-Practice-16966)), as well as chapters 4--6 in the Handbook on Residential Property Price Indices [@rppihandbook], published by Eurostat ([freely available on their website](https://ec.europa.eu/eurostat/web/products-manuals-and-guidelines/-/KS-RA-12-022)).^[Although the focus of the handbook is on residential property prices, the ideas are applicable to any goods or services, and the material is presented relatively well.]
 
 Please email one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Rebecca Meier](mailto:rebecca.meier@canada.ca)) if you have any questions, or need help with any of the course material or assignment.
 
@@ -187,7 +187,7 @@ The challenge with a stratified approach is finding the right balance between th
 
 A related issue with stratification is that, if stratification occurs for many characteristics of a good, $X$ may be of large dimension. In this case, the cell sizes for each strata may be very small, and the stratum-specific indices may be very sensitive to the addition or removal of transactions for a good. Both overlap and dimensionality serve to limit the ability to make homogeneous groups of goods for which it is easier to motivate conditional independence.
 
-## Example with R
+## Example with R: Stratified index
 
 Calculating a stratified index is straightforward in practice. One neat way to do it is with a simple linear regression.
 
@@ -288,7 +288,7 @@ The point to take away here is that when goods are stratified according to their
 
 In practice the time-dummy hedonic model is more popular than the hedonic imputation approach, in part because it is simpler, easier to compute, and less data intensive. The disadvantage to the time-dummy approach is that it is more restrictive, and requires an extra assumption. In most cases, however, the two approaches give similar results.
 
-## Example with R
+## Example with R: Hedonics
 
 Calculating a linear hedonic price index is very easy in R.
 
@@ -382,7 +382,7 @@ exp(weighted.mean(predict(hi1, df) - predict(hi0, df), df$weights)) * 100
 
 ```
 
-# Assignment
+# Assignment 3
 
 Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65% (13 out of 20 correct). Email your answers to one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Rebecca Meier](mailto:rebecca.meier@canada.ca)) when you are finished.
 

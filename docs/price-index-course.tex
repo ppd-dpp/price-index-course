@@ -109,7 +109,7 @@
 
 \title{A Course on Price Indices}
 \author{Steve Martin and Rebecca Meier}
-\date{July 2020}
+\date{August 2020}
 
 \begin{document}
 \maketitle
@@ -137,8 +137,8 @@ Individuals with prior exposure to econometrics and statistics can take module 3
 \hypertarget{part-introduction-to-price-indices}{%
 \part{Introduction to Price Indices}\label{part-introduction-to-price-indices}}
 
-\hypertarget{syllabus}{%
-\section{Syllabus}\label{syllabus}}
+\hypertarget{syllabus-for-introduction-to-price-indices}{%
+\section{Syllabus for Introduction to Price Indices}\label{syllabus-for-introduction-to-price-indices}}
 
 A price index gives a way to systematically condense information about many prices for a range of goods and services into a single value. Price indices are widely used to analyze and compare macroeconomic conditions over time, and have important implications for government policies.
 
@@ -162,7 +162,7 @@ There are no prerequisites for this module, although individuals should be comfo
 
 Evaluation for this module is based on an assignment consisting of 20 multiple-choice/true-false questions that draw on material in the course content and readings. Collaboration on the assignment is welcomed, but each person must submit their own unique work. Passing this module requires at least a 65\% on the assignment.
 
-Readings for this module come from chapters 1, 2, 4, and 9 of the Producer Price Index Manual (ILO et al. 2004b) and/or the Consumer Price Index Manual (ILO et al. 2004a), published by the IMF (freely available on their website). As there is considerable overlap between these sources, the PPI manual is used as the main reference.
+Readings for this module come from chapters 1, 2, 4, and 9 of the Producer Price Index Manual (ILO et al. 2004b) and/or the Consumer Price Index Manual (ILO et al. 2004a), published by the IMF (\href{https://www.imf.org/en/Publications/Manuals-Guides/Issues/2016/12/30/Producer-Price-Index-Manual-Theory-and-Practice-16966}{freely available on their website}). As there is considerable overlap between these sources, the PPI manual is used as the main reference.
 
 Please email one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:rebecca.meier@canada.ca}{Rebecca Meier}) if you have any questions, or need help with any of the course material or assignment.
 
@@ -387,8 +387,8 @@ I_{F} &= \sqrt{\frac{\sum_{i = 1}^{n} p_{i1} q_{i0}}{\sum_{i = 1}^{n} p_{i0} q_{
 
 The Fisher index is often seen as an ideal index because it treats information in period 0 and period 1 symmetrically.\footnote{The Törnqvist index is also seen as ideal for a similar reason, and these types of indices often get called superlative.} In practice, however, the Fisher index is not frequently used by national statistical agencies because it is not timely to calculate. This is because it depends on the Paasche index, which requires information on period 1 quantities in addition to period 1 prices, something that has historically been impractical for national statistical agencies to collect.
 
-\hypertarget{example-with-r}{%
-\subsection{Example with R}\label{example-with-r}}
+\hypertarget{example-with-r-index-number-formulas}{%
+\subsection{Example with R: Index-number formulas}\label{example-with-r-index-number-formulas}}
 
 All of the index-number formulas presented in this section are simply weighted averages, and are fairly easy to calculate in R given information on prices and some weights.
 
@@ -600,8 +600,8 @@ The chart below gives an example of what a chained index looks like.
 
 The important part about a chained index is the overlap period \(k\) when the weights change, and the prices in period \(k\) get used with two sets of weights. If there is no overlap period then the index cannot be chained. Each index can be thought of as a link in the chain, giving the movement in prices for that section of time, and the overlap period is where the links meet.
 
-\hypertarget{example-with-r-1}{%
-\subsection{Example with R}\label{example-with-r-1}}
+\hypertarget{example-with-r-consistency-in-aggregation-and-rebasing}{%
+\subsection{Example with R: Consistency in aggregation and rebasing}\label{example-with-r-consistency-in-aggregation-and-rebasing}}
 
 It is useful to finish this section of the course with a couple examples in R. The first example shows that a geometric index is consistent in aggregation. Calculating the index in two steps gives the same answer as the direct calculation.
 
@@ -678,17 +678,17 @@ The second example shows how to rebase a price index---simply divide the index s
 \begin{verbatim}
 ##    period value
 ## 1       0   100
-## 2       1   113
-## 3       2   116
-## 4       3   105
-## 5       4   125
-## 6       5    90
-## 7       6   121
-## 8       7   127
-## 9       8   118
-## 10      9    97
-## 11     10   104
-## 12     11   124
+## 2       1   129
+## 3       2    96
+## 4       3   107
+## 5       4    93
+## 6       5   104
+## 7       6   105
+## 8       7   125
+## 9       8   121
+## 10      9   118
+## 11     10    90
+## 12     11   117
 \end{verbatim}
 
 \begin{Shaded}
@@ -700,22 +700,22 @@ The second example shows how to rebase a price index---simply divide the index s
 
 \begin{verbatim}
 ##    period     value
-## 1       0  82.64463
-## 2       1  93.38843
-## 3       2  95.86777
-## 4       3  86.77686
-## 5       4 103.30579
-## 6       5  74.38017
+## 1       0  95.23810
+## 2       1 122.85714
+## 3       2  91.42857
+## 4       3 101.90476
+## 5       4  88.57143
+## 6       5  99.04762
 ## 7       6 100.00000
-## 8       7 104.95868
-## 9       8  97.52066
-## 10      9  80.16529
-## 11     10  85.95041
-## 12     11 102.47934
+## 8       7 119.04762
+## 9       8 115.23810
+## 10      9 112.38095
+## 11     10  85.71429
+## 12     11 111.42857
 \end{verbatim}
 
-\hypertarget{assignment}{%
-\section{Assignment}\label{assignment}}
+\hypertarget{assignment-1}{%
+\section{Assignment 1}\label{assignment-1}}
 
 Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65\% (13 out of 20 correct). Email your answers to one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:rebecca.meier@canada.ca}{Rebecca Meier}) when you are finished.
 
@@ -943,8 +943,8 @@ Answers for these questions come from both the course content and the readings. 
 \hypertarget{part-price-index-theory}{%
 \part{Price Index Theory}\label{part-price-index-theory}}
 
-\hypertarget{syllabus-1}{%
-\section{Syllabus}\label{syllabus-1}}
+\hypertarget{syllabus-for-price-index-theory}{%
+\section{Syllabus for Price Index Theory}\label{syllabus-for-price-index-theory}}
 
 Why are certain index-number formulas used to compute a price index? Answering this question requires a theory of price indices that can be used to evaluate the properties of a price index, and determine if one index number is better than another.
 
@@ -966,12 +966,12 @@ Prerequisites: Introduction to Price Indices, at least one intermediate micro-th
 
 Evaluation for this module is based on an assignment consisting of 20 multiple-choice/true-false questions that draw on material in the course content and readings. Collaboration on the assignment is welcomed, but each person must submit their own unique work. Passing this module requires at least a 65\% on the assignment.
 
-Readings for this module come from chapters 15--18 of the PPI manual (ILO et al. 2004b) and/or the CPI manual (ILO et al. 2004a), published by the IMF (freely available on their website), as well as the review of price-index theory by Balk (1995).
+Readings for this module come from chapters 15--18 of the PPI manual (ILO et al. 2004b) and/or the CPI manual (ILO et al. 2004a), published by the IMF (\href{https://www.imf.org/en/Publications/Manuals-Guides/Issues/2016/12/30/Producer-Price-Index-Manual-Theory-and-Practice-16966}{freely available on their website}), as well as the review of price-index theory by Balk (1995).
 
 Please email one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:rebecca.meier@canada.ca}{Rebecca Meier}) if you have any questions, or need help with any of the course material or assignment.
 
-\hypertarget{introduction}{%
-\section{Introduction}\label{introduction}}
+\hypertarget{what-is-price-index-theory}{%
+\section{What is price-index theory?}\label{what-is-price-index-theory}}
 
 There are three broad approaches for motivating the price-index formulas that get used in practice by statistical agencies---the axiomatic approach, the economic approach, and the stochastic approach. Each approach is useful in its own right, and all three give different perspectives and understandings for the various index-number formulas that are used to construct price indices. Taken together, these different approaches constitute a theory of price indices.
 
@@ -1319,8 +1319,8 @@ I^{A} = \sum_{i = 1}^{n} \frac{p_{it}}{p_{i0}} P_{i}.
 \end{align*}
 Different arithmetic price-index formulas---e.g., Laspeyres, Paasche, Lowe---thus correspond to different statements about what determines the probability of observing a transaction. For example, with a Laspeyres index the probabilities are given by period-0 expenditure or revenue shares. This amounts to a statement that the probability of observing a transaction for a good is the likelihood of spending or receiving a dollar on that good in period 0.
 
-\hypertarget{geometric-price-indices-1}{%
-\subsection{Geometric price indices}\label{geometric-price-indices-1}}
+\hypertarget{geometric-price-indices-as-a-best-preditor}{%
+\subsection{Geometric price indices as a best preditor}\label{geometric-price-indices-as-a-best-preditor}}
 
 A geometric index can be motivated in the same way as an arithmetic index. Formally, a geometric index is the value \(I^{G}\) that solves
 \begin{align*}
@@ -1369,8 +1369,8 @@ With random sampling, a natural approach for estimating the arithmetic index is 
 
 A natural estimator for the geometric index is \(\hat{I}^{G} = \prod_{i = 1}^{n_{s}} (p_{it} / p_{i0})^{1 / n_{s}}\), the Jevons index. Unlike the Carli index, however, the Jevons index is a biased estimator of the geometric index. It is again straightforward to show that \(E(\hat{I}^{G}) \geq I^{G}\), with \(E(\hat{I}^{G}) = I^{G}\) only holding in very special circumstances---the Jevons index systematically overestimates the geometric index (i.e., it is biased upwards).\footnote{The Jevons index is not biased in cases where the sampling distribution is degenerate, or the variance in price relatives is zero. See Lehmann and Casella (1998 Chapter 1 Theorem 7.5).} Although biasedness is a disadvantage of the Jevons index, the bias is not the only important statistical property of an estimator, and the Jevons index has other desirable statistical properties (e.g., it is a consistent estimator of the geometric index, and in certain circumstances achieves the maximum likelihood efficiency bound).\footnote{The Carli index is also a consistent estimator of the arithmetic index under random sampling, but it cannot be a maximum likelihood estimator as this would require price relatives to have a Gaussian distribution, which means that price relatives can be negative. By contrast, the Jevons index is a maximum likelihood estimator for the geometric index if price relatives have a log-normal distribution, which implies that prices are always positive.} It is possible to adjust for the upwards bias in the Jevons by dividing the Jevons index by \(1 + \sigma^{2}/(2n)\), where \(\sigma^{2}\) is the variance of the log price relatives (Kennedy 2003, 41), but this is not usually done in practice.
 
-\hypertarget{assignment-1}{%
-\section{Assignment}\label{assignment-1}}
+\hypertarget{assignment-2}{%
+\section{Assignment 2}\label{assignment-2}}
 
 Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65\% (13 out of 20 correct). Email your answers to one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:rebecca.meier@canada.ca}{Rebecca Meier}) when you are finished.
 
@@ -1596,8 +1596,8 @@ Period & Price 1 & Price 2 & Quantity 1 & Quantity 2 & Input-price index\tabular
 \hypertarget{part-constant-quality-price-indices}{%
 \part{Constant-Quality Price Indices}\label{part-constant-quality-price-indices}}
 
-\hypertarget{syllabus-2}{%
-\section{Syllabus}\label{syllabus-2}}
+\hypertarget{syllabus-for-constant-quality-price-indices}{%
+\section{Syllabus for Constant-Quality Price Indices}\label{syllabus-for-constant-quality-price-indices}}
 
 A price index should measure a pure price movement over time. In practice, however, goods and services change over time, and this can contaminate a price index---without additional information, there is no way to disentangle a price movement from a change in the quality of a good or service.
 
@@ -1621,12 +1621,12 @@ Prerequisites: Price Index Theory, at least one introductory course in econometr
 
 Evaluation for this module is based on an assignment consisting of 20 multiple-choice/true-false questions that draw on material in the course content and readings. Collaboration on the assignment is welcomed, but each person must submit their own unique work. Passing this module requires at least a 65\% on the assignment.
 
-Readings for this module come from chapters 17 and 21 of the PPI manual (ILO et al. 2004b) and/or the CPI manual (ILO et al. 2004a), published by the IMF (freely available on their website), as well as chapters 4--6 in the Handbook on Residential Property Price Indices (ILO et al. 2013), published by Eurostat (freely available on their website).\footnote{Although the focus of the handbook is on residential property prices, the ideas are applicable to any goods or services, and the material is presented relatively well.}
+Readings for this module come from chapters 17 and 21 of the PPI manual (ILO et al. 2004b) and/or the CPI manual (ILO et al. 2004a), published by the IMF (\href{https://www.imf.org/en/Publications/Manuals-Guides/Issues/2016/12/30/Producer-Price-Index-Manual-Theory-and-Practice-16966}{freely available on their website}), as well as chapters 4--6 in the Handbook on Residential Property Price Indices (ILO et al. 2013), published by Eurostat (\href{https://ec.europa.eu/eurostat/web/products-manuals-and-guidelines/-/KS-RA-12-022}{freely available on their website}).\footnote{Although the focus of the handbook is on residential property prices, the ideas are applicable to any goods or services, and the material is presented relatively well.}
 
 Please email one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:rebecca.meier@canada.ca}{Rebecca Meier}) if you have any questions, or need help with any of the course material or assignment.
 
-\hypertarget{introduction-1}{%
-\section{Introduction}\label{introduction-1}}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
 Accounting for quality differences between goods is a perennial concern when constructing a price index. The goal of a price index is to capture a pure price movement across two periods, but if there are systematic differences in the goods being compared over time that also affect price---so-called differences in quality---then a pure price movement cannot be captured using transaction prices alone. Without prior information, there is no way to disentangle a pure price movement from a movement in price due to changing quality over time. The ideal measure of a pure price movement is a constant-quality price index that holds the determinants of price fixed across periods. This allows for an apples-to-apples comparison using transaction prices, and any difference in prices between periods must reflect a pure price movement.
 
@@ -1798,8 +1798,8 @@ The challenge with a stratified approach is finding the right balance between th
 
 A related issue with stratification is that, if stratification occurs for many characteristics of a good, \(X\) may be of large dimension. In this case, the cell sizes for each strata may be very small, and the stratum-specific indices may be very sensitive to the addition or removal of transactions for a good. Both overlap and dimensionality serve to limit the ability to make homogeneous groups of goods for which it is easier to motivate conditional independence.
 
-\hypertarget{example-with-r-2}{%
-\subsection{Example with R}\label{example-with-r-2}}
+\hypertarget{example-with-r-stratified-index}{%
+\subsection{Example with R: Stratified index}\label{example-with-r-stratified-index}}
 
 Calculating a stratified index is straightforward in practice. One neat way to do it is with a simple linear regression.
 
@@ -1923,8 +1923,8 @@ The point to take away here is that when goods are stratified according to their
 
 In practice the time-dummy hedonic model is more popular than the hedonic imputation approach, in part because it is simpler, easier to compute, and less data intensive. The disadvantage to the time-dummy approach is that it is more restrictive, and requires an extra assumption. In most cases, however, the two approaches give similar results.
 
-\hypertarget{example-with-r-3}{%
-\subsection{Example with R}\label{example-with-r-3}}
+\hypertarget{example-with-r-hedonics}{%
+\subsection{Example with R: Hedonics}\label{example-with-r-hedonics}}
 
 Calculating a linear hedonic price index is very easy in R.
 
@@ -2098,8 +2098,8 @@ This gives the same answer as the two-step calculation.
 ## [1] 111.1855
 \end{verbatim}
 
-\hypertarget{assignment-2}{%
-\section{Assignment}\label{assignment-2}}
+\hypertarget{assignment-3}{%
+\section{Assignment 3}\label{assignment-3}}
 
 Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65\% (13 out of 20 correct). Email your answers to one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:rebecca.meier@canada.ca}{Rebecca Meier}) when you are finished.
 
@@ -2308,8 +2308,8 @@ True or false: Would potential prices in period 0 being correlated with time, su
 \hypertarget{part-building-a-price-index-with-r}{%
 \part{Building a Price Index with R}\label{part-building-a-price-index-with-r}}
 
-\hypertarget{syllabus-3}{%
-\section{Syllabus}\label{syllabus-3}}
+\hypertarget{syllabus-for-building-a-price-index-with-r}{%
+\section{Syllabus for Building a Price Index with R}\label{syllabus-for-building-a-price-index-with-r}}
 
 Putting price-index theory into practice requires computational tools. An especially useful tool for building and analyzing price indices is the R programming language.
 
@@ -2336,8 +2336,8 @@ Evaluation for this module is based on a single assignment that draws on learner
 
 Please email one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:rebecca.meier@canada.ca}{Rebecca Meier}) if you have any questions, or need help with any of the course material or assignment.
 
-\hypertarget{assignment-3}{%
-\section{Assignment}\label{assignment-3}}
+\hypertarget{assignment-4}{%
+\section{Assignment 4}\label{assignment-4}}
 
 Widgets are a heavily regulated product in each of the 10 provinces, and the federal government restricts the movements of widgets between provinces. Recently, in response to public outcry about the unaffordability of widgets, the Canadian Regulatory Economic Analysis group proposed that the federal government allow inter-provincial trade of widgets to improve market access and reduce prices. Before considering designing a new policy, however, the federal government would like to evaluate how prices for widgets have increased in recent years. A price index is needed for the provincial widget markets, and the country as a whole.
 
@@ -2410,13 +2410,22 @@ Widgets are going to be stratified by province and widget type to produce elemen
 \hypertarget{instructions}{%
 \subsection{Instructions}\label{instructions}}
 
-These instructions outline a simple way to build the price index for widgets, although feel free to use a different approach if it's easier. The goal is to understand the process, rather than design the most computationally efficient system. (Hint: look into the \href{https://cran.r-project.org/package=dplyr}{dplyr} package, the \href{https://cran.r-project.org/package=gpindex}{gpindex} package, and the \href{https://github.com/ppd-dpp/calpr}{calpr} packages for some useful tools.)
+These instructions outline a simple way to build the price index for widgets, although feel free to use a different approach if it's easier. The goal is to understand the process, rather than design the most computationally efficient system.
 
-Run the following code to grab all the data files and put them in your working environment.
+Run the following code to grab all the data files and put them in your working environment. Note that these data aren't perfect. It is worth remembering to check your intermediate calculations to make sure everything is as expected (e.g., with the \texttt{summary} function).
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{source}\NormalTok{(}\StringTok{'https://raw.githubusercontent.com/ppd-dpp/price-index-course/master/scripts/get_data.R'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The \href{https://cran.r-project.org/package=dplyr}{dplyr}, \href{https://cran.r-project.org/package=tidyr}{tidyr}, \href{https://cran.r-project.org/package=gpindex}{gpindex}, and \href{https://github.com/ppd-dpp/calpr}{calpr} packages will be used in this module. Install them as follows if they aren't already installed. (Hint: it is worth going through the documentation in the \texttt{gpindex} and \texttt{calpr} packages.)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"dplyr"}\NormalTok{, }\StringTok{"tidyr"}\NormalTok{, }\StringTok{"gpindex"}\NormalTok{, }\StringTok{"devtools"}\NormalTok{))}
+\NormalTok{devtools}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"ppd-dpp/calpr"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2425,16 +2434,21 @@ Run the following code to grab all the data files and put them in your working e
 \item
   \textbf{Make the weights}
 
-  Using the \texttt{weights} file, make one set of weights that give the value share of each product sold within each province in each year, and another that gives the value share of all products sold in each province in each year. This first set of weights will be used to aggregate elemental indices to get 10 province-level indices, and the second set of weights will be used to aggregate the province-level indices to a national index. There should be 200 weights in the first file and 20 weights in the second file.
+  Using the \texttt{weights} file, make one set of weights that give the value share of all products sold in each province in each year, and another that give the value share of each product sold within each province in each year. This first set of weights will be used to aggregate the province-level indices to a national index, and the second set of weights will be used to aggregate elemental indices to get 10 province-level indices. There should be 20 weights in the first file and 200 weights in the second file.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+\KeywordTok{library}\NormalTok{(tidyr)}
+\KeywordTok{library}\NormalTok{(gpindex)}
+\KeywordTok{library}\NormalTok{(calpr)}
+
 \CommentTok{# Make provincial weights}
 \NormalTok{weights_prov <-}\StringTok{ }\NormalTok{weights }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(year, province) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{weight =} \KeywordTok{sum}\NormalTok{(weight)) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{share_prov =} \KeywordTok{weights_scale}\NormalTok{(weight)) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{weight)}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(year, province) }\OperatorTok{%>%}\StringTok{ }\CommentTok{# group all sales values by reference year and province}
+\StringTok{  }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{weight =} \KeywordTok{sum}\NormalTok{(weight)) }\OperatorTok{%>%}\StringTok{ }\CommentTok{# value of all sales in each province in each year}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{share_prov =} \KeywordTok{weights_scale}\NormalTok{(weight)) }\OperatorTok{%>%}\StringTok{ }\CommentTok{# scale to sum to 1}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{weight) }\CommentTok{# drop the weight column as it won't be needed again}
 
 \CommentTok{# Make product weights}
 \NormalTok{weights_prod <-}\StringTok{ }\NormalTok{weights }\OperatorTok{%>%}
@@ -2451,9 +2465,9 @@ Run the following code to grab all the data files and put them in your working e
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{dat_micro <-}\StringTok{ }\NormalTok{dat_micro }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{period =} \KeywordTok{year_month}\NormalTok{(period)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{period =} \KeywordTok{year_month}\NormalTok{(period)) }\OperatorTok{%>%}\StringTok{ }\CommentTok{# turn transaction dates into month-by-year dates}
 \StringTok{  }\CommentTok{# your code here %>%}
-\StringTok{  }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{geomean =} \KeywordTok{mean_geometric}\NormalTok{(price))}
+\StringTok{  }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{geomean =} \KeywordTok{mean_geometric}\NormalTok{(price)) }\CommentTok{# calculate the geometric avergage}
 \end{Highlighting}
 \end{Shaded}
 \item
@@ -2465,10 +2479,10 @@ Run the following code to grab all the data files and put them in your working e
 \begin{Highlighting}[]
 \NormalTok{dat_index <-}\StringTok{ }\NormalTok{dat_gps }\OperatorTok{%>%}
 \StringTok{  }\CommentTok{# your code here %>%}
-\StringTok{  }\KeywordTok{gather}\NormalTok{(}\DataTypeTok{key =} \StringTok{'quote'}\NormalTok{, }\DataTypeTok{value =} \StringTok{'price'}\NormalTok{, price1}\OperatorTok{:}\NormalTok{price3) }\OperatorTok{%>%}\StringTok{ }\CommentTok{# gather is from the tidyr package}
+\StringTok{  }\KeywordTok{gather}\NormalTok{(}\DataTypeTok{key =} \StringTok{"quote"}\NormalTok{, }\DataTypeTok{value =} \StringTok{"price"}\NormalTok{, price1}\OperatorTok{:}\NormalTok{price3) }\OperatorTok{%>%}\StringTok{ }\CommentTok{# melt into a long dataset}
 \StringTok{  }\KeywordTok{group_by}\NormalTok{(province, product, year, period) }\OperatorTok{%>%}
 \StringTok{  }\CommentTok{# your code here %>%}
-\StringTok{  }\KeywordTok{bind_rows}\NormalTok{(dat_micro)}
+\StringTok{  }\KeywordTok{bind_rows}\NormalTok{(dat_micro) }\CommentTok{# append to dat_micro}
 \end{Highlighting}
 \end{Shaded}
 \item
@@ -2490,8 +2504,8 @@ Run the following code to grab all the data files and put them in your working e
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{dat_index <-}\StringTok{ }\NormalTok{dat_index }\OperatorTok{%>%}\StringTok{  }
-\StringTok{  }\KeywordTok{left_join}\NormalTok{(weights_prod, }\DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{'province'}\NormalTok{, }\StringTok{'product'}\NormalTok{, }\StringTok{'year'}\NormalTok{)) }\OperatorTok{%>%}
-\StringTok{  }\CommentTok{# your code here}
+\StringTok{  }\CommentTok{# your code here %>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{share_prod_u =} \KeywordTok{weights_update}\NormalTok{(}\KeywordTok{cumprod}\NormalTok{(}\KeywordTok{lag}\NormalTok{(rel, }\DataTypeTok{default =} \DecValTok{1}\NormalTok{)), share_prod, }\DataTypeTok{scale =} \OtherTok{FALSE}\NormalTok{)) }\CommentTok{# price update the weights}
 \end{Highlighting}
 \end{Shaded}
 \item
@@ -2517,7 +2531,7 @@ Run the following code to grab all the data files and put them in your working e
 \StringTok{  }\CommentTok{# your code here}
 \StringTok{  }\KeywordTok{group_by}\NormalTok{(period, year) }\OperatorTok{%>%}
 \StringTok{  }\CommentTok{# your code here}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{province =} \DecValTok{0}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{province =} \DecValTok{0}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\CommentTok{# province 0 is the Canada-level}
 \StringTok{  }\KeywordTok{bind_rows}\NormalTok{(index_prov)}
 \end{Highlighting}
 \end{Shaded}
@@ -2532,7 +2546,7 @@ Run the following code to grab all the data files and put them in your working e
 \StringTok{  }\KeywordTok{group_by}\NormalTok{(province) }\OperatorTok{%>%}
 \StringTok{  }\CommentTok{# your code here}
 \StringTok{  }\KeywordTok{group_by}\NormalTok{(period, province) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{index =} \KeywordTok{unique}\NormalTok{(index)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{index =} \KeywordTok{unique}\NormalTok{(index)) }\OperatorTok{%>%}\StringTok{ }\CommentTok{# remove the duplicate rows for the link month}
 \StringTok{  }\KeywordTok{ungroup}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -2553,11 +2567,11 @@ Validating the Canada-level index requires putting the Canadian Regulatory Econo
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{my_index <-}\StringTok{ }\NormalTok{index_chain }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{filter}\NormalTok{(province }\OperatorTok{==}\StringTok{ '0'}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(province }\OperatorTok{==}\StringTok{ '0'}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\CommentTok{# keep only the Canada-level index}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{period =} \KeywordTok{year_quarter}\NormalTok{(period)) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{group_by}\NormalTok{(period) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{index =} \KeywordTok{mean}\NormalTok{(index)) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{index =}\NormalTok{ index}\OperatorTok{/}\NormalTok{index[period }\OperatorTok{==}\StringTok{ '2019-01-01'}\NormalTok{] }\OperatorTok{*}\StringTok{ }\DecValTok{100}\NormalTok{)}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{index =}\NormalTok{ index}\OperatorTok{/}\NormalTok{index[period }\OperatorTok{==}\StringTok{ '2019-01-01'}\NormalTok{] }\OperatorTok{*}\StringTok{ }\DecValTok{100}\NormalTok{) }\CommentTok{# rebase to Jan 2019}
 
 \NormalTok{index_crea <-}\StringTok{ }\NormalTok{index_crea }\OperatorTok{%>%}
 \StringTok{  }\CommentTok{# your code here %>%}

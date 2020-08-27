@@ -1,6 +1,6 @@
 # (PART) Price Index Theory{-}
 
-# Syllabus
+# Syllabus for Price Index Theory
 
 Why are certain index-number formulas used to compute a price index? Answering this question requires a theory of price indices that can be used to evaluate the properties of a price index, and determine if one index number is better than another.
 
@@ -18,11 +18,11 @@ Prerequisites: Introduction to Price Indices, at least one intermediate micro-th
 
 Evaluation for this module is based on an assignment consisting of 20 multiple-choice/true-false questions that draw on material in the course content and readings. Collaboration on the assignment is welcomed, but each person must submit their own unique work. Passing this module requires at least a 65% on the assignment.
 
-Readings for this module come from chapters 15--18 of the PPI manual [@ppimanual] and/or the CPI manual [@cpimanual], published by the IMF (freely available on their website), as well as the review of price-index theory by @balk1995.
+Readings for this module come from chapters 15--18 of the PPI manual [@ppimanual] and/or the CPI manual [@cpimanual], published by the IMF ([freely available on their website](https://www.imf.org/en/Publications/Manuals-Guides/Issues/2016/12/30/Producer-Price-Index-Manual-Theory-and-Practice-16966)), as well as the review of price-index theory by @balk1995.
 
 Please email one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Rebecca Meier](mailto:rebecca.meier@canada.ca)) if you have any questions, or need help with any of the course material or assignment.
 
-# Introduction
+# What is price-index theory?
 
 There are three broad approaches for motivating the price-index formulas that get used in practice by statistical agencies---the axiomatic approach, the economic approach, and the stochastic approach. Each approach is useful in its own right, and all three give different perspectives and understandings for the various index-number formulas that are used to construct price indices. Taken together, these different approaches constitute a theory of price indices.
 
@@ -358,7 +358,7 @@ I^{A} = \sum_{i = 1}^{n} \frac{p_{it}}{p_{i0}} P_{i}.
 \end{align*}
 Different arithmetic price-index formulas---e.g., Laspeyres, Paasche, Lowe---thus correspond to different statements about what determines the probability of observing a transaction. For example, with a Laspeyres index the probabilities are given by period-0 expenditure or revenue shares. This amounts to a statement that the probability of observing a transaction for a good is the likelihood of spending or receiving a dollar on that good in period 0.
 
-## Geometric price indices
+## Geometric price indices as a best preditor
 
 A geometric index can be motivated in the same way as an arithmetic index. Formally, a geometric index is the value $I^{G}$ that solves
 \begin{align*}
@@ -405,7 +405,7 @@ With random sampling, a natural approach for estimating the arithmetic index is 
 
 A natural estimator for the geometric index is $\hat{I}^{G} = \prod_{i = 1}^{n_{s}} (p_{it} / p_{i0})^{1 / n_{s}}$, the Jevons index. Unlike the Carli index, however, the Jevons index is a biased estimator of the geometric index. It is again straightforward to show that $E(\hat{I}^{G}) \geq I^{G}$, with $E(\hat{I}^{G}) = I^{G}$ only holding in very special circumstances---the Jevons index systematically overestimates the geometric index (i.e., it is biased upwards).^[The Jevons index is not biased in cases where the sampling distribution is degenerate, or the variance in price relatives is zero. See @lehmann1998[Chapter 1 Theorem 7.5].] Although biasedness is a disadvantage of the Jevons index, the bias is not the only important statistical property of an estimator, and the Jevons index has other desirable statistical properties (e.g., it is a consistent estimator of the geometric index, and in certain circumstances achieves the maximum likelihood efficiency bound).^[The Carli index is also a consistent estimator of the arithmetic index under random sampling, but it cannot be a maximum likelihood estimator as this would require price relatives to have a Gaussian distribution, which means that price relatives can be negative. By contrast, the Jevons index is a maximum likelihood estimator for the geometric index if price relatives have a log-normal distribution, which implies that prices are always positive.] It is possible to adjust for the upwards bias in the Jevons by dividing the Jevons index by $1 + \sigma^{2}/(2n)$, where $\sigma^{2}$ is the variance of the log price relatives [@kennedy2003, p. 41], but this is not usually done in practice.
 
-# Assignment
+# Assignment 2
 
 Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65% (13 out of 20 correct). Email your answers to one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Rebecca Meier](mailto:rebecca.meier@canada.ca)) when you are finished.
 

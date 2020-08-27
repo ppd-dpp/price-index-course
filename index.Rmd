@@ -1,7 +1,7 @@
 ---
 title: "A Course on Price Indices"
 author: "Steve Martin and Rebecca Meier"
-date: "July 2020"
+date: "August 2020"
 documentclass: article
 geometry: margin=1in
 site: bookdown::bookdown_site

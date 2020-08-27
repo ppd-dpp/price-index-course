@@ -1,6 +1,6 @@
 # (PART) Introduction to Price Indices{-}
 
-# Syllabus
+# Syllabus for Introduction to Price Indices
 
 A price index gives a way to systematically condense information about many prices for a range of goods and services into a single value. Price indices are widely used to analyze and compare macroeconomic conditions over time, and have important implications for government policies.
 
@@ -20,7 +20,7 @@ There are no prerequisites for this module, although individuals should be comfo
 
 Evaluation for this module is based on an assignment consisting of 20 multiple-choice/true-false questions that draw on material in the course content and readings. Collaboration on the assignment is welcomed, but each person must submit their own unique work. Passing this module requires at least a 65% on the assignment.
 
-Readings for this module come from chapters 1, 2, 4, and 9 of the Producer Price Index Manual [@ppimanual] and/or the Consumer Price Index Manual [@cpimanual], published by the IMF (freely available on their website). As there is considerable overlap between these sources, the PPI manual is used as the main reference.
+Readings for this module come from chapters 1, 2, 4, and 9 of the Producer Price Index Manual [@ppimanual] and/or the Consumer Price Index Manual [@cpimanual], published by the IMF ([freely available on their website](https://www.imf.org/en/Publications/Manuals-Guides/Issues/2016/12/30/Producer-Price-Index-Manual-Theory-and-Practice-16966)). As there is considerable overlap between these sources, the PPI manual is used as the main reference.
 
 Please email one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Rebecca Meier](mailto:rebecca.meier@canada.ca)) if you have any questions, or need help with any of the course material or assignment.
 
@@ -244,7 +244,7 @@ I_{F} &= \sqrt{\frac{\sum_{i = 1}^{n} p_{i1} q_{i0}}{\sum_{i = 1}^{n} p_{i0} q_{
 
 The Fisher index is often seen as an ideal index because it treats information in period 0 and period 1 symmetrically.^[The Törnqvist index is also seen as ideal for a similar reason, and these types of indices often get called superlative.] In practice, however, the Fisher index is not frequently used by national statistical agencies because it is not timely to calculate. This is because it depends on the Paasche index, which requires information on period 1 quantities in addition to period 1 prices, something that has historically been impractical for national statistical agencies to collect.
 
-## Example with R
+## Example with R: Index-number formulas
 
 All of the index-number formulas presented in this section are simply weighted averages, and are fairly easy to calculate in R given information on prices and some weights.
 
@@ -465,7 +465,7 @@ ggplot(dat) +
 
 The important part about a chained index is the overlap period $k$ when the weights change, and the prices in period $k$ get used with two sets of weights. If there is no overlap period then the index cannot be chained. Each index can be thought of as a link in the chain, giving the movement in prices for that section of time, and the overlap period is where the links meet.
 
-## Example with R
+## Example with R: Consistency in aggregation and rebasing
 
 It is useful to finish this section of the course with a couple examples in R. The first example shows that a geometric index is consistent in aggregation. Calculating the index in two steps gives the same answer as the direct calculation.
 
@@ -505,7 +505,7 @@ index
 transform(index, value = value / value[period == 6] * 100)
 ```
 
-# Assignment
+# Assignment 1
 
 Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65% (13 out of 20 correct). Email your answers to one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Rebecca Meier](mailto:rebecca.meier@canada.ca)) when you are finished.
 

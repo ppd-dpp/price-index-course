@@ -1,6 +1,6 @@
 # (PART) Building a Price Index with R{-}
 
-# Syllabus 
+# Syllabus for Building a Price Index with R
 
 Putting price-index theory into practice requires computational tools. An especially useful tool for building and analyzing price indices is the R programming language.
 
@@ -20,7 +20,7 @@ Evaluation for this module is based on a single assignment that draws on learner
 
 Please email one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Rebecca Meier](mailto:rebecca.meier@canada.ca)) if you have any questions, or need help with any of the course material or assignment.
 
-# Assignment
+# Assignment 4
 
 Widgets are a heavily regulated product in each of the 10 provinces, and the federal government restricts the movements of widgets between provinces. Recently, in response to public outcry about the unaffordability of widgets, the Canadian Regulatory Economic Analysis group proposed that the federal government allow inter-provincial trade of widgets to improve market access and reduce prices. Before considering designing a new policy, however, the federal government would like to evaluate how prices for widgets have increased in recent years. A price index is needed for the provincial widget markets, and the country as a whole.
 
@@ -93,25 +93,37 @@ mermaid('
 
 ## Instructions
 
-These instructions outline a simple way to build the price index for widgets, although feel free to use a different approach if it's easier. The goal is to understand the process, rather than design the most computationally efficient system. (Hint: look into the [dplyr](https://cran.r-project.org/package=dplyr) package, the [gpindex](https://cran.r-project.org/package=gpindex) package, and the [calpr](https://github.com/ppd-dpp/calpr) packages for some useful tools.)
+These instructions outline a simple way to build the price index for widgets, although feel free to use a different approach if it's easier. The goal is to understand the process, rather than design the most computationally efficient system.
 
-Run the following code to grab all the data files and put them in your working environment.
+Run the following code to grab all the data files and put them in your working environment. Note that these data aren't perfect. It is worth remembering to check your intermediate calculations to make sure everything is as expected (e.g., with the `summary` function).
 
-```r
+```{r, eval=FALSE}
 source('https://raw.githubusercontent.com/ppd-dpp/price-index-course/master/scripts/get_data.R')
+```
+
+The [dplyr](https://cran.r-project.org/package=dplyr), [tidyr](https://cran.r-project.org/package=tidyr), [gpindex](https://cran.r-project.org/package=gpindex), and [calpr](https://github.com/ppd-dpp/calpr) packages will be used in this module. Install them as follows if they aren't already installed. (Hint: it is worth going through the documentation in the `gpindex` and `calpr` packages.)
+
+```{r, eval=FALSE}
+install.packages(c("dplyr", "tidyr", "gpindex", "devtools"))
+devtools::install_github("ppd-dpp/calpr")
 ```
 
 1. **Make the weights**
 
-    Using the `weights` file, make one set of weights that give the value share of each product sold within each province in each year, and another that gives the value share of all products sold in each province in each year. This first set of weights will be used to aggregate elemental indices to get 10 province-level indices, and the second set of weights will be used to aggregate the province-level indices to a national index. There should be 200 weights in the first file and 20 weights in the second file.
+    Using the `weights` file, make one set of weights that give the value share of all products sold in each province in each year, and another that give the value share of each product sold within each province in each year. This first set of weights will be used to aggregate the province-level indices to a national index, and the second set of weights will be used to aggregate elemental indices to get 10 province-level indices. There should be 20 weights in the first file and 200 weights in the second file.
     
     ```{r, eval=FALSE}
+library(dplyr)
+library(tidyr)
+library(gpindex)
+library(calpr)
+
 # Make provincial weights
 weights_prov <- weights %>%
-  group_by(year, province) %>%
-  summarize(weight = sum(weight)) %>%
-  mutate(share_prov = weights_scale(weight)) %>%
-  select(-weight)
+  group_by(year, province) %>% # group all sales values by reference year and province
+  summarize(weight = sum(weight)) %>% # value of all sales in each province in each year
+  mutate(share_prov = weights_scale(weight)) %>% # scale to sum to 1
+  select(-weight) # drop the weight column as it won't be needed again
 
 # Make product weights
 weights_prod <- weights %>%
@@ -126,9 +138,9 @@ weights_prod <- weights %>%
     
     ```{r, eval = FALSE}
 dat_micro <- dat_micro %>%
-  mutate(period = year_month(period)) %>%
+  mutate(period = year_month(period)) %>% # turn transaction dates into month-by-year dates
   # your code here %>%
-  summarize(geomean = mean_geometric(price))
+  summarize(geomean = mean_geometric(price)) # calculate the geometric avergage
     ```
 
 3. **Calculate the geomean for products A to J**
@@ -138,10 +150,10 @@ dat_micro <- dat_micro %>%
     ```{r, eval = FALSE}
 dat_index <- dat_gps %>%
   # your code here %>%
-  gather(key = 'quote', value = 'price', price1:price3) %>% # gather is from the tidyr package
+  gather(key = "quote", value = "price", price1:price3) %>% # melt into a long dataset
   group_by(province, product, year, period) %>%
   # your code here %>%
-  bind_rows(dat_micro)
+  bind_rows(dat_micro) # append to dat_micro
     ```
 
 4. **Calculate the period-over-period elemental indices** 
@@ -159,8 +171,8 @@ dat_index <- dat_index %>%
     
     ```{r, eval = FALSE}
 dat_index <- dat_index %>%  
-  left_join(weights_prod, by = c('province', 'product', 'year')) %>%
-  # your code here
+  # your code here %>%
+  mutate(share_prod_u = weights_update(cumprod(lag(rel, default = 1)), share_prod, scale = FALSE)) # price update the weights
     ```
 
 6. **Calculate the province-level index**
@@ -182,7 +194,7 @@ index <- index_prov %>%
   # your code here
   group_by(period, year) %>%
   # your code here
-  mutate(province = 0) %>%
+  mutate(province = 0) %>% # province 0 is the Canada-level
   bind_rows(index_prov)
     ```
 
@@ -195,7 +207,7 @@ index_chain <- index %>%
   group_by(province) %>%
   # your code here
   group_by(period, province) %>%
-  summarize(index = unique(index)) %>%
+  summarize(index = unique(index)) %>% # remove the duplicate rows for the link month
   ungroup()
     ```
 
@@ -209,11 +221,11 @@ Validating the Canada-level index requires putting the Canadian Regulatory Econo
     
     ```{r, eval = FALSE}
 my_index <- index_chain %>%
-  filter(province == '0') %>%
+  filter(province == '0') %>% # keep only the Canada-level index
   mutate(period = year_quarter(period)) %>%
   group_by(period) %>%
   summarize(index = mean(index)) %>%
-  mutate(index = index/index[period == '2019-01-01'] * 100)
+  mutate(index = index/index[period == '2019-01-01'] * 100) # rebase to Jan 2019
     
 index_crea <- index_crea %>%
   # your code here %>%
