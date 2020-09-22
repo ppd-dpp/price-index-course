@@ -1,39 +1,46 @@
-\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[]{article}
+\documentclass[
+]{article}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provides euro and other symbols
-\else % if luatex or xelatex
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
   \usepackage{unicode-math}
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\usepackage{hyperref}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-            pdftitle={A Course on Price Indices},
-            pdfauthor={Steve Martin and Rebecca Meier},
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
+  pdftitle={A Course on Price Indices},
+  pdfauthor={Steve Martin and Rebecca Meier},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
 \usepackage[margin=1in]{geometry}
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -76,8 +83,14 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
-% Fix footnotes in tables (requires footnote package)
-\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -87,25 +100,14 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{5}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
-
-% set default figure placement to htbp
+% Set default figure placement to htbp
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
-
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
 
 \title{A Course on Price Indices}
 \author{Steve Martin and Rebecca Meier}
@@ -404,12 +406,10 @@ All of the index-number formulas presented in this section are simply weighted a
 \NormalTok{weights <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{, }\FloatTok{0.3}\NormalTok{, }\FloatTok{0.3}\NormalTok{, }\FloatTok{0.15}\NormalTok{)}
 
 \CommentTok{# Calculate indices}
-\KeywordTok{c}\NormalTok{(}
-  \DataTypeTok{Carli =} \KeywordTok{mean_arithmetic}\NormalTok{(relatives), }
+\KeywordTok{c}\NormalTok{(}\DataTypeTok{Carli =} \KeywordTok{mean_arithmetic}\NormalTok{(relatives), }
   \DataTypeTok{Jevons =} \KeywordTok{mean_geometric}\NormalTok{(relatives), }
   \DataTypeTok{Arithmetic =} \KeywordTok{mean_arithmetic}\NormalTok{(relatives, weights),}
-  \DataTypeTok{Geometric =} \KeywordTok{mean_geometric}\NormalTok{(relatives, weights)}
-\NormalTok{)}
+  \DataTypeTok{Geometric =} \KeywordTok{mean_geometric}\NormalTok{(relatives, weights))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -429,14 +429,13 @@ The type of arithmetic and geometric indices that this calculates depends entire
 \NormalTok{share1 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{0.2}\NormalTok{, }\FloatTok{0.2}\NormalTok{, }\FloatTok{0.4}\NormalTok{, }\FloatTok{0.2}\NormalTok{)}
 
 \CommentTok{# Calculate indices}
-\KeywordTok{c}\NormalTok{(}
-  \DataTypeTok{Laspeyres =} \KeywordTok{mean_arithmetic}\NormalTok{(relatives, share0),}
+\KeywordTok{c}\NormalTok{(}\DataTypeTok{Laspeyres =} \KeywordTok{mean_arithmetic}\NormalTok{(relatives, share0),}
   \DataTypeTok{Paasche =} \KeywordTok{mean_harmonic}\NormalTok{(relatives, share1),}
-  \DataTypeTok{Fisher =} \KeywordTok{sqrt}\NormalTok{(}\KeywordTok{mean_arithmetic}\NormalTok{(relatives, share0) }\OperatorTok{*}\StringTok{ }\KeywordTok{mean_harmonic}\NormalTok{(relatives, share1)),}
+  \DataTypeTok{Fisher =} \KeywordTok{sqrt}\NormalTok{(}\KeywordTok{mean_arithmetic}\NormalTok{(relatives, share0) }\OperatorTok{*}
+\StringTok{                  }\KeywordTok{mean_harmonic}\NormalTok{(relatives, share1)),}
   \StringTok{`}\DataTypeTok{Geometric Laspeyres}\StringTok{`}\NormalTok{ =}\StringTok{ }\KeywordTok{mean_geometric}\NormalTok{(relatives, share0),}
   \StringTok{`}\DataTypeTok{Geometric Paasche}\StringTok{`}\NormalTok{ =}\StringTok{ }\KeywordTok{mean_geometric}\NormalTok{(relatives, share1),}
-  \DataTypeTok{Tornqvist =} \KeywordTok{mean_geometric}\NormalTok{(relatives, (share0 }\OperatorTok{+}\StringTok{ }\NormalTok{share1) }\OperatorTok{/}\StringTok{ }\DecValTok{2}\NormalTok{)}
-\NormalTok{)}
+  \DataTypeTok{Tornqvist =} \KeywordTok{mean_geometric}\NormalTok{(relatives, (share0 }\OperatorTok{+}\StringTok{ }\NormalTok{share1) }\OperatorTok{/}\StringTok{ }\DecValTok{2}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -463,7 +462,7 @@ It is interesting to note that any geometric index can be turned into an arithme
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# Change the weights}
-\NormalTok{new_weights <-}\StringTok{ }\KeywordTok{weights_g2a}\NormalTok{(relatives, (share0 }\OperatorTok{+}\StringTok{ }\NormalTok{share1) }\OperatorTok{/}\StringTok{ }\DecValTok{2}\NormalTok{)}
+\NormalTok{new_weights <-}\StringTok{ }\KeywordTok{weights_transmute}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{)(relatives, (share0 }\OperatorTok{+}\StringTok{ }\NormalTok{share1) }\OperatorTok{/}\StringTok{ }\DecValTok{2}\NormalTok{)}
 \KeywordTok{mean_arithmetic}\NormalTok{(relatives, new_weights) }\CommentTok{# same as geometric mean}
 \end{Highlighting}
 \end{Shaded}
@@ -480,7 +479,7 @@ It is interesting to note that any geometric index can be turned into an arithme
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  0.02193407  0.04663616 -0.03768802  0.01705983
+## [1]  0.02095439  0.04455317 -0.03600469  0.01629786
 \end{verbatim}
 
 \hypertarget{computing-a-price-index}{%
@@ -613,8 +612,7 @@ It is useful to finish this section of the course with a couple examples in R. T
 \CommentTok{# Make some price relatives}
 \NormalTok{dat <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{relative =} \KeywordTok{c}\NormalTok{(}\FloatTok{1.1}\NormalTok{, }\FloatTok{1.2}\NormalTok{, }\FloatTok{0.9}\NormalTok{, }\FloatTok{1.1}\NormalTok{),}
                   \DataTypeTok{weight =} \KeywordTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{, }\FloatTok{0.3}\NormalTok{, }\FloatTok{0.3}\NormalTok{, }\FloatTok{0.15}\NormalTok{),}
-                  \DataTypeTok{group =}\NormalTok{ letters[}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)]}
-\NormalTok{)}
+                  \DataTypeTok{group =}\NormalTok{ letters[}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)])}
 \NormalTok{dat}
 \end{Highlighting}
 \end{Shaded}
@@ -631,8 +629,7 @@ It is useful to finish this section of the course with a couple examples in R. T
 \begin{Highlighting}[]
 \CommentTok{# Calculate geometric index for group a and b relatives}
 \NormalTok{index_ab <-}\StringTok{ }\KeywordTok{sapply}\NormalTok{(}\KeywordTok{split}\NormalTok{(dat, dat}\OperatorTok{$}\NormalTok{group), }
-                   \ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{mean_geometric}\NormalTok{(x}\OperatorTok{$}\NormalTok{relative, x}\OperatorTok{$}\NormalTok{weight) }\OperatorTok{*}\StringTok{ }\DecValTok{100}
-\NormalTok{                   )}
+                   \ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{mean_geometric}\NormalTok{(x}\OperatorTok{$}\NormalTok{relative, x}\OperatorTok{$}\NormalTok{weight) }\OperatorTok{*}\StringTok{ }\DecValTok{100}\NormalTok{)}
 \NormalTok{index_ab}
 \end{Highlighting}
 \end{Shaded}
@@ -678,17 +675,17 @@ The second example shows how to rebase a price index---simply divide the index s
 \begin{verbatim}
 ##    period value
 ## 1       0   100
-## 2       1   129
-## 3       2    96
-## 4       3   107
-## 5       4    93
-## 6       5   104
-## 7       6   105
-## 8       7   125
-## 9       8   121
-## 10      9   118
-## 11     10    90
-## 12     11   117
+## 2       1   116
+## 3       2   122
+## 4       3   128
+## 5       4   127
+## 6       5   124
+## 7       6    96
+## 8       7   114
+## 9       8   103
+## 10      9    91
+## 11     10   109
+## 12     11    90
 \end{verbatim}
 
 \begin{Shaded}
@@ -700,18 +697,18 @@ The second example shows how to rebase a price index---simply divide the index s
 
 \begin{verbatim}
 ##    period     value
-## 1       0  95.23810
-## 2       1 122.85714
-## 3       2  91.42857
-## 4       3 101.90476
-## 5       4  88.57143
-## 6       5  99.04762
+## 1       0 104.16667
+## 2       1 120.83333
+## 3       2 127.08333
+## 4       3 133.33333
+## 5       4 132.29167
+## 6       5 129.16667
 ## 7       6 100.00000
-## 8       7 119.04762
-## 9       8 115.23810
-## 10      9 112.38095
-## 11     10  85.71429
-## 12     11 111.42857
+## 8       7 118.75000
+## 9       8 107.29167
+## 10      9  94.79167
+## 11     10 113.54167
+## 12     11  93.75000
 \end{verbatim}
 
 \hypertarget{assignment-1}{%

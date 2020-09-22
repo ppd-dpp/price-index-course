@@ -49,12 +49,13 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -63,14 +64,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -79,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -223,55 +226,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="example-with-r-index-number-formulas" class="section level2">
 <h2>Example with R: Index-number formulas</h2>
 <p>All of the index-number formulas presented in this section are simply weighted averages, and are fairly easy to calculate in R given information on prices and some weights.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># Bring in gpindex library</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw">library</span>(gpindex) <span class="co"># install.packages(&quot;gpindex&quot;)</span></a>
-<a class="sourceLine" id="cb1-3" title="3"></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="co"># Make some price relatives</span></a>
-<a class="sourceLine" id="cb1-5" title="5">relatives &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.1</span>, <span class="fl">1.2</span>, <span class="fl">0.9</span>, <span class="fl">1.1</span>)</a>
-<a class="sourceLine" id="cb1-6" title="6"></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="co"># Make some weights</span></a>
-<a class="sourceLine" id="cb1-8" title="8">weights &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span>, <span class="fl">0.15</span>)</a>
-<a class="sourceLine" id="cb1-9" title="9"></a>
-<a class="sourceLine" id="cb1-10" title="10"><span class="co"># Calculate indices</span></a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="kw">c</span>(</a>
-<a class="sourceLine" id="cb1-12" title="12">  <span class="dt">Carli =</span> <span class="kw">mean_arithmetic</span>(relatives), </a>
-<a class="sourceLine" id="cb1-13" title="13">  <span class="dt">Jevons =</span> <span class="kw">mean_geometric</span>(relatives), </a>
-<a class="sourceLine" id="cb1-14" title="14">  <span class="dt">Arithmetic =</span> <span class="kw">mean_arithmetic</span>(relatives, weights),</a>
-<a class="sourceLine" id="cb1-15" title="15">  <span class="dt">Geometric =</span> <span class="kw">mean_geometric</span>(relatives, weights)</a>
-<a class="sourceLine" id="cb1-16" title="16">)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="example-with-r-index-number-formulas.html#cb1-1"></a><span class="co"># Bring in gpindex library</span></span>
+<span id="cb1-2"><a href="example-with-r-index-number-formulas.html#cb1-2"></a><span class="kw">library</span>(gpindex) <span class="co"># install.packages(&quot;gpindex&quot;)</span></span>
+<span id="cb1-3"><a href="example-with-r-index-number-formulas.html#cb1-3"></a></span>
+<span id="cb1-4"><a href="example-with-r-index-number-formulas.html#cb1-4"></a><span class="co"># Make some price relatives</span></span>
+<span id="cb1-5"><a href="example-with-r-index-number-formulas.html#cb1-5"></a>relatives &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.1</span>, <span class="fl">1.2</span>, <span class="fl">0.9</span>, <span class="fl">1.1</span>)</span>
+<span id="cb1-6"><a href="example-with-r-index-number-formulas.html#cb1-6"></a></span>
+<span id="cb1-7"><a href="example-with-r-index-number-formulas.html#cb1-7"></a><span class="co"># Make some weights</span></span>
+<span id="cb1-8"><a href="example-with-r-index-number-formulas.html#cb1-8"></a>weights &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span>, <span class="fl">0.15</span>)</span>
+<span id="cb1-9"><a href="example-with-r-index-number-formulas.html#cb1-9"></a></span>
+<span id="cb1-10"><a href="example-with-r-index-number-formulas.html#cb1-10"></a><span class="co"># Calculate indices</span></span>
+<span id="cb1-11"><a href="example-with-r-index-number-formulas.html#cb1-11"></a><span class="kw">c</span>(<span class="dt">Carli =</span> <span class="kw">mean_arithmetic</span>(relatives), </span>
+<span id="cb1-12"><a href="example-with-r-index-number-formulas.html#cb1-12"></a>  <span class="dt">Jevons =</span> <span class="kw">mean_geometric</span>(relatives), </span>
+<span id="cb1-13"><a href="example-with-r-index-number-formulas.html#cb1-13"></a>  <span class="dt">Arithmetic =</span> <span class="kw">mean_arithmetic</span>(relatives, weights),</span>
+<span id="cb1-14"><a href="example-with-r-index-number-formulas.html#cb1-14"></a>  <span class="dt">Geometric =</span> <span class="kw">mean_geometric</span>(relatives, weights))</span></code></pre></div>
 <pre><code>##      Carli     Jevons Arithmetic  Geometric 
 ##   1.075000   1.069184   1.070000   1.063125</code></pre>
 <p>The type of arithmetic and geometric indices that this calculates depends entirely on how the weights are calculated. Usually, weights come from data on expenditure/revenue shares, and how this information is used to weight price relatives will affect the type of price index that is calculated.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># Base-period expenditure/revenue share</span></a>
-<a class="sourceLine" id="cb3-2" title="2">share0 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span>, <span class="fl">0.15</span>) </a>
-<a class="sourceLine" id="cb3-3" title="3"></a>
-<a class="sourceLine" id="cb3-4" title="4"><span class="co"># Current-period expenditure/revenue share</span></a>
-<a class="sourceLine" id="cb3-5" title="5">share1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>)</a>
-<a class="sourceLine" id="cb3-6" title="6"></a>
-<a class="sourceLine" id="cb3-7" title="7"><span class="co"># Calculate indices</span></a>
-<a class="sourceLine" id="cb3-8" title="8"><span class="kw">c</span>(</a>
-<a class="sourceLine" id="cb3-9" title="9">  <span class="dt">Laspeyres =</span> <span class="kw">mean_arithmetic</span>(relatives, share0),</a>
-<a class="sourceLine" id="cb3-10" title="10">  <span class="dt">Paasche =</span> <span class="kw">mean_harmonic</span>(relatives, share1),</a>
-<a class="sourceLine" id="cb3-11" title="11">  <span class="dt">Fisher =</span> <span class="kw">sqrt</span>(<span class="kw">mean_arithmetic</span>(relatives, share0) <span class="op">*</span><span class="st"> </span><span class="kw">mean_harmonic</span>(relatives, share1)),</a>
-<a class="sourceLine" id="cb3-12" title="12">  <span class="st">`</span><span class="dt">Geometric Laspeyres</span><span class="st">`</span> =<span class="st"> </span><span class="kw">mean_geometric</span>(relatives, share0),</a>
-<a class="sourceLine" id="cb3-13" title="13">  <span class="st">`</span><span class="dt">Geometric Paasche</span><span class="st">`</span> =<span class="st"> </span><span class="kw">mean_geometric</span>(relatives, share1),</a>
-<a class="sourceLine" id="cb3-14" title="14">  <span class="dt">Tornqvist =</span> <span class="kw">mean_geometric</span>(relatives, (share0 <span class="op">+</span><span class="st"> </span>share1) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb3-15" title="15">)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="example-with-r-index-number-formulas.html#cb3-1"></a><span class="co"># Base-period expenditure/revenue share</span></span>
+<span id="cb3-2"><a href="example-with-r-index-number-formulas.html#cb3-2"></a>share0 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span>, <span class="fl">0.15</span>) </span>
+<span id="cb3-3"><a href="example-with-r-index-number-formulas.html#cb3-3"></a></span>
+<span id="cb3-4"><a href="example-with-r-index-number-formulas.html#cb3-4"></a><span class="co"># Current-period expenditure/revenue share</span></span>
+<span id="cb3-5"><a href="example-with-r-index-number-formulas.html#cb3-5"></a>share1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>)</span>
+<span id="cb3-6"><a href="example-with-r-index-number-formulas.html#cb3-6"></a></span>
+<span id="cb3-7"><a href="example-with-r-index-number-formulas.html#cb3-7"></a><span class="co"># Calculate indices</span></span>
+<span id="cb3-8"><a href="example-with-r-index-number-formulas.html#cb3-8"></a><span class="kw">c</span>(<span class="dt">Laspeyres =</span> <span class="kw">mean_arithmetic</span>(relatives, share0),</span>
+<span id="cb3-9"><a href="example-with-r-index-number-formulas.html#cb3-9"></a>  <span class="dt">Paasche =</span> <span class="kw">mean_harmonic</span>(relatives, share1),</span>
+<span id="cb3-10"><a href="example-with-r-index-number-formulas.html#cb3-10"></a>  <span class="dt">Fisher =</span> <span class="kw">sqrt</span>(<span class="kw">mean_arithmetic</span>(relatives, share0) <span class="op">*</span></span>
+<span id="cb3-11"><a href="example-with-r-index-number-formulas.html#cb3-11"></a><span class="st">                  </span><span class="kw">mean_harmonic</span>(relatives, share1)),</span>
+<span id="cb3-12"><a href="example-with-r-index-number-formulas.html#cb3-12"></a>  <span class="st">`</span><span class="dt">Geometric Laspeyres</span><span class="st">`</span> =<span class="st"> </span><span class="kw">mean_geometric</span>(relatives, share0),</span>
+<span id="cb3-13"><a href="example-with-r-index-number-formulas.html#cb3-13"></a>  <span class="st">`</span><span class="dt">Geometric Paasche</span><span class="st">`</span> =<span class="st"> </span><span class="kw">mean_geometric</span>(relatives, share1),</span>
+<span id="cb3-14"><a href="example-with-r-index-number-formulas.html#cb3-14"></a>  <span class="dt">Tornqvist =</span> <span class="kw">mean_geometric</span>(relatives, (share0 <span class="op">+</span><span class="st"> </span>share1) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>))</span></code></pre></div>
 <pre><code>##           Laspeyres             Paasche              Fisher Geometric Laspeyres 
 ##            1.070000            1.025907            1.047721            1.063125 
 ##   Geometric Paasche           Tornqvist 
 ##            1.032976            1.047942</code></pre>
 <p>It is interesting to note that any geometric index can be turned into an arithmetic index by an appropriate change of weights. This gives an easy way to determine the contribution that each price relative has towards the index value.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># Tornqvist index</span></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="kw">mean_geometric</span>(relatives, (share0 <span class="op">+</span><span class="st"> </span>share1) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="example-with-r-index-number-formulas.html#cb5-1"></a><span class="co"># Tornqvist index</span></span>
+<span id="cb5-2"><a href="example-with-r-index-number-formulas.html#cb5-2"></a><span class="kw">mean_geometric</span>(relatives, (share0 <span class="op">+</span><span class="st"> </span>share1) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>) </span></code></pre></div>
 <pre><code>## [1] 1.047942</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co"># Change the weights</span></a>
-<a class="sourceLine" id="cb7-2" title="2">new_weights &lt;-<span class="st"> </span><span class="kw">weights_g2a</span>(relatives, (share0 <span class="op">+</span><span class="st"> </span>share1) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="kw">mean_arithmetic</span>(relatives, new_weights) <span class="co"># same as geometric mean</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="example-with-r-index-number-formulas.html#cb7-1"></a><span class="co"># Change the weights</span></span>
+<span id="cb7-2"><a href="example-with-r-index-number-formulas.html#cb7-2"></a>new_weights &lt;-<span class="st"> </span><span class="kw">weights_transmute</span>(<span class="dv">0</span>, <span class="dv">1</span>)(relatives, (share0 <span class="op">+</span><span class="st"> </span>share1) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>)</span>
+<span id="cb7-3"><a href="example-with-r-index-number-formulas.html#cb7-3"></a><span class="kw">mean_arithmetic</span>(relatives, new_weights) <span class="co"># same as geometric mean</span></span></code></pre></div>
 <pre><code>## [1] 1.047942</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># Contribution of each relative</span></a>
-<a class="sourceLine" id="cb9-2" title="2">(relatives <span class="op">-</span><span class="st"> </span><span class="dv">1</span>) <span class="op">*</span><span class="st"> </span>new_weights</a></code></pre></div>
-<pre><code>## [1]  0.02193407  0.04663616 -0.03768802  0.01705983</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="example-with-r-index-number-formulas.html#cb9-1"></a><span class="co"># Contribution of each relative</span></span>
+<span id="cb9-2"><a href="example-with-r-index-number-formulas.html#cb9-2"></a>(relatives <span class="op">-</span><span class="st"> </span><span class="dv">1</span>) <span class="op">*</span><span class="st"> </span>new_weights</span></code></pre></div>
+<pre><code>## [1]  0.02095439  0.04455317 -0.03600469  0.01629786</code></pre>
 </div>
 <!-- </div> -->
             </section>

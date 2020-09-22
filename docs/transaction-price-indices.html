@@ -49,12 +49,13 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -63,14 +64,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -79,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -242,7 +245,7 @@ where <span class="math inline">\(P_{i} | t\)</span> is the conditional probabil
 <div class="footnotes">
 <hr />
 <ol start="31">
-<li id="fn31"><p>Returning to the narrative of an experiment, goods that sell in period 1 are the treatment group and goods that sell in period 0 are the control group, with the transaction-price index giving the average difference in the outcome of the experiment. This may or may not correspond the causal effect of treatment, depending on how the treatment and control groups are formed. For example, suppose the treatment is visiting a hospital and the outcome is a measure of health. Simply comparing health outcomes for those that have recently visited a hospital to those that have not, while ignoring how these groups are formed, would lead one to falsely conclude that visiting a hospital makes people unhealthy as on average those who have recently visited the hospital are in worse health than those who have not. This is because those visiting a hospital were likely to have worse health outcomes anyways, hence an apples-to-orange comparison.<a href="transaction-price-indices.html#fnref31" class="footnote-back">↩</a></p></li>
+<li id="fn31"><p>Returning to the narrative of an experiment, goods that sell in period 1 are the treatment group and goods that sell in period 0 are the control group, with the transaction-price index giving the average difference in the outcome of the experiment. This may or may not correspond the causal effect of treatment, depending on how the treatment and control groups are formed. For example, suppose the treatment is visiting a hospital and the outcome is a measure of health. Simply comparing health outcomes for those that have recently visited a hospital to those that have not, while ignoring how these groups are formed, would lead one to falsely conclude that visiting a hospital makes people unhealthy as on average those who have recently visited the hospital are in worse health than those who have not. This is because those visiting a hospital were likely to have worse health outcomes anyways, hence an apples-to-orange comparison.<a href="transaction-price-indices.html#fnref31" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

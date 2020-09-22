@@ -49,12 +49,13 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -63,14 +64,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -79,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -223,9 +226,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="example-with-r-hedonics" class="section level2">
 <h2>Example with R: Hedonics</h2>
 <p>Calculating a linear hedonic price index is very easy in R.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="co"># Bring in some data</span></a>
-<a class="sourceLine" id="cb27-2" title="2">df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;csv/data.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb27-3" title="3">df</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="example-with-r-hedonics.html#cb27-1"></a><span class="co"># Bring in some data</span></span>
+<span id="cb27-2"><a href="example-with-r-hedonics.html#cb27-2"></a>df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;csv/data.csv&quot;</span>)</span>
+<span id="cb27-3"><a href="example-with-r-hedonics.html#cb27-3"></a>df</span></code></pre></div>
 <pre><code>##    period price chicken liver salmon
 ## 1       0     2       1     0      0
 ## 2       0     4       1     0      0
@@ -253,74 +256,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 24      1     8       0     0      1
 ## 25      1     5       0     0      1</code></pre>
 <p>This is a simple data set for cat food, with three characteristics—is it chicken cat food, liver cat food, or salmon cat food? To evaluate the impact of a hedonic price index, it is useful to calculate a simple transaction-price index by pooling transactions for all three types of cat food together.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="co"># Calculate pooled price index</span></a>
-<a class="sourceLine" id="cb29-2" title="2">pooled &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>period, df)</a>
-<a class="sourceLine" id="cb29-3" title="3"><span class="kw">exp</span>(<span class="kw">coef</span>(pooled)[<span class="dv">2</span>]) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="example-with-r-hedonics.html#cb29-1"></a><span class="co"># Calculate pooled price index</span></span>
+<span id="cb29-2"><a href="example-with-r-hedonics.html#cb29-2"></a>pooled &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>period, df)</span>
+<span id="cb29-3"><a href="example-with-r-hedonics.html#cb29-3"></a><span class="kw">exp</span>(<span class="kw">coef</span>(pooled)[<span class="dv">2</span>]) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span></code></pre></div>
 <pre><code>##   period 
 ## 93.86748</code></pre>
 <p>The general linear hedonic index is easy to calculate with a simple linear regression. The only trick is remembering to remove the average of each characteristic in the interaction term.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="co"># Calculate hedonic imputation index</span></a>
-<a class="sourceLine" id="cb31-2" title="2">hedonic_imputation &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>period <span class="op">+</span><span class="st"> </span>liver <span class="op">+</span><span class="st"> </span>salmon <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb31-3" title="3"><span class="st">                           </span>period<span class="op">:</span>(<span class="kw">I</span>(liver <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(liver)) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(salmon <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(salmon))), </a>
-<a class="sourceLine" id="cb31-4" title="4">                         df)</a>
-<a class="sourceLine" id="cb31-5" title="5"><span class="kw">exp</span>(<span class="kw">coef</span>(hedonic_imputation)[<span class="dv">2</span>]) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="example-with-r-hedonics.html#cb31-1"></a><span class="co"># Calculate hedonic imputation index</span></span>
+<span id="cb31-2"><a href="example-with-r-hedonics.html#cb31-2"></a>hedonic_imputation &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>period <span class="op">+</span><span class="st"> </span>liver <span class="op">+</span><span class="st"> </span>salmon <span class="op">+</span><span class="st"> </span></span>
+<span id="cb31-3"><a href="example-with-r-hedonics.html#cb31-3"></a><span class="st">                           </span>period<span class="op">:</span>(<span class="kw">I</span>(liver <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(liver)) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(salmon <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(salmon))), </span>
+<span id="cb31-4"><a href="example-with-r-hedonics.html#cb31-4"></a>                         df)</span>
+<span id="cb31-5"><a href="example-with-r-hedonics.html#cb31-5"></a><span class="kw">exp</span>(<span class="kw">coef</span>(hedonic_imputation)[<span class="dv">2</span>]) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span></code></pre></div>
 <pre><code>##   period 
 ## 112.2817</code></pre>
 <p>This is the same as the two-step calculation that is normally done for a hedonic imputation index.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="co"># Period-0 regression</span></a>
-<a class="sourceLine" id="cb33-2" title="2">hi0 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>liver <span class="op">+</span><span class="st"> </span>salmon, df, <span class="dt">subset =</span> period <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb33-3" title="3"></a>
-<a class="sourceLine" id="cb33-4" title="4"><span class="co"># Period-1 regression</span></a>
-<a class="sourceLine" id="cb33-5" title="5">hi1 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>liver <span class="op">+</span><span class="st"> </span>salmon, df, <span class="dt">subset =</span> period <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb33-6" title="6"></a>
-<a class="sourceLine" id="cb33-7" title="7"><span class="co"># Calculate index using predicted prices</span></a>
-<a class="sourceLine" id="cb33-8" title="8"><span class="kw">exp</span>(<span class="kw">mean</span>(<span class="kw">predict</span>(hi1, df) <span class="op">-</span><span class="st"> </span><span class="kw">predict</span>(hi0, df))) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="example-with-r-hedonics.html#cb33-1"></a><span class="co"># Period-0 regression</span></span>
+<span id="cb33-2"><a href="example-with-r-hedonics.html#cb33-2"></a>hi0 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>liver <span class="op">+</span><span class="st"> </span>salmon, df, <span class="dt">subset =</span> period <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</span>
+<span id="cb33-3"><a href="example-with-r-hedonics.html#cb33-3"></a></span>
+<span id="cb33-4"><a href="example-with-r-hedonics.html#cb33-4"></a><span class="co"># Period-1 regression</span></span>
+<span id="cb33-5"><a href="example-with-r-hedonics.html#cb33-5"></a>hi1 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>liver <span class="op">+</span><span class="st"> </span>salmon, df, <span class="dt">subset =</span> period <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</span>
+<span id="cb33-6"><a href="example-with-r-hedonics.html#cb33-6"></a></span>
+<span id="cb33-7"><a href="example-with-r-hedonics.html#cb33-7"></a><span class="co"># Calculate index using predicted prices</span></span>
+<span id="cb33-8"><a href="example-with-r-hedonics.html#cb33-8"></a><span class="kw">exp</span>(<span class="kw">mean</span>(<span class="kw">predict</span>(hi1, df) <span class="op">-</span><span class="st"> </span><span class="kw">predict</span>(hi0, df))) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span></code></pre></div>
 <pre><code>## [1] 112.2817</code></pre>
 <p>It is also the same as manually calculating the stratified index.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="co"># Bring in gpindex library</span></a>
-<a class="sourceLine" id="cb35-2" title="2"><span class="kw">library</span>(gpindex)</a>
-<a class="sourceLine" id="cb35-3" title="3"></a>
-<a class="sourceLine" id="cb35-4" title="4"><span class="co"># Weight cat food by its frequency</span></a>
-<a class="sourceLine" id="cb35-5" title="5">weights &lt;-<span class="st"> </span><span class="kw">colSums</span>(df[<span class="op">-</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>)])</a>
-<a class="sourceLine" id="cb35-6" title="6"></a>
-<a class="sourceLine" id="cb35-7" title="7"><span class="co"># Calculate an index for each type of cat food</span></a>
-<a class="sourceLine" id="cb35-8" title="8">strata_indices &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb35-9" title="9"><span class="st">  </span><span class="kw">sapply</span>(<span class="kw">list</span>(<span class="kw">subset</span>(df, chicken <span class="op">==</span><span class="st"> </span><span class="dv">1</span>), </a>
-<a class="sourceLine" id="cb35-10" title="10">              <span class="kw">subset</span>(df, liver <span class="op">==</span><span class="st"> </span><span class="dv">1</span>), </a>
-<a class="sourceLine" id="cb35-11" title="11">              <span class="kw">subset</span>(df, salmon <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)),</a>
-<a class="sourceLine" id="cb35-12" title="12">         <span class="cf">function</span>(x) <span class="kw">with</span>(x, <span class="kw">mean_geometric</span>(price[period <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]) <span class="op">/</span><span class="st"> </span><span class="kw">mean_geometric</span>(price[period <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]))</a>
-<a class="sourceLine" id="cb35-13" title="13">         )</a>
-<a class="sourceLine" id="cb35-14" title="14"></a>
-<a class="sourceLine" id="cb35-15" title="15"><span class="co"># Aggregate</span></a>
-<a class="sourceLine" id="cb35-16" title="16"><span class="kw">mean_geometric</span>(strata_indices, weights) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="example-with-r-hedonics.html#cb35-1"></a><span class="co"># Bring in gpindex library</span></span>
+<span id="cb35-2"><a href="example-with-r-hedonics.html#cb35-2"></a><span class="kw">library</span>(gpindex)</span>
+<span id="cb35-3"><a href="example-with-r-hedonics.html#cb35-3"></a></span>
+<span id="cb35-4"><a href="example-with-r-hedonics.html#cb35-4"></a><span class="co"># Weight cat food by its frequency</span></span>
+<span id="cb35-5"><a href="example-with-r-hedonics.html#cb35-5"></a>weights &lt;-<span class="st"> </span><span class="kw">colSums</span>(df[<span class="op">-</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>)])</span>
+<span id="cb35-6"><a href="example-with-r-hedonics.html#cb35-6"></a></span>
+<span id="cb35-7"><a href="example-with-r-hedonics.html#cb35-7"></a><span class="co"># Calculate an index for each type of cat food</span></span>
+<span id="cb35-8"><a href="example-with-r-hedonics.html#cb35-8"></a>strata_indices &lt;-<span class="st"> </span></span>
+<span id="cb35-9"><a href="example-with-r-hedonics.html#cb35-9"></a><span class="st">  </span><span class="kw">sapply</span>(<span class="kw">list</span>(<span class="kw">subset</span>(df, chicken <span class="op">==</span><span class="st"> </span><span class="dv">1</span>), </span>
+<span id="cb35-10"><a href="example-with-r-hedonics.html#cb35-10"></a>              <span class="kw">subset</span>(df, liver <span class="op">==</span><span class="st"> </span><span class="dv">1</span>), </span>
+<span id="cb35-11"><a href="example-with-r-hedonics.html#cb35-11"></a>              <span class="kw">subset</span>(df, salmon <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)),</span>
+<span id="cb35-12"><a href="example-with-r-hedonics.html#cb35-12"></a>         <span class="cf">function</span>(x) <span class="kw">with</span>(x, <span class="kw">mean_geometric</span>(price[period <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]) <span class="op">/</span><span class="st"> </span><span class="kw">mean_geometric</span>(price[period <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]))</span>
+<span id="cb35-13"><a href="example-with-r-hedonics.html#cb35-13"></a>         )</span>
+<span id="cb35-14"><a href="example-with-r-hedonics.html#cb35-14"></a></span>
+<span id="cb35-15"><a href="example-with-r-hedonics.html#cb35-15"></a><span class="co"># Aggregate</span></span>
+<span id="cb35-16"><a href="example-with-r-hedonics.html#cb35-16"></a><span class="kw">mean_geometric</span>(strata_indices, weights) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span></code></pre></div>
 <pre><code>## [1] 112.2817</code></pre>
 <p>The results are very similar if a time-dummy model is used instead.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="co"># Time-dummy index</span></a>
-<a class="sourceLine" id="cb37-2" title="2">time_dummy &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>period <span class="op">+</span><span class="st"> </span>liver <span class="op">+</span><span class="st"> </span>salmon, df)</a>
-<a class="sourceLine" id="cb37-3" title="3"><span class="kw">exp</span>(<span class="kw">coef</span>(time_dummy)[<span class="dv">2</span>]) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="example-with-r-hedonics.html#cb37-1"></a><span class="co"># Time-dummy index</span></span>
+<span id="cb37-2"><a href="example-with-r-hedonics.html#cb37-2"></a>time_dummy &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>period <span class="op">+</span><span class="st"> </span>liver <span class="op">+</span><span class="st"> </span>salmon, df)</span>
+<span id="cb37-3"><a href="example-with-r-hedonics.html#cb37-3"></a><span class="kw">exp</span>(<span class="kw">coef</span>(time_dummy)[<span class="dv">2</span>]) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span></code></pre></div>
 <pre><code>##   period 
 ## 112.2246</code></pre>
 <p>Adding weights for the transactions in each stratum can easily be done with a weighted regression.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="co"># Make some weights</span></a>
-<a class="sourceLine" id="cb39-2" title="2">df<span class="op">$</span>weights &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">25</span> <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>)</a>
-<a class="sourceLine" id="cb39-3" title="3"></a>
-<a class="sourceLine" id="cb39-4" title="4"><span class="co"># Calculate weighted hedonic imputation index</span></a>
-<a class="sourceLine" id="cb39-5" title="5">hedonic_imputation &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>period <span class="op">+</span><span class="st"> </span>liver <span class="op">+</span><span class="st"> </span>salmon <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb39-6" title="6"><span class="st">                           </span>period<span class="op">:</span>(<span class="kw">I</span>(liver <span class="op">-</span><span class="st"> </span><span class="kw">weighted.mean</span>(liver, weights)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb39-7" title="7"><span class="st">                                   </span><span class="kw">I</span>(salmon <span class="op">-</span><span class="st"> </span><span class="kw">weighted.mean</span>(salmon, weights))), </a>
-<a class="sourceLine" id="cb39-8" title="8">                         df, <span class="dt">weights =</span> weights)</a>
-<a class="sourceLine" id="cb39-9" title="9"><span class="kw">exp</span>(<span class="kw">coef</span>(hedonic_imputation)[<span class="dv">2</span>]) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="example-with-r-hedonics.html#cb39-1"></a><span class="co"># Make some weights</span></span>
+<span id="cb39-2"><a href="example-with-r-hedonics.html#cb39-2"></a>df<span class="op">$</span>weights &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">25</span> <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>)</span>
+<span id="cb39-3"><a href="example-with-r-hedonics.html#cb39-3"></a></span>
+<span id="cb39-4"><a href="example-with-r-hedonics.html#cb39-4"></a><span class="co"># Calculate weighted hedonic imputation index</span></span>
+<span id="cb39-5"><a href="example-with-r-hedonics.html#cb39-5"></a>hedonic_imputation &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>period <span class="op">+</span><span class="st"> </span>liver <span class="op">+</span><span class="st"> </span>salmon <span class="op">+</span><span class="st"> </span></span>
+<span id="cb39-6"><a href="example-with-r-hedonics.html#cb39-6"></a><span class="st">                           </span>period<span class="op">:</span>(<span class="kw">I</span>(liver <span class="op">-</span><span class="st"> </span><span class="kw">weighted.mean</span>(liver, weights)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb39-7"><a href="example-with-r-hedonics.html#cb39-7"></a><span class="st">                                   </span><span class="kw">I</span>(salmon <span class="op">-</span><span class="st"> </span><span class="kw">weighted.mean</span>(salmon, weights))), </span>
+<span id="cb39-8"><a href="example-with-r-hedonics.html#cb39-8"></a>                         df, <span class="dt">weights =</span> weights)</span>
+<span id="cb39-9"><a href="example-with-r-hedonics.html#cb39-9"></a><span class="kw">exp</span>(<span class="kw">coef</span>(hedonic_imputation)[<span class="dv">2</span>]) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span></code></pre></div>
 <pre><code>##   period 
 ## 111.1855</code></pre>
 <p>This gives the same answer as the two-step calculation.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="co"># Period-0 regression</span></a>
-<a class="sourceLine" id="cb41-2" title="2">hi0 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>liver <span class="op">+</span><span class="st"> </span>salmon, df, <span class="dt">subset =</span> period <span class="op">==</span><span class="st"> </span><span class="dv">0</span>, <span class="dt">weights =</span> weights)</a>
-<a class="sourceLine" id="cb41-3" title="3"></a>
-<a class="sourceLine" id="cb41-4" title="4"><span class="co"># Period-1 regression</span></a>
-<a class="sourceLine" id="cb41-5" title="5">hi1 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>liver <span class="op">+</span><span class="st"> </span>salmon, df, <span class="dt">subset =</span> period <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">weights =</span> weights)</a>
-<a class="sourceLine" id="cb41-6" title="6"></a>
-<a class="sourceLine" id="cb41-7" title="7"><span class="co"># Calculate index using weighted predicted prices</span></a>
-<a class="sourceLine" id="cb41-8" title="8"><span class="kw">exp</span>(<span class="kw">weighted.mean</span>(<span class="kw">predict</span>(hi1, df) <span class="op">-</span><span class="st"> </span><span class="kw">predict</span>(hi0, df), df<span class="op">$</span>weights)) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="example-with-r-hedonics.html#cb41-1"></a><span class="co"># Period-0 regression</span></span>
+<span id="cb41-2"><a href="example-with-r-hedonics.html#cb41-2"></a>hi0 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>liver <span class="op">+</span><span class="st"> </span>salmon, df, <span class="dt">subset =</span> period <span class="op">==</span><span class="st"> </span><span class="dv">0</span>, <span class="dt">weights =</span> weights)</span>
+<span id="cb41-3"><a href="example-with-r-hedonics.html#cb41-3"></a></span>
+<span id="cb41-4"><a href="example-with-r-hedonics.html#cb41-4"></a><span class="co"># Period-1 regression</span></span>
+<span id="cb41-5"><a href="example-with-r-hedonics.html#cb41-5"></a>hi1 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(price) <span class="op">~</span><span class="st"> </span>liver <span class="op">+</span><span class="st"> </span>salmon, df, <span class="dt">subset =</span> period <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">weights =</span> weights)</span>
+<span id="cb41-6"><a href="example-with-r-hedonics.html#cb41-6"></a></span>
+<span id="cb41-7"><a href="example-with-r-hedonics.html#cb41-7"></a><span class="co"># Calculate index using weighted predicted prices</span></span>
+<span id="cb41-8"><a href="example-with-r-hedonics.html#cb41-8"></a><span class="kw">exp</span>(<span class="kw">weighted.mean</span>(<span class="kw">predict</span>(hi1, df) <span class="op">-</span><span class="st"> </span><span class="kw">predict</span>(hi0, df), df<span class="op">$</span>weights)) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span></code></pre></div>
 <pre><code>## [1] 111.1855</code></pre>
 </div>
 <!-- </div> -->
