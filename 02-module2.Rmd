@@ -358,7 +358,7 @@ I^{A} = \sum_{i = 1}^{n} \frac{p_{it}}{p_{i0}} P_{i}.
 \end{align*}
 Different arithmetic price-index formulas---e.g., Laspeyres, Paasche, Lowe---thus correspond to different statements about what determines the probability of observing a transaction. For example, with a Laspeyres index the probabilities are given by period-0 expenditure or revenue shares. This amounts to a statement that the probability of observing a transaction for a good is the likelihood of spending or receiving a dollar on that good in period 0.
 
-## Geometric price indices as a best preditor
+## Geometric price indices as a best predictor
 
 A geometric index can be motivated in the same way as an arithmetic index. Formally, a geometric index is the value $I^{G}$ that solves
 \begin{align*}
