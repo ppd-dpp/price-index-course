@@ -1,46 +1,39 @@
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[
-]{article}
+\documentclass[]{article}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
   \usepackage{unicode-math}
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
-% Use upquote if available, for straight quotes in verbatim environments
+% use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{% use microtype if available
-  \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
-\usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
 \hypersetup{
-  pdftitle={A Course on Price Indices},
-  pdfauthor={Steve Martin and Rebecca Meier},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
+            pdftitle={A Course on Price Indices},
+            pdfauthor={Steve Martin and Rebecca Meier},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
 \usepackage[margin=1in]{geometry}
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -83,14 +76,8 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
-% Correct order of tables after \paragraph or \subparagraph
-\usepackage{etoolbox}
-\makeatletter
-\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
-\makeatother
-% Allow footnotes in longtable head/foot
-\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
-\makesavenoteenv{longtable}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -100,14 +87,25 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-% Set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
 
 \title{A Course on Price Indices}
 \author{Steve Martin and Rebecca Meier}
@@ -675,17 +673,17 @@ The second example shows how to rebase a price index---simply divide the index s
 \begin{verbatim}
 ##    period value
 ## 1       0   100
-## 2       1   125
-## 3       2   117
-## 4       3   123
-## 5       4   112
-## 6       5   113
-## 7       6    92
-## 8       7   105
-## 9       8   106
-## 10      9    96
-## 11     10   127
-## 12     11   118
+## 2       1   119
+## 3       2    91
+## 4       3   106
+## 5       4    94
+## 6       5   117
+## 7       6   114
+## 8       7    97
+## 9       8   115
+## 10      9   107
+## 11     10   112
+## 12     11   127
 \end{verbatim}
 
 \begin{Shaded}
@@ -696,19 +694,19 @@ The second example shows how to rebase a price index---simply divide the index s
 \end{Shaded}
 
 \begin{verbatim}
-##    period    value
-## 1       0 108.6957
-## 2       1 135.8696
-## 3       2 127.1739
-## 4       3 133.6957
-## 5       4 121.7391
-## 6       5 122.8261
-## 7       6 100.0000
-## 8       7 114.1304
-## 9       8 115.2174
-## 10      9 104.3478
-## 11     10 138.0435
-## 12     11 128.2609
+##    period     value
+## 1       0  87.71930
+## 2       1 104.38596
+## 3       2  79.82456
+## 4       3  92.98246
+## 5       4  82.45614
+## 6       5 102.63158
+## 7       6 100.00000
+## 8       7  85.08772
+## 9       8 100.87719
+## 10      9  93.85965
+## 11     10  98.24561
+## 12     11 111.40351
 \end{verbatim}
 
 \hypertarget{assignment-1}{%
@@ -2490,7 +2488,7 @@ The \href{https://cran.r-project.org/package=dplyr}{dplyr}, \href{https://cran.r
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{dat_index <-}\StringTok{ }\NormalTok{dat_index }\OperatorTok{%>%}\StringTok{  }
-\StringTok{  }\CommentTok{# your code here}
+\StringTok{  }\CommentTok{# your code here (hint: read the documentation for dplyr::lag)}
 \end{Highlighting}
 \end{Shaded}
 \item
@@ -2502,7 +2500,7 @@ The \href{https://cran.r-project.org/package=dplyr}{dplyr}, \href{https://cran.r
 \begin{Highlighting}[]
 \NormalTok{dat_index <-}\StringTok{ }\NormalTok{dat_index }\OperatorTok{%>%}\StringTok{  }
 \StringTok{  }\CommentTok{# your code here %>%}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{share_prod_u =} \KeywordTok{weights_update}\NormalTok{(}\KeywordTok{cumprod}\NormalTok{(}\KeywordTok{lag}\NormalTok{(rel, }\DataTypeTok{default =} \DecValTok{1}\NormalTok{)), share_prod, }\DataTypeTok{scale =} \OtherTok{FALSE}\NormalTok{)) }\CommentTok{# price update the weights}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{share_prod_u =} \KeywordTok{weights_update}\NormalTok{(}\KeywordTok{cumprod}\NormalTok{(}\KeywordTok{lag}\NormalTok{(rel, }\DataTypeTok{default =} \DecValTok{1}\NormalTok{)), share_prod)) }\CommentTok{# price update the weights}
 \end{Highlighting}
 \end{Shaded}
 \item

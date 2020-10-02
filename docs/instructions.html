@@ -49,13 +49,12 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,16 +63,14 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -82,9 +79,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -227,96 +224,96 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Instructions</h2>
 <p>These instructions outline a simple way to build the price index for widgets, although feel free to use a different approach if it’s easier. The goal is to understand the process, rather than design the most computationally efficient system.</p>
 <p>Run the following code to grab all the data files and put them in your working environment. Note that these data aren’t perfect. It is worth remembering to check your intermediate calculations to make sure everything is as expected (e.g., with the <code>summary</code> function).</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="instructions.html#cb43-1"></a><span class="kw">source</span>(<span class="st">&#39;https://raw.githubusercontent.com/ppd-dpp/price-index-course/master/scripts/get_data.R&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="kw">source</span>(<span class="st">&#39;https://raw.githubusercontent.com/ppd-dpp/price-index-course/master/scripts/get_data.R&#39;</span>)</a></code></pre></div>
 <p>The <a href="https://cran.r-project.org/package=dplyr">dplyr</a>, <a href="https://cran.r-project.org/package=tidyr">tidyr</a>, <a href="https://cran.r-project.org/package=gpindex">gpindex</a>, and <a href="https://github.com/ppd-dpp/calpr">calpr</a> packages will be used in this module. Install them as follows if they aren’t already installed. (Hint: it is worth going through the documentation in the <code>gpindex</code> and <code>calpr</code> packages.)</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="instructions.html#cb44-1"></a><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;tidyr&quot;</span>, <span class="st">&quot;gpindex&quot;</span>, <span class="st">&quot;devtools&quot;</span>))</span>
-<span id="cb44-2"><a href="instructions.html#cb44-2"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;ppd-dpp/calpr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;tidyr&quot;</span>, <span class="st">&quot;gpindex&quot;</span>, <span class="st">&quot;devtools&quot;</span>))</a>
+<a class="sourceLine" id="cb44-2" title="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;ppd-dpp/calpr&quot;</span>)</a></code></pre></div>
 <ol style="list-style-type: decimal">
 <li><p><strong>Make the weights</strong></p>
 <p>Using the <code>weights</code> file, make one set of weights that give the value share of all products sold in each province in each year, and another that give the value share of each product sold within each province in each year. This first set of weights will be used to aggregate the province-level indices to a national index, and the second set of weights will be used to aggregate elemental indices to get 10 province-level indices. There should be 20 weights in the first file and 200 weights in the second file.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="instructions.html#cb45-1"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb45-2"><a href="instructions.html#cb45-2"></a><span class="kw">library</span>(tidyr)</span>
-<span id="cb45-3"><a href="instructions.html#cb45-3"></a><span class="kw">library</span>(gpindex)</span>
-<span id="cb45-4"><a href="instructions.html#cb45-4"></a><span class="kw">library</span>(calpr)</span>
-<span id="cb45-5"><a href="instructions.html#cb45-5"></a></span>
-<span id="cb45-6"><a href="instructions.html#cb45-6"></a><span class="co"># Make provincial weights</span></span>
-<span id="cb45-7"><a href="instructions.html#cb45-7"></a>weights_prov &lt;-<span class="st"> </span>weights <span class="op">%&gt;%</span></span>
-<span id="cb45-8"><a href="instructions.html#cb45-8"></a><span class="st">  </span><span class="kw">group_by</span>(year, province) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># group all sales values by reference year and province</span></span>
-<span id="cb45-9"><a href="instructions.html#cb45-9"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">weight =</span> <span class="kw">sum</span>(weight)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># value of all sales in each province in each year</span></span>
-<span id="cb45-10"><a href="instructions.html#cb45-10"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">share_prov =</span> <span class="kw">weights_scale</span>(weight)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># scale to sum to 1</span></span>
-<span id="cb45-11"><a href="instructions.html#cb45-11"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>weight) <span class="co"># drop the weight column as it won&#39;t be needed again</span></span>
-<span id="cb45-12"><a href="instructions.html#cb45-12"></a></span>
-<span id="cb45-13"><a href="instructions.html#cb45-13"></a><span class="co"># Make product weights</span></span>
-<span id="cb45-14"><a href="instructions.html#cb45-14"></a>weights_prod &lt;-<span class="st"> </span>weights <span class="op">%&gt;%</span></span>
-<span id="cb45-15"><a href="instructions.html#cb45-15"></a><span class="st">  </span><span class="co"># your code here %&gt;%</span></span>
-<span id="cb45-16"><a href="instructions.html#cb45-16"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">share_prod =</span> <span class="kw">weights_scale</span>(weight)) <span class="op">%&gt;%</span></span>
-<span id="cb45-17"><a href="instructions.html#cb45-17"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>weight)</span></code></pre></div></li>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb45-2" title="2"><span class="kw">library</span>(tidyr)</a>
+<a class="sourceLine" id="cb45-3" title="3"><span class="kw">library</span>(gpindex)</a>
+<a class="sourceLine" id="cb45-4" title="4"><span class="kw">library</span>(calpr)</a>
+<a class="sourceLine" id="cb45-5" title="5"></a>
+<a class="sourceLine" id="cb45-6" title="6"><span class="co"># Make provincial weights</span></a>
+<a class="sourceLine" id="cb45-7" title="7">weights_prov &lt;-<span class="st"> </span>weights <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb45-8" title="8"><span class="st">  </span><span class="kw">group_by</span>(year, province) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># group all sales values by reference year and province</span></a>
+<a class="sourceLine" id="cb45-9" title="9"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">weight =</span> <span class="kw">sum</span>(weight)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># value of all sales in each province in each year</span></a>
+<a class="sourceLine" id="cb45-10" title="10"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">share_prov =</span> <span class="kw">weights_scale</span>(weight)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># scale to sum to 1</span></a>
+<a class="sourceLine" id="cb45-11" title="11"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>weight) <span class="co"># drop the weight column as it won&#39;t be needed again</span></a>
+<a class="sourceLine" id="cb45-12" title="12"></a>
+<a class="sourceLine" id="cb45-13" title="13"><span class="co"># Make product weights</span></a>
+<a class="sourceLine" id="cb45-14" title="14">weights_prod &lt;-<span class="st"> </span>weights <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb45-15" title="15"><span class="st">  </span><span class="co"># your code here %&gt;%</span></a>
+<a class="sourceLine" id="cb45-16" title="16"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">share_prod =</span> <span class="kw">weights_scale</span>(weight)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb45-17" title="17"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>weight)</a></code></pre></div></li>
 <li><p><strong>Calculate the geomean for product K</strong></p>
 <p>Using the microdata for product K in the <code>dat_micro</code> file, calculate the geometric average of the prices in each province in each month in each reference year. This file should have 250 geomeans.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="instructions.html#cb46-1"></a>dat_micro &lt;-<span class="st"> </span>dat_micro <span class="op">%&gt;%</span></span>
-<span id="cb46-2"><a href="instructions.html#cb46-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">period =</span> <span class="kw">year_month</span>(period)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># turn transaction dates into month-by-year dates</span></span>
-<span id="cb46-3"><a href="instructions.html#cb46-3"></a><span class="st">  </span><span class="co"># your code here %&gt;%</span></span>
-<span id="cb46-4"><a href="instructions.html#cb46-4"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">geomean =</span> <span class="kw">mean_geometric</span>(price)) <span class="co"># calculate the geometric avergage</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1">dat_micro &lt;-<span class="st"> </span>dat_micro <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb46-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">period =</span> <span class="kw">year_month</span>(period)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># turn transaction dates into month-by-year dates</span></a>
+<a class="sourceLine" id="cb46-3" title="3"><span class="st">  </span><span class="co"># your code here %&gt;%</span></a>
+<a class="sourceLine" id="cb46-4" title="4"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">geomean =</span> <span class="kw">mean_geometric</span>(price)) <span class="co"># calculate the geometric avergage</span></a></code></pre></div></li>
 <li><p><strong>Calculate the geomean for products A to J</strong></p>
 <p>Using the data from the Globular Prices System in <code>dat_gps</code>, calculate the geometric average of the price quotes for each product in each province in each month in each reference year, for products A to J. Combine these data with the data prepared in step 2. The resulting file should have 2,500 geomeans.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="instructions.html#cb47-1"></a>dat_index &lt;-<span class="st"> </span>dat_gps <span class="op">%&gt;%</span></span>
-<span id="cb47-2"><a href="instructions.html#cb47-2"></a><span class="st">  </span><span class="co"># your code here %&gt;%</span></span>
-<span id="cb47-3"><a href="instructions.html#cb47-3"></a><span class="st">  </span><span class="kw">gather</span>(<span class="dt">key =</span> <span class="st">&quot;quote&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;price&quot;</span>, price1<span class="op">:</span>price3) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># melt into a long dataset</span></span>
-<span id="cb47-4"><a href="instructions.html#cb47-4"></a><span class="st">  </span><span class="kw">group_by</span>(province, product, year, period) <span class="op">%&gt;%</span></span>
-<span id="cb47-5"><a href="instructions.html#cb47-5"></a><span class="st">  </span><span class="co"># your code here %&gt;%</span></span>
-<span id="cb47-6"><a href="instructions.html#cb47-6"></a><span class="st">  </span><span class="kw">bind_rows</span>(dat_micro) <span class="co"># append to dat_micro</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1">dat_index &lt;-<span class="st"> </span>dat_gps <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb47-2" title="2"><span class="st">  </span><span class="co"># your code here %&gt;%</span></a>
+<a class="sourceLine" id="cb47-3" title="3"><span class="st">  </span><span class="kw">gather</span>(<span class="dt">key =</span> <span class="st">&quot;quote&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;price&quot;</span>, price1<span class="op">:</span>price3) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># melt into a long dataset</span></a>
+<a class="sourceLine" id="cb47-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(province, product, year, period) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb47-5" title="5"><span class="st">  </span><span class="co"># your code here %&gt;%</span></a>
+<a class="sourceLine" id="cb47-6" title="6"><span class="st">  </span><span class="kw">bind_rows</span>(dat_micro) <span class="co"># append to dat_micro</span></a></code></pre></div></li>
 <li><p><strong>Calculate the period-over-period elemental indices</strong></p>
 <p>For each product in each province in each reference year, calculate the ratio of the geometric averages computed in step 3, making sure to have a price relative of 1 in January 2018 and January 2019. (January 2019 will be the link month when it is time to chain the index.)</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="instructions.html#cb48-1"></a>dat_index &lt;-<span class="st"> </span>dat_index <span class="op">%&gt;%</span><span class="st">  </span></span>
-<span id="cb48-2"><a href="instructions.html#cb48-2"></a><span class="st">  </span><span class="co"># your code here</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1">dat_index &lt;-<span class="st"> </span>dat_index <span class="op">%&gt;%</span><span class="st">  </span></a>
+<a class="sourceLine" id="cb48-2" title="2"><span class="st">  </span><span class="co"># your code here (hint: read the documentation for dplyr::lag)</span></a></code></pre></div></li>
 <li><p><strong>Price update the product weights</strong></p>
 <p>Merge the product-by-province level weights from step 1 into the dataset created in step 4, and use the period-over-period elemental indices to price update the weights.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="instructions.html#cb49-1"></a>dat_index &lt;-<span class="st"> </span>dat_index <span class="op">%&gt;%</span><span class="st">  </span></span>
-<span id="cb49-2"><a href="instructions.html#cb49-2"></a><span class="st">  </span><span class="co"># your code here %&gt;%</span></span>
-<span id="cb49-3"><a href="instructions.html#cb49-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">share_prod_u =</span> <span class="kw">weights_update</span>(<span class="kw">cumprod</span>(<span class="kw">lag</span>(rel, <span class="dt">default =</span> <span class="dv">1</span>)), share_prod, <span class="dt">scale =</span> <span class="ot">FALSE</span>)) <span class="co"># price update the weights</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1">dat_index &lt;-<span class="st"> </span>dat_index <span class="op">%&gt;%</span><span class="st">  </span></a>
+<a class="sourceLine" id="cb49-2" title="2"><span class="st">  </span><span class="co"># your code here %&gt;%</span></a>
+<a class="sourceLine" id="cb49-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">share_prod_u =</span> <span class="kw">weights_update</span>(<span class="kw">cumprod</span>(<span class="kw">lag</span>(rel, <span class="dt">default =</span> <span class="dv">1</span>)), share_prod)) <span class="co"># price update the weights</span></a></code></pre></div></li>
 <li><p><strong>Calculate the province-level index</strong></p>
 <p>Calculate an arithmetic index for each province in each reference year, using the period-over-period elemental indices and the price updated weights from steps 4 and 5.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="instructions.html#cb50-1"></a>index_prov &lt;-<span class="st"> </span>dat_index <span class="op">%&gt;%</span></span>
-<span id="cb50-2"><a href="instructions.html#cb50-2"></a><span class="st">  </span><span class="kw">group_by</span>(period, year, province) <span class="op">%&gt;%</span></span>
-<span id="cb50-3"><a href="instructions.html#cb50-3"></a><span class="st">  </span><span class="co"># your code here</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1">index_prov &lt;-<span class="st"> </span>dat_index <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb50-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(period, year, province) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb50-3" title="3"><span class="st">  </span><span class="co"># your code here</span></a></code></pre></div></li>
 <li><p><strong>Calculate the Canada-level index</strong></p>
 <p>Merge the province-level weights in step 1 with the provincial indices from step 6 to calculate a Canada-level index for each reference year.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="instructions.html#cb51-1"></a>index &lt;-<span class="st"> </span>index_prov <span class="op">%&gt;%</span></span>
-<span id="cb51-2"><a href="instructions.html#cb51-2"></a><span class="st">  </span><span class="co"># your code here</span></span>
-<span id="cb51-3"><a href="instructions.html#cb51-3"></a><span class="st">  </span><span class="kw">group_by</span>(period, year) <span class="op">%&gt;%</span></span>
-<span id="cb51-4"><a href="instructions.html#cb51-4"></a><span class="st">  </span><span class="co"># your code here</span></span>
-<span id="cb51-5"><a href="instructions.html#cb51-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">province =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># province 0 is the Canada-level</span></span>
-<span id="cb51-6"><a href="instructions.html#cb51-6"></a><span class="st">  </span><span class="kw">bind_rows</span>(index_prov)</span></code></pre></div></li>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1">index &lt;-<span class="st"> </span>index_prov <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-2" title="2"><span class="st">  </span><span class="co"># your code here</span></a>
+<a class="sourceLine" id="cb51-3" title="3"><span class="st">  </span><span class="kw">group_by</span>(period, year) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-4" title="4"><span class="st">  </span><span class="co"># your code here</span></a>
+<a class="sourceLine" id="cb51-5" title="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">province =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># province 0 is the Canada-level</span></a>
+<a class="sourceLine" id="cb51-6" title="6"><span class="st">  </span><span class="kw">bind_rows</span>(index_prov)</a></code></pre></div></li>
 <li><p><strong>Chain the 2018 and 2019 indices</strong></p>
 <p>Chain the 2018 and 2019 province-level and Canada-level indices together, using January 2019 as the link month, to get an index from January 2018 to December 2019 with January 2018 as the base period (usually the base period would be a calendar year, but there are only 24 months of data).</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="instructions.html#cb52-1"></a>index_chain &lt;-<span class="st"> </span>index <span class="op">%&gt;%</span></span>
-<span id="cb52-2"><a href="instructions.html#cb52-2"></a><span class="st">  </span><span class="kw">group_by</span>(province) <span class="op">%&gt;%</span></span>
-<span id="cb52-3"><a href="instructions.html#cb52-3"></a><span class="st">  </span><span class="co"># your code here</span></span>
-<span id="cb52-4"><a href="instructions.html#cb52-4"></a><span class="st">  </span><span class="kw">group_by</span>(period, province) <span class="op">%&gt;%</span></span>
-<span id="cb52-5"><a href="instructions.html#cb52-5"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">index =</span> <span class="kw">unique</span>(index)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># remove the duplicate rows for the link month</span></span>
-<span id="cb52-6"><a href="instructions.html#cb52-6"></a><span class="st">  </span><span class="kw">ungroup</span>()</span></code></pre></div></li>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1">index_chain &lt;-<span class="st"> </span>index <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb52-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(province) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb52-3" title="3"><span class="st">  </span><span class="co"># your code here</span></a>
+<a class="sourceLine" id="cb52-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(period, province) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb52-5" title="5"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">index =</span> <span class="kw">unique</span>(index)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># remove the duplicate rows for the link month</span></a>
+<a class="sourceLine" id="cb52-6" title="6"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div></li>
 </ol>
 <p>The end result should be a file with 11 price indices, one for each province and a national index, from January 2018 to December 2019, with January 2018 as the base period (= 100).</p>
 <p>Validating the Canada-level index requires putting the Canadian Regulatory Economic Analysis group’s index and Monsterweb’s index into a common form.</p>
 <ol start="9" style="list-style-type: decimal">
 <li><p><strong>Quarter the monthly indices</strong></p>
 <p>Turn the index you just made and the Canadian Regulatory Economic Analysis group’s index in <code>index_crea</code> into a quarterly index, with quarter 1 2019 as the base period, by taking the average of the three index values in each quarter.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="instructions.html#cb53-1"></a>my_index &lt;-<span class="st"> </span>index_chain <span class="op">%&gt;%</span></span>
-<span id="cb53-2"><a href="instructions.html#cb53-2"></a><span class="st">  </span><span class="kw">filter</span>(province <span class="op">==</span><span class="st"> &#39;0&#39;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># keep only the Canada-level index</span></span>
-<span id="cb53-3"><a href="instructions.html#cb53-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">period =</span> <span class="kw">year_quarter</span>(period)) <span class="op">%&gt;%</span></span>
-<span id="cb53-4"><a href="instructions.html#cb53-4"></a><span class="st">  </span><span class="kw">group_by</span>(period) <span class="op">%&gt;%</span></span>
-<span id="cb53-5"><a href="instructions.html#cb53-5"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">index =</span> <span class="kw">mean</span>(index)) <span class="op">%&gt;%</span></span>
-<span id="cb53-6"><a href="instructions.html#cb53-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">index =</span> index<span class="op">/</span>index[period <span class="op">==</span><span class="st"> &#39;2019-01-01&#39;</span>] <span class="op">*</span><span class="st"> </span><span class="dv">100</span>) <span class="co"># rebase to Jan 2019</span></span>
-<span id="cb53-7"><a href="instructions.html#cb53-7"></a></span>
-<span id="cb53-8"><a href="instructions.html#cb53-8"></a>index_crea &lt;-<span class="st"> </span>index_crea <span class="op">%&gt;%</span></span>
-<span id="cb53-9"><a href="instructions.html#cb53-9"></a><span class="st">  </span><span class="co"># your code here %&gt;%</span></span>
-<span id="cb53-10"><a href="instructions.html#cb53-10"></a><span class="st">  </span><span class="co"># your code here %&gt;%</span></span>
-<span id="cb53-11"><a href="instructions.html#cb53-11"></a><span class="st">  </span><span class="co"># your code here %&gt;%</span></span>
-<span id="cb53-12"><a href="instructions.html#cb53-12"></a><span class="st">  </span><span class="co"># your code here %&gt;%</span></span>
-<span id="cb53-13"><a href="instructions.html#cb53-13"></a><span class="st">  </span><span class="co"># your code here %&gt;%</span></span>
-<span id="cb53-14"><a href="instructions.html#cb53-14"></a></span>
-<span id="cb53-15"><a href="instructions.html#cb53-15"></a>index_mw &lt;-<span class="st"> </span>index_mw <span class="op">%&gt;%</span></span>
-<span id="cb53-16"><a href="instructions.html#cb53-16"></a><span class="st">  </span><span class="co"># your code here</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1">my_index &lt;-<span class="st"> </span>index_chain <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb53-2" title="2"><span class="st">  </span><span class="kw">filter</span>(province <span class="op">==</span><span class="st"> &#39;0&#39;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># keep only the Canada-level index</span></a>
+<a class="sourceLine" id="cb53-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">period =</span> <span class="kw">year_quarter</span>(period)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb53-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(period) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb53-5" title="5"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">index =</span> <span class="kw">mean</span>(index)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb53-6" title="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">index =</span> index<span class="op">/</span>index[period <span class="op">==</span><span class="st"> &#39;2019-01-01&#39;</span>] <span class="op">*</span><span class="st"> </span><span class="dv">100</span>) <span class="co"># rebase to Jan 2019</span></a>
+<a class="sourceLine" id="cb53-7" title="7"></a>
+<a class="sourceLine" id="cb53-8" title="8">index_crea &lt;-<span class="st"> </span>index_crea <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb53-9" title="9"><span class="st">  </span><span class="co"># your code here %&gt;%</span></a>
+<a class="sourceLine" id="cb53-10" title="10"><span class="st">  </span><span class="co"># your code here %&gt;%</span></a>
+<a class="sourceLine" id="cb53-11" title="11"><span class="st">  </span><span class="co"># your code here %&gt;%</span></a>
+<a class="sourceLine" id="cb53-12" title="12"><span class="st">  </span><span class="co"># your code here %&gt;%</span></a>
+<a class="sourceLine" id="cb53-13" title="13"><span class="st">  </span><span class="co"># your code here %&gt;%</span></a>
+<a class="sourceLine" id="cb53-14" title="14"></a>
+<a class="sourceLine" id="cb53-15" title="15">index_mw &lt;-<span class="st"> </span>index_mw <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb53-16" title="16"><span class="st">  </span><span class="co"># your code here</span></a></code></pre></div></li>
 <li><p><strong>Append all three indices together</strong></p>
 <p>Put the indices in step 9 together in one dataset with Monsterweb’s index in <code>index_mw</code>. They should all be quarterly with quarter 1 2019 as the base period (= 100).</p></li>
 </ol>

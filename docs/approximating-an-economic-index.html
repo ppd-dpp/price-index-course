@@ -49,13 +49,12 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,16 +63,14 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -82,9 +79,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -256,8 +253,8 @@ where <span class="math inline">\(\omega_{i0} = p_{i0} q_{i0} / \sum_{j = 1}^{n}
 <div class="footnotes">
 <hr />
 <ol start="19">
-<li id="fn19"><p>This follows from Shephard’s lemma <span class="citation">(McFadden 1978)</span>, which implies that <span class="math inline">\(e(p_{t}, y_{0}) = \sum_{i = 1}^{n} p_{it}q_{i0} + \eta(p_{t} - p_{0})||p_{t} - p_{0}||\)</span>, where <span class="math inline">\(\eta(p_{t} - p_{0}) \rightarrow 0\)</span> when <span class="math inline">\(p_{t} \rightarrow p_{0}\)</span>.<a href="approximating-an-economic-index.html#fnref19" class="footnote-back">↩︎</a></p></li>
-<li id="fn20"><p>In certain cases these approximations are exact. A Laspeyres index will be a true input-price index if the firm has a Leontief production function; a Fisher index will also be exact in this case. Similarly, a geometric Laspeyres will be a true input-price index if the firm has a Cobb-Douglas production functions; a Törnqvist index will also be exact in this case. The Lloyd-Moulton price index is an interesting case as it is exact whenever the firm has a constant elasticity of substitution production function, but it only requires period-0 quantity information.<a href="approximating-an-economic-index.html#fnref20" class="footnote-back">↩︎</a></p></li>
+<li id="fn19"><p>This follows from Shephard’s lemma <span class="citation">(McFadden 1978)</span>, which implies that <span class="math inline">\(e(p_{t}, y_{0}) = \sum_{i = 1}^{n} p_{it}q_{i0} + \eta(p_{t} - p_{0})||p_{t} - p_{0}||\)</span>, where <span class="math inline">\(\eta(p_{t} - p_{0}) \rightarrow 0\)</span> when <span class="math inline">\(p_{t} \rightarrow p_{0}\)</span>.<a href="approximating-an-economic-index.html#fnref19" class="footnote-back">↩</a></p></li>
+<li id="fn20"><p>In certain cases these approximations are exact. A Laspeyres index will be a true input-price index if the firm has a Leontief production function; a Fisher index will also be exact in this case. Similarly, a geometric Laspeyres will be a true input-price index if the firm has a Cobb-Douglas production functions; a Törnqvist index will also be exact in this case. The Lloyd-Moulton price index is an interesting case as it is exact whenever the firm has a constant elasticity of substitution production function, but it only requires period-0 quantity information.<a href="approximating-an-economic-index.html#fnref20" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>

@@ -162,7 +162,7 @@ dat_index <- dat_gps %>%
     
     ```{r, eval = FALSE}
 dat_index <- dat_index %>%  
-  # your code here
+  # your code here (hint: read the documentation for dplyr::lag)
     ```
 
 5. **Price update the product weights**
@@ -172,7 +172,7 @@ dat_index <- dat_index %>%
     ```{r, eval = FALSE}
 dat_index <- dat_index %>%  
   # your code here %>%
-  mutate(share_prod_u = weights_update(cumprod(lag(rel, default = 1)), share_prod, scale = FALSE)) # price update the weights
+  mutate(share_prod_u = weights_update(cumprod(lag(rel, default = 1)), share_prod)) # price update the weights
     ```
 
 6. **Calculate the province-level index**
