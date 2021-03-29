@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>References | A Course on Price Indices</title>
   <meta name="description" content="A modern and straightforward introduction to price indices" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="References | A Course on Price Indices" />
   <meta property="og:type" content="book" />
@@ -32,6 +32,7 @@
   
 <link rel="prev" href="instructions.html"/>
 
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -52,25 +53,27 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -79,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -130,12 +133,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
 <li class="part"><span><b>I Introduction to Price Indices</b></span></li>
 <li class="chapter" data-level="" data-path="syllabus-for-introduction-to-price-indices.html"><a href="syllabus-for-introduction-to-price-indices.html"><i class="fa fa-check"></i>Syllabus for Introduction to Price Indices</a></li>
-<li class="chapter" data-level="" data-path="whats-a-price-index-and-why-do-we-need-one.html"><a href="whats-a-price-index-and-why-do-we-need-one.html"><i class="fa fa-check"></i>What’s a price index and why do we need one?</a><ul>
+<li class="chapter" data-level="" data-path="whats-a-price-index-and-why-do-we-need-one.html"><a href="whats-a-price-index-and-why-do-we-need-one.html"><i class="fa fa-check"></i>What’s a price index and why do we need one?</a>
+<ul>
 <li class="chapter" data-level="" data-path="whats-a-price-index.html"><a href="whats-a-price-index.html"><i class="fa fa-check"></i>What’s a price index?</a></li>
 <li class="chapter" data-level="" data-path="uses-of-a-price-index.html"><a href="uses-of-a-price-index.html"><i class="fa fa-check"></i>Uses of a price index</a></li>
 <li class="chapter" data-level="" data-path="why-a-price-index.html"><a href="why-a-price-index.html"><i class="fa fa-check"></i>Why a price index?</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="index-number-formula.html"><a href="index-number-formula.html"><i class="fa fa-check"></i>Index-number formula</a><ul>
+<li class="chapter" data-level="" data-path="index-number-formula.html"><a href="index-number-formula.html"><i class="fa fa-check"></i>Index-number formula</a>
+<ul>
 <li class="chapter" data-level="" data-path="arithmetic-price-indices.html"><a href="arithmetic-price-indices.html"><i class="fa fa-check"></i>Arithmetic price indices</a></li>
 <li class="chapter" data-level="" data-path="common-arithmetic-indices.html"><a href="common-arithmetic-indices.html"><i class="fa fa-check"></i>Common arithmetic indices</a></li>
 <li class="chapter" data-level="" data-path="less-common-arithmetic-indices.html"><a href="less-common-arithmetic-indices.html"><i class="fa fa-check"></i>Less common arithmetic indices</a></li>
@@ -143,7 +148,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="the-fisher-index.html"><a href="the-fisher-index.html"><i class="fa fa-check"></i>The Fisher index</a></li>
 <li class="chapter" data-level="" data-path="example-with-r-index-number-formulas.html"><a href="example-with-r-index-number-formulas.html"><i class="fa fa-check"></i>Example with R: Index-number formulas</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="computing-a-price-index.html"><a href="computing-a-price-index.html"><i class="fa fa-check"></i>Computing a price index</a><ul>
+<li class="chapter" data-level="" data-path="computing-a-price-index.html"><a href="computing-a-price-index.html"><i class="fa fa-check"></i>Computing a price index</a>
+<ul>
 <li class="chapter" data-level="" data-path="sub-indices-and-aggregation.html"><a href="sub-indices-and-aggregation.html"><i class="fa fa-check"></i>Sub-indices and aggregation</a></li>
 <li class="chapter" data-level="" data-path="factoring-an-index.html"><a href="factoring-an-index.html"><i class="fa fa-check"></i>Factoring an index</a></li>
 <li class="chapter" data-level="" data-path="rebasing.html"><a href="rebasing.html"><i class="fa fa-check"></i>Rebasing</a></li>
@@ -154,7 +160,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>II Price Index Theory</b></span></li>
 <li class="chapter" data-level="" data-path="syllabus-for-price-index-theory.html"><a href="syllabus-for-price-index-theory.html"><i class="fa fa-check"></i>Syllabus for Price Index Theory</a></li>
 <li class="chapter" data-level="" data-path="what-is-price-index-theory.html"><a href="what-is-price-index-theory.html"><i class="fa fa-check"></i>What is price-index theory?</a></li>
-<li class="chapter" data-level="" data-path="the-axiomatic-approach.html"><a href="the-axiomatic-approach.html"><i class="fa fa-check"></i>The axiomatic approach</a><ul>
+<li class="chapter" data-level="" data-path="the-axiomatic-approach.html"><a href="the-axiomatic-approach.html"><i class="fa fa-check"></i>The axiomatic approach</a>
+<ul>
 <li class="chapter" data-level="" data-path="an-abstract-price-index.html"><a href="an-abstract-price-index.html"><i class="fa fa-check"></i>An abstract price index</a></li>
 <li class="chapter" data-level="" data-path="the-axioms.html"><a href="the-axioms.html"><i class="fa fa-check"></i>The axioms</a></li>
 <li class="chapter" data-level="" data-path="counter-examples.html"><a href="counter-examples.html"><i class="fa fa-check"></i>Counter examples</a></li>
@@ -162,13 +169,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="an-impossibility-result.html"><a href="an-impossibility-result.html"><i class="fa fa-check"></i>An impossibility result</a></li>
 <li class="chapter" data-level="" data-path="motivating-the-jevons-and-laspeyres-indices.html"><a href="motivating-the-jevons-and-laspeyres-indices.html"><i class="fa fa-check"></i>Motivating the Jevons and Laspeyres indices</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="the-economic-approach.html"><a href="the-economic-approach.html"><i class="fa fa-check"></i>The economic approach</a><ul>
+<li class="chapter" data-level="" data-path="the-economic-approach.html"><a href="the-economic-approach.html"><i class="fa fa-check"></i>The economic approach</a>
+<ul>
 <li class="chapter" data-level="" data-path="input-price-index.html"><a href="input-price-index.html"><i class="fa fa-check"></i>Input-price index</a></li>
 <li class="chapter" data-level="" data-path="output-price-index.html"><a href="output-price-index.html"><i class="fa fa-check"></i>Output-price index</a></li>
 <li class="chapter" data-level="" data-path="cost-of-living-index.html"><a href="cost-of-living-index.html"><i class="fa fa-check"></i>Cost-of-living index</a></li>
 <li class="chapter" data-level="" data-path="approximating-an-economic-index.html"><a href="approximating-an-economic-index.html"><i class="fa fa-check"></i>Approximating an economic index</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="the-stochastic-approach.html"><a href="the-stochastic-approach.html"><i class="fa fa-check"></i>The stochastic approach</a><ul>
+<li class="chapter" data-level="" data-path="the-stochastic-approach.html"><a href="the-stochastic-approach.html"><i class="fa fa-check"></i>The stochastic approach</a>
+<ul>
 <li class="chapter" data-level="" data-path="the-optimal-prediction-problem.html"><a href="the-optimal-prediction-problem.html"><i class="fa fa-check"></i>The optimal prediction problem</a></li>
 <li class="chapter" data-level="" data-path="geometric-price-indices-as-a-best-predictor.html"><a href="geometric-price-indices-as-a-best-predictor.html"><i class="fa fa-check"></i>Geometric price indices as a best predictor</a></li>
 <li class="chapter" data-level="" data-path="more-general-price-indices.html"><a href="more-general-price-indices.html"><i class="fa fa-check"></i>More general price indices</a></li>
@@ -178,19 +187,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>III Constant-Quality Price Indices</b></span></li>
 <li class="chapter" data-level="" data-path="syllabus-for-constant-quality-price-indices.html"><a href="syllabus-for-constant-quality-price-indices.html"><i class="fa fa-check"></i>Syllabus for Constant-Quality Price Indices</a></li>
 <li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
-<li class="chapter" data-level="" data-path="potential-prices.html"><a href="potential-prices.html"><i class="fa fa-check"></i>Potential prices</a><ul>
+<li class="chapter" data-level="" data-path="potential-prices.html"><a href="potential-prices.html"><i class="fa fa-check"></i>Potential prices</a>
+<ul>
 <li class="chapter" data-level="" data-path="constant-quality-price-indices.html"><a href="constant-quality-price-indices.html"><i class="fa fa-check"></i>Constant-quality price indices</a></li>
 <li class="chapter" data-level="" data-path="transaction-price-indices.html"><a href="transaction-price-indices.html"><i class="fa fa-check"></i>Transaction-price indices</a></li>
 <li class="chapter" data-level="" data-path="identification.html"><a href="identification.html"><i class="fa fa-check"></i>Identification</a></li>
 <li class="chapter" data-level="" data-path="example.html"><a href="example.html"><i class="fa fa-check"></i>Example</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="stratified-price-indices.html"><a href="stratified-price-indices.html"><i class="fa fa-check"></i>Stratified price indices</a><ul>
+<li class="chapter" data-level="" data-path="stratified-price-indices.html"><a href="stratified-price-indices.html"><i class="fa fa-check"></i>Stratified price indices</a>
+<ul>
 <li class="chapter" data-level="" data-path="conditional-independence.html"><a href="conditional-independence.html"><i class="fa fa-check"></i>Conditional independence</a></li>
 <li class="chapter" data-level="" data-path="overlap.html"><a href="overlap.html"><i class="fa fa-check"></i>Overlap</a></li>
 <li class="chapter" data-level="" data-path="issues-with-stratification.html"><a href="issues-with-stratification.html"><i class="fa fa-check"></i>Issues with stratification</a></li>
 <li class="chapter" data-level="" data-path="example-with-r-stratified-index.html"><a href="example-with-r-stratified-index.html"><i class="fa fa-check"></i>Example with R: Stratified index</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="hedonic-price-indices.html"><a href="hedonic-price-indices.html"><i class="fa fa-check"></i>Hedonic price indices</a><ul>
+<li class="chapter" data-level="" data-path="hedonic-price-indices.html"><a href="hedonic-price-indices.html"><i class="fa fa-check"></i>Hedonic price indices</a>
+<ul>
 <li class="chapter" data-level="" data-path="linear-hedonic-indices.html"><a href="linear-hedonic-indices.html"><i class="fa fa-check"></i>Linear hedonic indices</a></li>
 <li class="chapter" data-level="" data-path="the-time-dummy-approach.html"><a href="the-time-dummy-approach.html"><i class="fa fa-check"></i>The time-dummy approach</a></li>
 <li class="chapter" data-level="" data-path="example-with-r-hedonics.html"><a href="example-with-r-hedonics.html"><i class="fa fa-check"></i>Example with R: Hedonics</a></li>
@@ -198,7 +210,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="assignment-3.html"><a href="assignment-3.html"><i class="fa fa-check"></i>Assignment 3</a></li>
 <li class="part"><span><b>IV Building a Price Index with R</b></span></li>
 <li class="chapter" data-level="" data-path="syllabus-for-building-a-price-index-with-r.html"><a href="syllabus-for-building-a-price-index-with-r.html"><i class="fa fa-check"></i>Syllabus for Building a Price Index with R</a></li>
-<li class="chapter" data-level="" data-path="assignment-4.html"><a href="assignment-4.html"><i class="fa fa-check"></i>Assignment 4</a><ul>
+<li class="chapter" data-level="" data-path="assignment-4.html"><a href="assignment-4.html"><i class="fa fa-check"></i>Assignment 4</a>
+<ul>
 <li class="chapter" data-level="" data-path="methodology.html"><a href="methodology.html"><i class="fa fa-check"></i>Methodology</a></li>
 <li class="chapter" data-level="" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i>Instructions</a></li>
 </ul></li>
@@ -223,75 +236,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="references" class="section level1 unnumbered">
 <h1>References</h1>
 
-<div id="refs" class="references">
-<div>
-<p>Angrist, J., and J-S. Pischke. 2009. <em>Mostly Harmless Econometrics</em>. Princeton University Press.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-angrist2009" class="csl-entry">
+Angrist, J., and J-S. Pischke. 2009. <em>Mostly Harmless Econometrics</em>. Princeton University Press.
 </div>
-<div>
-<p>Balk, B. M. 1995. “Axiomatic Price Index Theory: A Survey.” <em>International Statistical Review/Revue Internationale de Statistique</em> 63 (1): 69–93.</p>
+<div id="ref-balk1995" class="csl-entry">
+Balk, B. M. 1995. <span>“Axiomatic Price Index Theory: A Survey.”</span> <em>International Statistical Review/Revue Internationale de Statistique</em> 63 (1): 69–93.
 </div>
-<div>
-<p>———. 2008. <em>Price and Quantity Index Numbers</em>. Cambridge University Press.</p>
+<div id="ref-balk2008" class="csl-entry">
+———. 2008. <em>Price and Quantity Index Numbers</em>. Cambridge University Press.
 </div>
-<div>
-<p>Balk, B. M., and W. E. Diewert. 2001. “A Characterization of the Törnqvist Price Index.” <em>Economics Letters</em> 72 (3): 279–81.</p>
+<div id="ref-balk2001" class="csl-entry">
+Balk, B. M., and W. E. Diewert. 2001. <span>“A Characterization of the t<span>ö</span>rnqvist Price Index.”</span> <em>Economics Letters</em> 72 (3): 279–81.
 </div>
-<div>
-<p>Bullen, P. S. 2003. <em>Handbook of Means and Their Inequalities</em>. Springer.</p>
+<div id="ref-bullen2003" class="csl-entry">
+Bullen, P. S. 2003. <em>Handbook of Means and Their Inequalities</em>. Springer.
 </div>
-<div>
-<p>Hausman, J. 2003. “Sources of Bias and Solutions to Bias in the Consumer Price Index.” <em>Journal of Economic Perspectives</em> 17 (1): 23–44.</p>
+<div id="ref-hausman2003" class="csl-entry">
+Hausman, J. 2003. <span>“Sources of Bias and Solutions to Bias in the Consumer Price Index.”</span> <em>Journal of Economic Perspectives</em> 17 (1): 23–44.
 </div>
-<div>
-<p>ILO, IMF, OECD, Eurostat, UN, and World Bank. 2004a. <em>Consumer Price Index Manual: Theory and Practice</em>. International Monetary Fund.</p>
+<div id="ref-cpimanual" class="csl-entry">
+ILO, IMF, OECD, Eurostat, UN, and World Bank. 2004a. <em>Consumer Price Index Manual: Theory and Practice</em>. International Monetary Fund.
 </div>
-<div>
-<p>———. 2004b. <em>Producer Price Index Manual: Theory and Practice</em>. International Monetary Fund.</p>
+<div id="ref-ppimanual" class="csl-entry">
+———. 2004b. <em>Producer Price Index Manual: Theory and Practice</em>. International Monetary Fund.
 </div>
-<div>
-<p>———. 2013. <em>Handbook on Residential Property Prices Indices (RPPIs)</em>. Eurostat.</p>
+<div id="ref-rppihandbook" class="csl-entry">
+———. 2013. <em>Handbook on Residential Property Prices Indices (<span>RPPIs</span>)</em>. Eurostat.
 </div>
-<div>
-<p>Kennedy, P. 2003. <em>A Guide to Econometrics</em>. 5th ed. MIT University Press.</p>
+<div id="ref-kennedy2003" class="csl-entry">
+Kennedy, P. 2003. <em>A Guide to Econometrics</em>. 5th ed. MIT University Press.
 </div>
-<div>
-<p>Kirby-McGregor, M., and S. Martin. 2019. “An R Package for Calculating Repeat-Sale Price Indices.” <em>Romanian Statistical Review</em>, no. 3: 17–33.</p>
+<div id="ref-kirbymcgregor2019" class="csl-entry">
+Kirby-McGregor, M., and S. Martin. 2019. <span>“An r Package for Calculating Repeat-Sale Price Indices.”</span> <em>Romanian Statistical Review</em>, no. 3: 17–33.
 </div>
-<div>
-<p>Kirman, A. P. 1992. “Whom or What Does the Representative Individual Represent?” <em>Journal of Economic Perspectives</em> 6 (2): 117–36.</p>
+<div id="ref-kirman1992" class="csl-entry">
+Kirman, A. P. 1992. <span>“Whom or What Does the Representative Individual Represent?”</span> <em>Journal of Economic Perspectives</em> 6 (2): 117–36.
 </div>
-<div>
-<p>Lee, M-J. 2016. <em>Matching, Regression Discontinuity, Difference in Differences, and Beyond</em>. Oxford University Press.</p>
+<div id="ref-lee2016" class="csl-entry">
+Lee, M-J. 2016. <em>Matching, Regression Discontinuity, Difference in Differences, and Beyond</em>. Oxford University Press.
 </div>
-<div>
-<p>Lehmann, E. L., and G. Casella. 1998. <em>Theory of Point Estimation</em>. 2nd ed. Springer.</p>
+<div id="ref-lehmann1998" class="csl-entry">
+Lehmann, E. L., and G. Casella. 1998. <em>Theory of Point Estimation</em>. 2nd ed. Springer.
 </div>
-<div>
-<p>Lord, N. 2002. “Does Smaller Spread Always Mean Larger Product?” <em>The Mathematical Gazette</em> 86 (506): 273–74.</p>
+<div id="ref-lord2002" class="csl-entry">
+Lord, N. 2002. <span>“Does Smaller Spread Always Mean Larger Product?”</span> <em>The Mathematical Gazette</em> 86 (506): 273–74.
 </div>
-<div>
-<p>Manski, C. F. 1988. <em>Analog Estimation Methods in Econometrics</em>. Chapman Hall.</p>
+<div id="ref-manski1988" class="csl-entry">
+Manski, C. F. 1988. <em>Analog Estimation Methods in Econometrics</em>. Chapman Hall.
 </div>
-<div>
-<p>———. 2007. <em>Identification for Prediction and Decision</em>. Harvard University Press.</p>
+<div id="ref-manski2007" class="csl-entry">
+———. 2007. <em>Identification for Prediction and Decision</em>. Harvard University Press.
 </div>
-<div>
-<p>Martin, S. 2019. “Moral Management in Competitive Markets.” <em>Journal of Economics &amp; Management Strategy</em> 28 (3): 541–60.</p>
+<div id="ref-martin2019" class="csl-entry">
+Martin, S. 2019. <span>“Moral Management in Competitive Markets.”</span> <em>Journal of Economics &amp; Management Strategy</em> 28 (3): 541–60.
 </div>
-<div>
-<p>———. 2020. <em>gpindex: Generalized Price and Quantity Indexes</em>. <a href="https://CRAN.R-project.org/package=gpindex">https://CRAN.R-project.org/package=gpindex</a>.</p>
+<div id="ref-martin2020" class="csl-entry">
+———. 2020. <em><span class="nocase">gpindex</span>: Generalized Price and Quantity Indexes</em>. <a href="https://CRAN.R-project.org/package=gpindex">https://CRAN.R-project.org/package=gpindex</a>.
 </div>
-<div>
-<p>McFadden, D. 1978. “Cost, Revenue, and Profit Functions.” In <em>Production Economics: A Dual Approach to Theory and Applications</em>, edited by M. Fuss and D. McFadden. North-Holland.</p>
+<div id="ref-mcfadden1978" class="csl-entry">
+McFadden, D. 1978. <span>“Cost, Revenue, and Profit Functions.”</span> In <em>Production Economics: A Dual Approach to Theory and Applications</em>, edited by M. Fuss and D. McFadden. North-Holland.
 </div>
-<div>
-<p>Pollak, R. A. 1980. “Group Cost-of-Living Indexes.” <em>The American Economic Review</em> 70 (2): 273–78.</p>
+<div id="ref-pollak1980" class="csl-entry">
+Pollak, R. A. 1980. <span>“Group Cost-of-Living Indexes.”</span> <em>The American Economic Review</em> 70 (2): 273–78.
 </div>
-<div>
-<p>Rosen, S. 1974. “Hedonic Prices and Implicit Markets: Product Differentiation in Pure Competition.” <em>Journal of Political Economy</em> 82 (1): 34–55.</p>
+<div id="ref-rosen1974" class="csl-entry">
+Rosen, S. 1974. <span>“Hedonic Prices and Implicit Markets: Product Differentiation in Pure Competition.”</span> <em>Journal of Political Economy</em> 82 (1): 34–55.
 </div>
-<div>
-<p>Wooldridge, J. M. 2010. <em>Econometric Analysis of Cross Section and Panel Data</em>. MIT University Press.</p>
+<div id="ref-wooldridge2010" class="csl-entry">
+Wooldridge, J. M. 2010. <em>Econometric Analysis of Cross Section and Panel Data</em>. MIT University Press.
 </div>
 </div>
 </div>

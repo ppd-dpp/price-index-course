@@ -79,7 +79,7 @@ The transaction-price index generally differs from the constant-quality index, a
 
 Note that this index is not necessarily based on price relatives, as the same number of goods may not sell in each period. If $n(t)$ denotes the set of goods that sell in period $t$, the geometric transaction-price index is a ratio of geometric averages,
 \begin{align*}
-\log(I^{T}) = \frac{\prod_{i \in n(1)} p_{i}(1)^{P_{i}|t = 1}}{\prod_{i \in n(0)} p_{i}(1)^{P_{i}|t = 0}},
+\log(I^{T}) = \frac{\prod_{i \in n(1)} p_{i}(1)^{P_{i}|t = 1}}{\prod_{i \in n(0)} p_{i}(0)^{P_{i}|t = 0}},
 \end{align*}
 where $P_{i} | t$ is the conditional probability of observing good $i$ in period $t$. This is just a generalization of the usual geometric price index when different goods sell over time.
 

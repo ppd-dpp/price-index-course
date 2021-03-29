@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>An abstract price index | A Course on Price Indices</title>
   <meta name="description" content="A modern and straightforward introduction to price indices" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="An abstract price index | A Course on Price Indices" />
   <meta property="og:type" content="book" />
@@ -32,6 +32,7 @@
   
 <link rel="prev" href="the-axiomatic-approach.html"/>
 <link rel="next" href="the-axioms.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -52,25 +53,27 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -79,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -130,12 +133,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
 <li class="part"><span><b>I Introduction to Price Indices</b></span></li>
 <li class="chapter" data-level="" data-path="syllabus-for-introduction-to-price-indices.html"><a href="syllabus-for-introduction-to-price-indices.html"><i class="fa fa-check"></i>Syllabus for Introduction to Price Indices</a></li>
-<li class="chapter" data-level="" data-path="whats-a-price-index-and-why-do-we-need-one.html"><a href="whats-a-price-index-and-why-do-we-need-one.html"><i class="fa fa-check"></i>What’s a price index and why do we need one?</a><ul>
+<li class="chapter" data-level="" data-path="whats-a-price-index-and-why-do-we-need-one.html"><a href="whats-a-price-index-and-why-do-we-need-one.html"><i class="fa fa-check"></i>What’s a price index and why do we need one?</a>
+<ul>
 <li class="chapter" data-level="" data-path="whats-a-price-index.html"><a href="whats-a-price-index.html"><i class="fa fa-check"></i>What’s a price index?</a></li>
 <li class="chapter" data-level="" data-path="uses-of-a-price-index.html"><a href="uses-of-a-price-index.html"><i class="fa fa-check"></i>Uses of a price index</a></li>
 <li class="chapter" data-level="" data-path="why-a-price-index.html"><a href="why-a-price-index.html"><i class="fa fa-check"></i>Why a price index?</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="index-number-formula.html"><a href="index-number-formula.html"><i class="fa fa-check"></i>Index-number formula</a><ul>
+<li class="chapter" data-level="" data-path="index-number-formula.html"><a href="index-number-formula.html"><i class="fa fa-check"></i>Index-number formula</a>
+<ul>
 <li class="chapter" data-level="" data-path="arithmetic-price-indices.html"><a href="arithmetic-price-indices.html"><i class="fa fa-check"></i>Arithmetic price indices</a></li>
 <li class="chapter" data-level="" data-path="common-arithmetic-indices.html"><a href="common-arithmetic-indices.html"><i class="fa fa-check"></i>Common arithmetic indices</a></li>
 <li class="chapter" data-level="" data-path="less-common-arithmetic-indices.html"><a href="less-common-arithmetic-indices.html"><i class="fa fa-check"></i>Less common arithmetic indices</a></li>
@@ -143,7 +148,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="the-fisher-index.html"><a href="the-fisher-index.html"><i class="fa fa-check"></i>The Fisher index</a></li>
 <li class="chapter" data-level="" data-path="example-with-r-index-number-formulas.html"><a href="example-with-r-index-number-formulas.html"><i class="fa fa-check"></i>Example with R: Index-number formulas</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="computing-a-price-index.html"><a href="computing-a-price-index.html"><i class="fa fa-check"></i>Computing a price index</a><ul>
+<li class="chapter" data-level="" data-path="computing-a-price-index.html"><a href="computing-a-price-index.html"><i class="fa fa-check"></i>Computing a price index</a>
+<ul>
 <li class="chapter" data-level="" data-path="sub-indices-and-aggregation.html"><a href="sub-indices-and-aggregation.html"><i class="fa fa-check"></i>Sub-indices and aggregation</a></li>
 <li class="chapter" data-level="" data-path="factoring-an-index.html"><a href="factoring-an-index.html"><i class="fa fa-check"></i>Factoring an index</a></li>
 <li class="chapter" data-level="" data-path="rebasing.html"><a href="rebasing.html"><i class="fa fa-check"></i>Rebasing</a></li>
@@ -154,7 +160,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>II Price Index Theory</b></span></li>
 <li class="chapter" data-level="" data-path="syllabus-for-price-index-theory.html"><a href="syllabus-for-price-index-theory.html"><i class="fa fa-check"></i>Syllabus for Price Index Theory</a></li>
 <li class="chapter" data-level="" data-path="what-is-price-index-theory.html"><a href="what-is-price-index-theory.html"><i class="fa fa-check"></i>What is price-index theory?</a></li>
-<li class="chapter" data-level="" data-path="the-axiomatic-approach.html"><a href="the-axiomatic-approach.html"><i class="fa fa-check"></i>The axiomatic approach</a><ul>
+<li class="chapter" data-level="" data-path="the-axiomatic-approach.html"><a href="the-axiomatic-approach.html"><i class="fa fa-check"></i>The axiomatic approach</a>
+<ul>
 <li class="chapter" data-level="" data-path="an-abstract-price-index.html"><a href="an-abstract-price-index.html"><i class="fa fa-check"></i>An abstract price index</a></li>
 <li class="chapter" data-level="" data-path="the-axioms.html"><a href="the-axioms.html"><i class="fa fa-check"></i>The axioms</a></li>
 <li class="chapter" data-level="" data-path="counter-examples.html"><a href="counter-examples.html"><i class="fa fa-check"></i>Counter examples</a></li>
@@ -162,13 +169,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="an-impossibility-result.html"><a href="an-impossibility-result.html"><i class="fa fa-check"></i>An impossibility result</a></li>
 <li class="chapter" data-level="" data-path="motivating-the-jevons-and-laspeyres-indices.html"><a href="motivating-the-jevons-and-laspeyres-indices.html"><i class="fa fa-check"></i>Motivating the Jevons and Laspeyres indices</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="the-economic-approach.html"><a href="the-economic-approach.html"><i class="fa fa-check"></i>The economic approach</a><ul>
+<li class="chapter" data-level="" data-path="the-economic-approach.html"><a href="the-economic-approach.html"><i class="fa fa-check"></i>The economic approach</a>
+<ul>
 <li class="chapter" data-level="" data-path="input-price-index.html"><a href="input-price-index.html"><i class="fa fa-check"></i>Input-price index</a></li>
 <li class="chapter" data-level="" data-path="output-price-index.html"><a href="output-price-index.html"><i class="fa fa-check"></i>Output-price index</a></li>
 <li class="chapter" data-level="" data-path="cost-of-living-index.html"><a href="cost-of-living-index.html"><i class="fa fa-check"></i>Cost-of-living index</a></li>
 <li class="chapter" data-level="" data-path="approximating-an-economic-index.html"><a href="approximating-an-economic-index.html"><i class="fa fa-check"></i>Approximating an economic index</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="the-stochastic-approach.html"><a href="the-stochastic-approach.html"><i class="fa fa-check"></i>The stochastic approach</a><ul>
+<li class="chapter" data-level="" data-path="the-stochastic-approach.html"><a href="the-stochastic-approach.html"><i class="fa fa-check"></i>The stochastic approach</a>
+<ul>
 <li class="chapter" data-level="" data-path="the-optimal-prediction-problem.html"><a href="the-optimal-prediction-problem.html"><i class="fa fa-check"></i>The optimal prediction problem</a></li>
 <li class="chapter" data-level="" data-path="geometric-price-indices-as-a-best-predictor.html"><a href="geometric-price-indices-as-a-best-predictor.html"><i class="fa fa-check"></i>Geometric price indices as a best predictor</a></li>
 <li class="chapter" data-level="" data-path="more-general-price-indices.html"><a href="more-general-price-indices.html"><i class="fa fa-check"></i>More general price indices</a></li>
@@ -178,19 +187,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>III Constant-Quality Price Indices</b></span></li>
 <li class="chapter" data-level="" data-path="syllabus-for-constant-quality-price-indices.html"><a href="syllabus-for-constant-quality-price-indices.html"><i class="fa fa-check"></i>Syllabus for Constant-Quality Price Indices</a></li>
 <li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
-<li class="chapter" data-level="" data-path="potential-prices.html"><a href="potential-prices.html"><i class="fa fa-check"></i>Potential prices</a><ul>
+<li class="chapter" data-level="" data-path="potential-prices.html"><a href="potential-prices.html"><i class="fa fa-check"></i>Potential prices</a>
+<ul>
 <li class="chapter" data-level="" data-path="constant-quality-price-indices.html"><a href="constant-quality-price-indices.html"><i class="fa fa-check"></i>Constant-quality price indices</a></li>
 <li class="chapter" data-level="" data-path="transaction-price-indices.html"><a href="transaction-price-indices.html"><i class="fa fa-check"></i>Transaction-price indices</a></li>
 <li class="chapter" data-level="" data-path="identification.html"><a href="identification.html"><i class="fa fa-check"></i>Identification</a></li>
 <li class="chapter" data-level="" data-path="example.html"><a href="example.html"><i class="fa fa-check"></i>Example</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="stratified-price-indices.html"><a href="stratified-price-indices.html"><i class="fa fa-check"></i>Stratified price indices</a><ul>
+<li class="chapter" data-level="" data-path="stratified-price-indices.html"><a href="stratified-price-indices.html"><i class="fa fa-check"></i>Stratified price indices</a>
+<ul>
 <li class="chapter" data-level="" data-path="conditional-independence.html"><a href="conditional-independence.html"><i class="fa fa-check"></i>Conditional independence</a></li>
 <li class="chapter" data-level="" data-path="overlap.html"><a href="overlap.html"><i class="fa fa-check"></i>Overlap</a></li>
 <li class="chapter" data-level="" data-path="issues-with-stratification.html"><a href="issues-with-stratification.html"><i class="fa fa-check"></i>Issues with stratification</a></li>
 <li class="chapter" data-level="" data-path="example-with-r-stratified-index.html"><a href="example-with-r-stratified-index.html"><i class="fa fa-check"></i>Example with R: Stratified index</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="hedonic-price-indices.html"><a href="hedonic-price-indices.html"><i class="fa fa-check"></i>Hedonic price indices</a><ul>
+<li class="chapter" data-level="" data-path="hedonic-price-indices.html"><a href="hedonic-price-indices.html"><i class="fa fa-check"></i>Hedonic price indices</a>
+<ul>
 <li class="chapter" data-level="" data-path="linear-hedonic-indices.html"><a href="linear-hedonic-indices.html"><i class="fa fa-check"></i>Linear hedonic indices</a></li>
 <li class="chapter" data-level="" data-path="the-time-dummy-approach.html"><a href="the-time-dummy-approach.html"><i class="fa fa-check"></i>The time-dummy approach</a></li>
 <li class="chapter" data-level="" data-path="example-with-r-hedonics.html"><a href="example-with-r-hedonics.html"><i class="fa fa-check"></i>Example with R: Hedonics</a></li>
@@ -198,7 +210,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="assignment-3.html"><a href="assignment-3.html"><i class="fa fa-check"></i>Assignment 3</a></li>
 <li class="part"><span><b>IV Building a Price Index with R</b></span></li>
 <li class="chapter" data-level="" data-path="syllabus-for-building-a-price-index-with-r.html"><a href="syllabus-for-building-a-price-index-with-r.html"><i class="fa fa-check"></i>Syllabus for Building a Price Index with R</a></li>
-<li class="chapter" data-level="" data-path="assignment-4.html"><a href="assignment-4.html"><i class="fa fa-check"></i>Assignment 4</a><ul>
+<li class="chapter" data-level="" data-path="assignment-4.html"><a href="assignment-4.html"><i class="fa fa-check"></i>Assignment 4</a>
+<ul>
 <li class="chapter" data-level="" data-path="methodology.html"><a href="methodology.html"><i class="fa fa-check"></i>Methodology</a></li>
 <li class="chapter" data-level="" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i>Instructions</a></li>
 </ul></li>
