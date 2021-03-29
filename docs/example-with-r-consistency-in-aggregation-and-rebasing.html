@@ -268,32 +268,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb19-3"><a href="example-with-r-consistency-in-aggregation-and-rebasing.html#cb19-3" aria-hidden="true" tabindex="-1"></a>index</span></code></pre></div>
 <pre><code>##    period value
 ## 1       0   100
-## 2       1   102
-## 3       2   121
-## 4       3    98
-## 5       4    91
-## 6       5   122
-## 7       6   126
-## 8       7   112
-## 9       8   106
-## 10      9   124
-## 11     10   110
-## 12     11   123</code></pre>
+## 2       1   111
+## 3       2    99
+## 4       3   113
+## 5       4    95
+## 6       5   129
+## 7       6   127
+## 8       7   106
+## 9       8   105
+## 10      9   122
+## 11     10   102
+## 12     11   114</code></pre>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="example-with-r-consistency-in-aggregation-and-rebasing.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rebase the index so that period 6 = 100</span></span>
 <span id="cb21-2"><a href="example-with-r-consistency-in-aggregation-and-rebasing.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">transform</span>(index, <span class="at">value =</span> value <span class="sc">/</span> value[period <span class="sc">==</span> <span class="dv">6</span>] <span class="sc">*</span> <span class="dv">100</span>)</span></code></pre></div>
 <pre><code>##    period     value
-## 1       0  79.36508
-## 2       1  80.95238
-## 3       2  96.03175
-## 4       3  77.77778
-## 5       4  72.22222
-## 6       5  96.82540
+## 1       0  78.74016
+## 2       1  87.40157
+## 3       2  77.95276
+## 4       3  88.97638
+## 5       4  74.80315
+## 6       5 101.57480
 ## 7       6 100.00000
-## 8       7  88.88889
-## 9       8  84.12698
-## 10      9  98.41270
-## 11     10  87.30159
-## 12     11  97.61905</code></pre>
+## 8       7  83.46457
+## 9       8  82.67717
+## 10      9  96.06299
+## 11     10  80.31496
+## 12     11  89.76378</code></pre>
 </div>
 <!-- </div> -->
             </section>
