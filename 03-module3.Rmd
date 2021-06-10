@@ -22,7 +22,7 @@ Evaluation for this module is based on an assignment consisting of 20 multiple-c
 
 Readings for this module come from chapters 17 and 21 of the PPI manual [@ppimanual] and/or the CPI manual [@cpimanual], published by the IMF ([freely available on their website](https://www.imf.org/en/Publications/Manuals-Guides/Issues/2016/12/30/Producer-Price-Index-Manual-Theory-and-Practice-16966)), as well as chapters 4--6 in the Handbook on Residential Property Price Indices [@rppihandbook], published by Eurostat ([freely available on their website](https://ec.europa.eu/eurostat/web/products-manuals-and-guidelines/-/KS-RA-12-022)).^[Although the focus of the handbook is on residential property prices, the ideas are applicable to any goods or services, and the material is presented relatively well.]
 
-Please email one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Rebecca Meier](mailto:rebecca.meier@canada.ca)) if you have any questions, or need help with any of the course material or assignment.
+Please email one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Shaoxiong Wang](mailto:shaoxiong.wang@canada.ca) or [Anastasiia Nosach](mailto:anastasiia.nosach@canada.ca)) if you have any questions, or need help with any of the course material or assignment.
 
 # Introduction
 
@@ -384,7 +384,7 @@ exp(weighted.mean(predict(hi1, df) - predict(hi0, df), df$weights)) * 100
 
 # Assignment 3
 
-Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65% (13 out of 20 correct). Email your answers to one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Rebecca Meier](mailto:rebecca.meier@canada.ca)) when you are finished.
+Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65% (13 out of 20 correct). Email your answers to one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Shaoxiong Wang](mailto:shaoxiong.wang@canada.ca) or [Anastasiia Nosach](mailto:anastasiia.nosach@canada.ca)) when you are finished.
 
 **Question 1** True or false: The time-dummy hedonic index is a biased estimator of the constant-quality geometric index.
 

@@ -22,7 +22,7 @@ Evaluation for this module is based on an assignment consisting of 20 multiple-c
 
 Readings for this module come from chapters 1, 2, 4, and 9 of the Producer Price Index Manual [@ppimanual] and/or the Consumer Price Index Manual [@cpimanual], published by the IMF ([freely available on their website](https://www.imf.org/en/Publications/Manuals-Guides/Issues/2016/12/30/Producer-Price-Index-Manual-Theory-and-Practice-16966)). As there is considerable overlap between these sources, the PPI manual is used as the main reference.
 
-Please email one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Rebecca Meier](mailto:rebecca.meier@canada.ca)) if you have any questions, or need help with any of the course material or assignment.
+Please email one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Shaoxiong Wang](mailto:shaoxiong.wang@canada.ca) or [Anastasiia Nosach](mailto:anastasiia.nosach@canada.ca)) if you have any questions, or need help with any of the course material or assignment.
 
 # What’s a price index and why do we need one?
 
@@ -502,7 +502,7 @@ transform(index, value = value / value[period == 6] * 100)
 
 # Assignment 1
 
-Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65% (13 out of 20 correct). Email your answers to one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Rebecca Meier](mailto:rebecca.meier@canada.ca)) when you are finished.
+Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65% (13 out of 20 correct). Email your answers to one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Shaoxiong Wang](mailto:shaoxiong.wang@canada.ca) or [Anastasiia Nosach](mailto:anastasiia.nosach@canada.ca)) when you are finished.
 
 **Question 1** True or false: The Jevons index is always smaller than or equal to the Laspeyres index.
 

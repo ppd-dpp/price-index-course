@@ -37,7 +37,7 @@
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
   pdftitle={A Course on Price Indices},
-  pdfauthor={Steve Martin and Rebecca Meier},
+  pdfauthor={Steve Martin},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
@@ -134,8 +134,8 @@
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \title{A Course on Price Indices}
-\author{Steve Martin and Rebecca Meier}
-\date{August 2020}
+\author{Steve Martin}
+\date{Summer 2021}
 
 \begin{document}
 \maketitle
@@ -190,7 +190,7 @@ Evaluation for this module is based on an assignment consisting of 20 multiple-c
 
 Readings for this module come from chapters 1, 2, 4, and 9 of the Producer Price Index Manual (ILO et al. 2004b) and/or the Consumer Price Index Manual (ILO et al. 2004a), published by the IMF (\href{https://www.imf.org/en/Publications/Manuals-Guides/Issues/2016/12/30/Producer-Price-Index-Manual-Theory-and-Practice-16966}{freely available on their website}). As there is considerable overlap between these sources, the PPI manual is used as the main reference.
 
-Please email one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:rebecca.meier@canada.ca}{Rebecca Meier}) if you have any questions, or need help with any of the course material or assignment.
+Please email one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:shaoxiong.wang@canada.ca}{Shaoxiong Wang} or \href{mailto:anastasiia.nosach@canada.ca}{Anastasiia Nosach}) if you have any questions, or need help with any of the course material or assignment.
 
 \hypertarget{whats-a-price-index-and-why-do-we-need-one}{%
 \section{What's a price index and why do we need one?}\label{whats-a-price-index-and-why-do-we-need-one}}
@@ -699,17 +699,17 @@ The second example shows how to rebase a price index---simply divide the index s
 \begin{verbatim}
 ##    period value
 ## 1       0   100
-## 2       1    91
-## 3       2   109
-## 4       3   100
-## 5       4   123
-## 6       5   116
-## 7       6   117
-## 8       7   119
-## 9       8   121
-## 10      9   102
-## 11     10   130
-## 12     11    94
+## 2       1   114
+## 3       2   108
+## 4       3    98
+## 5       4   130
+## 6       5   127
+## 7       6    97
+## 8       7   129
+## 9       8    91
+## 10      9   101
+## 11     10   105
+## 12     11   120
 \end{verbatim}
 
 \begin{Shaded}
@@ -721,24 +721,24 @@ The second example shows how to rebase a price index---simply divide the index s
 
 \begin{verbatim}
 ##    period     value
-## 1       0  85.47009
-## 2       1  77.77778
-## 3       2  93.16239
-## 4       3  85.47009
-## 5       4 105.12821
-## 6       5  99.14530
+## 1       0 103.09278
+## 2       1 117.52577
+## 3       2 111.34021
+## 4       3 101.03093
+## 5       4 134.02062
+## 6       5 130.92784
 ## 7       6 100.00000
-## 8       7 101.70940
-## 9       8 103.41880
-## 10      9  87.17949
-## 11     10 111.11111
-## 12     11  80.34188
+## 8       7 132.98969
+## 9       8  93.81443
+## 10      9 104.12371
+## 11     10 108.24742
+## 12     11 123.71134
 \end{verbatim}
 
 \hypertarget{assignment-1}{%
 \section{Assignment 1}\label{assignment-1}}
 
-Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65\% (13 out of 20 correct). Email your answers to one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:rebecca.meier@canada.ca}{Rebecca Meier}) when you are finished.
+Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65\% (13 out of 20 correct). Email your answers to one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:shaoxiong.wang@canada.ca}{Shaoxiong Wang} or \href{mailto:anastasiia.nosach@canada.ca}{Anastasiia Nosach}) when you are finished.
 
 \textbf{Question 1} True or false: The Jevons index is always smaller than or equal to the Laspeyres index.
 
@@ -989,7 +989,7 @@ Evaluation for this module is based on an assignment consisting of 20 multiple-c
 
 Readings for this module come from chapters 15--18 of the PPI manual (ILO et al. 2004b) and/or the CPI manual (ILO et al. 2004a), published by the IMF (\href{https://www.imf.org/en/Publications/Manuals-Guides/Issues/2016/12/30/Producer-Price-Index-Manual-Theory-and-Practice-16966}{freely available on their website}), as well as the review of price-index theory by Balk (1995).
 
-Please email one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:rebecca.meier@canada.ca}{Rebecca Meier}) if you have any questions, or need help with any of the course material or assignment.
+Please email one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:shaoxiong.wang@canada.ca}{Shaoxiong Wang} or \href{mailto:anastasiia.nosach@canada.ca}{Anastasiia Nosach}) if you have any questions, or need help with any of the course material or assignment.
 
 \hypertarget{what-is-price-index-theory}{%
 \section{What is price-index theory?}\label{what-is-price-index-theory}}
@@ -1393,7 +1393,7 @@ A natural estimator for the geometric index is \(\hat{I}^{G} = \prod_{i = 1}^{n_
 \hypertarget{assignment-2}{%
 \section{Assignment 2}\label{assignment-2}}
 
-Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65\% (13 out of 20 correct). Email your answers to one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:rebecca.meier@canada.ca}{Rebecca Meier}) when you are finished.
+Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65\% (13 out of 20 correct). Email your answers to one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:shaoxiong.wang@canada.ca}{Shaoxiong Wang} or \href{mailto:anastasiia.nosach@canada.ca}{Anastasiia Nosach}) when you are finished.
 
 \textbf{Question 1} True or false: The Laspeyres index is a cost-of-living index if consumers do not substitute away from more expensive goods when prices change.
 
@@ -1644,7 +1644,7 @@ Evaluation for this module is based on an assignment consisting of 20 multiple-c
 
 Readings for this module come from chapters 17 and 21 of the PPI manual (ILO et al. 2004b) and/or the CPI manual (ILO et al. 2004a), published by the IMF (\href{https://www.imf.org/en/Publications/Manuals-Guides/Issues/2016/12/30/Producer-Price-Index-Manual-Theory-and-Practice-16966}{freely available on their website}), as well as chapters 4--6 in the Handbook on Residential Property Price Indices (ILO et al. 2013), published by Eurostat (\href{https://ec.europa.eu/eurostat/web/products-manuals-and-guidelines/-/KS-RA-12-022}{freely available on their website}).\footnote{Although the focus of the handbook is on residential property prices, the ideas are applicable to any goods or services, and the material is presented relatively well.}
 
-Please email one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:rebecca.meier@canada.ca}{Rebecca Meier}) if you have any questions, or need help with any of the course material or assignment.
+Please email one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:shaoxiong.wang@canada.ca}{Shaoxiong Wang} or \href{mailto:anastasiia.nosach@canada.ca}{Anastasiia Nosach}) if you have any questions, or need help with any of the course material or assignment.
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
@@ -2122,7 +2122,7 @@ This gives the same answer as the two-step calculation.
 \hypertarget{assignment-3}{%
 \section{Assignment 3}\label{assignment-3}}
 
-Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65\% (13 out of 20 correct). Email your answers to one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:rebecca.meier@canada.ca}{Rebecca Meier}) when you are finished.
+Answers for these questions come from both the course content and the readings. Each question is worth one point, for a total of 20 points. Passing this module requires at least 65\% (13 out of 20 correct). Email your answers to one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:shaoxiong.wang@canada.ca}{Shaoxiong Wang} or \href{mailto:anastasiia.nosach@canada.ca}{Anastasiia Nosach}) when you are finished.
 
 \textbf{Question 1} True or false: The time-dummy hedonic index is a biased estimator of the constant-quality geometric index.
 
@@ -2355,7 +2355,7 @@ Prerequisites: Introduction to Price Indices, and a basic understanding of R. Pr
 
 Evaluation for this module is based on a single assignment that draws on learners' prior knowledge of price-index theory. The assignment consists of 4 questions (plus a bonus question). Collaboration on the assignment is encouraged, but each person must submit their own unique work. Answers to the assignment, along with working code for each question (excluding the bonus question) is worth 15\%. The instructor must be able to understand and run your code; see \href{scripts/example.R}{example.R} for an example. Each correctly answered question is worth an additional 10\%. Correctly answering the bonus question is worth 20\%. Passing this module requires a grade of 60\% or more.
 
-Please email one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:rebecca.meier@canada.ca}{Rebecca Meier}) if you have any questions, or need help with any of the course material or assignment.
+Please email one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:shaoxiong.wang@canada.ca}{Shaoxiong Wang} or \href{mailto:anastasiia.nosach@canada.ca}{Anastasiia Nosach}) if you have any questions, or need help with any of the course material or assignment.
 
 \hypertarget{assignment-4}{%
 \section{Assignment 4}\label{assignment-4}}
