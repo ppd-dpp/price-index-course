@@ -325,7 +325,7 @@ div.csl-indent {
 <ol start="3" style="list-style-type: decimal">
 <li><strong>Build the aggregation structures</strong></li>
 </ol>
-<p>An aggregation structure tells R how to build up your price indices. It indicates how the elemental indices are aggregated to build provincial indices, how the provincial indices are aggregated build regional indices, and how the regional indices are aggregated to build the national index. It also indicates which weights are assigned to each elemental index in the aggregation. Create one aggregation structure for each year, for a total of two.</p>
+<p>An aggregation structure tells R how to build up your price indices. It indicates how the elemental indices are aggregated to build provincial indices, how the provincial indices are aggregated to build regional indices, and how the regional indices are aggregated to build the national index. It also indicates which weights are assigned to each elemental index in the aggregation. Create one aggregation structure for each year, for a total of two.</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="instructions.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">#---- Aggregation structure ----</span></span>
 <span id="cb47-2"><a href="instructions.html#cb47-2" aria-hidden="true" tabindex="-1"></a>pias <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">split</span>(weights, weights<span class="sc">$</span>year), </span>
 <span id="cb47-3"><a href="instructions.html#cb47-3" aria-hidden="true" tabindex="-1"></a>               <span class="cf">function</span>(df) {</span>

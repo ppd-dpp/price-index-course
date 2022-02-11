@@ -296,32 +296,32 @@ div.csl-indent {
 <span id="cb19-3"><a href="example-with-r-consistency-in-aggregation-and-rebasing.html#cb19-3" aria-hidden="true" tabindex="-1"></a>index</span></code></pre></div>
 <pre><code>##    period value
 ## 1       0   100
-## 2       1   114
-## 3       2   122
-## 4       3   111
-## 5       4   112
-## 6       5   117
-## 7       6    99
-## 8       7    92
-## 9       8   110
-## 10      9   116
-## 11     10   126
-## 12     11   123</code></pre>
+## 2       1   115
+## 3       2   100
+## 4       3   103
+## 5       4   106
+## 6       5   127
+## 7       6    97
+## 8       7    98
+## 9       8   121
+## 10      9   128
+## 11     10    91
+## 12     11   108</code></pre>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="example-with-r-consistency-in-aggregation-and-rebasing.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rebase the index so that period 6 = 100</span></span>
 <span id="cb21-2"><a href="example-with-r-consistency-in-aggregation-and-rebasing.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">transform</span>(index, <span class="at">value =</span> value <span class="sc">/</span> value[period <span class="sc">==</span> <span class="dv">6</span>] <span class="sc">*</span> <span class="dv">100</span>)</span></code></pre></div>
 <pre><code>##    period     value
-## 1       0 101.01010
-## 2       1 115.15152
-## 3       2 123.23232
-## 4       3 112.12121
-## 5       4 113.13131
-## 6       5 118.18182
+## 1       0 103.09278
+## 2       1 118.55670
+## 3       2 103.09278
+## 4       3 106.18557
+## 5       4 109.27835
+## 6       5 130.92784
 ## 7       6 100.00000
-## 8       7  92.92929
-## 9       8 111.11111
-## 10      9 117.17172
-## 11     10 127.27273
-## 12     11 124.24242</code></pre>
+## 8       7 101.03093
+## 9       8 124.74227
+## 10      9 131.95876
+## 11     10  93.81443
+## 12     11 111.34021</code></pre>
 </div>
 <!-- </div> -->
             </section>

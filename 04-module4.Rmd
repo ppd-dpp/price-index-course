@@ -38,7 +38,7 @@ Your goal is to build a fixed-base monthly price index for widgets, from January
 
 1. Consult your monthly, fixed-based indices. Which province saw the largest increase in prices since the beginning of 2018? By how much did prices change? Which province saw the smallest increase in prices since the beginning of 2018? By how much did prices change?
 
-2. Convert you fixed-based index into a month-over-month index. What was the single largest month-over-month movement in prices at the provincial level? In which province and month did this occur? (Hint: You can use `piar`'s `unchain()` function to convert a fixed-base index into a month-over-month one.)
+2. Convert your fixed-based index into a month-over-month index. What was the single largest month-over-month movement in prices at the provincial level? In which province and month did this occur? (Hint: You can use `piar`'s `unchain()` function to convert a fixed-base index into a month-over-month one.)
 
 3. Convert your monthly fixed-base index into a quarterly index, and rebase it to Q1 2019. Which region had the highest prices in Q4 2019 as compared to Q1 2019? What was the value of the quarterly index there in that quarter? Which region had the the lowest prices in Q1 2018 as compared to Q1 2019? What was the value of the quarterly index there in that quarter? (Hint: you can use `piar`'s `mean()` method to convert a monthly index to a quarterly one.)
 
@@ -172,7 +172,7 @@ elementals <- Map(merge, <variable>, <variable>)
 
 3. **Build the aggregation structures**
 
-An aggregation structure tells R how to build up your price indices. It indicates how the elemental indices are aggregated to build provincial indices, how the provincial indices are aggregated build regional indices, and how the regional indices are aggregated to build the national index. It also indicates which weights are assigned to each elemental index in the aggregation. Create one aggregation structure for each year, for a total of two.
+An aggregation structure tells R how to build up your price indices. It indicates how the elemental indices are aggregated to build provincial indices, how the provincial indices are aggregated to build regional indices, and how the regional indices are aggregated to build the national index. It also indicates which weights are assigned to each elemental index in the aggregation. Create one aggregation structure for each year, for a total of two.
 
 ```{r eval=FALSE}
 #---- Aggregation structure ----
