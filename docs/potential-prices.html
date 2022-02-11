@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Potential prices | A Course on Price Indices</title>
   <meta name="description" content="A modern and straightforward introduction to price indices" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Potential prices | A Course on Price Indices" />
   <meta property="og:type" content="book" />
@@ -32,8 +32,9 @@
   
 <link rel="prev" href="introduction.html"/>
 <link rel="next" href="constant-quality-price-indices.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -41,7 +42,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -155,7 +155,10 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
 <li class="part"><span><b>I Introduction to Price Indices</b></span></li>
 <li class="chapter" data-level="" data-path="syllabus-for-introduction-to-price-indices.html"><a href="syllabus-for-introduction-to-price-indices.html"><i class="fa fa-check"></i>Syllabus for Introduction to Price Indices</a></li>
 <li class="chapter" data-level="" data-path="whats-a-price-index-and-why-do-we-need-one.html"><a href="whats-a-price-index-and-why-do-we-need-one.html"><i class="fa fa-check"></i>What’s a price index and why do we need one?</a>
@@ -237,7 +240,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="syllabus-for-building-a-price-index-with-r.html"><a href="syllabus-for-building-a-price-index-with-r.html"><i class="fa fa-check"></i>Syllabus for Building a Price Index with R</a></li>
 <li class="chapter" data-level="" data-path="assignment-4.html"><a href="assignment-4.html"><i class="fa fa-check"></i>Assignment 4</a>
 <ul>
-<li class="chapter" data-level="" data-path="methodology.html"><a href="methodology.html"><i class="fa fa-check"></i>Methodology</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i>Structure</a></li>
 <li class="chapter" data-level="" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i>Instructions</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -262,7 +265,7 @@ div.csl-indent {
 <h1>Potential prices</h1>
 <p>Formalizing a constant-quality index requires extending the stochastic approach to index numbers by generalizing the concept of a price. To this end, define a potential price as the price that a good or service would sell for at a point in time, irrespective of whether it actually sells—a potential price is a counter-factual price for a good or service at a point in time. This is in contrast to a transaction price, which is the observed price that a good sells for at the point in time when it actually sells. Comparing potential prices at two points in time gives a constant-quality index, as the goods being compared are necessarily held fixed over time. This is simply a pure price movement across two periods, abstracting from changes in price due to differences in the characteristics of goods selling in these periods.</p>
 <p>The concept of a potential price is extremely useful. In the standard price-index model, only prices and quantities can change over time. With potential prices, however, the composition of what sells over time can also change. This generalization makes it possible to define a price index when not only price and quantities change over time, but also what sells changes over time.</p>
-<p>A potential price is a particular type of potential outcome that forms the basis of the Rubin Causal Model, a workhorse model for making causal inference in the program evaluation literature. The Rubin Causal Model revolves around the narrative of an experiment, where one group of individuals is given a treatment, with the other group serving as a controlled benchmark. The goal of the experiment is to get a measure of the causal impact of treatment. In the context of a price index, a constant-quality index is the causal effect of time on prices, and it is useful to keep the narrative of an experiment in mind. <span class="citation">Manski (2007Chapter 7)</span>, <span class="citation">Angrist and Pischke (2009Chapters 2–4)</span>, and <span class="citation">Wooldridge (2010Chapter 21)</span> each provide an excellent presentation of the potential outcomes framework. <span class="citation">Lee (2016)</span> gives a book-length treatment.</p>
+<p>A potential price is a particular type of potential outcome that forms the basis of the Rubin Causal Model, a workhorse model for making causal inference in the program evaluation literature. The Rubin Causal Model revolves around the narrative of an experiment, where one group of individuals is given a treatment, with the other group serving as a controlled benchmark. The goal of the experiment is to get a measure of the causal impact of treatment. In the context of a price index, a constant-quality index is the causal effect of time on prices, and it is useful to keep the narrative of an experiment in mind. <span class="citation">Manski (2007, chap. 7)</span>, <span class="citation">Angrist and Pischke (2009, chaps. 2–4)</span>, and <span class="citation">Wooldridge (2010, chap. 21)</span> each provide an excellent presentation of the potential outcomes framework. <span class="citation">Lee (2016)</span> gives a book-length treatment.</p>
 <p>To operationalize the concept of a potential price in the stochastic framework, suppose there are <span class="math inline">\(n\)</span> unique goods that can sell in either period <span class="math inline">\(t = 0\)</span> or period <span class="math inline">\(t = 1\)</span>. Let <span class="math inline">\(p_{i}(1)\)</span> be the price of good <span class="math inline">\(i\)</span> if it were to sell in period 1, and let <span class="math inline">\(p_{i}(0)\)</span> be the price of good <span class="math inline">\(i\)</span> if it were to sell in period 0, irrespective of when the good actually sells. If good <span class="math inline">\(i\)</span> actually sells in period 1, then the price <span class="math inline">\(p_{i}(1)\)</span> is the observed transaction price—it can be observed when the good sells in period 1—whereas <span class="math inline">\(p_{i}(0)\)</span> is counter-factual, and hence unobservable. Similarly, if good <span class="math inline">\(i\)</span> sells in period 0, then <span class="math inline">\(p_{i}(0)\)</span> is the transaction price, with <span class="math inline">\(p_{i}(1)\)</span> counter-factual. Thus for every transaction price there is also a counter-factual price, and this allows a price relative <span class="math inline">\(p_{i}(1) / p_{i}(0)\)</span> to be constructed despite a good not selling in both periods.</p>
 <p>Treating each good as unique and selling only once may seem odd, but it is the appropriate way to model goods over time. This means that the same product sold at two different points in time is really two different goods, and this allows the quality of the same product to change over time. For example, cat food may sell in both period 0 and period 1, but these are treated as distinct goods as the quality of cat food may change between period 0 and period 1, if, for example, the size of the can is smaller in period 1. Having each good be unique also allows products to disappear over time, or not sell in every period, and all of these issues can be treated in one framework using the concept of a potential price. Clearly this has more applicability to certain types of products (e.g., housing, computers, cars) than others (e.g., food), but the framework is sufficiently general to cover all types of goods and services.</p>
 </div>
@@ -276,7 +279,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -316,6 +318,10 @@ gitbook.start({
 "text": null
 },
 "download": ["price-index-course.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 },

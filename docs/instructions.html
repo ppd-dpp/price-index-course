@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Instructions | A Course on Price Indices</title>
   <meta name="description" content="A modern and straightforward introduction to price indices" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Instructions | A Course on Price Indices" />
   <meta property="og:type" content="book" />
@@ -30,10 +30,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="methodology.html"/>
+<link rel="prev" href="structure.html"/>
 <link rel="next" href="references.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -41,7 +42,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -155,7 +155,10 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
 <li class="part"><span><b>I Introduction to Price Indices</b></span></li>
 <li class="chapter" data-level="" data-path="syllabus-for-introduction-to-price-indices.html"><a href="syllabus-for-introduction-to-price-indices.html"><i class="fa fa-check"></i>Syllabus for Introduction to Price Indices</a></li>
 <li class="chapter" data-level="" data-path="whats-a-price-index-and-why-do-we-need-one.html"><a href="whats-a-price-index-and-why-do-we-need-one.html"><i class="fa fa-check"></i>What’s a price index and why do we need one?</a>
@@ -237,7 +240,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="syllabus-for-building-a-price-index-with-r.html"><a href="syllabus-for-building-a-price-index-with-r.html"><i class="fa fa-check"></i>Syllabus for Building a Price Index with R</a></li>
 <li class="chapter" data-level="" data-path="assignment-4.html"><a href="assignment-4.html"><i class="fa fa-check"></i>Assignment 4</a>
 <ul>
-<li class="chapter" data-level="" data-path="methodology.html"><a href="methodology.html"><i class="fa fa-check"></i>Methodology</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i>Structure</a></li>
 <li class="chapter" data-level="" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i>Instructions</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -260,101 +263,84 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="instructions" class="section level2">
 <h2>Instructions</h2>
-<p>These instructions outline a simple way to build the price index for widgets, although feel free to use a different approach if it’s easier. The goal is to understand the process, rather than design the most computationally efficient system.</p>
+<p>These instructions outline a simple way to build the price index for widgets, although feel free to use a different approach if it’s easier. The goal is to understand the process, rather than design the most computationally efficient system. In order to ensure that simply following these instructions isn’t a trivial exercise, parts of the code from the snippets below have been omitted and replaced with tags in angle brackets. Wherever you see <code>&lt;action&gt;</code>, you should insert the name of a function. You can think of functions as “verbs” that perform actions on your data. Wherever you see <code>&lt;variable&gt;</code>, you should insert the name of one of your data structures. You can think of variables as “nouns” that you manipulate with “verbs,” or functions. Finally, wherever you see <code>&lt;parameter&gt;</code>, you should insert additional arguments to be passed to a function. You can think of these arguments or parameters as “adverbs” that modify your functions, or “verbs.” In order to help you out, some lines of code have hints next to them marked with <code># **HINT**</code>.</p>
 <p>Run the following code to grab all the data files and put them in your working environment. Note that these data aren’t perfect. It is worth remembering to check your intermediate calculations to make sure everything is as expected (e.g., with the <code>summary</code> function).</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="instructions.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;https://raw.githubusercontent.com/ppd-dpp/price-index-course/master/scripts/get_data.R&#39;</span>)</span></code></pre></div>
-<p>The <a href="https://cran.r-project.org/package=dplyr">dplyr</a>, <a href="https://cran.r-project.org/package=tidyr">tidyr</a>, <a href="https://cran.r-project.org/package=gpindex">gpindex</a>, and <a href="https://github.com/ppd-dpp/calpr">calpr</a> packages will be used in this module. Install them as follows if they aren’t already installed. (Hint: it is worth going through the documentation in the <code>gpindex</code> and <code>calpr</code> packages.)</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="instructions.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;tidyr&quot;</span>, <span class="st">&quot;gpindex&quot;</span>, <span class="st">&quot;devtools&quot;</span>))</span>
-<span id="cb44-2"><a href="instructions.html#cb44-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;ppd-dpp/calpr&quot;</span>)</span></code></pre></div>
+<p>The <a href="https://cran.r-project.org/package=gpindex">gpindex</a>, and <a href="https://github.com/marberts/piar">piar</a> packages will be used in this module. Install them as follows if they aren’t already installed, and then load them. (Hint: it is worth going through the documentation in the <code>gpindex</code> and <code>piar</code> packages.)</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="instructions.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;gpindex&quot;</span>, <span class="st">&quot;piar&quot;</span>))</span>
+<span id="cb44-2"><a href="instructions.html#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="instructions.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gpindex)</span>
+<span id="cb44-4"><a href="instructions.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(piar)</span></code></pre></div>
 <ol style="list-style-type: decimal">
-<li><p><strong>Make the weights</strong></p>
-<p>Using the <code>weights</code> file, make one set of weights that give the value share of all products sold in each province in each year, and another that give the value share of each product sold within each province in each year. This first set of weights will be used to aggregate the province-level indices to a national index, and the second set of weights will be used to aggregate elemental indices to get 10 province-level indices. There should be 20 weights in the first file and 200 weights in the second file.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="instructions.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb45-2"><a href="instructions.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb45-3"><a href="instructions.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gpindex)</span>
-<span id="cb45-4"><a href="instructions.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(calpr)</span>
-<span id="cb45-5"><a href="instructions.html#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-6"><a href="instructions.html#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Make provincial weights</span></span>
-<span id="cb45-7"><a href="instructions.html#cb45-7" aria-hidden="true" tabindex="-1"></a>weights_prov <span class="ot">&lt;-</span> weights <span class="sc">%&gt;%</span></span>
-<span id="cb45-8"><a href="instructions.html#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, province) <span class="sc">%&gt;%</span> <span class="co"># group all sales values by reference year and province</span></span>
-<span id="cb45-9"><a href="instructions.html#cb45-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">weight =</span> <span class="fu">sum</span>(weight)) <span class="sc">%&gt;%</span> <span class="co"># value of all sales in each province in each year</span></span>
-<span id="cb45-10"><a href="instructions.html#cb45-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">share_prov =</span> <span class="fu">weights_scale</span>(weight)) <span class="sc">%&gt;%</span> <span class="co"># scale to sum to 1</span></span>
-<span id="cb45-11"><a href="instructions.html#cb45-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>weight) <span class="co"># drop the weight column as it won&#39;t be needed again</span></span>
-<span id="cb45-12"><a href="instructions.html#cb45-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-13"><a href="instructions.html#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Make product weights</span></span>
-<span id="cb45-14"><a href="instructions.html#cb45-14" aria-hidden="true" tabindex="-1"></a>weights_prod <span class="ot">&lt;-</span> weights <span class="sc">%&gt;%</span></span>
-<span id="cb45-15"><a href="instructions.html#cb45-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code here %&gt;%</span></span>
-<span id="cb45-16"><a href="instructions.html#cb45-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">share_prod =</span> <span class="fu">weights_scale</span>(weight)) <span class="sc">%&gt;%</span></span>
-<span id="cb45-17"><a href="instructions.html#cb45-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>weight)</span></code></pre></div></li>
-<li><p><strong>Calculate the geomean for product K</strong></p>
-<p>Using the microdata for product K in the <code>dat_micro</code> file, calculate the geometric average of the prices in each province in each month in each reference year. This file should have 250 geomeans.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="instructions.html#cb46-1" aria-hidden="true" tabindex="-1"></a>dat_micro <span class="ot">&lt;-</span> dat_micro <span class="sc">%&gt;%</span></span>
-<span id="cb46-2"><a href="instructions.html#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">period =</span> <span class="fu">year_month</span>(period)) <span class="sc">%&gt;%</span> <span class="co"># turn transaction dates into month-by-year dates</span></span>
-<span id="cb46-3"><a href="instructions.html#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code here %&gt;%</span></span>
-<span id="cb46-4"><a href="instructions.html#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">geomean =</span> <span class="fu">mean_geometric</span>(price)) <span class="co"># calculate the geometric avergage</span></span></code></pre></div></li>
-<li><p><strong>Calculate the geomean for products A to J</strong></p>
-<p>Using the data from the Globular Prices System in <code>dat_gps</code>, calculate the geometric average of the price quotes for each product in each province in each month in each reference year, for products A to J. Combine these data with the data prepared in step 2. The resulting file should have 2,500 geomeans.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="instructions.html#cb47-1" aria-hidden="true" tabindex="-1"></a>dat_index <span class="ot">&lt;-</span> dat_gps <span class="sc">%&gt;%</span></span>
-<span id="cb47-2"><a href="instructions.html#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code here %&gt;%</span></span>
-<span id="cb47-3"><a href="instructions.html#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="at">key =</span> <span class="st">&quot;quote&quot;</span>, <span class="at">value =</span> <span class="st">&quot;price&quot;</span>, price1<span class="sc">:</span>price3) <span class="sc">%&gt;%</span> <span class="co"># melt into a long dataset</span></span>
-<span id="cb47-4"><a href="instructions.html#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(province, product, year, period) <span class="sc">%&gt;%</span></span>
-<span id="cb47-5"><a href="instructions.html#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code here %&gt;%</span></span>
-<span id="cb47-6"><a href="instructions.html#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(dat_micro) <span class="co"># append to dat_micro</span></span></code></pre></div></li>
-<li><p><strong>Calculate the period-over-period elemental indices</strong></p>
-<p>For each product in each province in each reference year, calculate the ratio of the geometric averages computed in step 3, making sure to have a price relative of 1 in January 2018 and January 2019. (January 2019 will be the link month when it is time to chain the index.)</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="instructions.html#cb48-1" aria-hidden="true" tabindex="-1"></a>dat_index <span class="ot">&lt;-</span> dat_index <span class="sc">%&gt;%</span>  </span>
-<span id="cb48-2"><a href="instructions.html#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code here (hint: read the documentation for dplyr::lag)</span></span></code></pre></div></li>
-<li><p><strong>Price update the product weights</strong></p>
-<p>Merge the product-by-province level weights from step 1 into the dataset created in step 4, and use the period-over-period elemental indices to price update the weights.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="instructions.html#cb49-1" aria-hidden="true" tabindex="-1"></a>dat_index <span class="ot">&lt;-</span> dat_index <span class="sc">%&gt;%</span>  </span>
-<span id="cb49-2"><a href="instructions.html#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code here %&gt;%</span></span>
-<span id="cb49-3"><a href="instructions.html#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">share_prod_u =</span> <span class="fu">weights_update</span>(<span class="fu">cumprod</span>(<span class="fu">lag</span>(rel, <span class="at">default =</span> <span class="dv">1</span>)), share_prod)) <span class="co"># price update the weights</span></span></code></pre></div></li>
-<li><p><strong>Calculate the province-level index</strong></p>
-<p>Calculate an arithmetic index for each province in each reference year, using the period-over-period elemental indices and the price updated weights from steps 4 and 5.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="instructions.html#cb50-1" aria-hidden="true" tabindex="-1"></a>index_prov <span class="ot">&lt;-</span> dat_index <span class="sc">%&gt;%</span></span>
-<span id="cb50-2"><a href="instructions.html#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(period, year, province) <span class="sc">%&gt;%</span></span>
-<span id="cb50-3"><a href="instructions.html#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code here</span></span></code></pre></div></li>
-<li><p><strong>Calculate the Canada-level index</strong></p>
-<p>Merge the province-level weights in step 1 with the provincial indices from step 6 to calculate a Canada-level index for each reference year.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="instructions.html#cb51-1" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> index_prov <span class="sc">%&gt;%</span></span>
-<span id="cb51-2"><a href="instructions.html#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code here</span></span>
-<span id="cb51-3"><a href="instructions.html#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(period, year) <span class="sc">%&gt;%</span></span>
-<span id="cb51-4"><a href="instructions.html#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code here</span></span>
-<span id="cb51-5"><a href="instructions.html#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">province =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="co"># province 0 is the Canada-level</span></span>
-<span id="cb51-6"><a href="instructions.html#cb51-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(index_prov)</span></code></pre></div></li>
-<li><p><strong>Chain the 2018 and 2019 indices</strong></p>
-<p>Chain the 2018 and 2019 province-level and Canada-level indices together, using January 2019 as the link month, to get an index from January 2018 to December 2019 with January 2018 as the base period (usually the base period would be a calendar year, but there are only 24 months of data).</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="instructions.html#cb52-1" aria-hidden="true" tabindex="-1"></a>index_chain <span class="ot">&lt;-</span> index <span class="sc">%&gt;%</span></span>
-<span id="cb52-2"><a href="instructions.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(province) <span class="sc">%&gt;%</span></span>
-<span id="cb52-3"><a href="instructions.html#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code here</span></span>
-<span id="cb52-4"><a href="instructions.html#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(period, province) <span class="sc">%&gt;%</span></span>
-<span id="cb52-5"><a href="instructions.html#cb52-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">index =</span> <span class="fu">unique</span>(index)) <span class="sc">%&gt;%</span> <span class="co"># remove the duplicate rows for the link month</span></span>
-<span id="cb52-6"><a href="instructions.html#cb52-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div></li>
+<li><strong>Calculate the period-over-period elemental indices for product K</strong></li>
 </ol>
-<p>The end result should be a file with 11 price indices, one for each province and a national index, from January 2018 to December 2019, with January 2018 as the base period (= 100).</p>
-<p>Validating the Canada-level index requires putting the Canadian Regulatory Economic Analysis group’s index and Monsterweb’s index into a common form.</p>
-<ol start="9" style="list-style-type: decimal">
-<li><p><strong>Quarter the monthly indices</strong></p>
-<p>Turn the index you just made and the Canadian Regulatory Economic Analysis group’s index in <code>index_crea</code> into a quarterly index, with quarter 1 2019 as the base period, by taking the average of the three index values in each quarter.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="instructions.html#cb53-1" aria-hidden="true" tabindex="-1"></a>my_index <span class="ot">&lt;-</span> index_chain <span class="sc">%&gt;%</span></span>
-<span id="cb53-2"><a href="instructions.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(province <span class="sc">==</span> <span class="st">&#39;0&#39;</span>) <span class="sc">%&gt;%</span> <span class="co"># keep only the Canada-level index</span></span>
-<span id="cb53-3"><a href="instructions.html#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">period =</span> <span class="fu">year_quarter</span>(period)) <span class="sc">%&gt;%</span></span>
-<span id="cb53-4"><a href="instructions.html#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(period) <span class="sc">%&gt;%</span></span>
-<span id="cb53-5"><a href="instructions.html#cb53-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">index =</span> <span class="fu">mean</span>(index)) <span class="sc">%&gt;%</span></span>
-<span id="cb53-6"><a href="instructions.html#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">index =</span> index<span class="sc">/</span>index[period <span class="sc">==</span> <span class="st">&#39;2019-01-01&#39;</span>] <span class="sc">*</span> <span class="dv">100</span>) <span class="co"># rebase to Jan 2019</span></span>
-<span id="cb53-7"><a href="instructions.html#cb53-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-8"><a href="instructions.html#cb53-8" aria-hidden="true" tabindex="-1"></a>index_crea <span class="ot">&lt;-</span> index_crea <span class="sc">%&gt;%</span></span>
-<span id="cb53-9"><a href="instructions.html#cb53-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code here %&gt;%</span></span>
-<span id="cb53-10"><a href="instructions.html#cb53-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code here %&gt;%</span></span>
-<span id="cb53-11"><a href="instructions.html#cb53-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code here %&gt;%</span></span>
-<span id="cb53-12"><a href="instructions.html#cb53-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code here %&gt;%</span></span>
-<span id="cb53-13"><a href="instructions.html#cb53-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code here %&gt;%</span></span>
-<span id="cb53-14"><a href="instructions.html#cb53-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-15"><a href="instructions.html#cb53-15" aria-hidden="true" tabindex="-1"></a>index_mw <span class="ot">&lt;-</span> index_mw <span class="sc">%&gt;%</span></span>
-<span id="cb53-16"><a href="instructions.html#cb53-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code here</span></span></code></pre></div></li>
-<li><p><strong>Append all three indices together</strong></p>
-<p>Put the indices in step 9 together in one dataset with Monsterweb’s index in <code>index_mw</code>. They should all be quarterly with quarter 1 2019 as the base period (= 100).</p></li>
+<p>Using the microdata for product K in the <code>micro_prices</code> file, calculate the geometric average of the prices in each province in each month in each reference year. Then, calculate the ratio of the geometric averages computed in step 3, making sure to have a price relative of 1 in January 2018 and January 2019. (January 2019 will be the link month when it is time to chain the index.)</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="instructions.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">#---- Product &#39;K&#39; index ----</span></span>
+<span id="cb45-2"><a href="instructions.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn period into a year-month and combine product and province into a </span></span>
+<span id="cb45-3"><a href="instructions.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># factor for elemental aggregates</span></span>
+<span id="cb45-4"><a href="instructions.html#cb45-4" aria-hidden="true" tabindex="-1"></a>micro_prices <span class="ot">&lt;-</span> <span class="fu">transform</span>(micro_prices, </span>
+<span id="cb45-5"><a href="instructions.html#cb45-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">period =</span> <span class="fu">format</span>(period, <span class="st">&quot;%Y%m&quot;</span>), </span>
+<span id="cb45-6"><a href="instructions.html#cb45-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">ea =</span> <span class="fu">interaction</span>(province, product, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>))</span>
+<span id="cb45-7"><a href="instructions.html#cb45-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-8"><a href="instructions.html#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Get a single price for each time period by taking the geomean</span></span>
+<span id="cb45-9"><a href="instructions.html#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="co"># **HINT** Take a look at the documentation for the aggregate methods </span></span>
+<span id="cb45-10"><a href="instructions.html#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="co"># in the stats package</span></span>
+<span id="cb45-11"><a href="instructions.html#cb45-11" aria-hidden="true" tabindex="-1"></a>micro_prices <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(price <span class="sc">~</span> <span class="er">&lt;</span>variable<span class="sc">&gt;</span> <span class="sc">+</span> <span class="er">&lt;</span>variable<span class="sc">&gt;</span> <span class="sc">+</span> <span class="er">&lt;</span>variable<span class="sc">&gt;</span>,</span>
+<span id="cb45-12"><a href="instructions.html#cb45-12" aria-hidden="true" tabindex="-1"></a>                          micro_prices,</span>
+<span id="cb45-13"><a href="instructions.html#cb45-13" aria-hidden="true" tabindex="-1"></a>                          <span class="sc">&lt;</span>action<span class="sc">&gt;</span>)</span>
+<span id="cb45-14"><a href="instructions.html#cb45-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-15"><a href="instructions.html#cb45-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate elemental indexes for product &#39;K&#39;</span></span>
+<span id="cb45-16"><a href="instructions.html#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="co"># **HINT** piar has a function for computing ratios of prices in consecutive months</span></span>
+<span id="cb45-17"><a href="instructions.html#cb45-17" aria-hidden="true" tabindex="-1"></a>index_k <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">split</span>(micro_prices, micro_prices<span class="sc">$</span>basket), </span>
+<span id="cb45-18"><a href="instructions.html#cb45-18" aria-hidden="true" tabindex="-1"></a>                  <span class="cf">function</span>(df) {</span>
+<span id="cb45-19"><a href="instructions.html#cb45-19" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">with</span>(df, <span class="fu">elemental_index</span>(<span class="sc">&lt;</span>action<span class="sc">&gt;</span>(price, period, ea), period, ea))</span>
+<span id="cb45-20"><a href="instructions.html#cb45-20" aria-hidden="true" tabindex="-1"></a>                  })</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Calculate the period-over-period elemental indices for products A through J, and merge them with them with the product K elemental indices</strong></li>
 </ol>
+<p>Using the data from the Globular Prices System in <code>gps_prices</code>, calculate price relatives for each quote in each province in each month in each reference year and use them to compute elemental indices. Then, merge these indices with the product K indices so that they are all in the same tables. This should give you two tables of elemental indices for products A through K, one for each reference year.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="instructions.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#---- Product &#39;A&#39; to &#39;J&#39; indices ----</span></span>
+<span id="cb46-2"><a href="instructions.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Melt into a long format</span></span>
+<span id="cb46-3"><a href="instructions.html#cb46-3" aria-hidden="true" tabindex="-1"></a>gps_prices <span class="ot">&lt;-</span> <span class="fu">reshape</span>(gps_prices, </span>
+<span id="cb46-4"><a href="instructions.html#cb46-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">direction =</span> <span class="sc">&lt;</span>parameter<span class="sc">&gt;</span>, </span>
+<span id="cb46-5"><a href="instructions.html#cb46-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">varying =</span> <span class="fu">paste0</span>(<span class="st">&quot;price&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>),</span>
+<span id="cb46-6"><a href="instructions.html#cb46-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">v.names =</span> <span class="st">&quot;price&quot;</span>,</span>
+<span id="cb46-7"><a href="instructions.html#cb46-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">timevar =</span> <span class="st">&quot;quote&quot;</span>,</span>
+<span id="cb46-8"><a href="instructions.html#cb46-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">idvar =</span> <span class="fu">c</span>(<span class="st">&quot;ea&quot;</span>, <span class="st">&quot;period&quot;</span>, <span class="st">&quot;basket&quot;</span>))</span>
+<span id="cb46-9"><a href="instructions.html#cb46-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-10"><a href="instructions.html#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine quote id and ea labels to make unique product labels</span></span>
+<span id="cb46-11"><a href="instructions.html#cb46-11" aria-hidden="true" tabindex="-1"></a>gps_prices<span class="sc">$</span>product <span class="ot">&lt;-</span> <span class="fu">paste0</span>(gps_prices<span class="sc">$</span>ea, gps_prices<span class="sc">$</span>quote)</span>
+<span id="cb46-12"><a href="instructions.html#cb46-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-13"><a href="instructions.html#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate elemental indexes for product &#39;A&#39; to &#39;J&#39;</span></span>
+<span id="cb46-14"><a href="instructions.html#cb46-14" aria-hidden="true" tabindex="-1"></a><span class="co"># **HINT** What type of elemental indices have you been asked to compute? </span></span>
+<span id="cb46-15"><a href="instructions.html#cb46-15" aria-hidden="true" tabindex="-1"></a><span class="co"># What type of mean does that imply? What is the corresponding order of the generalized mean?</span></span>
+<span id="cb46-16"><a href="instructions.html#cb46-16" aria-hidden="true" tabindex="-1"></a>index_aj <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">split</span>(gps_prices, gps_prices<span class="sc">$</span>basket), </span>
+<span id="cb46-17"><a href="instructions.html#cb46-17" aria-hidden="true" tabindex="-1"></a>                  <span class="cf">function</span>(df) {</span>
+<span id="cb46-18"><a href="instructions.html#cb46-18" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">with</span>(df, <span class="fu">elemental_index</span>(<span class="sc">&lt;</span>action<span class="sc">&gt;</span>(price, period, product), </span>
+<span id="cb46-19"><a href="instructions.html#cb46-19" aria-hidden="true" tabindex="-1"></a>                                             period, ea, <span class="at">na.rm =</span> <span class="sc">&lt;</span>parameter<span class="sc">&gt;</span>, <span class="at">r =</span> <span class="sc">&lt;</span>parameter<span class="sc">&gt;</span>))</span>
+<span id="cb46-20"><a href="instructions.html#cb46-20" aria-hidden="true" tabindex="-1"></a>                  })</span>
+<span id="cb46-21"><a href="instructions.html#cb46-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-22"><a href="instructions.html#cb46-22" aria-hidden="true" tabindex="-1"></a><span class="co">#---- Merge elemental indices ----</span></span>
+<span id="cb46-23"><a href="instructions.html#cb46-23" aria-hidden="true" tabindex="-1"></a>elementals <span class="ot">&lt;-</span> <span class="fu">Map</span>(merge, <span class="sc">&lt;</span>variable<span class="sc">&gt;</span>, <span class="sc">&lt;</span>variable<span class="sc">&gt;</span>)</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Build the aggregation structures</strong></li>
+</ol>
+<p>An aggregation structure tells R how to build up your price indices. It indicates how the elemental indices are aggregated to build provincial indices, how the provincial indices are aggregated build regional indices, and how the regional indices are aggregated to build the national index. It also indicates which weights are assigned to each elemental index in the aggregation. Create one aggregation structure for each year, for a total of two.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="instructions.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">#---- Aggregation structure ----</span></span>
+<span id="cb47-2"><a href="instructions.html#cb47-2" aria-hidden="true" tabindex="-1"></a>pias <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">split</span>(weights, weights<span class="sc">$</span>year), </span>
+<span id="cb47-3"><a href="instructions.html#cb47-3" aria-hidden="true" tabindex="-1"></a>               <span class="cf">function</span>(df) {</span>
+<span id="cb47-4"><a href="instructions.html#cb47-4" aria-hidden="true" tabindex="-1"></a>                 <span class="sc">&lt;</span>action<span class="sc">&gt;</span>(df[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], df<span class="sc">$</span>weight)</span>
+<span id="cb47-5"><a href="instructions.html#cb47-5" aria-hidden="true" tabindex="-1"></a>               })</span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Aggregate and chain the index</strong></li>
+</ol>
+<p>Take the elemental indices you calculated in Steps 1 and 2 and the aggregation structures you created in Step 3, and use them to calculate the aggregate indices for provinces, regions, and the entire country. (There is no need to manually price-update the aggregation weights for each month, as <code>piar</code>’s <code>aggregate</code> function will do this automatically.) You should now have a collection of month-over-month indices. Chain the 2018 and 2019 indices together, using January 2019 as the link month, to get an index from January 2018 to December 2019, with January 2018 as the base period.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="instructions.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#---- Aggregate, chain, and quarter ----</span></span>
+<span id="cb48-2"><a href="instructions.html#cb48-2" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> <span class="fu">Map</span>(<span class="sc">&lt;</span>variable<span class="sc">&gt;</span>, <span class="sc">&lt;</span>variable<span class="sc">&gt;</span>, pias)</span>
+<span id="cb48-3"><a href="instructions.html#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="instructions.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># **HINT** What do you have to remove from the 2019 index in order to chain it </span></span>
+<span id="cb48-5"><a href="instructions.html#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="co"># together with the 2018 index?</span></span>
+<span id="cb48-6"><a href="instructions.html#cb48-6" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> <span class="fu">chain</span>(<span class="fu">stack</span>(index[[<span class="st">&quot;2018&quot;</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>, ], index[[<span class="st">&quot;2019&quot;</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>, <span class="sc">&lt;</span>parameter<span class="sc">&gt;</span>]))</span></code></pre></div>
 
 </div>
 <!-- </div> -->
@@ -363,12 +349,11 @@ div.csl-indent {
           </div>
         </div>
       </div>
-<a href="methodology.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="structure.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -408,6 +393,10 @@ gitbook.start({
 "text": null
 },
 "download": ["price-index-course.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 },

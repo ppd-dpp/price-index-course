@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Example with R: Consistency in aggregation and rebasing | A Course on Price Indices</title>
   <meta name="description" content="A modern and straightforward introduction to price indices" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Example with R: Consistency in aggregation and rebasing | A Course on Price Indices" />
   <meta property="og:type" content="book" />
@@ -32,8 +32,9 @@
   
 <link rel="prev" href="chaining.html"/>
 <link rel="next" href="assignment-1.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -41,7 +42,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -155,7 +155,10 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
 <li class="part"><span><b>I Introduction to Price Indices</b></span></li>
 <li class="chapter" data-level="" data-path="syllabus-for-introduction-to-price-indices.html"><a href="syllabus-for-introduction-to-price-indices.html"><i class="fa fa-check"></i>Syllabus for Introduction to Price Indices</a></li>
 <li class="chapter" data-level="" data-path="whats-a-price-index-and-why-do-we-need-one.html"><a href="whats-a-price-index-and-why-do-we-need-one.html"><i class="fa fa-check"></i>What’s a price index and why do we need one?</a>
@@ -237,7 +240,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="syllabus-for-building-a-price-index-with-r.html"><a href="syllabus-for-building-a-price-index-with-r.html"><i class="fa fa-check"></i>Syllabus for Building a Price Index with R</a></li>
 <li class="chapter" data-level="" data-path="assignment-4.html"><a href="assignment-4.html"><i class="fa fa-check"></i>Assignment 4</a>
 <ul>
-<li class="chapter" data-level="" data-path="methodology.html"><a href="methodology.html"><i class="fa fa-check"></i>Methodology</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i>Structure</a></li>
 <li class="chapter" data-level="" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i>Instructions</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -293,32 +296,32 @@ div.csl-indent {
 <span id="cb19-3"><a href="example-with-r-consistency-in-aggregation-and-rebasing.html#cb19-3" aria-hidden="true" tabindex="-1"></a>index</span></code></pre></div>
 <pre><code>##    period value
 ## 1       0   100
-## 2       1   105
-## 3       2    93
-## 4       3   121
-## 5       4   109
-## 6       5   130
-## 7       6   126
-## 8       7   119
-## 9       8   101
-## 10      9   129
-## 11     10   106
-## 12     11   120</code></pre>
+## 2       1   114
+## 3       2   122
+## 4       3   111
+## 5       4   112
+## 6       5   117
+## 7       6    99
+## 8       7    92
+## 9       8   110
+## 10      9   116
+## 11     10   126
+## 12     11   123</code></pre>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="example-with-r-consistency-in-aggregation-and-rebasing.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rebase the index so that period 6 = 100</span></span>
 <span id="cb21-2"><a href="example-with-r-consistency-in-aggregation-and-rebasing.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">transform</span>(index, <span class="at">value =</span> value <span class="sc">/</span> value[period <span class="sc">==</span> <span class="dv">6</span>] <span class="sc">*</span> <span class="dv">100</span>)</span></code></pre></div>
 <pre><code>##    period     value
-## 1       0  79.36508
-## 2       1  83.33333
-## 3       2  73.80952
-## 4       3  96.03175
-## 5       4  86.50794
-## 6       5 103.17460
+## 1       0 101.01010
+## 2       1 115.15152
+## 3       2 123.23232
+## 4       3 112.12121
+## 5       4 113.13131
+## 6       5 118.18182
 ## 7       6 100.00000
-## 8       7  94.44444
-## 9       8  80.15873
-## 10      9 102.38095
-## 11     10  84.12698
-## 12     11  95.23810</code></pre>
+## 8       7  92.92929
+## 9       8 111.11111
+## 10      9 117.17172
+## 11     10 127.27273
+## 12     11 124.24242</code></pre>
 </div>
 <!-- </div> -->
             </section>
@@ -331,7 +334,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -371,6 +373,10 @@ gitbook.start({
 "text": null
 },
 "download": ["price-index-course.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 },

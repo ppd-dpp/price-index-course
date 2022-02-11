@@ -10,7 +10,6 @@ evalq(
     condition = function(e) message("Something went wrong loading ", f, ".", " Please contact the instructor.")
     )
   },
-  envir = list(files = c("dat_gps", "dat_micro", "weights", "index_crea", "index_mw"),
+  envir = list(files = c("gps_prices", "micro_prices", "weights"),
                root = "https://raw.githubusercontent.com/ppd-dpp/price-index-course/master/csv/")
 )
-

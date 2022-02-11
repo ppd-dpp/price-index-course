@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>The economic approach | A Course on Price Indices</title>
   <meta name="description" content="A modern and straightforward introduction to price indices" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="The economic approach | A Course on Price Indices" />
   <meta property="og:type" content="book" />
@@ -32,8 +32,9 @@
   
 <link rel="prev" href="motivating-the-jevons-and-laspeyres-indices.html"/>
 <link rel="next" href="input-price-index.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -41,7 +42,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -155,7 +155,10 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
 <li class="part"><span><b>I Introduction to Price Indices</b></span></li>
 <li class="chapter" data-level="" data-path="syllabus-for-introduction-to-price-indices.html"><a href="syllabus-for-introduction-to-price-indices.html"><i class="fa fa-check"></i>Syllabus for Introduction to Price Indices</a></li>
 <li class="chapter" data-level="" data-path="whats-a-price-index-and-why-do-we-need-one.html"><a href="whats-a-price-index-and-why-do-we-need-one.html"><i class="fa fa-check"></i>What’s a price index and why do we need one?</a>
@@ -237,7 +240,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="syllabus-for-building-a-price-index-with-r.html"><a href="syllabus-for-building-a-price-index-with-r.html"><i class="fa fa-check"></i>Syllabus for Building a Price Index with R</a></li>
 <li class="chapter" data-level="" data-path="assignment-4.html"><a href="assignment-4.html"><i class="fa fa-check"></i>Assignment 4</a>
 <ul>
-<li class="chapter" data-level="" data-path="methodology.html"><a href="methodology.html"><i class="fa fa-check"></i>Methodology</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i>Structure</a></li>
 <li class="chapter" data-level="" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i>Instructions</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -261,7 +264,7 @@ div.csl-indent {
 <div id="the-economic-approach" class="section level1">
 <h1>The economic approach</h1>
 <p>The axiomatic approach to constructing a price index revolves around finding a way to combine information on prices and quantities in order to satisfy certain conditions. The focus is essentially set theoretic, and the goal is to define a relationship between prices over time that has the properties a price index ought to have. Except for perhaps the product test, there is no economic content to the axiomatic approach—it is a purely mathematical exercise. The economic approach, by contrast, seeks to examine the underlying economic phenomenon that a price index should measure, using the microeconomic theory of a representative, competitive firm (for a producer price index) or a representative consumer (for a consumer price index). Exactly how price information should be combined to measure a change in prices over time is completely determined by the economic concept to be measured.</p>
-<p>Although the economic approach offers a parsimonious way to construct a price index, the validity of this approach relies on making strong assumptions about firm/consumer behavior and market conditions. The most important—and perhaps strongest—assumption is that there is a single, representative firm or consumer in the market with no market power (i.e., takes market prices as given). Having a representative firm is not a restrictive assumption if the market is competitive, but competitive behavior is indispensable <span class="citation">(ILO et al. 2004b, Chapter 18)</span>.<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a> This is problematic as most markets are characterized by some degree of imperfect competition, causing the theory to fall apart. Conversely, having a consumer take prices as given is a standard assumption, but having a representative consumer is difficult to justify, and cannot be easily relaxed <span class="citation">(Pollak 1980; Kirman 1992)</span>.<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a> Consequently, the economic approach is best seen as a consistent way to conceptualize a price index, rather than a recipe for finding an economically-superior price index, and is the least applicable of the three approaches.</p>
+<p>Although the economic approach offers a parsimonious way to construct a price index, the validity of this approach relies on making strong assumptions about firm/consumer behavior and market conditions. The most important—and perhaps strongest—assumption is that there is a single, representative firm or consumer in the market with no market power (i.e., takes market prices as given). Having a representative firm is not a restrictive assumption if the market is competitive, but competitive behavior is indispensable <span class="citation">(ILO et al. 2004b, chap. 18)</span>.<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a> This is problematic as most markets are characterized by some degree of imperfect competition, causing the theory to fall apart. Conversely, having a consumer take prices as given is a standard assumption, but having a representative consumer is difficult to justify, and cannot be easily relaxed <span class="citation">(Pollak 1980; Kirman 1992)</span>.<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a> Consequently, the economic approach is best seen as a consistent way to conceptualize a price index, rather than a recipe for finding an economically-superior price index, and is the least applicable of the three approaches.</p>
 <p>This section of the course gives a brief introduction to the economic approach. As with the axiomatic approach, the focus is on motivating index-number formulas used in practice, and there is a good deal of interesting material that is not covered. Unlike the axiomatic approach, different types of indices require separate analysis because they’re measuring different economic phenomena.</p>
 <p>📖 PPI Manual: Chapter 1, section E; Chapter 17, paragraphs 17.1–17.26 and 17.61–17.67.</p>
 <p>📖 CPI Manual: Chapter 1, paragraphs 1.85–1.107.</p>
@@ -283,7 +286,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -323,6 +325,10 @@ gitbook.start({
 "text": null
 },
 "download": ["price-index-course.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 },

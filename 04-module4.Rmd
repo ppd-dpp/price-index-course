@@ -12,63 +12,67 @@ The goal of this module is to provide hands-on experience building and analyzing
 
 This module is useful for compilers of price indices with a basic understanding of the theory and construction of a price index, and who would like to put the theory into practice and gain a deeper understanding of R.
 
-This module consists of a large assignment that has learners build and analyze a price index in R over a week. The pace of the module is self-directed, but an entire week should be devoted for this work. All data for this assignment were randomly generated.
+This module consists of a large assignment that has learners build and analyze a price index in R over a week. The pace of the module is self-directed, but 15 to 20 hours should be devoted for this work. All data for this assignment were randomly generated.
 
 Prerequisites: Introduction to Price Indices, and a basic understanding of R. Price Index Theory and Constant-Quality Price Indices, along with an intermediate understanding of R, are helpful.
 
-Evaluation for this module is based on a single assignment that draws on learners' prior knowledge of price-index theory. The assignment consists of 4 questions (plus a bonus question). Collaboration on the assignment is encouraged, but each person must submit their own unique work. Answers to the assignment, along with working code for each question (excluding the bonus question) is worth 15%. The instructor must be able to understand and run your code; see [example.R](scripts/example.R) for an example. Each correctly answered question is worth an additional 10%. Correctly answering the bonus question is worth 20%. Passing this module requires a grade of 60% or more. 
+Evaluation for this module is based on a single assignment that draws on learners' prior knowledge of price-index theory. The assignment consists of 4 questions. Collaboration on the assignment is encouraged, but each person must submit their own unique work. Answers to the assignment, along with working code for each question is worth 20%. The instructor must be able to understand and run your code. Each correctly answered question is worth an additional 20%. Passing this module requires a grade of 60% or more. 
 
 Please email one of the course instructors (either [Steve Martin](mailto:steve.martin5@canada.ca) or [Shaoxiong Wang](mailto:shaoxiong.wang@canada.ca) or [Anastasiia Nosach](mailto:anastasiia.nosach@canada.ca)) if you have any questions, or need help with any of the course material or assignment.
-
+  
 # Assignment 4
 
-Widgets are a heavily regulated product in each of the 10 provinces, and the federal government restricts the movements of widgets between provinces. Recently, in response to public outcry about the unaffordability of widgets, the Canadian Regulatory Economic Analysis group proposed that the federal government allow inter-provincial trade of widgets to improve market access and reduce prices. Before considering designing a new policy, however, the federal government would like to evaluate how prices for widgets have increased in recent years. A price index is needed for the provincial widget markets, and the country as a whole.
+Widgets are a heavily regulated product in each of the ten provinces, and the federal government restricts the movement of widgets between provinces. Recently, in response to public outcry about the unaffordability of widgets, the Canadian Regulatory Economic Analysis group proposed that the federal government allow inter-provincial trade of widgets to improve market access and reduce prices. Before considering designing a new policy, however, the federal government would like to evaluate how prices for widgets have increased in recent years. The federal government is also considering an intermediate policy to allow intra-regional trade of widgets (e.g., within Atlantic Canada), while prohibiting trade between regions (e.g., between Atlantic Canada and the Prairies). In order to assess the necessity of policy action, a price index is needed for the provincial widget markets, each region, and the country as a whole. 
 
-The Canadian Regulatory Economic Analysis group produces a monthly Canada-wide price index for widgets (i.e., no provincial breakdown), although there is little information about their data sources or methodology. The private firm Monsterweb, a widget broker, also makes a Canada-wide price index for widgets. Given that the provincial widget markets are isolated from each other, a provincial price index is needed to evaluate how widget prices have changed over time, and whether there is a need for policy action from the government.
-
-Widgets come in a variety of types, and a survey was used to collect monthly price quotes for a selection of representative widgets of types "A" to "J" from January 2018 to December 2019. These data are stored in the Globular Prices System. These survey data are supplemented with publicly available data for type "K" widget transactions which could not be sampled over this period, as well as the value of widgets transacted in each province in 2018 and 2019. Note that type "I" widgets were a new product in 2019, and these type of widgets replaced type "J" widgets in the sample in 2019. Due to regional variation in widget sales, the same number of price quotes could not be collected for all types of widgets in all provinces.
+Widgets come in a variety of types, and a survey was used to collect monthly price quotes for a selection of representative widgets of types "A" to "J" from January 2018 to December 2019. These data are stored in the Globular Prices System. These survey data are supplemented with publicly available data for type "K" widget transactions which could not be sampled over this period, as well as the value of widgets transacted in each province in 2018 and 2019. Note that type "I" widgets were a new product in 2019, and these type of widgets replaced type "J" widgets in the sample in 2019. Due to provincial regulations, only two brands of type "B" widgets are sold in British Columbia.
 
 All of these data are summarized as follows.
 
 |File name  |Data                                                                                                                |
-|---	    |---                                                                                                                 |
-|dat_gps    |Monthly price quotes for widget types "A" to "J" from January 2018 to December 2019 from the Globular Prices System.|
-|dat_micro  |Publicly available microdata for daily transactions of type "K" widgets from January 2018 to December 2019.         |
+|---	      |---                                                                                                                 |
+|gps_prices    |Monthly price quotes for widget types "A" to "J" from January 2018 to December 2019 from the Globular Prices System.|
+|micro_prices  |Publicly available microdata for daily transactions of type "K" widgets from January 2018 to December 2019.         |
 |weights    |Value of widget transaction (in thousands of dollars) in each province for 2018 and 2019.                           |
-|index_crea |The Canadian Regulatory Economic Analysis group's price index.                                                      |
-|index_mw   |Monsterweb's price index.                                                                                           |
 
-Your goal is to build a monthly price index for widgets, from January 2018 to December 2019, for each of the 10 provinces and the country as a whole, and to validate this index with those produced by the Canadian Regulatory Economic Analysis group and Monsterweb. You'll need to use this index to answer the following questions.
+Your goal is to build a fixed-base monthly price index for widgets, from January 2018 to December 2019, with base period January 2018, for each of the ten provinces, each of the five regions, and the country as a whole. You will use this index to answer the following questions.
 
-1. Which province saw the largest increase in prices since the beginning of 2018? By how much did prices change?
+1. Consult your monthly, fixed-based indices. Which province saw the largest increase in prices since the beginning of 2018? By how much did prices change? Which province saw the smallest increase in prices since the beginning of 2018? By how much did prices change?
 
-2. Which province saw the smallest increase in prices since the beginning of 2018? By how much did prices change?
+2. Convert you fixed-based index into a month-over-month index. What was the single largest month-over-month movement in prices at the provincial level? In which province and month did this occur? (Hint: You can use `piar`'s `unchain()` function to convert a fixed-base index into a month-over-month one.)
 
-3. What was the largest month-over-month movement in prices? In which province and month did this occur?
+3. Convert your monthly fixed-base index into a quarterly index, and rebase it to Q1 2019. Which region had the highest prices in Q4 2019 as compared to Q1 2019? What was the value of the quarterly index there in that quarter? Which region had the the lowest prices in Q1 2018 as compared to Q1 2019? What was the value of the quarterly index there in that quarter? (Hint: you can use `piar`'s `mean()` method to convert a monthly index to a quarterly one.)
 
-4. Plot all three Canada-level indices on a graph. Which index shows the largest percent increase in national widget prices since quarter 1 2019?
-
-5. (Bonus) Calculate coefficients of variation (CVs) for the provincial indices. Using the usual quality rules for disseminating data at Statistics Canada, which provincial indices would need to be disseminated with a warning (i.e., a CV greater than 33.3)?
-
-## Methodology
-
-Widgets are going to be stratified by province and widget type to produce elemental indices at the province-by-widget-type level. These elemental indices should be calculated with a Jevons index. The provincial and Canada-level indices are going to be arithmetic indices that aggregate the elemental indices using value-share weights. Weights for the arithmetic indices are going to be updated in 2019, with January 2019 as the link month. The aggregation structure is summarized in the graph below.
+4. For each Atlantic (10-13) and Prairie (46-48) province, calculate the variance of the month-over-month index. According to your results, which regional index indicates greater price volatility? Would you reach the same conclusion looking at the individual provincial indices? Explain the apparent discrepancy. (Hint: It may help to look at covariances, not just variances.)
+  
+## Structure
+  
+Widgets are going to be stratified by province and widget type to produce elemental indices at the province-by-widget-type level. These elemental indices should be calculated with a Jevons index. The provincial, regional, and Canada-level indices are going to be arithmetic indices that aggregate the elemental indices using value-share weights. Weights for the arithmetic indices are going to be revised in 2019, with January 2019 as the link month. The aggregation structure is summarized in the graph below. 
 
 ```{r, eval=FALSE, echo=FALSE}
 library(DiagrammeR)
 mermaid('
     graph TD
-        C[Canada] --- AA[Arithmetic <br> Index]
-        AA --- BC["BC (59)"]
-        AA --- AB["AB (48)"]
-        AA --- SK["SK (47)"]
-        AA --- MB["MB (46)"]
-        AA --- ON["ON (35)"]
-        AA --- QC["QC (24)"]
-        AA --- NB["NB (13)"]
-        AA --- NS["NS (12)"]
-        AA --- PE["PE (11)"]
-        AA --- NL["NL (10)"]
+        C[Canada] --- AAA[Arithmetic <br> Index]
+        AAA --- BCR["British <br> Columbia (5)"]
+        AAA --- PrR["Praries <br> (4)"]
+        AAA --- ONR["Ontario <br> (3)"]
+        AAA --- QCR["Quebec <br> (2)"]
+        AAA --- AtR["Atlantic <br> Canada (1)"]
+        BCR --- AA1[Arithmetic <br> Index]
+        PrR --- AA2[Arithmetic <br> Index]
+        ONR --- AA3[Arithmetic <br> Index]
+        QCR --- AA4[Arithmetic <br> Index]
+        AtR --- AA5[Arithmetic <br> Index]
+        AA1 --- BC["BC (59)"]
+        AA2 --- AB["AB (48)"]
+        AA2 --- SK["SK (47)"]
+        AA2 --- MB["MB (46)"]
+        AA3 --- ON["ON (35)"]
+        AA4 --- QC["QC (24)"]
+        AA5 --- NB["NB (13)"]
+        AA5 --- NS["NS (12)"]
+        AA5 --- PE["PE (11)"]
+        AA5 --- NL["NL (10)"]
         ON --- A[Arithmetic <br> Index]
         A --- a[Type </br> A]
         A --- b[Type </br> B]
@@ -86,14 +90,13 @@ mermaid('
         J --- q2[Quote 2]
         J --- q3[Quote 3]
 ')
-
 ```
 
 ![](img/structure.png)
 
 ## Instructions
-
-These instructions outline a simple way to build the price index for widgets, although feel free to use a different approach if it's easier. The goal is to understand the process, rather than design the most computationally efficient system.
+  
+These instructions outline a simple way to build the price index for widgets, although feel free to use a different approach if it's easier. The goal is to understand the process, rather than design the most computationally efficient system. In order to ensure that simply following these instructions isn't a trivial exercise, parts of the code from the snippets below have been omitted and replaced with tags in angle brackets. Wherever you see `<action>`, you should insert the name of a function. You can think of functions as "verbs" that perform actions on your data. Wherever you see `<variable>`, you should insert the name of one of your data structures. You can think of variables as "nouns" that you manipulate with "verbs," or functions. Finally, wherever you see `<parameter>`, you should insert additional arguments to be passed to a function. You can think of these arguments or parameters as "adverbs" that modify your functions, or "verbs." In order to help you out, some lines of code have hints next to them marked with ``# **HINT**``.
 
 Run the following code to grab all the data files and put them in your working environment. Note that these data aren't perfect. It is worth remembering to check your intermediate calculations to make sure everything is as expected (e.g., with the `summary` function).
 
@@ -101,143 +104,93 @@ Run the following code to grab all the data files and put them in your working e
 source('https://raw.githubusercontent.com/ppd-dpp/price-index-course/master/scripts/get_data.R')
 ```
 
-The [dplyr](https://cran.r-project.org/package=dplyr), [tidyr](https://cran.r-project.org/package=tidyr), [gpindex](https://cran.r-project.org/package=gpindex), and [calpr](https://github.com/ppd-dpp/calpr) packages will be used in this module. Install them as follows if they aren't already installed. (Hint: it is worth going through the documentation in the `gpindex` and `calpr` packages.)
+The [gpindex](https://cran.r-project.org/package=gpindex), and [piar](https://github.com/marberts/piar) packages will be used in this module. Install them as follows if they aren't already installed, and then load them. (Hint: it is worth going through the documentation in the `gpindex` and `piar` packages.)
 
 ```{r, eval=FALSE}
-install.packages(c("dplyr", "tidyr", "gpindex", "devtools"))
-devtools::install_github("ppd-dpp/calpr")
+install.packages(c("gpindex", "piar"))
+
+library(gpindex)
+library(piar)
 ```
 
-1. **Make the weights**
+1. **Calculate the period-over-period elemental indices for product K**
 
-    Using the `weights` file, make one set of weights that give the value share of all products sold in each province in each year, and another that give the value share of each product sold within each province in each year. This first set of weights will be used to aggregate the province-level indices to a national index, and the second set of weights will be used to aggregate elemental indices to get 10 province-level indices. There should be 20 weights in the first file and 200 weights in the second file.
+Using the microdata for product K in the `micro_prices` file, calculate the geometric average of the prices in each province in each month in each reference year. Then, calculate the ratio of the geometric averages computed in step 3, making sure to have a price relative of 1 in January 2018 and January 2019. (January 2019 will be the link month when it is time to chain the index.)
     
-    ```{r, eval=FALSE}
-library(dplyr)
-library(tidyr)
-library(gpindex)
-library(calpr)
+```{r, eval=FALSE}
+#---- Product 'K' index ----
+# Turn period into a year-month and combine product and province into a 
+# factor for elemental aggregates
+micro_prices <- transform(micro_prices, 
+                          period = format(period, "%Y%m"), 
+                          ea = interaction(province, product, sep = ""))
 
-# Make provincial weights
-weights_prov <- weights %>%
-  group_by(year, province) %>% # group all sales values by reference year and province
-  summarize(weight = sum(weight)) %>% # value of all sales in each province in each year
-  mutate(share_prov = weights_scale(weight)) %>% # scale to sum to 1
-  select(-weight) # drop the weight column as it won't be needed again
+# Get a single price for each time period by taking the geomean
+# **HINT** Take a look at the documentation for the aggregate methods 
+# in the stats package
+micro_prices <- aggregate(price ~ <variable> + <variable> + <variable>,
+                          micro_prices,
+                          <action>)
 
-# Make product weights
-weights_prod <- weights %>%
-  # your code here %>%
-  mutate(share_prod = weights_scale(weight)) %>%
-  select(-weight)
-    ```
+# Calculate elemental indexes for product 'K'
+# **HINT** piar has a function for computing ratios of prices in consecutive months
+index_k <- lapply(split(micro_prices, micro_prices$basket), 
+                  function(df) {
+                    with(df, elemental_index(<action>(price, period, ea), period, ea))
+                  })
+```
 
-2. **Calculate the geomean for product K**
+2. **Calculate the period-over-period elemental indices for products A through J, and merge them with them with the product K elemental indices**
 
-    Using the microdata for product K in the `dat_micro` file, calculate the geometric average of the prices in each province in each month in each reference year. This file should have 250 geomeans.
-    
-    ```{r, eval = FALSE}
-dat_micro <- dat_micro %>%
-  mutate(period = year_month(period)) %>% # turn transaction dates into month-by-year dates
-  # your code here %>%
-  summarize(geomean = mean_geometric(price)) # calculate the geometric avergage
-    ```
+Using the data from the Globular Prices System in `gps_prices`, calculate price relatives for each quote in each province in each month in each reference year and use them to compute elemental indices. Then, merge these indices with the product K indices so that they are all in the same tables. This should give you two tables of elemental indices for products A through K, one for each reference year.
 
-3. **Calculate the geomean for products A to J**
+```{r eval=FALSE}
+#---- Product 'A' to 'J' indices ----
+# Melt into a long format
+gps_prices <- reshape(gps_prices, 
+                      direction = <parameter>, 
+                      varying = paste0("price", 1:3),
+                      v.names = "price",
+                      timevar = "quote",
+                      idvar = c("ea", "period", "basket"))
 
-    Using the data from the Globular Prices System in `dat_gps`, calculate the geometric average of the price quotes for each product in each province in each month in each reference year, for products A to J. Combine these data with the data prepared in step 2. The resulting file should have 2,500 geomeans.
-    
-    ```{r, eval = FALSE}
-dat_index <- dat_gps %>%
-  # your code here %>%
-  gather(key = "quote", value = "price", price1:price3) %>% # melt into a long dataset
-  group_by(province, product, year, period) %>%
-  # your code here %>%
-  bind_rows(dat_micro) # append to dat_micro
-    ```
+# Combine quote id and ea labels to make unique product labels
+gps_prices$product <- paste0(gps_prices$ea, gps_prices$quote)
 
-4. **Calculate the period-over-period elemental indices** 
+# Calculate elemental indexes for product 'A' to 'J'
+# **HINT** What type of elemental indices have you been asked to compute? 
+# What type of mean does that imply? What is the corresponding order of the generalized mean?
+index_aj <- lapply(split(gps_prices, gps_prices$basket), 
+                  function(df) {
+                    with(df, elemental_index(<action>(price, period, product), 
+                                             period, ea, na.rm = <parameter>, r = <parameter>))
+                  })
 
-    For each product in each province in each reference year, calculate the ratio of the geometric averages computed in step 3, making sure to have a price relative of 1 in January 2018 and January 2019. (January 2019 will be the link month when it is time to chain the index.)
-    
-    ```{r, eval = FALSE}
-dat_index <- dat_index %>%  
-  # your code here (hint: read the documentation for dplyr::lag)
-    ```
+#---- Merge elemental indices ----
+elementals <- Map(merge, <variable>, <variable>)
+```
 
-5. **Price update the product weights**
+3. **Build the aggregation structures**
 
-    Merge the product-by-province level weights from step 1 into the dataset created in step 4, and use the period-over-period elemental indices to price update the weights.
-    
-    ```{r, eval = FALSE}
-dat_index <- dat_index %>%  
-  # your code here %>%
-  mutate(share_prod_u = weights_update(cumprod(lag(rel, default = 1)), share_prod)) # price update the weights
-    ```
+An aggregation structure tells R how to build up your price indices. It indicates how the elemental indices are aggregated to build provincial indices, how the provincial indices are aggregated build regional indices, and how the regional indices are aggregated to build the national index. It also indicates which weights are assigned to each elemental index in the aggregation. Create one aggregation structure for each year, for a total of two.
 
-6. **Calculate the province-level index**
+```{r eval=FALSE}
+#---- Aggregation structure ----
+pias <- lapply(split(weights, weights$year), 
+               function(df) {
+                 <action>(df[1:4], df$weight)
+               })
+```
 
-    Calculate an arithmetic index for each province in each reference year, using the period-over-period elemental indices and the price updated weights from steps 4 and 5.
-    
-    ```{r, eval = FALSE}
-index_prov <- dat_index %>%
-  group_by(period, year, province) %>%
-  # your code here
-    ```
+4. **Aggregate and chain the index**
 
-7. **Calculate the Canada-level index**
+Take the elemental indices you calculated in Steps 1 and 2 and the aggregation structures you created in Step 3, and use them to calculate the aggregate indices for provinces, regions, and the entire country. (There is no need to manually price-update the aggregation weights for each month, as `piar`'s `aggregate` function will do this automatically.) You should now have a collection of month-over-month indices. Chain the 2018 and 2019 indices together, using January 2019 as the link month, to get an index from January 2018 to December 2019, with January 2018 as the base period.
 
-    Merge the province-level weights in step 1 with the provincial indices from step 6 to calculate a Canada-level index for each reference year.
-    
-    ```{r, eval = FALSE}
-index <- index_prov %>%
-  # your code here
-  group_by(period, year) %>%
-  # your code here
-  mutate(province = 0) %>% # province 0 is the Canada-level
-  bind_rows(index_prov)
-    ```
+```{r eval=FALSE}
+#---- Aggregate, chain, and quarter ----
+index <- Map(<variable>, <variable>, pias)
 
-8. **Chain the 2018 and 2019 indices**
-
-    Chain the 2018 and 2019 province-level and Canada-level indices together, using January 2019 as the link month, to get an index from January 2018 to December 2019 with January 2018 as the base period (usually the base period would be a calendar year, but there are only 24 months of data).
-    
-    ```{r, eval = FALSE}
-index_chain <- index %>%
-  group_by(province) %>%
-  # your code here
-  group_by(period, province) %>%
-  summarize(index = unique(index)) %>% # remove the duplicate rows for the link month
-  ungroup()
-    ```
-
-The end result should be a file with 11 price indices, one for each province and a national index, from January 2018 to December 2019, with January 2018 as the base period (= 100).
-
-Validating the Canada-level index requires putting the Canadian Regulatory Economic Analysis group's index and Monsterweb's index into a common form.
-
-9. **Quarter the monthly indices**
-
-    Turn the index you just made and the Canadian Regulatory Economic Analysis group's index in `index_crea` into a quarterly index, with quarter 1 2019 as the base period, by taking the average of the three index values in each quarter.
-    
-    ```{r, eval = FALSE}
-my_index <- index_chain %>%
-  filter(province == '0') %>% # keep only the Canada-level index
-  mutate(period = year_quarter(period)) %>%
-  group_by(period) %>%
-  summarize(index = mean(index)) %>%
-  mutate(index = index/index[period == '2019-01-01'] * 100) # rebase to Jan 2019
-    
-index_crea <- index_crea %>%
-  # your code here %>%
-  # your code here %>%
-  # your code here %>%
-  # your code here %>%
-  # your code here %>%
-    
-index_mw <- index_mw %>%
-  # your code here
-    ```
-
-10. **Append all three indices together**
-
-     Put the indices in step 9 together in one dataset with Monsterweb's index in `index_mw`. They should all be quarterly with quarter 1 2019 as the base period (= 100).
+# **HINT** What do you have to remove from the 2019 index in order to chain it 
+# together with the 2018 index?
+index <- chain(stack(index[["2018"]][1:16, ], index[["2019"]][1:16, <parameter>]))
+```

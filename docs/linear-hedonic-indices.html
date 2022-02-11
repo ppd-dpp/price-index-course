@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Linear hedonic indices | A Course on Price Indices</title>
   <meta name="description" content="A modern and straightforward introduction to price indices" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Linear hedonic indices | A Course on Price Indices" />
   <meta property="og:type" content="book" />
@@ -32,8 +32,9 @@
   
 <link rel="prev" href="hedonic-price-indices.html"/>
 <link rel="next" href="the-time-dummy-approach.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -41,7 +42,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -155,7 +155,10 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
 <li class="part"><span><b>I Introduction to Price Indices</b></span></li>
 <li class="chapter" data-level="" data-path="syllabus-for-introduction-to-price-indices.html"><a href="syllabus-for-introduction-to-price-indices.html"><i class="fa fa-check"></i>Syllabus for Introduction to Price Indices</a></li>
 <li class="chapter" data-level="" data-path="whats-a-price-index-and-why-do-we-need-one.html"><a href="whats-a-price-index-and-why-do-we-need-one.html"><i class="fa fa-check"></i>What’s a price index and why do we need one?</a>
@@ -237,7 +240,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="syllabus-for-building-a-price-index-with-r.html"><a href="syllabus-for-building-a-price-index-with-r.html"><i class="fa fa-check"></i>Syllabus for Building a Price Index with R</a></li>
 <li class="chapter" data-level="" data-path="assignment-4.html"><a href="assignment-4.html"><i class="fa fa-check"></i>Assignment 4</a>
 <ul>
-<li class="chapter" data-level="" data-path="methodology.html"><a href="methodology.html"><i class="fa fa-check"></i>Methodology</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i>Structure</a></li>
 <li class="chapter" data-level="" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i>Instructions</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -264,14 +267,14 @@ div.csl-indent {
 <span class="math display">\[\begin{align*}
 E(\rho | X, t) = \alpha_{0} + t(\alpha_{1} - \alpha_{0}) + X\beta_{0} + t \cdot X (\beta_{1} - \beta_{0}).
 \end{align*}\]</span>
-With a linear form for the hedonic model, transaction prices are expressed as a linear regression on the characteristics of a good—the parameters in a hedonic model are just population regression coefficients. The parameter vector <span class="math inline">\(\beta_{t}\)</span> is usually interpreted as a vector of implicit prices for the non-market characteristics of a good. This interpretation stems from a structural view of a hedonic model—the goal here is simply to specific a parametric model for the conditional price function, <span class="math inline">\(E(\rho | X, t)\)</span>, so <span class="math inline">\(\beta_{t}\)</span> need not be given any special interpretation.<a href="#fn35" class="footnote-ref" id="fnref35"><sup>35</sup></a></p>
+With a linear form for the hedonic model, transaction prices are expressed as a linear regression on the characteristics of a good—the parameters in a hedonic model are just population regression coefficients. The parameter vector <span class="math inline">\(\beta_{t}\)</span> is usually interpreted as a vector of implicit prices for the non-market characteristics of a good. This interpretation stems from a structural view of a hedonic model—the goal here is simply to specific a parametric model for the conditional price function, <span class="math inline">\(E(\rho | X, t)\)</span>, so <span class="math inline">\(\beta_{t}\)</span> need not be given any special interpretation.<a href="#fn36" class="footnote-ref" id="fnref36"><sup>36</sup></a></p>
 <p>With a linear hedonic model, and conditional independence between potential prices and time,
 <span class="math display">\[\begin{align*}
 \log(I^{Q}) = E(h(X, 1) - h(X, 0)) = \alpha_{1} - \alpha_{0} + E(X)(\beta_{1} - \beta_{0}). 
 \end{align*}\]</span>
-The effect of specifying a model for <span class="math inline">\(E(\rho | X, t)\)</span> is that a constant-quality price index now has a simple parametric form that can be used to relax the overlap condition.<a href="#fn36" class="footnote-ref" id="fnref36"><sup>36</sup></a> Nothing precludes using a more complex non-linear model, but in application the hedonic model is usually linear.<a href="#fn37" class="footnote-ref" id="fnref37"><sup>37</sup></a></p>
+The effect of specifying a model for <span class="math inline">\(E(\rho | X, t)\)</span> is that a constant-quality price index now has a simple parametric form that can be used to relax the overlap condition.<a href="#fn37" class="footnote-ref" id="fnref37"><sup>37</sup></a> Nothing precludes using a more complex non-linear model, but in application the hedonic model is usually linear.<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a></p>
 <p>This type of hedonic index is sometimes called the hedonic imputation model, because it is the geometric index formed by taking the ratio of the average predicted prices from the linear regressions of (log) price on characteristics at two points in time. As mentioned in the previous section, however, all hedonic price indices have this form, whether average price is modeled as a linear function of characteristics or not. Consequently, the label “hedonic imputation” is not very useful and leads to a variety of “different” hedonic price indices that are really all the same thing.</p>
-<p>One advantage of specifying a linear model for <span class="math inline">\(E(\rho | X, t)\)</span> is that the resulting index has a very intuitive form:<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a>
+<p>One advantage of specifying a linear model for <span class="math inline">\(E(\rho | X, t)\)</span> is that the resulting index has a very intuitive form:<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a>
 <span class="math display">\[\begin{align*}
 \log(I^{Q}) =&amp; \underbrace{E(\rho | t = 1) - E(\rho | t = 0)}_{\text{transaction-price index}}\\
 &amp;+ \underbrace{[E(X | t = 0) - E(X | t = 1)][\beta_{0} P(t = 1) + \beta_{1} P(t = 0)]}_{\text{correction term}}.
@@ -288,11 +291,11 @@ The hedonic index is then just the coefficient on a time-dummy variable in a lin
 </div>
 <div class="footnotes">
 <hr />
-<ol start="35">
-<li id="fn35"><p>There are some theoretical issues with specifying a linear hedonic model—see <span class="citation">Hausman (2003)</span> for an example when a CPI is supposed to measure changes in the cost of living, and <span class="citation">Rosen (1974)</span>, which is usually taken as giving the conceptual foundation for the hedonic approach.<a href="linear-hedonic-indices.html#fnref35" class="footnote-back">↩︎</a></p></li>
-<li id="fn36"><p>Overlap is not gone entirely—goods still need to sell in both periods and, at each point in time, none of the characteristics in <span class="math inline">\(X\)</span> can be a linear combination of each other—but is not as onerous as with a stratified index.<a href="linear-hedonic-indices.html#fnref36" class="footnote-back">↩︎</a></p></li>
-<li id="fn37"><p>It is easy to show that a set of linear regression coefficients for the regression of <span class="math inline">\(X\)</span> on <span class="math inline">\(y\)</span> solves the following problem: <span class="math inline">\(\min_{b \in \mathbb{R}^{k}} E[(E(y | X) - Xb)^{2}]\)</span>. That is, a linear regression gives the minimum mean-square error linear approximation to the conditional expectation function. Hence, even if average price is a non-linear function of characteristics, the linear hedonic model may still give a good approximation.<a href="linear-hedonic-indices.html#fnref37" class="footnote-back">↩︎</a></p></li>
-<li id="fn38"><p>To show this directly, note that <span class="math inline">\(E(\rho | t) = E(E(\rho | X, t)) = E(\alpha_{t} + X\beta_{t} | t) = \alpha_{t} + E(X | t) \beta_{t}\)</span>.<a href="linear-hedonic-indices.html#fnref38" class="footnote-back">↩︎</a></p></li>
+<ol start="36">
+<li id="fn36"><p>There are some theoretical issues with specifying a linear hedonic model—see <span class="citation">Hausman (2003)</span> for an example when a CPI is supposed to measure changes in the cost of living, and <span class="citation">Rosen (1974)</span>, which is usually taken as giving the conceptual foundation for the hedonic approach.<a href="linear-hedonic-indices.html#fnref36" class="footnote-back">↩︎</a></p></li>
+<li id="fn37"><p>Overlap is not gone entirely—goods still need to sell in both periods and, at each point in time, none of the characteristics in <span class="math inline">\(X\)</span> can be a linear combination of each other—but is not as onerous as with a stratified index.<a href="linear-hedonic-indices.html#fnref37" class="footnote-back">↩︎</a></p></li>
+<li id="fn38"><p>It is easy to show that a set of linear regression coefficients for the regression of <span class="math inline">\(X\)</span> on <span class="math inline">\(y\)</span> solves the following problem: <span class="math inline">\(\min_{b \in \mathbb{R}^{k}} E[(E(y | X) - Xb)^{2}]\)</span>. That is, a linear regression gives the minimum mean-square error linear approximation to the conditional expectation function. Hence, even if average price is a non-linear function of characteristics, the linear hedonic model may still give a good approximation.<a href="linear-hedonic-indices.html#fnref38" class="footnote-back">↩︎</a></p></li>
+<li id="fn39"><p>To show this directly, note that <span class="math inline">\(E(\rho | t) = E(E(\rho | X, t)) = E(\alpha_{t} + X\beta_{t} | t) = \alpha_{t} + E(X | t) \beta_{t}\)</span>.<a href="linear-hedonic-indices.html#fnref39" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -305,7 +308,6 @@ The hedonic index is then just the coefficient on a time-dummy variable in a lin
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -345,6 +347,10 @@ gitbook.start({
 "text": null
 },
 "download": ["price-index-course.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 },

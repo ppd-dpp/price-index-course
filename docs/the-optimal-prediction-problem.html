@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>The optimal prediction problem | A Course on Price Indices</title>
   <meta name="description" content="A modern and straightforward introduction to price indices" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="The optimal prediction problem | A Course on Price Indices" />
   <meta property="og:type" content="book" />
@@ -32,8 +32,9 @@
   
 <link rel="prev" href="the-stochastic-approach.html"/>
 <link rel="next" href="geometric-price-indices-as-a-best-predictor.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -41,7 +42,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -155,7 +155,10 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
 <li class="part"><span><b>I Introduction to Price Indices</b></span></li>
 <li class="chapter" data-level="" data-path="syllabus-for-introduction-to-price-indices.html"><a href="syllabus-for-introduction-to-price-indices.html"><i class="fa fa-check"></i>Syllabus for Introduction to Price Indices</a></li>
 <li class="chapter" data-level="" data-path="whats-a-price-index-and-why-do-we-need-one.html"><a href="whats-a-price-index-and-why-do-we-need-one.html"><i class="fa fa-check"></i>What’s a price index and why do we need one?</a>
@@ -237,7 +240,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="syllabus-for-building-a-price-index-with-r.html"><a href="syllabus-for-building-a-price-index-with-r.html"><i class="fa fa-check"></i>Syllabus for Building a Price Index with R</a></li>
 <li class="chapter" data-level="" data-path="assignment-4.html"><a href="assignment-4.html"><i class="fa fa-check"></i>Assignment 4</a>
 <ul>
-<li class="chapter" data-level="" data-path="methodology.html"><a href="methodology.html"><i class="fa fa-check"></i>Methodology</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i>Structure</a></li>
 <li class="chapter" data-level="" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i>Instructions</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -265,20 +268,21 @@ div.csl-indent {
 <span class="math display">\[\begin{align*}
 \min_{I} E\left[\left(\frac{p_{t}}{p_{0}} - I \right)^{2}\right],
 \end{align*}\]</span>
-where <span class="math inline">\(E\)</span> is the expected value operator, taken over the distribution of price relative. As is well known, the solution to this problem is to set <span class="math inline">\(I^{A} = E(p_{t} / p_{0})\)</span> <span class="citation">(Lehmann and Casella 1998, Chapter 1 Example 7.17)</span>; that is, the best predictor of a change in price between two periods is the expected change in price. While it may seem unusual to express a price index in terms of an expected value, this simply emphasizes that a price index is rightfully a feature of the distribution of prices in the population. This is a key feature of the stochastic approach, and is what allows for a meaningful analysis of the statistical properties of a price index when calculated with a sample of price data from the population.</p>
+where <span class="math inline">\(E\)</span> is the expected value operator, taken over the distribution of price relative. As is well known, the solution to this problem is to set <span class="math inline">\(I^{A} = E(p_{t} / p_{0})\)</span> <span class="citation">(Lehmann and Casella 1998, chap. 1 Example 7.17)</span>; that is, the best predictor of a change in price between two periods is the expected change in price. While it may seem unusual to express a price index in terms of an expected value, this simply emphasizes that a price index is rightfully a feature of the distribution of prices in the population. This is a key feature of the stochastic approach, and is what allows for a meaningful analysis of the statistical properties of a price index when calculated with a sample of price data from the population.</p>
 <p>The figure gives an example of what the prediction problem looks like. Given a distribution of price relatives (solid line), there is an associated expected prediction error with each value that a price index can take (dashed line). The best choice for a price index as a predictive tool is the value that minimizes the expected prediction error (dotted line).</p>
 <p><img src="price-index-course_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>As the expected value is just a weighted average, the index <span class="math inline">\(I^{A} = E(p_{t} / p_{0})\)</span> is simply an arithmetic index that averages price relatives. What’s interesting is that the weights now have a new interpretation—they are the probability of observing a good or service transacted in the population. That is,
 <span class="math display">\[\begin{align*}
 I^{A} = \sum_{i = 1}^{n} \frac{p_{it}}{p_{i0}} P_{i}.
 \end{align*}\]</span>
-Different arithmetic price-index formulas—e.g., Laspeyres, Paasche, Lowe—thus correspond to different statements about what determines the probability of observing a transaction. For example, with a Laspeyres index the probabilities are given by period-0 expenditure or revenue shares. This amounts to a statement that the probability of observing a transaction for a good is the likelihood of spending or receiving a dollar on that good in period 0.</p>
+Different arithmetic price-index formulas—e.g., Laspeyres, Paasche, Lowe—thus correspond to different statements about what determines the probability of observing a transaction. For example, with a Laspeyres index the probabilities are given by period-0 expenditure or revenue shares. This amounts to a statement that the probability of observing a transaction for a good is the likelihood of spending or receiving a dollar on that good in period 0.<a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a></p>
 </div>
 <div class="footnotes">
 <hr />
 <ol start="22">
 <li id="fn22"><p>There is a tendency to think of this distribution as being Gaussian, but doing so means that some goods and services have negative prices. In most cases price relatives cannot be distributed Gaussian.<a href="the-optimal-prediction-problem.html#fnref22" class="footnote-back">↩︎</a></p></li>
-<li id="fn23"><p>This is a prediction problem using a quadratic loss function, to ensure that the prediction error is always positive, and to formalize the idea that a large misprediction is more costly than many small mispredictions. Different loss functions usually give different optimal predictors; for example, the absolute loss function returns the median as the best predictor, which finds applications for housing price indices. If price relatives are symmetrically distributed, then all symmetric, convex loss functions give the same price index <span class="citation">(Lehmann and Casella 1998, Chapter 1 Corollary 7.19)</span>.<a href="the-optimal-prediction-problem.html#fnref23" class="footnote-back">↩︎</a></p></li>
+<li id="fn23"><p>This is a prediction problem using a quadratic loss function, to ensure that the prediction error is always positive, and to formalize the idea that a large misprediction is more costly than many small mispredictions. Different loss functions usually give different optimal predictors; for example, the absolute loss function returns the median as the best predictor, which finds applications for housing price indices. If price relatives are symmetrically distributed, then all symmetric, convex loss functions give the same price index <span class="citation">(Lehmann and Casella 1998, chap. 1 Corollary 7.19)</span>.<a href="the-optimal-prediction-problem.html#fnref23" class="footnote-back">↩︎</a></p></li>
+<li id="fn24"><p><span class="citation">Selvanathan and Rao (1994, chap. 3)</span> give an alternate interpretation: different index-number formulas come from different statements about the variance structure of price relatives and the use of inverse-variance weights to produce efficient estimators of inflation.<a href="the-optimal-prediction-problem.html#fnref24" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -291,7 +295,6 @@ Different arithmetic price-index formulas—e.g., Laspeyres, Paasche, Lowe—thu
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -331,6 +334,10 @@ gitbook.start({
 "text": null
 },
 "download": ["price-index-course.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 },

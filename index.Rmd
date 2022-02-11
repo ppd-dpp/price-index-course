@@ -1,7 +1,7 @@
 ---
 title: "A Course on Price Indices"
 author: "Steve Martin"
-date: "Summer 2021"
+date: "Winter 2022"
 documentclass: article
 geometry: margin=1in
 site: bookdown::bookdown_site
@@ -23,3 +23,7 @@ Those interested primarily in the computational aspects of a price index can tak
 Those with some prior exposure to economic theory can take module 2 after module 1 to gain a deeper understanding of the material in module 1, followed by module 4 to put these ideas into practice. This sequence is appropriate for those that use price indices for analytic work.
 
 Individuals with prior exposure to econometrics and statistics can take module 3 after module 2 to learn about some practical challenges when building a price index, followed again by module 4. This sequence is appropriate for those that both use and build price indices, as it gives the foundational tools required to design a price index.
+
+## Acknowledgements {-}
+
+Rebecca Meier and Ambuj Dewan made large improvements to module 4 of this course. Xin Ha, Shaoxiong Wang, and Klaus Kostenbauer helped review earlier versions of this course, providing many useful suggestions.

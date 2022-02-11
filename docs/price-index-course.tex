@@ -4,10 +4,14 @@
 %
 \documentclass[
 ]{article}
+\title{A Course on Price Indices}
+\author{Steve Martin}
+\date{Winter 2022}
+
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
@@ -109,22 +113,22 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
-\ifluatex
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
 \setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
 \newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
  {% don't indent paragraphs
   \setlength{\parindent}{0pt}
   % turn on hanging indent if param 1 is 1
-  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
-  % set entry spacing
-  \ifnum #2 > 0
-  \setlength{\parskip}{#2\baselineskip}
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
   \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
  }%
  {}
 \usepackage{calc}
@@ -132,10 +136,9 @@
 \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
-
-\title{A Course on Price Indices}
-\author{Steve Martin}
-\date{Summer 2021}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 
 \begin{document}
 \maketitle
@@ -159,6 +162,12 @@ Those interested primarily in the computational aspects of a price index can tak
 Those with some prior exposure to economic theory can take module 2 after module 1 to gain a deeper understanding of the material in module 1, followed by module 4 to put these ideas into practice. This sequence is appropriate for those that use price indices for analytic work.
 
 Individuals with prior exposure to econometrics and statistics can take module 3 after module 2 to learn about some practical challenges when building a price index, followed again by module 4. This sequence is appropriate for those that both use and build price indices, as it gives the foundational tools required to design a price index.
+
+\hypertarget{acknowledgements}{%
+\subsection*{Acknowledgements}\label{acknowledgements}}
+\addcontentsline{toc}{subsection}{Acknowledgements}
+
+Rebecca Meier and Ambuj Dewan made large improvements to module 4 of this course. Xin Ha, Shaoxiong Wang, and Klaus Kostenbauer helped review earlier versions of this course, providing many useful suggestions.
 
 \hypertarget{part-introduction-to-price-indices}{%
 \part{Introduction to Price Indices}\label{part-introduction-to-price-indices}}
@@ -370,7 +379,7 @@ A geometric price index is entirely analogous to an arithmetic one, except that 
 I^{G} = \prod_{i = 1}^{n} \left(\frac{p_{i1}}{p_{i0}}\right)^{\omega_{i}}.
 \end{align*}
 
-As with the arithmetic indices, different geometric indices correspond to different choices for the weights.\footnote{It is interesting to note that the weights can also be chosen so that any geometric index is also an arithmetic index (and vice versa). That is, for any \(\omega_{i}\), there is an \(\tilde{\omega}_{i}\) such that \(\prod_{i = 1}^{n} (p_{i1} / p_{i0})^{\omega_{i}} = \sum_{i = 1}^{n} \tilde{\omega}_{i} p_{i1} / p_{i0}\). See Balk (2008Section 4.2) for what these weights look like. Framing an index as arithmetic or geometric is really just a case of framing the weights. The same holds true for a number of other types of indices, such as harmonic indices---see Martin (2020).}
+As with the arithmetic indices, different geometric indices correspond to different choices for the weights.\footnote{It is interesting to note that the weights can also be chosen so that any geometric index is also an arithmetic index (and vice versa). That is, for any \(\omega_{i}\), there is an \(\tilde{\omega}_{i}\) such that \(\prod_{i = 1}^{n} (p_{i1} / p_{i0})^{\omega_{i}} = \sum_{i = 1}^{n} \tilde{\omega}_{i} p_{i1} / p_{i0}\). See Balk (2008, sec. 4.2) for what these weights look like. Framing an index as arithmetic or geometric is really just a case of framing the weights. The same holds true for a number of other types of indices, such as harmonic indices---see Martin (2020).}
 
 \textbf{Jevons index}. Setting \(\omega_{i} = 1 / n\) results in the Jevons index
 \begin{align*}
@@ -400,7 +409,7 @@ The Törnqvist index expands on the geometric Laspeyres index by using expenditu
 
 The Jevons index is usually synonymous with a geometric index, and it finds application in situations where there is no quantity information to form weights (as opposed to using a Carli or Dutot index). Sometimes a weighted Jevons index is used as a shorthand for the general geometric index.
 
-One point to note about the geometric indices is that they are always smaller than their arithmetic counterparts. For any given weights, it can be shown that \(I^{G} \leq I^{A}\), with equality only when all price relatives are equal or all price relatives except one have zero weight. Consequently, a geometric index always shows a smaller increase in prices over time (or a larger decrease) than the corresponding arithmetic index.\footnote{The difference between an arithmetic index and geometric index tends to be larger when price relatives are more dispersed, although this is not always the case. It is possible that the difference becomes larger when the variance between prices relatives becomes smaller---see Lord (2002).} This is an important downside to having a menu of index numbers to choose from, as the choice of index-number formula has an impact on the resulting measure of inflation.\footnote{The same reasoning can be used to show that a harmonic price index is always smaller than the corresponding geometric index---see Bullen (2003II 2.1 Corollary 2).}
+One point to note about the geometric indices is that they are always smaller than their arithmetic counterparts. For any given weights, it can be shown that \(I^{G} \leq I^{A}\), with equality only when all price relatives are equal or all price relatives except one have zero weight. Consequently, a geometric index always shows a smaller increase in prices over time (or a larger decrease) than the corresponding arithmetic index.\footnote{The difference between an arithmetic index and geometric index tends to be larger when price relatives are more dispersed, although this is not always the case. It is possible that the difference becomes larger when the variance between prices relatives becomes smaller---see Lord (2002).} This is an important downside to having a menu of index numbers to choose from, as the choice of index-number formula has an impact on the resulting measure of inflation.\footnote{The same reasoning can be used to show that a harmonic price index is always smaller than the corresponding geometric index---see Bullen (2003, II 2.1 Corollary 2).}
 
 \hypertarget{the-fisher-index}{%
 \subsection{The Fisher index}\label{the-fisher-index}}
@@ -699,17 +708,17 @@ The second example shows how to rebase a price index---simply divide the index s
 \begin{verbatim}
 ##    period value
 ## 1       0   100
-## 2       1   111
-## 3       2   113
-## 4       3   125
-## 5       4   122
-## 6       5   103
-## 7       6    90
-## 8       7   109
-## 9       8   106
-## 10      9   118
-## 11     10   130
-## 12     11    91
+## 2       1   119
+## 3       2   105
+## 4       3    91
+## 5       4   104
+## 6       5   112
+## 7       6   127
+## 8       7   126
+## 9       8   129
+## 10      9   110
+## 11     10   116
+## 12     11   117
 \end{verbatim}
 
 \begin{Shaded}
@@ -720,19 +729,19 @@ The second example shows how to rebase a price index---simply divide the index s
 \end{Shaded}
 
 \begin{verbatim}
-##    period    value
-## 1       0 111.1111
-## 2       1 123.3333
-## 3       2 125.5556
-## 4       3 138.8889
-## 5       4 135.5556
-## 6       5 114.4444
-## 7       6 100.0000
-## 8       7 121.1111
-## 9       8 117.7778
-## 10      9 131.1111
-## 11     10 144.4444
-## 12     11 101.1111
+##    period     value
+## 1       0  78.74016
+## 2       1  93.70079
+## 3       2  82.67717
+## 4       3  71.65354
+## 5       4  81.88976
+## 6       5  88.18898
+## 7       6 100.00000
+## 8       7  99.21260
+## 9       8 101.57480
+## 10      9  86.61417
+## 11     10  91.33858
+## 12     11  92.12598
 \end{verbatim}
 
 \hypertarget{assignment-1}{%
@@ -998,7 +1007,7 @@ There are three broad approaches for motivating the price-index formulas that ge
 
 Each of the three approaches can be thought of as answering a different question about how to construct a price index. The axiomatic approach attempts to answer the question ``How can information for a collection of prices and quantities be combined to satisfy certain properties?'' This is essentially a set theoretic approach for how to best construct an index number. By contrast, the economic approach attempts to answer the question ``What should a price index measure?'' The goal with the economic approach is to use the machinery of microeconomic theory to define a price index so as to measure the experience of a change in prices for consumers and producers. The stochastic approach is more pragmatic in its scope, and attempts to answer the question ``How can information on prices be used to best predict a change in price for a good or service?'' This is essentially a question about how to best inflate and deflate prices over time.
 
-This part of the course gives a practical introduction to each of the three approaches, focusing on how they can be used to motivate the way price indices are constructed in practice. Despite having a more practical focus, however, this material is still concerned with theory that can be quite technical. Rather than focusing on the technical details (of which there are many), this part of the course gives enough of a glimpse into the technical machinery to show what is going on, while providing the economic intuition and overarching ideas from the theory.
+This part of the course gives a practical introduction to each of the three approaches, focusing on how they can be used to motivate the way price indices are constructed in practice. Despite having a more practical focus, however, this material is still concerned with theory that can be quite technical. Rather than focusing on the technical details (of which there are many), this part of the course gives enough of a glimpse into the technical machinery to show what is going on, while providing the economic intuition and overarching ideas from the theory. Selvanathan and Rao (1994, chap. 2) gives an excellent overview of these approaches without too much technical apparatus.
 
 \hypertarget{the-axiomatic-approach}{%
 \section{The axiomatic approach}\label{the-axiomatic-approach}}
@@ -1007,7 +1016,7 @@ A price index combines information about prices and quantities at two points in 
 
 The ideal outcome from the axiomatic approach is a single, unique index-number formula that satisfies a minimal set of uncontroversial conditions that a price index ought satisfy. This would mean that there is only one index-number formula that should be used to make a price index. The reality, however, is that compromises must be made, and keeping certain conditions requires ignoring others. Consequently, a distinction is made between axioms---fundamental statements that any reasonable price index should satisfy---and tests, which are properties that are desirable but not as fundamental as axioms. A small set of key axioms are always maintained, whereas tests can be mutually inconsistent, and choices need to be made about which tests an index should satisfy depending on its purpose. Axioms can be seen as the first sieve to remove any unreasonable index-number formulas, with tests acting as a second sieve to further refine what is left over.
 
-This section of the course starts the journey into price index theory by giving a brief outline of the axiomatic approach to price index theory. This has been an area of considerable study, and consequently there is a lot of interesting material that is not covered in this course. The interested reader can consult either ILO et al. (2004aChapter 16) or ILO et al. (2004bChapter 16) for more detail, or Balk (2008).
+This section of the course starts the journey into price index theory by giving a brief outline of the axiomatic approach to price index theory. This has been an area of considerable study, and consequently there is a lot of interesting material that is not covered in this course. The interested reader can consult either ILO et al. (2004a, chap. 16) or ILO et al. (2004b, chap. 16) for more detail, or Balk (2008).
 
 📖 Balk (1995), skip section 4 and appendix.
 
@@ -1106,7 +1115,7 @@ It should be fairly safe to say that any sensible price index should satisfy the
 \hypertarget{counter-examples}{%
 \subsection{Counter examples}\label{counter-examples}}
 
-For the most part, it is difficult to write down a half-way decent price that does not satisfy the five axioms in the previous section. Pathological examples abound, but it is more interesting to look at reasonable cases where an index-number formula does not satisfy all the axioms.\footnote{Two interesting pathological cases have to do with failure of monotonicity for the geometric Laspeyres and Paasche indices. Although the geometric Laspeyres is always increasing in period-\(t\) prices, it can also increase in period-0 prices. Necessary for this is that \(p_{i1} / p_{i0} \geq \exp(1) I(p_{1}, p_{0}, q_{t}, q_{0}) \approx 2.72 I(p_{1}, p_{0}, q_{t}, q_{0})\) for at least one good \(i\), so that at least some goods experience a change in price that is considerably larger than the change in price for the other goods. Similarly, while the geometric Paasche is always decreasing in period-0 prices, it can also decrease in period-\(t\) prices. Necessary for this to be the case is that \(p_{i1} / p_{i0} \leq I(p_{1}, p_{0}, q_{t}, q_{0}) / \exp(1) \approx I(p_{1}, p_{0}, q_{t}, q_{0}) / 2.72\) for at least one good \(i\). See Balk (2008Section 3.12).} Two interesting examples of reasonable price indices that do not satisfy the five axioms are the Dutot index and the median-value index (i.e., the index that takes the median price relative).
+For the most part, it is difficult to write down a half-way decent price that does not satisfy the five axioms in the previous section. Pathological examples abound, but it is more interesting to look at reasonable cases where an index-number formula does not satisfy all the axioms.\footnote{Two interesting pathological cases have to do with failure of monotonicity for the geometric Laspeyres and Paasche indices. Although the geometric Laspeyres is always increasing in period-\(t\) prices, it can also increase in period-0 prices. Necessary for this is that \(p_{i1} / p_{i0} \geq \exp(1) I(p_{1}, p_{0}, q_{t}, q_{0}) \approx 2.72 I(p_{1}, p_{0}, q_{t}, q_{0})\) for at least one good \(i\), so that at least some goods experience a change in price that is considerably larger than the change in price for the other goods. Similarly, while the geometric Paasche is always decreasing in period-0 prices, it can also decrease in period-\(t\) prices. Necessary for this to be the case is that \(p_{i1} / p_{i0} \leq I(p_{1}, p_{0}, q_{t}, q_{0}) / \exp(1) \approx I(p_{1}, p_{0}, q_{t}, q_{0}) / 2.72\) for at least one good \(i\). See Balk (2008, sec. 3.12).} Two interesting examples of reasonable price indices that do not satisfy the five axioms are the Dutot index and the median-value index (i.e., the index that takes the median price relative).
 
 The Dutot index satisfies all axioms except dimensional invariance, whereas the mean-value index satisfies all axioms except monotonicity. To see why the Dutot index does not satisfy dimensional invariance, suppose there are only two goods (i.e., \(n = 2\)) with \(p_{1t} = 1\), \(p_{2t} = 2\), and \(p_{10} = p_{20} = 1\), and with
 \begin{align*}
@@ -1194,14 +1203,14 @@ I(p_{t}, p_{0}, q_{t}, q_{0}) = \frac{\sum_{i = 1}^{n} p_{it}q_{it}}{\sum_{i = 1
 
 These stark results help to motivate the use of these simple indices, and give some practical guidance for when to use them. A geometric index is useful when chaining an index is relatively more important than deflating aggregate values, whereas an arithmetic Laspeyres (or Paasche) index is useful when deflating aggregate values in a national accounting framework is relatively more important than using a chained calculation. This helps to explain why price indices produced by statistical agencies tend to use a geometric index for calculating elemental indices, and an arithmetic index for calculating higher-level indices. At the lowest level in an index's hierarchy, it is important to be able to calculate the elemental indices using period-over-period changes in price, but these indices don't tend to be used for deflating aggregate values. At higher levels of aggregation, there is a need to be able to deflate aggregate values, but no need for chaining period-over-period changes in price to calculate the index, as it is aggregated up from the elemental indices.
 
-It is worth remarking that the Fisher index usually comes out as the theoretical ideal in an axiomatic framework.\footnote{Or sometimes the Törnqvist or Walsh indices, depending on the particular axioms---see Balk and Diewert (2001) and Balk (2008Sections 3.6.4 and 3.6.5.).} This occurs because the product test is maintained without requiring consistency in aggregation, as well as imposing some other tests. Consequently, the Fisher index may be more appropriate if a price index is not calculated using a hierarchical structure. But it is important to note that this is not a foregone conclusion---one of the key results from the axiomatic approach is the ideal price index depends on its purpose, and there do not exist any universally applicable price indices.
+It is worth remarking that the Fisher index usually comes out as the theoretical ideal in an axiomatic framework.\footnote{Or sometimes the Törnqvist or Walsh indices, depending on the particular axioms---see Balk and Diewert (2001) and Balk (2008, sec. 3.6.4 and 3.6.5.).} This occurs because the product test is maintained without requiring consistency in aggregation, as well as imposing some other tests. Consequently, the Fisher index may be more appropriate if a price index is not calculated using a hierarchical structure. But it is important to note that this is not a foregone conclusion---one of the key results from the axiomatic approach is the ideal price index depends on its purpose, and there do not exist any universally applicable price indices.
 
 \hypertarget{the-economic-approach}{%
 \section{The economic approach}\label{the-economic-approach}}
 
 The axiomatic approach to constructing a price index revolves around finding a way to combine information on prices and quantities in order to satisfy certain conditions. The focus is essentially set theoretic, and the goal is to define a relationship between prices over time that has the properties a price index ought to have. Except for perhaps the product test, there is no economic content to the axiomatic approach---it is a purely mathematical exercise. The economic approach, by contrast, seeks to examine the underlying economic phenomenon that a price index should measure, using the microeconomic theory of a representative, competitive firm (for a producer price index) or a representative consumer (for a consumer price index). Exactly how price information should be combined to measure a change in prices over time is completely determined by the economic concept to be measured.
 
-Although the economic approach offers a parsimonious way to construct a price index, the validity of this approach relies on making strong assumptions about firm/consumer behavior and market conditions. The most important---and perhaps strongest---assumption is that there is a single, representative firm or consumer in the market with no market power (i.e., takes market prices as given). Having a representative firm is not a restrictive assumption if the market is competitive, but competitive behavior is indispensable (ILO et al. 2004b, Chapter 18).\footnote{The firm is also assumed to make choices to maximize profitability. Although not a controversial assumption, this need not be the only motivation for the firm---see Martin (2019).} This is problematic as most markets are characterized by some degree of imperfect competition, causing the theory to fall apart. Conversely, having a consumer take prices as given is a standard assumption, but having a representative consumer is difficult to justify, and cannot be easily relaxed (Pollak 1980; Kirman 1992).\footnote{The representative consumer is assumed to choose consumption to maximize utility. Although a standard assumption, it is becoming less accepted over time as behavioral considerations are becoming part of microeconomic theory.} Consequently, the economic approach is best seen as a consistent way to conceptualize a price index, rather than a recipe for finding an economically-superior price index, and is the least applicable of the three approaches.
+Although the economic approach offers a parsimonious way to construct a price index, the validity of this approach relies on making strong assumptions about firm/consumer behavior and market conditions. The most important---and perhaps strongest---assumption is that there is a single, representative firm or consumer in the market with no market power (i.e., takes market prices as given). Having a representative firm is not a restrictive assumption if the market is competitive, but competitive behavior is indispensable (ILO et al. 2004b, chap. 18).\footnote{The firm is also assumed to make choices to maximize profitability. Although not a controversial assumption, this need not be the only motivation for the firm---see Martin (2019).} This is problematic as most markets are characterized by some degree of imperfect competition, causing the theory to fall apart. Conversely, having a consumer take prices as given is a standard assumption, but having a representative consumer is difficult to justify, and cannot be easily relaxed (Pollak 1980; Kirman 1992).\footnote{The representative consumer is assumed to choose consumption to maximize utility. Although a standard assumption, it is becoming less accepted over time as behavioral considerations are becoming part of microeconomic theory.} Consequently, the economic approach is best seen as a consistent way to conceptualize a price index, rather than a recipe for finding an economically-superior price index, and is the least applicable of the three approaches.
 
 This section of the course gives a brief introduction to the economic approach. As with the axiomatic approach, the focus is on motivating index-number formulas used in practice, and there is a good deal of interesting material that is not covered. Unlike the axiomatic approach, different types of indices require separate analysis because they're measuring different economic phenomena.
 
@@ -1306,7 +1315,7 @@ I{^C} &= \exp(\log(e(p_{t}, y_{0})) - \log(e(p_{0}, y_{0}))) \\
 \end{align*}
 where \(\omega_{i0} = p_{i0} q_{i0} / \sum_{j = 1}^{n} p_{j0} q_{j0}\) is the period-0 expenditure weight for good \(i\). As a geometric index is always smaller than its corresponding arithmetic index, and the Laspeyres index is too large relative to the input-price index (i.e., the approximation error is always positive due to substitution bias), the geometric Laspeyres index will give a better approximation to the input-price index than the Laspeyres index whenever the approximation error for the geometric index is positive.
 
-In many cases the Fisher or Törnqvist index offers an even better approximation to an input-price index than the Laspeyres or geometric Laspeyres index. The argument for why these indices can be a better approximation are more complex---see ILO et al. (2004aChapter 17) and ILO et al. (2004bChapter 17) for details. The cost for this better approximation, however, is the need for more information about period \(t\) quantities, which may or may not be available at the time when the index is actually calculated.\footnote{In certain cases these approximations are exact. A Laspeyres index will be a true input-price index if the firm has a Leontief production function; a Fisher index will also be exact in this case. Similarly, a geometric Laspeyres will be a true input-price index if the firm has a Cobb-Douglas production functions; a Törnqvist index will also be exact in this case. The Lloyd-Moulton price index is an interesting case as it is exact whenever the firm has a constant elasticity of substitution production function, but it only requires period-0 quantity information.}
+In many cases the Fisher or Törnqvist index offers an even better approximation to an input-price index than the Laspeyres or geometric Laspeyres index. The argument for why these indices can be a better approximation are more complex---see ILO et al. (2004a, chap. 17) and ILO et al. (2004b, chap. 17) for details. The cost for this better approximation, however, is the need for more information about period \(t\) quantities, which may or may not be available at the time when the index is actually calculated.\footnote{In certain cases these approximations are exact. A Laspeyres index will be a true input-price index if the firm has a Leontief production function; a Fisher index will also be exact in this case. Similarly, a geometric Laspeyres will be a true input-price index if the firm has a Cobb-Douglas production functions; a Törnqvist index will also be exact in this case. The Lloyd-Moulton price index is an interesting case as it is exact whenever the firm has a constant elasticity of substitution production function, but it only requires period-0 quantity information.}
 
 \hypertarget{the-stochastic-approach}{%
 \section{The stochastic approach}\label{the-stochastic-approach}}
@@ -1324,11 +1333,11 @@ This section of the course concludes the journey into price index theory by givi
 
 The starting point for the stochastic approach is a distribution of \(n\) price relatives between period 0 and period \(t\), with the price relative for good \(i\) given by \(p_{it} / p_{i0}\), for the population (universe) of all \(n\) goods and services to be measured by the price index. Associated with each good \(i\) is the probability \(P_{i}\) of observing this good transacted over both periods in the population of goods measured by the index, and this in turn gives a measure of frequency for observing different values for changes in price over time. Put differently, a price relative \(p_{t} / p_{0}\) is treated as a random variable in the stochastic approach, the distribution of which depends on the underlying distribution of goods and services that form the scope of the price index.\footnote{There is a tendency to think of this distribution as being Gaussian, but doing so means that some goods and services have negative prices. In most cases price relatives cannot be distributed Gaussian.}
 
-Given a distribution of price relatives, the best predictor of a change in price between period 0 and period \(t\) is the value \(I^{A}\) that minimizes the expected prediction error. Formally, the best predictor solves the following problem\footnote{This is a prediction problem using a quadratic loss function, to ensure that the prediction error is always positive, and to formalize the idea that a large misprediction is more costly than many small mispredictions. Different loss functions usually give different optimal predictors; for example, the absolute loss function returns the median as the best predictor, which finds applications for housing price indices. If price relatives are symmetrically distributed, then all symmetric, convex loss functions give the same price index (Lehmann and Casella 1998, Chapter 1 Corollary 7.19).}
+Given a distribution of price relatives, the best predictor of a change in price between period 0 and period \(t\) is the value \(I^{A}\) that minimizes the expected prediction error. Formally, the best predictor solves the following problem\footnote{This is a prediction problem using a quadratic loss function, to ensure that the prediction error is always positive, and to formalize the idea that a large misprediction is more costly than many small mispredictions. Different loss functions usually give different optimal predictors; for example, the absolute loss function returns the median as the best predictor, which finds applications for housing price indices. If price relatives are symmetrically distributed, then all symmetric, convex loss functions give the same price index (Lehmann and Casella 1998, chap. 1 Corollary 7.19).}
 \begin{align*}
 \min_{I} E\left[\left(\frac{p_{t}}{p_{0}} - I \right)^{2}\right],
 \end{align*}
-where \(E\) is the expected value operator, taken over the distribution of price relative. As is well known, the solution to this problem is to set \(I^{A} = E(p_{t} / p_{0})\) (Lehmann and Casella 1998, Chapter 1 Example 7.17); that is, the best predictor of a change in price between two periods is the expected change in price. While it may seem unusual to express a price index in terms of an expected value, this simply emphasizes that a price index is rightfully a feature of the distribution of prices in the population. This is a key feature of the stochastic approach, and is what allows for a meaningful analysis of the statistical properties of a price index when calculated with a sample of price data from the population.
+where \(E\) is the expected value operator, taken over the distribution of price relative. As is well known, the solution to this problem is to set \(I^{A} = E(p_{t} / p_{0})\) (Lehmann and Casella 1998, chap. 1 Example 7.17); that is, the best predictor of a change in price between two periods is the expected change in price. While it may seem unusual to express a price index in terms of an expected value, this simply emphasizes that a price index is rightfully a feature of the distribution of prices in the population. This is a key feature of the stochastic approach, and is what allows for a meaningful analysis of the statistical properties of a price index when calculated with a sample of price data from the population.
 
 The figure gives an example of what the prediction problem looks like. Given a distribution of price relatives (solid line), there is an associated expected prediction error with each value that a price index can take (dashed line). The best choice for a price index as a predictive tool is the value that minimizes the expected prediction error (dotted line).
 
@@ -1338,7 +1347,7 @@ As the expected value is just a weighted average, the index \(I^{A} = E(p_{t} / 
 \begin{align*}
 I^{A} = \sum_{i = 1}^{n} \frac{p_{it}}{p_{i0}} P_{i}.
 \end{align*}
-Different arithmetic price-index formulas---e.g., Laspeyres, Paasche, Lowe---thus correspond to different statements about what determines the probability of observing a transaction. For example, with a Laspeyres index the probabilities are given by period-0 expenditure or revenue shares. This amounts to a statement that the probability of observing a transaction for a good is the likelihood of spending or receiving a dollar on that good in period 0.
+Different arithmetic price-index formulas---e.g., Laspeyres, Paasche, Lowe---thus correspond to different statements about what determines the probability of observing a transaction. For example, with a Laspeyres index the probabilities are given by period-0 expenditure or revenue shares. This amounts to a statement that the probability of observing a transaction for a good is the likelihood of spending or receiving a dollar on that good in period 0.\footnote{Selvanathan and Rao (1994, chap. 3) give an alternate interpretation: different index-number formulas come from different statements about the variance structure of price relatives and the use of inverse-variance weights to produce efficient estimators of inflation.}
 
 \hypertarget{geometric-price-indices-as-a-best-predictor}{%
 \subsection{Geometric price indices as a best predictor}\label{geometric-price-indices-as-a-best-predictor}}
@@ -1352,7 +1361,7 @@ the solution to which is \(I^{G} = \exp(E[\log(p_{t} / p_{0})])\). But this is j
 \exp\left(E\left[\log\left(\frac{p_{t}}{p_{0}}\right)\right]\right) &= \exp\left(\sum_{i = 1}^{n} P_{i} \log\left(\frac{p_{it}}{p_{i0}}\right)\right) \\
 &= \prod_{i = 1}^{n} \left(\frac{p_{it}}{p_{i0}}\right)^{P_{i}},
 \end{align*}
-with weights equal to the probability of observing a price relative. It is worth noting that, due to the logarithms in the prediction problem, a geometric index can equally be motivated as finding a value \(I^{G}\) such that \(I^{G} \times p_{i0}\) best predicts \(p_{it}\) (or \(p_{it} / I^{G}\) best predicts \(p_{i0}\)). This is a property not shared with arithmetic indices. Whereas an arithmetic index predicts price changes over time, a geometric index takes the price for a good in period 0, inflates/deflates it with the price index, and uses the result to predict the price for that good in period \(t\). Consequently, a geometric index fits more neatly into the stochastic approach as it directly corresponds with how a price index is used to inflate and deflate prices over time in practice.\footnote{Motivating a price index as solving the problem \(\min_{I} E[(p_{t} - p_{0} I)^{2}]\) results in \(I = E(p_{t} p_{0}) / E(p_{0}^{2})\), which is a rather unusual price index.}
+with weights equal to the probability of observing a price relative. It is worth noting that, due to the logarithms in the prediction problem, a geometric index can equally be motivated as finding a value \(I^{G}\) such that \(I^{G} \times p_{i0}\) best predicts \(p_{it}\) (or \(p_{it} / I^{G}\) best predicts \(p_{i0}\)). This is a property not shared with arithmetic indices. Whereas an arithmetic index predicts price changes over time, a geometric index takes the price for a good in period 0, inflates/deflates it with the price index, and uses the result to predict the price for that good in period \(t\). Consequently, a geometric index fits more neatly into the stochastic approach as it directly corresponds with how a price index is used to inflate and deflate prices over time in practice.\footnote{Motivating a price index as solving the problem \(\min_{I} E[(p_{t} - p_{0} I)^{2}]\) results in \(I = E(p_{t} p_{0}) / E(p_{0}^{2})\). If \(P_{i}\) is proportional to \(q_{it} / p_{i0}\) then this reduces to a fixed-basket index, emphasizing that the representation of the prediction problem for an index number also depends on what determines the probability of observing a transaction.}
 
 The Törnqvist index usually comes out as the best index in the stochastic approach because it picks a sensible value to represent the probability of observing a price relative. The idea behind the Törnqvist probabilities is that the likelihood of observing a particular price relative for a good depends on the expenditure/revenue share of that good across both periods. Thus, the Törnqvist index sets the probabilities as average expenditure shares:
 \begin{align*}
@@ -1384,11 +1393,11 @@ An interesting point about these more general types of price indices is that, fo
 \hypertarget{statistical-inference}{%
 \subsection{Statistical inference}\label{statistical-inference}}
 
-In practice the entire distribution of price relatives is usually not known, and an index is calculated using a sample of prices collected from producers or retailers. This means that the index values are calculated with an estimator for either \(I^{A}\) or \(I^{G}\), depending on whether an arithmetic or geometric index is the target index. Although the topics of sampling and statistical inference get complicated fast, and are beyond the scope of this course, it is worth examining how the arithmetic and geometric indices behave when calculated with a random sample of price data.\footnote{See Balk (2008Chapter 5) for an introduction to sampling and statistical inference for price indices.} One of the benefits of the stochastic approach is that it gives insight into the problem of estimating a price index with a sample.
+In practice the entire distribution of price relatives is usually not known, and an index is calculated using a sample of prices collected from producers or retailers. This means that the index values are calculated with an estimator for either \(I^{A}\) or \(I^{G}\), depending on whether an arithmetic or geometric index is the target index. Although the topics of sampling and statistical inference get complicated fast, and are beyond the scope of this course, it is worth examining how the arithmetic and geometric indices behave when calculated with a random sample of price data.\footnote{See Balk (2008, chap. 5) and Selvanathan and Rao (1994, chap. 3) for an introduction to sampling and statistical inference for price indices.} One of the benefits of the stochastic approach is that it gives insight into the problem of estimating a price index with a sample.
 
 With random sampling, a natural approach for estimating the arithmetic index is to replace the expected value---a population average---with the sample average. This gives a method-of-moments estimator \(\hat{I}^A = 1 / n_{s} \sum_{i = 1}^{n_{s}} p_{it} / p_{i0}\), where \(n_{s}\) is the sample size, which is just a Carli index. If price relatives are sampled at random, then is it easy to see that \(E(\hat{I}^{A}) = I^{A}\), so the Carli index is an unbiased estimator for the arithmetic index.
 
-A natural estimator for the geometric index is \(\hat{I}^{G} = \prod_{i = 1}^{n_{s}} (p_{it} / p_{i0})^{1 / n_{s}}\), the Jevons index. Unlike the Carli index, however, the Jevons index is a biased estimator of the geometric index. It is again straightforward to show that \(E(\hat{I}^{G}) \geq I^{G}\), with \(E(\hat{I}^{G}) = I^{G}\) only holding in very special circumstances---the Jevons index systematically overestimates the geometric index (i.e., it is biased upwards).\footnote{The Jevons index is not biased in cases where the sampling distribution is degenerate, or the variance in price relatives is zero. See Lehmann and Casella (1998Chapter 1 Theorem 7.5).} Although biasedness is a disadvantage of the Jevons index, the bias is not the only important statistical property of an estimator, and the Jevons index has other desirable statistical properties (e.g., it is a consistent estimator of the geometric index, and in certain circumstances achieves the maximum likelihood efficiency bound).\footnote{The Carli index is also a consistent estimator of the arithmetic index under random sampling, but it cannot be a maximum likelihood estimator as this would require price relatives to have a Gaussian distribution, which means that price relatives can be negative. By contrast, the Jevons index is a maximum likelihood estimator for the geometric index if price relatives have a log-normal distribution, which implies that prices are always positive.} It is possible to adjust for the upwards bias in the Jevons by dividing the Jevons index by \(1 + \sigma^{2}/(2n)\), where \(\sigma^{2}\) is the variance of the log price relatives (Kennedy 2003, 41), but this is not usually done in practice.
+A natural estimator for the geometric index is \(\hat{I}^{G} = \prod_{i = 1}^{n_{s}} (p_{it} / p_{i0})^{1 / n_{s}}\), the Jevons index. Unlike the Carli index, however, the Jevons index is a biased estimator of the geometric index. It is again straightforward to show that \(E(\hat{I}^{G}) \geq I^{G}\), with \(E(\hat{I}^{G}) = I^{G}\) only holding in very special circumstances---the Jevons index systematically overestimates the geometric index (i.e., it is biased upwards).\footnote{The Jevons index is not biased in cases where the sampling distribution is degenerate, or the variance in price relatives is zero. See Lehmann and Casella (1998, chap. 1 Theorem 7.5).} Although biasedness is a disadvantage of the Jevons index, the bias is not the only important statistical property of an estimator, and the Jevons index has other desirable statistical properties (e.g., it is a consistent estimator of the geometric index, and in certain circumstances achieves the maximum likelihood efficiency bound).\footnote{The Carli index is also a consistent estimator of the arithmetic index under random sampling, but it cannot be a maximum likelihood estimator as this would require price relatives to have a Gaussian distribution, which means that price relatives can be negative. By contrast, the Jevons index is a maximum likelihood estimator for the geometric index if price relatives have a log-normal distribution, which implies that prices are always positive.} It is possible to adjust for the upwards bias in the Jevons by dividing the Jevons index by \(1 + \sigma^{2}/(2n)\), where \(\sigma^{2}\) is the variance of the log price relatives (Kennedy 2003, 41), but this is not usually done in practice.
 
 \hypertarget{assignment-2}{%
 \section{Assignment 2}\label{assignment-2}}
@@ -1655,7 +1664,7 @@ There are a number of techniques available to combat quality differences creepin
 
 One interesting feature of these different methods---matched model, stratification, and hedonics---is that they really aren't that different. Each relies on the same key assumption to produce a constant-quality index; what differs between the methods is simply how they go about implementing this assumption. This point is fundamental in order to understand how these different approaches can deliver a constant-quality index, and how they relate to each other.
 
-In the interest of simplicity, this course focuses on geometric price indices. The concepts for a geometric index are directly applicable to arithmetic indices, although there are some extra details to worry about in the arithmetic case.\footnote{See Lee (2016Chapter 1) and Manski (2007Chapter 7) for some of the details.} In most applications quality adjustments are done using a geometric index-number formula. Throughout this course, attention is focused on building a constant-quality index when the entire population of transactions for goods and services is known. This is almost never the case in practice, but it makes the exposition easier by ignoring issues associated with sampling and statistical inference. It also emphasizes that building a constant-quality index is fundamentally a population-level problem, and not an issue of sampling. Once a constant-quality index is defined in the population, it is simple to estimate it with a sample of transactions by replacing the population-level quantities with their sample counterparts---see Manski (1988).
+In the interest of simplicity, this course focuses on geometric price indices. The concepts for a geometric index are directly applicable to arithmetic indices, although there are some extra details to worry about in the arithmetic case.\footnote{See Lee (2016, chap. 1) and Manski (2007, chap. 7) for some of the details.} In most applications quality adjustments are done using a geometric index-number formula. Throughout this course, attention is focused on building a constant-quality index when the entire population of transactions for goods and services is known. This is almost never the case in practice, but it makes the exposition easier by ignoring issues associated with sampling and statistical inference. It also emphasizes that building a constant-quality index is fundamentally a population-level problem, and not an issue of sampling. Once a constant-quality index is defined in the population, it is simple to estimate it with a sample of transactions by replacing the population-level quantities with their sample counterparts---see Manski (1988).
 
 \hypertarget{potential-prices}{%
 \section{Potential prices}\label{potential-prices}}
@@ -1664,7 +1673,7 @@ Formalizing a constant-quality index requires extending the stochastic approach 
 
 The concept of a potential price is extremely useful. In the standard price-index model, only prices and quantities can change over time. With potential prices, however, the composition of what sells over time can also change. This generalization makes it possible to define a price index when not only price and quantities change over time, but also what sells changes over time.
 
-A potential price is a particular type of potential outcome that forms the basis of the Rubin Causal Model, a workhorse model for making causal inference in the program evaluation literature. The Rubin Causal Model revolves around the narrative of an experiment, where one group of individuals is given a treatment, with the other group serving as a controlled benchmark. The goal of the experiment is to get a measure of the causal impact of treatment. In the context of a price index, a constant-quality index is the causal effect of time on prices, and it is useful to keep the narrative of an experiment in mind. Manski (2007Chapter 7), Angrist and Pischke (2009Chapters 2--4), and Wooldridge (2010Chapter 21) each provide an excellent presentation of the potential outcomes framework. Lee (2016) gives a book-length treatment.
+A potential price is a particular type of potential outcome that forms the basis of the Rubin Causal Model, a workhorse model for making causal inference in the program evaluation literature. The Rubin Causal Model revolves around the narrative of an experiment, where one group of individuals is given a treatment, with the other group serving as a controlled benchmark. The goal of the experiment is to get a measure of the causal impact of treatment. In the context of a price index, a constant-quality index is the causal effect of time on prices, and it is useful to keep the narrative of an experiment in mind. Manski (2007, chap. 7), Angrist and Pischke (2009, chaps. 2--4), and Wooldridge (2010, chap. 21) each provide an excellent presentation of the potential outcomes framework. Lee (2016) gives a book-length treatment.
 
 To operationalize the concept of a potential price in the stochastic framework, suppose there are \(n\) unique goods that can sell in either period \(t = 0\) or period \(t = 1\). Let \(p_{i}(1)\) be the price of good \(i\) if it were to sell in period 1, and let \(p_{i}(0)\) be the price of good \(i\) if it were to sell in period 0, irrespective of when the good actually sells. If good \(i\) actually sells in period 1, then the price \(p_{i}(1)\) is the observed transaction price---it can be observed when the good sells in period 1---whereas \(p_{i}(0)\) is counter-factual, and hence unobservable. Similarly, if good \(i\) sells in period 0, then \(p_{i}(0)\) is the transaction price, with \(p_{i}(1)\) counter-factual. Thus for every transaction price there is also a counter-factual price, and this allows a price relative \(p_{i}(1) / p_{i}(0)\) to be constructed despite a good not selling in both periods.
 
@@ -1881,7 +1890,7 @@ One motivation for hedonics is to specify a model for prices to extrapolate acro
 \end{align*}
 Every geometric hedonic index has this form, and can be thought of as using the model \(h\) to construct modeled price relatives that compare goods with the same characteristics over time, and then aggregating these with a geometric index.
 
-It is worth noting that the hedonic model is usually given a structural interpretation (ILO et al. 2013, Chapter 5), so that it captures the structural contribution of each characteristic towards price. This is indeed where the name hedonics comes from. The problem with giving the hedonic model \(h\) a structural interpretation is that it requires a tremendous amount of prior knowledge, essentially understanding how the individual characteristics of a product determine its price. This is entirely unnecessary, however, once an assumption of conditional independence is made---the hedonic model is simply a model for how average transaction prices relate to characteristics and time. Consequently, the label ``hedonics'' is not very useful, and is potentially misleading. In the interest of keeping with the broader literature, however, the label will be maintained. What's important to keep in mind is that the hedonic model is simply a model for how average transaction price relates to the characteristics of a good and when it sells.
+It is worth noting that the hedonic model is usually given a structural interpretation (ILO et al. 2013, chap. 5), so that it captures the structural contribution of each characteristic towards price. This is indeed where the name hedonics comes from. The problem with giving the hedonic model \(h\) a structural interpretation is that it requires a tremendous amount of prior knowledge, essentially understanding how the individual characteristics of a product determine its price. This is entirely unnecessary, however, once an assumption of conditional independence is made---the hedonic model is simply a model for how average transaction prices relate to characteristics and time. Consequently, the label ``hedonics'' is not very useful, and is potentially misleading. In the interest of keeping with the broader literature, however, the label will be maintained. What's important to keep in mind is that the hedonic model is simply a model for how average transaction price relates to the characteristics of a good and when it sells.
 
 📖 RPPI Handbook: Chapters 5--6.
 
@@ -1929,7 +1938,7 @@ The hedonic index in the previous section can be simplified to make calculating 
 E(\rho | X, t) = \alpha_{0} + t \log(I^{Q}) + X \beta.
 \end{align*}
 
-One interesting feature of the time-dummy index is that, like the general linear hedonic index, it is a type of stratified index when goods are partitioned by their observable characteristics. To see this, note that, with the assumption that \(\beta_{0} = \beta_{1} = \beta\), the hedonic model becomes \(h(X, t) = \alpha_{0} + t (\alpha_{1} - \alpha_{0}) + X\beta\). When goods are stratified according to \(X\), then \(h\) is saturated-in-\(X\) such that there is a unique \(\beta_x\) for each combination of \(x\) for \(X\)---each stratum gets its own parameter in the regression. In this case, the result in Angrist and Pischke (2009Section 3.3.1) applies, so that
+One interesting feature of the time-dummy index is that, like the general linear hedonic index, it is a type of stratified index when goods are partitioned by their observable characteristics. To see this, note that, with the assumption that \(\beta_{0} = \beta_{1} = \beta\), the hedonic model becomes \(h(X, t) = \alpha_{0} + t (\alpha_{1} - \alpha_{0}) + X\beta\). When goods are stratified according to \(X\), then \(h\) is saturated-in-\(X\) such that there is a unique \(\beta_x\) for each combination of \(x\) for \(X\)---each stratum gets its own parameter in the regression. In this case, the result in Angrist and Pischke (2009, sec. 3.3.1) applies, so that
 \begin{align*}
 \log(I^{Q}) = \sum_{x}[E(\rho | X = x, t = 1) - E(\rho | X = x, t = 0)] \omega_{x},
 \end{align*}
@@ -2349,22 +2358,20 @@ The goal of this module is to provide hands-on experience building and analyzing
 
 This module is useful for compilers of price indices with a basic understanding of the theory and construction of a price index, and who would like to put the theory into practice and gain a deeper understanding of R.
 
-This module consists of a large assignment that has learners build and analyze a price index in R over a week. The pace of the module is self-directed, but an entire week should be devoted for this work. All data for this assignment were randomly generated.
+This module consists of a large assignment that has learners build and analyze a price index in R over a week. The pace of the module is self-directed, but 15 to 20 hours should be devoted for this work. All data for this assignment were randomly generated.
 
 Prerequisites: Introduction to Price Indices, and a basic understanding of R. Price Index Theory and Constant-Quality Price Indices, along with an intermediate understanding of R, are helpful.
 
-Evaluation for this module is based on a single assignment that draws on learners' prior knowledge of price-index theory. The assignment consists of 4 questions (plus a bonus question). Collaboration on the assignment is encouraged, but each person must submit their own unique work. Answers to the assignment, along with working code for each question (excluding the bonus question) is worth 15\%. The instructor must be able to understand and run your code; see \href{scripts/example.R}{example.R} for an example. Each correctly answered question is worth an additional 10\%. Correctly answering the bonus question is worth 20\%. Passing this module requires a grade of 60\% or more.
+Evaluation for this module is based on a single assignment that draws on learners' prior knowledge of price-index theory. The assignment consists of 4 questions. Collaboration on the assignment is encouraged, but each person must submit their own unique work. Answers to the assignment, along with working code for each question is worth 20\%. The instructor must be able to understand and run your code. Each correctly answered question is worth an additional 20\%. Passing this module requires a grade of 60\% or more.
 
 Please email one of the course instructors (either \href{mailto:steve.martin5@canada.ca}{Steve Martin} or \href{mailto:shaoxiong.wang@canada.ca}{Shaoxiong Wang} or \href{mailto:anastasiia.nosach@canada.ca}{Anastasiia Nosach}) if you have any questions, or need help with any of the course material or assignment.
 
 \hypertarget{assignment-4}{%
 \section{Assignment 4}\label{assignment-4}}
 
-Widgets are a heavily regulated product in each of the 10 provinces, and the federal government restricts the movements of widgets between provinces. Recently, in response to public outcry about the unaffordability of widgets, the Canadian Regulatory Economic Analysis group proposed that the federal government allow inter-provincial trade of widgets to improve market access and reduce prices. Before considering designing a new policy, however, the federal government would like to evaluate how prices for widgets have increased in recent years. A price index is needed for the provincial widget markets, and the country as a whole.
+Widgets are a heavily regulated product in each of the ten provinces, and the federal government restricts the movement of widgets between provinces. Recently, in response to public outcry about the unaffordability of widgets, the Canadian Regulatory Economic Analysis group proposed that the federal government allow inter-provincial trade of widgets to improve market access and reduce prices. Before considering designing a new policy, however, the federal government would like to evaluate how prices for widgets have increased in recent years. The federal government is also considering an intermediate policy to allow intra-regional trade of widgets (e.g., within Atlantic Canada), while prohibiting trade between regions (e.g., between Atlantic Canada and the Prairies). In order to assess the necessity of policy action, a price index is needed for the provincial widget markets, each region, and the country as a whole.
 
-The Canadian Regulatory Economic Analysis group produces a monthly Canada-wide price index for widgets (i.e., no provincial breakdown), although there is little information about their data sources or methodology. The private firm Monsterweb, a widget broker, also makes a Canada-wide price index for widgets. Given that the provincial widget markets are isolated from each other, a provincial price index is needed to evaluate how widget prices have changed over time, and whether there is a need for policy action from the government.
-
-Widgets come in a variety of types, and a survey was used to collect monthly price quotes for a selection of representative widgets of types ``A'' to ``J'' from January 2018 to December 2019. These data are stored in the Globular Prices System. These survey data are supplemented with publicly available data for type ``K'' widget transactions which could not be sampled over this period, as well as the value of widgets transacted in each province in 2018 and 2019. Note that type ``I'' widgets were a new product in 2019, and these type of widgets replaced type ``J'' widgets in the sample in 2019. Due to regional variation in widget sales, the same number of price quotes could not be collected for all types of widgets in all provinces.
+Widgets come in a variety of types, and a survey was used to collect monthly price quotes for a selection of representative widgets of types ``A'' to ``J'' from January 2018 to December 2019. These data are stored in the Globular Prices System. These survey data are supplemented with publicly available data for type ``K'' widget transactions which could not be sampled over this period, as well as the value of widgets transacted in each province in 2018 and 2019. Note that type ``I'' widgets were a new product in 2019, and these type of widgets replaced type ``J'' widgets in the sample in 2019. Due to provincial regulations, only two brands of type ``B'' widgets are sold in British Columbia.
 
 All of these data are summarized as follows.
 
@@ -2372,44 +2379,44 @@ All of these data are summarized as follows.
   >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.50}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.50}}@{}}
 \toprule
-File name & Data \\
+\begin{minipage}[b]{\linewidth}\raggedright
+File name
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Data
+\end{minipage} \\
 \midrule
 \endhead
-dat\_gps & Monthly price quotes for widget types ``A'' to ``J'' from January 2018 to December 2019 from the Globular Prices System. \\
-dat\_micro & Publicly available microdata for daily transactions of type ``K'' widgets from January 2018 to December 2019. \\
+gps\_prices & Monthly price quotes for widget types ``A'' to ``J'' from January 2018 to December 2019 from the Globular Prices System. \\
+micro\_prices & Publicly available microdata for daily transactions of type ``K'' widgets from January 2018 to December 2019. \\
 weights & Value of widget transaction (in thousands of dollars) in each province for 2018 and 2019. \\
-index\_crea & The Canadian Regulatory Economic Analysis group's price index. \\
-index\_mw & Monsterweb's price index. \\
 \bottomrule
 \end{longtable}
 
-Your goal is to build a monthly price index for widgets, from January 2018 to December 2019, for each of the 10 provinces and the country as a whole, and to validate this index with those produced by the Canadian Regulatory Economic Analysis group and Monsterweb. You'll need to use this index to answer the following questions.
+Your goal is to build a fixed-base monthly price index for widgets, from January 2018 to December 2019, with base period January 2018, for each of the ten provinces, each of the five regions, and the country as a whole. You will use this index to answer the following questions.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  Which province saw the largest increase in prices since the beginning of 2018? By how much did prices change?
+  Consult your monthly, fixed-based indices. Which province saw the largest increase in prices since the beginning of 2018? By how much did prices change? Which province saw the smallest increase in prices since the beginning of 2018? By how much did prices change?
 \item
-  Which province saw the smallest increase in prices since the beginning of 2018? By how much did prices change?
+  Convert you fixed-based index into a month-over-month index. What was the single largest month-over-month movement in prices at the provincial level? In which province and month did this occur? (Hint: You can use \texttt{piar}'s \texttt{unchain()} function to convert a fixed-base index into a month-over-month one.)
 \item
-  What was the largest month-over-month movement in prices? In which province and month did this occur?
+  Convert your monthly fixed-base index into a quarterly index, and rebase it to Q1 2019. Which region had the highest prices in Q4 2019 as compared to Q1 2019? What was the value of the quarterly index there in that quarter? Which region had the the lowest prices in Q1 2018 as compared to Q1 2019? What was the value of the quarterly index there in that quarter? (Hint: you can use \texttt{piar}'s \texttt{mean()} method to convert a monthly index to a quarterly one.)
 \item
-  Plot all three Canada-level indices on a graph. Which index shows the largest percent increase in national widget prices since quarter 1 2019?
-\item
-  (Bonus) Calculate coefficients of variation (CVs) for the provincial indices. Using the usual quality rules for disseminating data at Statistics Canada, which provincial indices would need to be disseminated with a warning (i.e., a CV greater than 33.3)?
+  For each Atlantic (10-13) and Prairie (46-48) province, calculate the variance of the month-over-month index. According to your results, which regional index indicates greater price volatility? Would you reach the same conclusion looking at the individual provincial indices? Explain the apparent discrepancy. (Hint: It may help to look at covariances, not just variances.)
 \end{enumerate}
 
-\hypertarget{methodology}{%
-\subsection{Methodology}\label{methodology}}
+\hypertarget{structure}{%
+\subsection{Structure}\label{structure}}
 
-Widgets are going to be stratified by province and widget type to produce elemental indices at the province-by-widget-type level. These elemental indices should be calculated with a Jevons index. The provincial and Canada-level indices are going to be arithmetic indices that aggregate the elemental indices using value-share weights. Weights for the arithmetic indices are going to be updated in 2019, with January 2019 as the link month. The aggregation structure is summarized in the graph below.
+Widgets are going to be stratified by province and widget type to produce elemental indices at the province-by-widget-type level. These elemental indices should be calculated with a Jevons index. The provincial, regional, and Canada-level indices are going to be arithmetic indices that aggregate the elemental indices using value-share weights. Weights for the arithmetic indices are going to be revised in 2019, with January 2019 as the link month. The aggregation structure is summarized in the graph below.
 
 \includegraphics{img/structure.png}
 
 \hypertarget{instructions}{%
 \subsection{Instructions}\label{instructions}}
 
-These instructions outline a simple way to build the price index for widgets, although feel free to use a different approach if it's easier. The goal is to understand the process, rather than design the most computationally efficient system.
+These instructions outline a simple way to build the price index for widgets, although feel free to use a different approach if it's easier. The goal is to understand the process, rather than design the most computationally efficient system. In order to ensure that simply following these instructions isn't a trivial exercise, parts of the code from the snippets below have been omitted and replaced with tags in angle brackets. Wherever you see \texttt{\textless{}action\textgreater{}}, you should insert the name of a function. You can think of functions as ``verbs'' that perform actions on your data. Wherever you see \texttt{\textless{}variable\textgreater{}}, you should insert the name of one of your data structures. You can think of variables as ``nouns'' that you manipulate with ``verbs,'' or functions. Finally, wherever you see \texttt{\textless{}parameter\textgreater{}}, you should insert additional arguments to be passed to a function. You can think of these arguments or parameters as ``adverbs'' that modify your functions, or ``verbs.'' In order to help you out, some lines of code have hints next to them marked with \texttt{\#\ **HINT**}.
 
 Run the following code to grab all the data files and put them in your working environment. Note that these data aren't perfect. It is worth remembering to check your intermediate calculations to make sure everything is as expected (e.g., with the \texttt{summary} function).
 
@@ -2419,175 +2426,129 @@ Run the following code to grab all the data files and put them in your working e
 \end{Highlighting}
 \end{Shaded}
 
-The \href{https://cran.r-project.org/package=dplyr}{dplyr}, \href{https://cran.r-project.org/package=tidyr}{tidyr}, \href{https://cran.r-project.org/package=gpindex}{gpindex}, and \href{https://github.com/ppd-dpp/calpr}{calpr} packages will be used in this module. Install them as follows if they aren't already installed. (Hint: it is worth going through the documentation in the \texttt{gpindex} and \texttt{calpr} packages.)
+The \href{https://cran.r-project.org/package=gpindex}{gpindex}, and \href{https://github.com/marberts/piar}{piar} packages will be used in this module. Install them as follows if they aren't already installed, and then load them. (Hint: it is worth going through the documentation in the \texttt{gpindex} and \texttt{piar} packages.)
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{install.packages}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"dplyr"}\NormalTok{, }\StringTok{"tidyr"}\NormalTok{, }\StringTok{"gpindex"}\NormalTok{, }\StringTok{"devtools"}\NormalTok{))}
-\NormalTok{devtools}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"ppd{-}dpp/calpr"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+\FunctionTok{install.packages}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"gpindex"}\NormalTok{, }\StringTok{"piar"}\NormalTok{))}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  \textbf{Make the weights}
-
-  Using the \texttt{weights} file, make one set of weights that give the value share of all products sold in each province in each year, and another that give the value share of each product sold within each province in each year. This first set of weights will be used to aggregate the province-level indices to a national index, and the second set of weights will be used to aggregate elemental indices to get 10 province-level indices. There should be 20 weights in the first file and 200 weights in the second file.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(dplyr)}
-\FunctionTok{library}\NormalTok{(tidyr)}
 \FunctionTok{library}\NormalTok{(gpindex)}
-\FunctionTok{library}\NormalTok{(calpr)}
-
-\CommentTok{\# Make provincial weights}
-\NormalTok{weights\_prov }\OtherTok{\textless{}{-}}\NormalTok{ weights }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{group\_by}\NormalTok{(year, province) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# group all sales values by reference year and province}
-  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{weight =} \FunctionTok{sum}\NormalTok{(weight)) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# value of all sales in each province in each year}
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{share\_prov =} \FunctionTok{weights\_scale}\NormalTok{(weight)) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# scale to sum to 1}
-  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{weight) }\CommentTok{\# drop the weight column as it won\textquotesingle{}t be needed again}
-
-\CommentTok{\# Make product weights}
-\NormalTok{weights\_prod }\OtherTok{\textless{}{-}}\NormalTok{ weights }\SpecialCharTok{\%\textgreater{}\%}
-  \CommentTok{\# your code here \%\textgreater{}\%}
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{share\_prod =} \FunctionTok{weights\_scale}\NormalTok{(weight)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{weight)}
+\FunctionTok{library}\NormalTok{(piar)}
 \end{Highlighting}
 \end{Shaded}
-\item
-  \textbf{Calculate the geomean for product K}
-
-  Using the microdata for product K in the \texttt{dat\_micro} file, calculate the geometric average of the prices in each province in each month in each reference year. This file should have 250 geomeans.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{dat\_micro }\OtherTok{\textless{}{-}}\NormalTok{ dat\_micro }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{period =} \FunctionTok{year\_month}\NormalTok{(period)) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# turn transaction dates into month{-}by{-}year dates}
-  \CommentTok{\# your code here \%\textgreater{}\%}
-  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{geomean =} \FunctionTok{mean\_geometric}\NormalTok{(price)) }\CommentTok{\# calculate the geometric avergage}
-\end{Highlighting}
-\end{Shaded}
-\item
-  \textbf{Calculate the geomean for products A to J}
-
-  Using the data from the Globular Prices System in \texttt{dat\_gps}, calculate the geometric average of the price quotes for each product in each province in each month in each reference year, for products A to J. Combine these data with the data prepared in step 2. The resulting file should have 2,500 geomeans.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{dat\_index }\OtherTok{\textless{}{-}}\NormalTok{ dat\_gps }\SpecialCharTok{\%\textgreater{}\%}
-  \CommentTok{\# your code here \%\textgreater{}\%}
-  \FunctionTok{gather}\NormalTok{(}\AttributeTok{key =} \StringTok{"quote"}\NormalTok{, }\AttributeTok{value =} \StringTok{"price"}\NormalTok{, price1}\SpecialCharTok{:}\NormalTok{price3) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# melt into a long dataset}
-  \FunctionTok{group\_by}\NormalTok{(province, product, year, period) }\SpecialCharTok{\%\textgreater{}\%}
-  \CommentTok{\# your code here \%\textgreater{}\%}
-  \FunctionTok{bind\_rows}\NormalTok{(dat\_micro) }\CommentTok{\# append to dat\_micro}
-\end{Highlighting}
-\end{Shaded}
-\item
-  \textbf{Calculate the period-over-period elemental indices}
-
-  For each product in each province in each reference year, calculate the ratio of the geometric averages computed in step 3, making sure to have a price relative of 1 in January 2018 and January 2019. (January 2019 will be the link month when it is time to chain the index.)
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{dat\_index }\OtherTok{\textless{}{-}}\NormalTok{ dat\_index }\SpecialCharTok{\%\textgreater{}\%}  
-  \CommentTok{\# your code here (hint: read the documentation for dplyr::lag)}
-\end{Highlighting}
-\end{Shaded}
-\item
-  \textbf{Price update the product weights}
-
-  Merge the product-by-province level weights from step 1 into the dataset created in step 4, and use the period-over-period elemental indices to price update the weights.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{dat\_index }\OtherTok{\textless{}{-}}\NormalTok{ dat\_index }\SpecialCharTok{\%\textgreater{}\%}  
-  \CommentTok{\# your code here \%\textgreater{}\%}
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{share\_prod\_u =} \FunctionTok{weights\_update}\NormalTok{(}\FunctionTok{cumprod}\NormalTok{(}\FunctionTok{lag}\NormalTok{(rel, }\AttributeTok{default =} \DecValTok{1}\NormalTok{)), share\_prod)) }\CommentTok{\# price update the weights}
-\end{Highlighting}
-\end{Shaded}
-\item
-  \textbf{Calculate the province-level index}
-
-  Calculate an arithmetic index for each province in each reference year, using the period-over-period elemental indices and the price updated weights from steps 4 and 5.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{index\_prov }\OtherTok{\textless{}{-}}\NormalTok{ dat\_index }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{group\_by}\NormalTok{(period, year, province) }\SpecialCharTok{\%\textgreater{}\%}
-  \CommentTok{\# your code here}
-\end{Highlighting}
-\end{Shaded}
-\item
-  \textbf{Calculate the Canada-level index}
-
-  Merge the province-level weights in step 1 with the provincial indices from step 6 to calculate a Canada-level index for each reference year.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{index }\OtherTok{\textless{}{-}}\NormalTok{ index\_prov }\SpecialCharTok{\%\textgreater{}\%}
-  \CommentTok{\# your code here}
-  \FunctionTok{group\_by}\NormalTok{(period, year) }\SpecialCharTok{\%\textgreater{}\%}
-  \CommentTok{\# your code here}
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{province =} \DecValTok{0}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# province 0 is the Canada{-}level}
-  \FunctionTok{bind\_rows}\NormalTok{(index\_prov)}
-\end{Highlighting}
-\end{Shaded}
-\item
-  \textbf{Chain the 2018 and 2019 indices}
-
-  Chain the 2018 and 2019 province-level and Canada-level indices together, using January 2019 as the link month, to get an index from January 2018 to December 2019 with January 2018 as the base period (usually the base period would be a calendar year, but there are only 24 months of data).
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{index\_chain }\OtherTok{\textless{}{-}}\NormalTok{ index }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{group\_by}\NormalTok{(province) }\SpecialCharTok{\%\textgreater{}\%}
-  \CommentTok{\# your code here}
-  \FunctionTok{group\_by}\NormalTok{(period, province) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{index =} \FunctionTok{unique}\NormalTok{(index)) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# remove the duplicate rows for the link month}
-  \FunctionTok{ungroup}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-\end{enumerate}
-
-The end result should be a file with 11 price indices, one for each province and a national index, from January 2018 to December 2019, with January 2018 as the base period (= 100).
-
-Validating the Canada-level index requires putting the Canadian Regulatory Economic Analysis group's index and Monsterweb's index into a common form.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{8}
+\tightlist
 \item
-  \textbf{Quarter the monthly indices}
+  \textbf{Calculate the period-over-period elemental indices for product K}
+\end{enumerate}
 
-  Turn the index you just made and the Canadian Regulatory Economic Analysis group's index in \texttt{index\_crea} into a quarterly index, with quarter 1 2019 as the base period, by taking the average of the three index values in each quarter.
+Using the microdata for product K in the \texttt{micro\_prices} file, calculate the geometric average of the prices in each province in each month in each reference year. Then, calculate the ratio of the geometric averages computed in step 3, making sure to have a price relative of 1 in January 2018 and January 2019. (January 2019 will be the link month when it is time to chain the index.)
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{my\_index }\OtherTok{\textless{}{-}}\NormalTok{ index\_chain }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{filter}\NormalTok{(province }\SpecialCharTok{==} \StringTok{\textquotesingle{}0\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# keep only the Canada{-}level index}
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{period =} \FunctionTok{year\_quarter}\NormalTok{(period)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{group\_by}\NormalTok{(period) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{index =} \FunctionTok{mean}\NormalTok{(index)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{index =}\NormalTok{ index}\SpecialCharTok{/}\NormalTok{index[period }\SpecialCharTok{==} \StringTok{\textquotesingle{}2019{-}01{-}01\textquotesingle{}}\NormalTok{] }\SpecialCharTok{*} \DecValTok{100}\NormalTok{) }\CommentTok{\# rebase to Jan 2019}
+\CommentTok{\#{-}{-}{-}{-} Product \textquotesingle{}K\textquotesingle{} index {-}{-}{-}{-}}
+\CommentTok{\# Turn period into a year{-}month and combine product and province into a }
+\CommentTok{\# factor for elemental aggregates}
+\NormalTok{micro\_prices }\OtherTok{\textless{}{-}} \FunctionTok{transform}\NormalTok{(micro\_prices, }
+                          \AttributeTok{period =} \FunctionTok{format}\NormalTok{(period, }\StringTok{"\%Y\%m"}\NormalTok{), }
+                          \AttributeTok{ea =} \FunctionTok{interaction}\NormalTok{(province, product, }\AttributeTok{sep =} \StringTok{""}\NormalTok{))}
 
-\NormalTok{index\_crea }\OtherTok{\textless{}{-}}\NormalTok{ index\_crea }\SpecialCharTok{\%\textgreater{}\%}
-  \CommentTok{\# your code here \%\textgreater{}\%}
-  \CommentTok{\# your code here \%\textgreater{}\%}
-  \CommentTok{\# your code here \%\textgreater{}\%}
-  \CommentTok{\# your code here \%\textgreater{}\%}
-  \CommentTok{\# your code here \%\textgreater{}\%}
+\CommentTok{\# Get a single price for each time period by taking the geomean}
+\CommentTok{\# **HINT** Take a look at the documentation for the aggregate methods }
+\CommentTok{\# in the stats package}
+\NormalTok{micro\_prices }\OtherTok{\textless{}{-}} \FunctionTok{aggregate}\NormalTok{(price }\SpecialCharTok{\textasciitilde{}} \ErrorTok{\textless{}}\NormalTok{variable}\SpecialCharTok{\textgreater{}} \SpecialCharTok{+} \ErrorTok{\textless{}}\NormalTok{variable}\SpecialCharTok{\textgreater{}} \SpecialCharTok{+} \ErrorTok{\textless{}}\NormalTok{variable}\SpecialCharTok{\textgreater{}}\NormalTok{,}
+\NormalTok{                          micro\_prices,}
+                          \SpecialCharTok{\textless{}}\NormalTok{action}\SpecialCharTok{\textgreater{}}\NormalTok{)}
 
-\NormalTok{index\_mw }\OtherTok{\textless{}{-}}\NormalTok{ index\_mw }\SpecialCharTok{\%\textgreater{}\%}
-  \CommentTok{\# your code here}
+\CommentTok{\# Calculate elemental indexes for product \textquotesingle{}K\textquotesingle{}}
+\CommentTok{\# **HINT** piar has a function for computing ratios of prices in consecutive months}
+\NormalTok{index\_k }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(}\FunctionTok{split}\NormalTok{(micro\_prices, micro\_prices}\SpecialCharTok{$}\NormalTok{basket), }
+                  \ControlFlowTok{function}\NormalTok{(df) \{}
+                    \FunctionTok{with}\NormalTok{(df, }\FunctionTok{elemental\_index}\NormalTok{(}\SpecialCharTok{\textless{}}\NormalTok{action}\SpecialCharTok{\textgreater{}}\NormalTok{(price, period, ea), period, ea))}
+\NormalTok{                  \})}
 \end{Highlighting}
 \end{Shaded}
-\item
-  \textbf{Append all three indices together}
 
-  Put the indices in step 9 together in one dataset with Monsterweb's index in \texttt{index\_mw}. They should all be quarterly with quarter 1 2019 as the base period (= 100).
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \textbf{Calculate the period-over-period elemental indices for products A through J, and merge them with them with the product K elemental indices}
 \end{enumerate}
+
+Using the data from the Globular Prices System in \texttt{gps\_prices}, calculate price relatives for each quote in each province in each month in each reference year and use them to compute elemental indices. Then, merge these indices with the product K indices so that they are all in the same tables. This should give you two tables of elemental indices for products A through K, one for each reference year.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#{-}{-}{-}{-} Product \textquotesingle{}A\textquotesingle{} to \textquotesingle{}J\textquotesingle{} indices {-}{-}{-}{-}}
+\CommentTok{\# Melt into a long format}
+\NormalTok{gps\_prices }\OtherTok{\textless{}{-}} \FunctionTok{reshape}\NormalTok{(gps\_prices, }
+                      \AttributeTok{direction =} \SpecialCharTok{\textless{}}\NormalTok{parameter}\SpecialCharTok{\textgreater{}}\NormalTok{, }
+                      \AttributeTok{varying =} \FunctionTok{paste0}\NormalTok{(}\StringTok{"price"}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{),}
+                      \AttributeTok{v.names =} \StringTok{"price"}\NormalTok{,}
+                      \AttributeTok{timevar =} \StringTok{"quote"}\NormalTok{,}
+                      \AttributeTok{idvar =} \FunctionTok{c}\NormalTok{(}\StringTok{"ea"}\NormalTok{, }\StringTok{"period"}\NormalTok{, }\StringTok{"basket"}\NormalTok{))}
+
+\CommentTok{\# Combine quote id and ea labels to make unique product labels}
+\NormalTok{gps\_prices}\SpecialCharTok{$}\NormalTok{product }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(gps\_prices}\SpecialCharTok{$}\NormalTok{ea, gps\_prices}\SpecialCharTok{$}\NormalTok{quote)}
+
+\CommentTok{\# Calculate elemental indexes for product \textquotesingle{}A\textquotesingle{} to \textquotesingle{}J\textquotesingle{}}
+\CommentTok{\# **HINT** What type of elemental indices have you been asked to compute? }
+\CommentTok{\# What type of mean does that imply? What is the corresponding order of the generalized mean?}
+\NormalTok{index\_aj }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(}\FunctionTok{split}\NormalTok{(gps\_prices, gps\_prices}\SpecialCharTok{$}\NormalTok{basket), }
+                  \ControlFlowTok{function}\NormalTok{(df) \{}
+                    \FunctionTok{with}\NormalTok{(df, }\FunctionTok{elemental\_index}\NormalTok{(}\SpecialCharTok{\textless{}}\NormalTok{action}\SpecialCharTok{\textgreater{}}\NormalTok{(price, period, product), }
+\NormalTok{                                             period, ea, }\AttributeTok{na.rm =} \SpecialCharTok{\textless{}}\NormalTok{parameter}\SpecialCharTok{\textgreater{}}\NormalTok{, }\AttributeTok{r =} \SpecialCharTok{\textless{}}\NormalTok{parameter}\SpecialCharTok{\textgreater{}}\NormalTok{))}
+\NormalTok{                  \})}
+
+\CommentTok{\#{-}{-}{-}{-} Merge elemental indices {-}{-}{-}{-}}
+\NormalTok{elementals }\OtherTok{\textless{}{-}} \FunctionTok{Map}\NormalTok{(merge, }\SpecialCharTok{\textless{}}\NormalTok{variable}\SpecialCharTok{\textgreater{}}\NormalTok{, }\SpecialCharTok{\textless{}}\NormalTok{variable}\SpecialCharTok{\textgreater{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \textbf{Build the aggregation structures}
+\end{enumerate}
+
+An aggregation structure tells R how to build up your price indices. It indicates how the elemental indices are aggregated to build provincial indices, how the provincial indices are aggregated build regional indices, and how the regional indices are aggregated to build the national index. It also indicates which weights are assigned to each elemental index in the aggregation. Create one aggregation structure for each year, for a total of two.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#{-}{-}{-}{-} Aggregation structure {-}{-}{-}{-}}
+\NormalTok{pias }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(}\FunctionTok{split}\NormalTok{(weights, weights}\SpecialCharTok{$}\NormalTok{year), }
+               \ControlFlowTok{function}\NormalTok{(df) \{}
+                 \SpecialCharTok{\textless{}}\NormalTok{action}\SpecialCharTok{\textgreater{}}\NormalTok{(df[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{], df}\SpecialCharTok{$}\NormalTok{weight)}
+\NormalTok{               \})}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  \textbf{Aggregate and chain the index}
+\end{enumerate}
+
+Take the elemental indices you calculated in Steps 1 and 2 and the aggregation structures you created in Step 3, and use them to calculate the aggregate indices for provinces, regions, and the entire country. (There is no need to manually price-update the aggregation weights for each month, as \texttt{piar}'s \texttt{aggregate} function will do this automatically.) You should now have a collection of month-over-month indices. Chain the 2018 and 2019 indices together, using January 2019 as the link month, to get an index from January 2018 to December 2019, with January 2018 as the base period.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#{-}{-}{-}{-} Aggregate, chain, and quarter {-}{-}{-}{-}}
+\NormalTok{index }\OtherTok{\textless{}{-}} \FunctionTok{Map}\NormalTok{(}\SpecialCharTok{\textless{}}\NormalTok{variable}\SpecialCharTok{\textgreater{}}\NormalTok{, }\SpecialCharTok{\textless{}}\NormalTok{variable}\SpecialCharTok{\textgreater{}}\NormalTok{, pias)}
+
+\CommentTok{\# **HINT** What do you have to remove from the 2019 index in order to chain it }
+\CommentTok{\# together with the 2018 index?}
+\NormalTok{index }\OtherTok{\textless{}{-}} \FunctionTok{chain}\NormalTok{(}\FunctionTok{stack}\NormalTok{(index[[}\StringTok{"2018"}\NormalTok{]][}\DecValTok{1}\SpecialCharTok{:}\DecValTok{16}\NormalTok{, ], index[[}\StringTok{"2019"}\NormalTok{]][}\DecValTok{1}\SpecialCharTok{:}\DecValTok{16}\NormalTok{, }\SpecialCharTok{\textless{}}\NormalTok{parameter}\SpecialCharTok{\textgreater{}}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{references}{%
 \section*{References}\label{references}}
@@ -2595,73 +2556,76 @@ Validating the Canada-level index requires putting the Canadian Regulatory Econo
 
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
-\leavevmode\hypertarget{ref-angrist2009}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-angrist2009}{}}%
 Angrist, J., and J-S. Pischke. 2009. \emph{Mostly Harmless Econometrics}. Princeton University Press.
 
-\leavevmode\hypertarget{ref-balk1995}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-balk1995}{}}%
 Balk, B. M. 1995. {``Axiomatic Price Index Theory: A Survey.''} \emph{International Statistical Review/Revue Internationale de Statistique} 63 (1): 69--93.
 
-\leavevmode\hypertarget{ref-balk2008}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-balk2008}{}}%
 ---------. 2008. \emph{Price and Quantity Index Numbers}. Cambridge University Press.
 
-\leavevmode\hypertarget{ref-balk2001}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-balk2001}{}}%
 Balk, B. M., and W. E. Diewert. 2001. {``A Characterization of the t{ö}rnqvist Price Index.''} \emph{Economics Letters} 72 (3): 279--81.
 
-\leavevmode\hypertarget{ref-bullen2003}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-bullen2003}{}}%
 Bullen, P. S. 2003. \emph{Handbook of Means and Their Inequalities}. Springer.
 
-\leavevmode\hypertarget{ref-hausman2003}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-hausman2003}{}}%
 Hausman, J. 2003. {``Sources of Bias and Solutions to Bias in the Consumer Price Index.''} \emph{Journal of Economic Perspectives} 17 (1): 23--44.
 
-\leavevmode\hypertarget{ref-cpimanual}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-cpimanual}{}}%
 ILO, IMF, OECD, Eurostat, UN, and World Bank. 2004a. \emph{Consumer Price Index Manual: Theory and Practice}. International Monetary Fund.
 
-\leavevmode\hypertarget{ref-ppimanual}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-ppimanual}{}}%
 ---------. 2004b. \emph{Producer Price Index Manual: Theory and Practice}. International Monetary Fund.
 
-\leavevmode\hypertarget{ref-rppihandbook}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-rppihandbook}{}}%
 ---------. 2013. \emph{Handbook on Residential Property Prices Indices ({RPPIs})}. Eurostat.
 
-\leavevmode\hypertarget{ref-kennedy2003}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-kennedy2003}{}}%
 Kennedy, P. 2003. \emph{A Guide to Econometrics}. 5th ed. MIT University Press.
 
-\leavevmode\hypertarget{ref-kirbymcgregor2019}{}%
-Kirby-McGregor, M., and S. Martin. 2019. {``An r Package for Calculating Repeat-Sale Price Indices.''} \emph{Romanian Statistical Review}, no. 3: 17--33.
+\leavevmode\vadjust pre{\hypertarget{ref-kirbymcgregor2019}{}}%
+Kirby-McGregor, M., and S. Martin. 2019. {``An {R} Package for Calculating Repeat-Sale Price Indices.''} \emph{Romanian Statistical Review}, no. 3: 17--33.
 
-\leavevmode\hypertarget{ref-kirman1992}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-kirman1992}{}}%
 Kirman, A. P. 1992. {``Whom or What Does the Representative Individual Represent?''} \emph{Journal of Economic Perspectives} 6 (2): 117--36.
 
-\leavevmode\hypertarget{ref-lee2016}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-lee2016}{}}%
 Lee, M-J. 2016. \emph{Matching, Regression Discontinuity, Difference in Differences, and Beyond}. Oxford University Press.
 
-\leavevmode\hypertarget{ref-lehmann1998}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-lehmann1998}{}}%
 Lehmann, E. L., and G. Casella. 1998. \emph{Theory of Point Estimation}. 2nd ed. Springer.
 
-\leavevmode\hypertarget{ref-lord2002}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-lord2002}{}}%
 Lord, N. 2002. {``Does Smaller Spread Always Mean Larger Product?''} \emph{The Mathematical Gazette} 86 (506): 273--74.
 
-\leavevmode\hypertarget{ref-manski1988}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-manski1988}{}}%
 Manski, C. F. 1988. \emph{Analog Estimation Methods in Econometrics}. Chapman Hall.
 
-\leavevmode\hypertarget{ref-manski2007}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-manski2007}{}}%
 ---------. 2007. \emph{Identification for Prediction and Decision}. Harvard University Press.
 
-\leavevmode\hypertarget{ref-martin2019}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-martin2019}{}}%
 Martin, S. 2019. {``Moral Management in Competitive Markets.''} \emph{Journal of Economics \& Management Strategy} 28 (3): 541--60.
 
-\leavevmode\hypertarget{ref-martin2020}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-martin2020}{}}%
 ---------. 2020. \emph{{gpindex}: Generalized Price and Quantity Indexes}. \url{https://CRAN.R-project.org/package=gpindex}.
 
-\leavevmode\hypertarget{ref-mcfadden1978}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-mcfadden1978}{}}%
 McFadden, D. 1978. {``Cost, Revenue, and Profit Functions.''} In \emph{Production Economics: A Dual Approach to Theory and Applications}, edited by M. Fuss and D. McFadden. North-Holland.
 
-\leavevmode\hypertarget{ref-pollak1980}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-pollak1980}{}}%
 Pollak, R. A. 1980. {``Group Cost-of-Living Indexes.''} \emph{The American Economic Review} 70 (2): 273--78.
 
-\leavevmode\hypertarget{ref-rosen1974}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-rosen1974}{}}%
 Rosen, S. 1974. {``Hedonic Prices and Implicit Markets: Product Differentiation in Pure Competition.''} \emph{Journal of Political Economy} 82 (1): 34--55.
 
-\leavevmode\hypertarget{ref-wooldridge2010}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-selvanathan1994}{}}%
+Selvanathan, E. A., and D. S. P. Rao. 1994. \emph{Index Numbers: A Stochastic Approach}. University of Michigan Press.
+
+\leavevmode\vadjust pre{\hypertarget{ref-wooldridge2010}{}}%
 Wooldridge, J. M. 2010. \emph{Econometric Analysis of Cross Section and Panel Data}. MIT University Press.
 
 \end{CSLReferences}

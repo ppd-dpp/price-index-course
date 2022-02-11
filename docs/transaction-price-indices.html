@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Transaction-price indices | A Course on Price Indices</title>
   <meta name="description" content="A modern and straightforward introduction to price indices" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Transaction-price indices | A Course on Price Indices" />
   <meta property="og:type" content="book" />
@@ -32,8 +32,9 @@
   
 <link rel="prev" href="constant-quality-price-indices.html"/>
 <link rel="next" href="identification.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -41,7 +42,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -155,7 +155,10 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
 <li class="part"><span><b>I Introduction to Price Indices</b></span></li>
 <li class="chapter" data-level="" data-path="syllabus-for-introduction-to-price-indices.html"><a href="syllabus-for-introduction-to-price-indices.html"><i class="fa fa-check"></i>Syllabus for Introduction to Price Indices</a></li>
 <li class="chapter" data-level="" data-path="whats-a-price-index-and-why-do-we-need-one.html"><a href="whats-a-price-index-and-why-do-we-need-one.html"><i class="fa fa-check"></i>What’s a price index and why do we need one?</a>
@@ -237,7 +240,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="syllabus-for-building-a-price-index-with-r.html"><a href="syllabus-for-building-a-price-index-with-r.html"><i class="fa fa-check"></i>Syllabus for Building a Price Index with R</a></li>
 <li class="chapter" data-level="" data-path="assignment-4.html"><a href="assignment-4.html"><i class="fa fa-check"></i>Assignment 4</a>
 <ul>
-<li class="chapter" data-level="" data-path="methodology.html"><a href="methodology.html"><i class="fa fa-check"></i>Methodology</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i>Structure</a></li>
 <li class="chapter" data-level="" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i>Instructions</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -270,7 +273,7 @@ where <span class="math inline">\(\rho\)</span> is the (log) transaction price, 
 \log(I^{T}) &amp;= E(\rho | t = 1) - E(\rho | t = 0) \\
 &amp;= E(\rho(1) | t = 1) - E(\rho(0) | t = 0).
 \end{align*}\]</span></p>
-<p>The transaction-price index generally differs from the constant-quality index, as it compares potential prices for those goods that sell in period 1 to potential prices for those goods that sell in period 0, rather than for all goods. Any change in the composition of goods selling between period 0 and period 1 will contaminate the measurement of a pure price movement, as the same goods are not being compared over time. What the goods selling in period 0 sold for may differ from what the goods selling in period 1 would have sold for in period 0, so comparing average transaction price mixes up a change in price with a change in the composition of goods selling at different points in time.<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a></p>
+<p>The transaction-price index generally differs from the constant-quality index, as it compares potential prices for those goods that sell in period 1 to potential prices for those goods that sell in period 0, rather than for all goods. Any change in the composition of goods selling between period 0 and period 1 will contaminate the measurement of a pure price movement, as the same goods are not being compared over time. What the goods selling in period 0 sold for may differ from what the goods selling in period 1 would have sold for in period 0, so comparing average transaction price mixes up a change in price with a change in the composition of goods selling at different points in time.<a href="#fn32" class="footnote-ref" id="fnref32"><sup>32</sup></a></p>
 <p>Note that this index is not necessarily based on price relatives, as the same number of goods may not sell in each period. If <span class="math inline">\(n(t)\)</span> denotes the set of goods that sell in period <span class="math inline">\(t\)</span>, the geometric transaction-price index is a ratio of geometric averages,
 <span class="math display">\[\begin{align*}
 \log(I^{T}) = \frac{\prod_{i \in n(1)} p_{i}(1)^{P_{i}|t = 1}}{\prod_{i \in n(0)} p_{i}(0)^{P_{i}|t = 0}},
@@ -279,8 +282,8 @@ where <span class="math inline">\(P_{i} | t\)</span> is the conditional probabil
 </div>
 <div class="footnotes">
 <hr />
-<ol start="31">
-<li id="fn31"><p>Returning to the narrative of an experiment, goods that sell in period 1 are the treatment group and goods that sell in period 0 are the control group, with the transaction-price index giving the average difference in the outcome of the experiment. This may or may not correspond the causal effect of treatment, depending on how the treatment and control groups are formed. For example, suppose the treatment is visiting a hospital and the outcome is a measure of health. Simply comparing health outcomes for those that have recently visited a hospital to those that have not, while ignoring how these groups are formed, would lead one to falsely conclude that visiting a hospital makes people unhealthy as on average those who have recently visited the hospital are in worse health than those who have not. This is because those visiting a hospital were likely to have worse health outcomes anyways, hence an apples-to-orange comparison.<a href="transaction-price-indices.html#fnref31" class="footnote-back">↩︎</a></p></li>
+<ol start="32">
+<li id="fn32"><p>Returning to the narrative of an experiment, goods that sell in period 1 are the treatment group and goods that sell in period 0 are the control group, with the transaction-price index giving the average difference in the outcome of the experiment. This may or may not correspond the causal effect of treatment, depending on how the treatment and control groups are formed. For example, suppose the treatment is visiting a hospital and the outcome is a measure of health. Simply comparing health outcomes for those that have recently visited a hospital to those that have not, while ignoring how these groups are formed, would lead one to falsely conclude that visiting a hospital makes people unhealthy as on average those who have recently visited the hospital are in worse health than those who have not. This is because those visiting a hospital were likely to have worse health outcomes anyways, hence an apples-to-orange comparison.<a href="transaction-price-indices.html#fnref32" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -293,7 +296,6 @@ where <span class="math inline">\(P_{i} | t\)</span> is the conditional probabil
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -333,6 +335,10 @@ gitbook.start({
 "text": null
 },
 "download": ["price-index-course.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 },

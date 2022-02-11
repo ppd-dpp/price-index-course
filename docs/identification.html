@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Identification | A Course on Price Indices</title>
   <meta name="description" content="A modern and straightforward introduction to price indices" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Identification | A Course on Price Indices" />
   <meta property="og:type" content="book" />
@@ -32,8 +32,9 @@
   
 <link rel="prev" href="transaction-price-indices.html"/>
 <link rel="next" href="example.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -41,7 +42,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -155,7 +155,10 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
 <li class="part"><span><b>I Introduction to Price Indices</b></span></li>
 <li class="chapter" data-level="" data-path="syllabus-for-introduction-to-price-indices.html"><a href="syllabus-for-introduction-to-price-indices.html"><i class="fa fa-check"></i>Syllabus for Introduction to Price Indices</a></li>
 <li class="chapter" data-level="" data-path="whats-a-price-index-and-why-do-we-need-one.html"><a href="whats-a-price-index-and-why-do-we-need-one.html"><i class="fa fa-check"></i>What’s a price index and why do we need one?</a>
@@ -237,7 +240,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="syllabus-for-building-a-price-index-with-r.html"><a href="syllabus-for-building-a-price-index-with-r.html"><i class="fa fa-check"></i>Syllabus for Building a Price Index with R</a></li>
 <li class="chapter" data-level="" data-path="assignment-4.html"><a href="assignment-4.html"><i class="fa fa-check"></i>Assignment 4</a>
 <ul>
-<li class="chapter" data-level="" data-path="methodology.html"><a href="methodology.html"><i class="fa fa-check"></i>Methodology</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i>Structure</a></li>
 <li class="chapter" data-level="" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i>Instructions</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -268,13 +271,13 @@ div.csl-indent {
 &amp;= E(\rho(1) | t = 1) - E(\rho(0) | t = 0) \\
 &amp;= \log(I^{T}).
 \end{align*}\]</span>
-That is, the constant-quality index is identical to the observable transaction-price index.<a href="#fn32" class="footnote-ref" id="fnref32"><sup>32</sup></a></p>
+That is, the constant-quality index is identical to the observable transaction-price index.<a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a></p>
 <p>In practice, assuming that potential prices are independent of the time when a good sells is a fairly strong assumption. Unless there is reason to believe that goods sell at random, it is likely an inappropriate assumption. Nonetheless, it serves as the foundational assumption that justifies the use of more sophisticated methods for constructing a constant-quality price index.</p>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="32">
-<li id="fn32"><p>One of the key insights from the program evaluation literature is that it is often easier to get a treatment effect for a sub-population than for the entire population. For example, the average effect of treatment on the treated is identified under weaker conditions than the average treatment effect on the entire population. As a constant-quality price index is just an average treatment effect, it is worth wondering if independence can be relaxed while still delivering a constant-quality index. In certain cases the answer is yes, if a price index applies to a sub-population of goods (e.g., the population of goods that actually sell in period 1, which is the average treatment effect on the treated). This means that tools in the program evaluation literature—such as instrumental variables for local average treatment effects, or regression discontinuity—can be used to calculate a constant-quality price index, although this is still a relatively new area.<a href="identification.html#fnref32" class="footnote-back">↩︎</a></p></li>
+<ol start="33">
+<li id="fn33"><p>One of the key insights from the program evaluation literature is that it is often easier to get a treatment effect for a sub-population than for the entire population. For example, the average effect of treatment on the treated is identified under weaker conditions than the average treatment effect on the entire population. As a constant-quality price index is just an average treatment effect, it is worth wondering if independence can be relaxed while still delivering a constant-quality index. In certain cases the answer is yes, if a price index applies to a sub-population of goods (e.g., the population of goods that actually sell in period 1, which is the average treatment effect on the treated). This means that tools in the program evaluation literature—such as instrumental variables for local average treatment effects, or regression discontinuity—can be used to calculate a constant-quality price index, although this is still a relatively new area.<a href="identification.html#fnref33" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -287,7 +290,6 @@ That is, the constant-quality index is identical to the observable transaction-p
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -327,6 +329,10 @@ gitbook.start({
 "text": null
 },
 "download": ["price-index-course.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 },

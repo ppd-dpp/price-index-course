@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>The time-dummy approach | A Course on Price Indices</title>
   <meta name="description" content="A modern and straightforward introduction to price indices" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="The time-dummy approach | A Course on Price Indices" />
   <meta property="og:type" content="book" />
@@ -32,8 +32,9 @@
   
 <link rel="prev" href="linear-hedonic-indices.html"/>
 <link rel="next" href="example-with-r-hedonics.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -41,7 +42,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -155,7 +155,10 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
 <li class="part"><span><b>I Introduction to Price Indices</b></span></li>
 <li class="chapter" data-level="" data-path="syllabus-for-introduction-to-price-indices.html"><a href="syllabus-for-introduction-to-price-indices.html"><i class="fa fa-check"></i>Syllabus for Introduction to Price Indices</a></li>
 <li class="chapter" data-level="" data-path="whats-a-price-index-and-why-do-we-need-one.html"><a href="whats-a-price-index-and-why-do-we-need-one.html"><i class="fa fa-check"></i>What’s a price index and why do we need one?</a>
@@ -237,7 +240,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="syllabus-for-building-a-price-index-with-r.html"><a href="syllabus-for-building-a-price-index-with-r.html"><i class="fa fa-check"></i>Syllabus for Building a Price Index with R</a></li>
 <li class="chapter" data-level="" data-path="assignment-4.html"><a href="assignment-4.html"><i class="fa fa-check"></i>Assignment 4</a>
 <ul>
-<li class="chapter" data-level="" data-path="methodology.html"><a href="methodology.html"><i class="fa fa-check"></i>Methodology</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i>Structure</a></li>
 <li class="chapter" data-level="" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i>Instructions</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -260,11 +263,11 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="the-time-dummy-approach" class="section level2">
 <h2>The time-dummy approach</h2>
-<p>The hedonic index in the previous section can be simplified to make calculating the index easier with an approach called the time-dummy approach.<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a> The time-dummy approach simply takes the linear hedonic model in the previous section and restricts it so that <span class="math inline">\(\beta_{0} = \beta_{1} = \beta\)</span>. This doesn’t change anything fundamental about the index, except that it now requires fewer parameters to calculate, as
+<p>The hedonic index in the previous section can be simplified to make calculating the index easier with an approach called the time-dummy approach.<a href="#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a> The time-dummy approach simply takes the linear hedonic model in the previous section and restricts it so that <span class="math inline">\(\beta_{0} = \beta_{1} = \beta\)</span>. This doesn’t change anything fundamental about the index, except that it now requires fewer parameters to calculate, as
 <span class="math display">\[\begin{align*}
 E(\rho | X, t) = \alpha_{0} + t \log(I^{Q}) + X \beta.
 \end{align*}\]</span></p>
-<p>One interesting feature of the time-dummy index is that, like the general linear hedonic index, it is a type of stratified index when goods are partitioned by their observable characteristics. To see this, note that, with the assumption that <span class="math inline">\(\beta_{0} = \beta_{1} = \beta\)</span>, the hedonic model becomes <span class="math inline">\(h(X, t) = \alpha_{0} + t (\alpha_{1} - \alpha_{0}) + X\beta\)</span>. When goods are stratified according to <span class="math inline">\(X\)</span>, then <span class="math inline">\(h\)</span> is saturated-in-<span class="math inline">\(X\)</span> such that there is a unique <span class="math inline">\(\beta_x\)</span> for each combination of <span class="math inline">\(x\)</span> for <span class="math inline">\(X\)</span>—each stratum gets its own parameter in the regression. In this case, the result in <span class="citation">Angrist and Pischke (2009Section 3.3.1)</span> applies, so that
+<p>One interesting feature of the time-dummy index is that, like the general linear hedonic index, it is a type of stratified index when goods are partitioned by their observable characteristics. To see this, note that, with the assumption that <span class="math inline">\(\beta_{0} = \beta_{1} = \beta\)</span>, the hedonic model becomes <span class="math inline">\(h(X, t) = \alpha_{0} + t (\alpha_{1} - \alpha_{0}) + X\beta\)</span>. When goods are stratified according to <span class="math inline">\(X\)</span>, then <span class="math inline">\(h\)</span> is saturated-in-<span class="math inline">\(X\)</span> such that there is a unique <span class="math inline">\(\beta_x\)</span> for each combination of <span class="math inline">\(x\)</span> for <span class="math inline">\(X\)</span>—each stratum gets its own parameter in the regression. In this case, the result in <span class="citation">Angrist and Pischke (2009, sec. 3.3.1)</span> applies, so that
 <span class="math display">\[\begin{align*}
 \log(I^{Q}) = \sum_{x}[E(\rho | X = x, t = 1) - E(\rho | X = x, t = 0)] \omega_{x},
 \end{align*}\]</span>
@@ -278,8 +281,8 @@ where
 </div>
 <div class="footnotes">
 <hr />
-<ol start="39">
-<li id="fn39"><p>Again, this is a poor name, as the “hedonic imputation” approach recovers the index as the coefficient on a time-dummy variable.<a href="the-time-dummy-approach.html#fnref39" class="footnote-back">↩︎</a></p></li>
+<ol start="40">
+<li id="fn40"><p>Again, this is a poor name, as the “hedonic imputation” approach recovers the index as the coefficient on a time-dummy variable.<a href="the-time-dummy-approach.html#fnref40" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -292,7 +295,6 @@ where
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -332,6 +334,10 @@ gitbook.start({
 "text": null
 },
 "download": ["price-index-course.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 },
