@@ -708,17 +708,17 @@ The second example shows how to rebase a price index---simply divide the index s
 \begin{verbatim}
 ##    period value
 ## 1       0   100
-## 2       1   117
-## 3       2    95
-## 4       3   103
-## 5       4   105
-## 6       5   114
-## 7       6   118
-## 8       7   126
-## 9       8   130
-## 10      9   111
-## 11     10    93
-## 12     11   101
+## 2       1   100
+## 3       2   129
+## 4       3   106
+## 5       4    99
+## 6       5   104
+## 7       6   119
+## 8       7    94
+## 9       8   116
+## 10      9   107
+## 11     10   128
+## 12     11   121
 \end{verbatim}
 
 \begin{Shaded}
@@ -730,18 +730,18 @@ The second example shows how to rebase a price index---simply divide the index s
 
 \begin{verbatim}
 ##    period     value
-## 1       0  84.74576
-## 2       1  99.15254
-## 3       2  80.50847
-## 4       3  87.28814
-## 5       4  88.98305
-## 6       5  96.61017
+## 1       0  84.03361
+## 2       1  84.03361
+## 3       2 108.40336
+## 4       3  89.07563
+## 5       4  83.19328
+## 6       5  87.39496
 ## 7       6 100.00000
-## 8       7 106.77966
-## 9       8 110.16949
-## 10      9  94.06780
-## 11     10  78.81356
-## 12     11  85.59322
+## 8       7  78.99160
+## 9       8  97.47899
+## 10      9  89.91597
+## 11     10 107.56303
+## 12     11 101.68067
 \end{verbatim}
 
 \hypertarget{assignment-1}{%
@@ -2522,7 +2522,7 @@ An aggregation structure tells R how to build up your price indices. It indicate
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#{-}{-}{-}{-} Aggregation structure {-}{-}{-}{-}}
-\NormalTok{pias }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(}\FunctionTok{split}\NormalTok{(weights, weights}\SpecialCharTok{$}\NormalTok{year), }
+\NormalTok{pias }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(}\FunctionTok{split}\NormalTok{(weights, weights}\SpecialCharTok{$}\NormalTok{basket), }
                \ControlFlowTok{function}\NormalTok{(df) \{}
                  \SpecialCharTok{\textless{}}\NormalTok{action}\SpecialCharTok{\textgreater{}}\NormalTok{(df[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{], df}\SpecialCharTok{$}\NormalTok{weight)}
 \NormalTok{               \})}
