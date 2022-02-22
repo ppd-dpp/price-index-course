@@ -279,7 +279,7 @@ div.csl-indent {
 <span id="cb45-2"><a href="instructions.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn period into a year-month and combine product and province into a </span></span>
 <span id="cb45-3"><a href="instructions.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># factor for elemental aggregates</span></span>
 <span id="cb45-4"><a href="instructions.html#cb45-4" aria-hidden="true" tabindex="-1"></a>micro_prices <span class="ot">&lt;-</span> <span class="fu">transform</span>(micro_prices, </span>
-<span id="cb45-5"><a href="instructions.html#cb45-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">period =</span> <span class="fu">format</span>(period, <span class="st">&quot;%Y%m&quot;</span>), </span>
+<span id="cb45-5"><a href="instructions.html#cb45-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">period =</span> <span class="fu">format</span>(<span class="fu">as.Date</span>(period), <span class="st">&quot;%Y%m&quot;</span>), </span>
 <span id="cb45-6"><a href="instructions.html#cb45-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">ea =</span> <span class="fu">interaction</span>(province, product, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>))</span>
 <span id="cb45-7"><a href="instructions.html#cb45-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-8"><a href="instructions.html#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Get a single price for each time period by taking the geomean</span></span>

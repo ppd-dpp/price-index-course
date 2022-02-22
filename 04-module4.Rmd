@@ -122,7 +122,7 @@ Using the microdata for product K in the `micro_prices` file, calculate the geom
 # Turn period into a year-month and combine product and province into a 
 # factor for elemental aggregates
 micro_prices <- transform(micro_prices, 
-                          period = format(period, "%Y%m"), 
+                          period = format(as.Date(period), "%Y%m"), 
                           ea = interaction(province, product, sep = ""))
 
 # Get a single price for each time period by taking the geomean

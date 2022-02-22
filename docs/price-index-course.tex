@@ -708,17 +708,17 @@ The second example shows how to rebase a price index---simply divide the index s
 \begin{verbatim}
 ##    period value
 ## 1       0   100
-## 2       1   100
-## 3       2   129
+## 2       1   128
+## 3       2   124
 ## 4       3   106
-## 5       4    99
-## 6       5   104
-## 7       6   119
-## 8       7    94
-## 9       8   116
-## 10      9   107
-## 11     10   128
-## 12     11   121
+## 5       4   109
+## 6       5    95
+## 7       6   114
+## 8       7    90
+## 9       8    98
+## 10      9   116
+## 11     10   108
+## 12     11   115
 \end{verbatim}
 
 \begin{Shaded}
@@ -730,18 +730,18 @@ The second example shows how to rebase a price index---simply divide the index s
 
 \begin{verbatim}
 ##    period     value
-## 1       0  84.03361
-## 2       1  84.03361
-## 3       2 108.40336
-## 4       3  89.07563
-## 5       4  83.19328
-## 6       5  87.39496
+## 1       0  87.71930
+## 2       1 112.28070
+## 3       2 108.77193
+## 4       3  92.98246
+## 5       4  95.61404
+## 6       5  83.33333
 ## 7       6 100.00000
-## 8       7  78.99160
-## 9       8  97.47899
-## 10      9  89.91597
-## 11     10 107.56303
-## 12     11 101.68067
+## 8       7  78.94737
+## 9       8  85.96491
+## 10      9 101.75439
+## 11     10  94.73684
+## 12     11 100.87719
 \end{verbatim}
 
 \hypertarget{assignment-1}{%
@@ -2452,7 +2452,7 @@ Using the microdata for product K in the \texttt{micro\_prices} file, calculate 
 \CommentTok{\# Turn period into a year{-}month and combine product and province into a }
 \CommentTok{\# factor for elemental aggregates}
 \NormalTok{micro\_prices }\OtherTok{\textless{}{-}} \FunctionTok{transform}\NormalTok{(micro\_prices, }
-                          \AttributeTok{period =} \FunctionTok{format}\NormalTok{(period, }\StringTok{"\%Y\%m"}\NormalTok{), }
+                          \AttributeTok{period =} \FunctionTok{format}\NormalTok{(}\FunctionTok{as.Date}\NormalTok{(period), }\StringTok{"\%Y\%m"}\NormalTok{), }
                           \AttributeTok{ea =} \FunctionTok{interaction}\NormalTok{(province, product, }\AttributeTok{sep =} \StringTok{""}\NormalTok{))}
 
 \CommentTok{\# Get a single price for each time period by taking the geomean}
