@@ -188,7 +188,7 @@ Take the elemental indices you calculated in Steps 1 and 2 and the aggregation s
 
 ```{r eval=FALSE}
 #---- Aggregate, chain, and quarter ----
-index <- Map(<variable>, <variable>, pias)
+index <- Map(<action>, <variable>, pias)
 
 # **HINT** What do you have to remove from the 2019 index in order to chain it 
 # together with the 2018 index?

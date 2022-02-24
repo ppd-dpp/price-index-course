@@ -708,17 +708,17 @@ The second example shows how to rebase a price index---simply divide the index s
 \begin{verbatim}
 ##    period value
 ## 1       0   100
-## 2       1   128
-## 3       2   124
-## 4       3   106
-## 5       4   109
-## 6       5    95
-## 7       6   114
-## 8       7    90
-## 9       8    98
-## 10      9   116
-## 11     10   108
-## 12     11   115
+## 2       1   117
+## 3       2   118
+## 4       3   105
+## 5       4   129
+## 6       5   119
+## 7       6    98
+## 8       7    97
+## 9       8    99
+## 10      9    96
+## 11     10   126
+## 12     11   127
 \end{verbatim}
 
 \begin{Shaded}
@@ -730,18 +730,18 @@ The second example shows how to rebase a price index---simply divide the index s
 
 \begin{verbatim}
 ##    period     value
-## 1       0  87.71930
-## 2       1 112.28070
-## 3       2 108.77193
-## 4       3  92.98246
-## 5       4  95.61404
-## 6       5  83.33333
+## 1       0 102.04082
+## 2       1 119.38776
+## 3       2 120.40816
+## 4       3 107.14286
+## 5       4 131.63265
+## 6       5 121.42857
 ## 7       6 100.00000
-## 8       7  78.94737
-## 9       8  85.96491
-## 10      9 101.75439
-## 11     10  94.73684
-## 12     11 100.87719
+## 8       7  98.97959
+## 9       8 101.02041
+## 10      9  97.95918
+## 11     10 128.57143
+## 12     11 129.59184
 \end{verbatim}
 
 \hypertarget{assignment-1}{%
@@ -2542,7 +2542,7 @@ Take the elemental indices you calculated in Steps 1 and 2 and the aggregation s
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#{-}{-}{-}{-} Aggregate, chain, and quarter {-}{-}{-}{-}}
-\NormalTok{index }\OtherTok{\textless{}{-}} \FunctionTok{Map}\NormalTok{(}\SpecialCharTok{\textless{}}\NormalTok{variable}\SpecialCharTok{\textgreater{}}\NormalTok{, }\SpecialCharTok{\textless{}}\NormalTok{variable}\SpecialCharTok{\textgreater{}}\NormalTok{, pias)}
+\NormalTok{index }\OtherTok{\textless{}{-}} \FunctionTok{Map}\NormalTok{(}\SpecialCharTok{\textless{}}\NormalTok{action}\SpecialCharTok{\textgreater{}}\NormalTok{, }\SpecialCharTok{\textless{}}\NormalTok{variable}\SpecialCharTok{\textgreater{}}\NormalTok{, pias)}
 
 \CommentTok{\# **HINT** What do you have to remove from the 2019 index in order to chain it }
 \CommentTok{\# together with the 2018 index?}
